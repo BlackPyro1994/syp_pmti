@@ -12,6 +12,7 @@
         @* Here's where we render the page title `String`. *@
         <title>@title</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/expandable_tree_list.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap-grid.min.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap-reboot.min.css")">
         @*<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/main.css")"> *@
@@ -239,6 +240,7 @@
         @content
 
         <script src="@routes.Assets.versioned("js/jquery-3.2.1.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/easyTree.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.versioned("js/bootstrap.min.js")" type="text/javascript"></script>
         @*<script src="@routes.Assets.versioned("js/hello.js")" type="text/javascript"></script>
         </body>
