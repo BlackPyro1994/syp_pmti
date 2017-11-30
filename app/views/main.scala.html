@@ -24,19 +24,19 @@
                 </div>
                 <div class="row">
                     <div class="col" align="center">
-                        <button type="button" class="btn btn-primary">-</button>
+                        <button type="button" onclick="sub()" class="btn btn-primary">-</button>
                     </div>
                     <div class="col" align="center">
-                        <h3>8</h3>
+                        <h3 id="count">0</h3>
                     </div>
                     <div class="col" align="center">
-                        <button type="button" class="btn btn-primary">+</button>
+                        <button type="button" onclick="add()" class="btn btn-primary">+</button>
                     </div>
                 </div>
                 <div class="col" align="center">
                     @*<button type="button" class="btn btn-primary">Laden</button>*@
-                    <button id="button" class="btn btn-primary">Laden</button>
-                    <input id="file-input" type="file" name="name" style="display: none;" />
+                <button id="button" class="btn btn-primary">Laden</button>
+                <input id="file-input" type="file" name="name" style="display: none;" />
 
                 </div>
                 <div class="col" align="center">
@@ -116,6 +116,29 @@
         <script src="@routes.Assets.versioned("js/bootstrap.bundle.js")" type="text/javascript"></script>
         <script src="@routes.Assets.versioned("js/CollapsibleLists.js")" type="text/javascript"></script>
         <script src="@routes.Assets.versioned("js/main.js")" type="text/javascript"></script>
+
+        <script>
+            function add() {
+                //console.log(document.getElementById("count").textContent);
+                var wert = Number(document.getElementById("count").textContent);
+                wert++;
+                document.getElementById("count").textContent=wert;
+                // console.log($('count').title());
+
+            }
+
+            function sub() {
+                //console.log(document.getElementById("count").textContent);
+                var wert = Number(document.getElementById("count").textContent);
+                if(wert>0)
+                {
+                    wert--;
+                }
+                document.getElementById("count").textContent=wert;
+                // console.log($('count').title());
+
+            }
+        </script>
 
     </body>
 </html>
