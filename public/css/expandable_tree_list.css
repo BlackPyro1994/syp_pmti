@@ -21,7 +21,8 @@ ul.tree, .tree li {
 .tree > li {
     display: block;
     background: #eee;
-    margin-bottom: 2px;
+    border-radius: 10px;
+    margin-left: 2px;
 }
 
 .tree span {

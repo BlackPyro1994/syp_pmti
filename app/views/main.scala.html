@@ -8,7 +8,7 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/expandable_tree_list.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap-grid.min.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap-reboot.min.css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("../../public/css/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/main.css")">
 
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
 
@@ -49,106 +49,68 @@
             <!-- Menüleiste Ende -->
             <br>
             <!-- Katalogliste -->
-            <div class="col-3 pre-scrollable" style="border: 2px solid;border-radius: 10px;padding:10px;height: 4000px">
-                <ul class="tree">
-                    <li>
-                        <span class="katalog" style=" border-bottom: 1px solid; margin: 10px">
-                            <div class="icon"></div>
-                            <a class="katalog-tag" href="#">Katalog 1</a>
-                        </span>
-                        <ul>
-                            <li><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px" onclick="">Modul 1</a></li>
-                            <p>
-                        <li><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px" onclick="">Modul 1</a></li>
-                            <p>
-                        <li><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px" onclick="">Modul 1</a></li>
-                            <p>
-                                <br>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="katalog" style=" border-bottom: 1px solid; margin: 10px">
-                            <div class="icon"></div>
-                            <a class="katalog-tag" href="#">Katalog 2</a>
+            <div class="col-3 pre-scrollable rounded-scrollbar-left">
+                <div class="katalog">
+                    <ul class="tree collapsibleList">
+                        <li>
+                            Katalog 1
+                            <ul>
+                                <li><a href="#">Modul 1</a></li>
+                                <li><a href="#">Modul 2</a></li>
+                                <li><a href="#">Modul 3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="katalog">
+                    <ul class="tree collapsibleList">
+                        <li>
+                            Katalog 2
+                            <ul>
+                                <ul class="collasibleList"></ul>
+                                    <li>
+                                        Unterkatalog 1
+                                        <ul>
+                                            <li><a href="#">Modul 1</a></li>
+                                            <li><a href="#">Modul 2</a></li>
+                                            <li><a href="#">Modul 3</a></li>
+                                        </ul>
+                                    </li>
 
-                        </span>
+                                <ul class="collasibleList"></ul>
+                                <li>
+                                    Unterkatalog 2
+                                    <ul>
+                                        <li><a href="#">Modul 1</a></li>
+                                        <li><a href="#">Modul 2</a></li>
+                                        <li><a href="#">Modul 3</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="katalog">
+                    <ul class="tree collapsibleList">
+                        <li>
+                            Katalog 3
+                            <ul>
+                                <li><a href="#">Modul 1</a></li>
+                                <li><a href="#">Modul 2</a></li>
+                                <li><a href="#">Modul 3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
 
-                        <ul>
-                            <li style="margin-left:50%"><span><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px"
-                            onclick="">Modul 4</a></span></li>
-                            <li style="margin-left:50%"><span><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px"
-                            onclick="">Modul 5</a></span></li>
-                            <li style="margin-left:50%"><span><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px"
-                            onclick="">Modul 6</a></span></li>
-                            <br>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="katalog" style=" border-bottom: 1px solid; margin: 10px">
-                            <div class="icon"></div>
-                            <a class="katalog-tag" href="#">Katalog-Frei</a>
-                        </span>
-                        <ul>
-                            <li>
-                                <span class="katalog-sub" style=" border-bottom: 1px solid; margin: 10px">
-                                    <div class="icon"></div>
-                                    <a href="#">UnterKatalog 1</a>
-                                </span>
-                                <ul>
-                                    <br>
-                                    <li style="margin-left:40%"><span><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px" onclick="">Modul 7</a></span>
-                                    </li>
-                                    <li style="margin-left:40%"><span><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px" onclick="">Modul 8</a></span>
-                                    </li>
-                                    <li style="margin-left:40%"><span><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px" onclick="">Modul 9</a></span>
-                                    </li>
-                                    <br>
-                                </ul>
-                            </li>
-                            <li>
-                                <span class="katalog-sub" style=" border-bottom: 1px solid; margin: 10px">
-                                    <div class="icon"></div>
-                                    <a href="#">UnterKatalog 2</a>
-                                </span>
-                                <ul>
-                                    <li><span><a href="#">Modul 1</a></span></li>
-                                    <li><span><a href="#">Modul 2</a></span></li>
-                                    <li><span><a href="#">Modul 3</a></span></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <span class="katalog-sub" style=" border-bottom: 1px solid; margin: 10px">
-                                    <div class="icon"></div>
-                                    <a href="#">UnterKatalog 3</a>
-                                </span>
-                                <ul>
-                                    <li><span><a href="#">Modul 1</a></span></li>
-                                    <li><span><a href="#">Modul 2</a></span></li>
-                                    <li><span><a href="#">Modul 3</a></span></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
             </div>
-            <!-- Katalogliste Ende -->
         </div>
 
         <script src="@routes.Assets.versioned("js/jquery-3.2.1.min.js")" type="text/javascript"></script>
-        <script src="@routes.Assets.versioned("js/bootstrap.min.js")" type="text/javascript"></script>
-        <script src="@routes.Assets.versioned("js/easyTree.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/bootstrap.bundle.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/CollapsibleLists.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/main.js")" type="text/javascript"></script>
 
-        <script>
-                $(".katalog").click(function () {
-                    $(this).parent().closest('li').find('ul:first').toggleClass('show-effect');
-                });
-                $(".katalog-sub").click(function () {
-                    $(".katalog-sub").parent().closest('li').find('ul:first').removeClass('show-effect');
-                    $(this).parent().closest('li').find('ul:first').toggleClass('show-effect');
-                });
-                $("#PDF").click(function () {
-                    console.log("test");
-                });
-        </script>
+        <
     </body>
 </html>
