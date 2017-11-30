@@ -16,7 +16,7 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap-grid.min.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap-reboot.min.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/stimmungspegel.css")">
-        @*<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/main.css")"> *@
+        @*<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/easyTree.min.css")">*@
 
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
 
@@ -48,17 +48,10 @@
 
         @* And here's where we render the `Html` object containing
         * the page content. *@
-
+        <br>
         <div class="container">
 
-            <br>
-
-                <!--<div class="container">-->
-                <!--<div class="row" style="border: 2px solid #000">-->
-
-            <div class="row" style="border: 2px solid;
-                border-radius: 5px;
-                padding: 5px">
+            <div class="row" style="border: 2px solid;border-radius: 5px;padding:5px">
 
                 <div class="col" align="center">
                     <button type="button" class="btn btn-primary">Neu</button>
@@ -91,36 +84,22 @@
             </div>
                 <!--</div>-->
 
-            <div class="col-3 pre-scrollable" style="border: 2px solid;
-                border-radius: 10px;
-                padding: 10px;
-                height: 4000px">
+            <div class="col-3 pre-scrollable" style="border: 2px solid;border-radius: 10px;padding:10px;height: 4000px">
 
                 <ul class="tree">
 
                     <li>
-                        <span class="katalog" style=" border-bottom: 1px solid;
-                            margin: 10px
-                        ">
+                        <span class="katalog" style=" border-bottom: 1px solid; margin: 10px">
                             <div class="icon"></div>
                             <a class="katalog-tag" href="#">Katalog 1</a>
                         </span>
 
                         <ul>
-                            <li><a style="cursor: pointer;
-                                border: 2px solid;
-                                border-radius: 10px;
-                                padding: 5px" onclick="">Modul 1</a></li>
+                            <li><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px" onclick="">Modul 1</a></li>
                             <p>
-                        <li><a style="cursor: pointer;
-                            border: 2px solid;
-                            border-radius: 10px;
-                            padding: 5px" onclick="">Modul 1</a></li>
+                        <li><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px" onclick="">Modul 1</a></li>
                             <p>
-                        <li><a style="cursor: pointer;
-                            border: 2px solid;
-                            border-radius: 10px;
-                            padding: 5px" onclick="">Modul 1</a></li>
+                        <li><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px" onclick="">Modul 1</a></li>
                             <p>
                                 <br>
                         </ul>
@@ -128,29 +107,18 @@
                     </li>
 
                     <li>
-                        <span class="katalog" style=" border-bottom: 1px solid;
-                            margin: 10px
-                        ">
+                        <span class="katalog" style=" border-bottom: 1px solid; margin: 10px">
                             <div class="icon"></div>
                             <a class="katalog-tag" href="#">Katalog 2</a>
 
                         </span>
 
                         <ul>
-                            <li style="margin-left: 50%"><span><a style="cursor: pointer;
-                                border: 2px solid;
-                                border-radius: 10px;
-                                padding: 5px"
+                            <li style="margin-left:50%"><span><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px"
                             onclick="">Modul 4</a></span></li>
-                            <li style="margin-left: 50%"><span><a style="cursor: pointer;
-                                border: 2px solid;
-                                border-radius: 10px;
-                                padding: 5px"
+                            <li style="margin-left:50%"><span><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px"
                             onclick="">Modul 5</a></span></li>
-                            <li style="margin-left: 50%"><span><a style="cursor: pointer;
-                                border: 2px solid;
-                                border-radius: 10px;
-                                padding: 5px"
+                            <li style="margin-left:50%"><span><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px"
                             onclick="">Modul 6</a></span></li>
                             <br>
                         </ul>
@@ -158,9 +126,7 @@
                     </li>
 
                     <li>
-                        <span class="katalog" style=" border-bottom: 1px solid;
-                            margin: 10px
-                        ">
+                        <span class="katalog" style=" border-bottom: 1px solid; margin: 10px">
                             <div class="icon"></div>
                             <a class="katalog-tag" href="#">Katalog-Frei</a>
 
@@ -169,28 +135,17 @@
                         <ul>
 
                             <li>
-                                <span class="katalog-sub" style=" border-bottom: 1px solid;
-                                    margin: 10px
-                                ">
+                                <span class="katalog-sub" style=" border-bottom: 1px solid; margin: 10px">
                                     <div class="icon"></div>
                                     <a href="#">UnterKatalog 1</a>
                                 </span>
                                 <ul>
                                     <br>
-                                    <li style="margin-left: 40%"><span><a style="cursor: pointer;
-                                        border: 2px solid;
-                                        border-radius: 10px;
-                                        padding: 5px" onclick="">Modul 7</a></span>
+                                    <li style="margin-left:40%"><span><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px" onclick="">Modul 7</a></span>
                                     </li>
-                                    <li style="margin-left: 40%"><span><a style="cursor: pointer;
-                                        border: 2px solid;
-                                        border-radius: 10px;
-                                        padding: 5px" onclick="">Modul 8</a></span>
+                                    <li style="margin-left:40%"><span><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px" onclick="">Modul 8</a></span>
                                     </li>
-                                    <li style="margin-left: 40%"><span><a style="cursor: pointer;
-                                        border: 2px solid;
-                                        border-radius: 10px;
-                                        padding: 5px" onclick="">Modul 9</a></span>
+                                    <li style="margin-left:40%"><span><a style="cursor: pointer;border: 2px solid;border-radius: 10px;padding:5px" onclick="">Modul 9</a></span>
                                     </li>
                                     <br>
                                 </ul>
@@ -198,9 +153,7 @@
                             </li>
 
                             <li>
-                                <span class="katalog-sub" style=" border-bottom: 1px solid;
-                                    margin: 10px
-                                ">
+                                <span class="katalog-sub" style=" border-bottom: 1px solid; margin: 10px">
                                     <div class="icon"></div>
                                     <a href="#">UnterKatalog 2</a>
                                 </span>
@@ -214,9 +167,7 @@
                             </li>
 
                             <li>
-                                <span class="katalog-sub" style=" border-bottom: 1px solid;
-                                    margin: 10px
-                                ">
+                                <span class="katalog-sub" style=" border-bottom: 1px solid; margin: 10px">
                                     <div class="icon"></div>
                                     <a href="#">UnterKatalog 3</a>
                                 </span>
@@ -238,13 +189,11 @@
 
         </div>
 
-        @content
-
+        @* @content *@
         <script src="@routes.Assets.versioned("js/jquery-3.2.1.min.js")" type="text/javascript"></script>
-        <script src="@routes.Assets.versioned("js/easyTree.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.versioned("js/bootstrap.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("js/easyTree.min.js")" type="text/javascript"></script>
         @*<script src="@routes.Assets.versioned("js/hello.js")" type="text/javascript"></script>
-        </body>
 
 
         @*#####################################################################################################*@
