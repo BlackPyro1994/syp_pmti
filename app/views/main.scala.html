@@ -29,29 +29,40 @@
         <div class="container">
             <div class="row rounded" align="center">
                 <div class="col" align="center">
-                    <button type="button" class="btn btn-primary" style="width: 100%">Neuer Plan</button>
+                    <button type="button" class="btn btn-primary" style="width: auto">Neuer Plan</button>
                 </div>
-                <div class="row" style="margin: 0%">
-                    <span class="col-4" align="center">
-                        <button type="button" style="width: 100%" onclick="counter_minus()" class="btn btn-primary">-</button>
+                <div class="row">
+                    <span class="col-3" align="center">
+                    <h5>Semesteranzahl</h5>
                     </span>
-                    <span class="col-4" align="center">
-                        <h3 id="count">0</h3>
+                    <span class="col-3" align="center">
+                        <button type="button" style="width: auto" onclick="counter_minus()" class="btn btn-primary">-</button>
                     </span>
-                    <span class="col-4" align="center">
-                        <button type="button" style="width: 100%" onclick="counter_plus()" class="btn btn-primary">+</button>
+                    <span class="col-3" align="center">
+                        <h5 id="count">0</h5>
+                    </span>
+                    <span class="col-3" align="center">
+                        <button type="button" style="width: auto" onclick="counter_plus()" class="btn btn-primary">+</button>
                     </span>
                 </div>
                 <div class="col" align="center">
-                    <button id="button" class="btn btn-primary" style="width: 100%">Plan laden</button>
+                    <button id="button" class="btn btn-primary" style="width: auto">Plan laden</button>
                     <input id="file-input" type="file" name="name" style="display: none;"/>
 
                 </div>
                 <div class="col" align="center">
-                    <button type="button" class="btn btn-primary" style="width: 100%">Plan speichern</button>
+                    <button type="button" class="btn btn-primary" style="width: auto">Plan speichern</button>
                 </div>
                 <div class="col" align="center">
-                    <button type="button" class="btn btn-primary" style="width: 100%">PDF erstellen</button>
+                    <button type="button" class="btn btn-primary" style="width: auto">PDF erstellen</button>
+                </div>
+                <div class="row">
+                    <span class="col-10" align="center">
+                        <h5>Master ECTS-P:</h5>
+                    </span>
+                    <span class="col" align="center">
+                        <h5>0</h5>
+                    </span>
                 </div>
             </div>
 <!-- Menüleiste Ende -->
@@ -121,8 +132,8 @@
                 </div> <!-- Katalogliste Ende -->
 <!--################################## Warnungen #####################################-->
                 <div class="col rounded-semester">
-                    <div class="col">
-                        <div class="warnungen">
+                    <div class="row">
+                        <div class="col warnungen">
                             <p>
                             Regel 1
                             </p>
