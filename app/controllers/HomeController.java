@@ -17,7 +17,11 @@ public class HomeController extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
     public Result index() {
-        return ok(index.render("asdasd"));
+
+        // String[] userAgent = request().headers().get(Http.HeaderNames.USER_AGENT);
+        String userAgent = request().getHeader("User-Agent");
+        // return ok(index.render("asdasd"));
+        return ok(index.render(userAgent));
     }
 
 }

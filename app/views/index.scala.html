@@ -1,4 +1,9 @@
-@(message : String)
-@mobile()
+@(message: String)
+
+@if(!message.contains("Mobile")) {
+    @desktop()
+} else {
+    @mobile()
+}
 
 
