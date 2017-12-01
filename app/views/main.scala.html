@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.min.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/expandable_tree_list.css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap-grid.min.css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap-reboot.min.css")">
+        @*<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap-grid.min.css")">*@
+        @*<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap-reboot.min.css")">*@
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/main.css")">
 
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
@@ -14,48 +15,65 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
     </head>
+
     <body>
+
         <br>
+
         <div class="container">
+
                 <!--Menüleiste -->
             <div class="row rounded" align="center">
+
                 <div class="col" align="center">
-                    <button type="button" class="btn btn-primary">Neu</button>
+                    <button type="button" class="btn btn-primary" style="width: 100%">Neu</button>
                 </div>
-                <div class="row">
-                    <div class="col" align="center">
-                        <button type="button" onclick="sub()" class="btn btn-primary">-</button>
+
+                <div class="row" style="margin: 0%">
+
+                    <div class="col-4" align="center">
+                        <button type="button" style="width: 100%" onclick="counter_minus()" class="btn btn-primary">-</button>
                     </div>
-                    <div class="col" align="center">
+
+                    <div class="col-4" align="center">
                         <h3 id="count">0</h3>
                     </div>
-                    <div class="col" align="center">
-                        <button type="button" onclick="add()" class="btn btn-primary">+</button>
+
+                    <div class="col-4" align="center">
+                        <button type="button" style="width: 100%" onclick="counter_plus()" class="btn btn-primary">+</button>
                     </div>
-                </div>
-                <div class="col" align="center">
-                    @*<button type="button" class="btn btn-primary">Laden</button>*@
-                <button id="button" class="btn btn-primary">Laden</button>
-                <input id="file-input" type="file" name="name" style="display: none;" />
 
                 </div>
+
                 <div class="col" align="center">
-                    <button type="button" class="btn btn-primary">Speichern</button>
+                    <button id="button" class="btn btn-primary" style="width: 100%">Laden</button>
+                    <input id="file-input" type="file" name="name" style="display: none;"/>
+
                 </div>
+
                 <div class="col" align="center">
-                    <button type="button" class="btn btn-primary">PDF erstellen</button>
+                    <button type="button" class="btn btn-primary" style="width: 100%">Speichern</button>
                 </div>
+
+                <div class="col" align="center">
+                    <button type="button" class="btn btn-primary" style="width: 100%">PDF erstellen</button>
+                </div>
+
             </div>
-            <!-- Menüleiste Ende -->
+                <!-- Menüleiste Ende -->
 
             <br>
-            <!-- Katalogliste -->
+
+                <!-- Katalogliste -->
             <div class="row semester-border">
+
+                    <!--################################## LINKS #####################################-->
+
                 <div class="col-3 scrollbar rounded-scrollbar-left">
                     <div class="katalog">
                         <ul class="tree collapsibleList">
                             <li>
-                            Katalog 1
+							Katalog 1
                                 <ul>
                                     <li><a href="#">Modul 1</a></li>
                                     <li><a href="#">Modul 2</a></li>
@@ -67,11 +85,11 @@
                     <div class="katalog">
                         <ul class="tree collapsibleList">
                             <li>
-                            Katalog 2
+							Katalog 2
                                 <ul>
                                     <ul class="collasibleList"></ul>
                                     <li>
-                                        Unterkatalog 1
+									Unterkatalog 1
                                         <ul>
                                             <li><a href="#">Modul 1</a></li>
                                             <li><a href="#">Modul 2</a></li>
@@ -81,7 +99,7 @@
 
                                     <ul class="collasibleList"></ul>
                                     <li>
-                                    Unterkatalog 2
+									Unterkatalog 2
                                         <ul>
                                             <li><a href="#">Modul 1</a></li>
                                             <li><a href="#">Modul 2</a></li>
@@ -95,7 +113,7 @@
                     <div class="katalog">
                         <ul class="tree collapsibleList">
                             <li>
-                            Katalog 3
+							Katalog 3
                                 <ul>
                                     <li><a href="#">Modul 1</a></li>
                                     <li><a href="#">Modul 2</a></li>
@@ -106,39 +124,64 @@
                     </div>
 
                 </div>
+
+                    <!--################################## RECHTS #####################################-->
+
+                <div class="col" style="margin: 0.25%">
+                    <div class="row"style="border: 2px solid #000;border-radius: 5px;border-color:#EC4141;margin-bottom: 5px;padding: 1px;background: #ffffff;width: 100%">
+                        <div class="row">
+                        <div style="border: 2px solid #000;border-radius: 5px;border-color:#a94442;margin: 0px;padding: 0px;background: #ffffff;display:table">
+                            <span>Regel 1</span>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row" style="border: 2px solid #000;border-radius: 10px">
+
+			</div>
+
             </div>
         </div>
-        <!-- Katalogliste Ende -->
 
-        <script src="@routes.Assets.versioned("js/jquery-3.2.1.min.js")" type="text/javascript"></script>
-        <script src="@routes.Assets.versioned("js/bootstrap.bundle.js")" type="text/javascript"></script>
-        <script src="@routes.Assets.versioned("js/CollapsibleLists.js")" type="text/javascript"></script>
-        <script src="@routes.Assets.versioned("js/main.js")" type="text/javascript"></script>
+        </div>
 
+            <!-- Katalogliste Ende -->
+        
         <script>
-            function add() {
-                //console.log(document.getElementById("count").textContent);
-                var wert = Number(document.getElementById("count").textContent);
-                wert++;
-                document.getElementById("count").textContent=wert;
-                // console.log($('count').title());
 
-            }
+      CollapsibleLists.apply();
 
-            function sub() {
-                //console.log(document.getElementById("count").textContent);
-                var wert = Number(document.getElementById("count").textContent);
-                if(wert>0)
-                {
-                    wert--;
-                }
-                document.getElementById("count").textContent=wert;
-                // console.log($('count').title());
+      $('#button').on('click', function ()
+      {
+          $('#file-input').trigger('click');
+      });
 
-            }
-        </script>
+      function counter_plus()
+      {
+          var wert = Number(document.getElementById("count").textContent);
+          wert++;
+          document.getElementById("count").textContent = wert;
+      }
+
+      function counter_minus()
+      {
+          var wert = Number(document.getElementById("count").textContent);
+          if (wert > 0)
+          {
+              wert--;
+          }
+          document.getElementById("count").textContent = wert;
+      }
+
+	</script>
 
     </body>
+
+    <script src="@routes.Assets.versioned("js/jquery-3.2.1.min.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("js/bootstrap.bundle.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("js/CollapsibleLists.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("js/main.js")" type="text/javascript"></script>
+
 </html>
-
-
