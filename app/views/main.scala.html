@@ -15,60 +15,50 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
     </head>
-
     <body>
-
         <br>
-
+        <div class="row">
+            <span class="col" align="center">
+                <h2>
+                    Planungsunterstzützungstool Master technische Informatik
+                </h2>
+            </span>
+        </div>
+        <br>
         <div class="container">
-
-                <!--Menüleiste -->
+<!--Menüleiste -->
             <div class="row rounded" align="center">
-
                 <div class="col" align="center">
-                    <button type="button" class="btn btn-primary" style="width: 100%">Neu</button>
+                    <button type="button" class="btn btn-primary" style="width: 100%">Neuer Plan</button>
                 </div>
-
                 <div class="row" style="margin: 0%">
-
-                    <div class="col-4" align="center">
+                    <span class="col-4" align="center">
                         <button type="button" style="width: 100%" onclick="counter_minus()" class="btn btn-primary">-</button>
-                    </div>
-
-                    <div class="col-4" align="center">
+                    </span>
+                    <span class="col-4" align="center">
                         <h3 id="count">0</h3>
-                    </div>
-
-                    <div class="col-4" align="center">
+                    </span>
+                    <span class="col-4" align="center">
                         <button type="button" style="width: 100%" onclick="counter_plus()" class="btn btn-primary">+</button>
-                    </div>
-
+                    </span>
                 </div>
-
                 <div class="col" align="center">
-                    <button id="button" class="btn btn-primary" style="width: 100%">Laden</button>
+                    <button id="button" class="btn btn-primary" style="width: 100%">Plan laden</button>
                     <input id="file-input" type="file" name="name" style="display: none;"/>
 
                 </div>
-
                 <div class="col" align="center">
-                    <button type="button" class="btn btn-primary" style="width: 100%">Speichern</button>
+                    <button type="button" class="btn btn-primary" style="width: 100%">Plan speichern</button>
                 </div>
-
                 <div class="col" align="center">
                     <button type="button" class="btn btn-primary" style="width: 100%">PDF erstellen</button>
                 </div>
-
             </div>
-                <!-- Menüleiste Ende -->
-
+<!-- Menüleiste Ende -->
             <br>
-
-                <!-- Katalogliste -->
+<!-- Katalogliste -->
             <div class="row semester-border">
-
-                    <!--################################## LINKS #####################################-->
-
+<!--################################## LINKS #####################################-->
                 <div class="col-3 scrollbar rounded-scrollbar-left">
                     <div class="katalog">
                         <ul class="tree collapsibleList">
@@ -122,33 +112,22 @@
                             </li>
                         </ul>
                     </div>
-
                 </div>
-
-                    <!--################################## RECHTS #####################################-->
-
+<!--################################## RECHTS #####################################-->
                 <div class="col" style="margin: 0.25%">
                     <div class="row"style="border: 2px solid #000;border-radius: 5px;border-color:#EC4141;margin-bottom: 5px;padding: 1px;background: #ffffff;width: 100%">
                         <div class="row">
-                        <div style="border: 2px solid #000;border-radius: 5px;border-color:#a94442;margin: 0px;padding: 0px;background: #ffffff;display:table">
-                            <span>Regel 1</span>
+                            <div style="border: 2px solid #000;border-radius: 5px;border-color:#a94442;margin: 0px;padding: 0px;background: #ffffff;display:table">
+                                <span>Regel 1</span>
+                            </div>
                         </div>
                     </div>
-
-
+                    <div class="row" style="border: 2px solid #000;border-radius: 10px">
+                    </div>
                 </div>
-
-                <div class="row" style="border: 2px solid #000;border-radius: 10px">
-
-			</div>
-
             </div>
         </div>
-
-        </div>
-
-            <!-- Katalogliste Ende -->
-        
+<!-- Katalogliste Ende -->
         <script>
 
       CollapsibleLists.apply();
@@ -176,7 +155,6 @@
       }
 
 	</script>
-
     </body>
 
     <script src="@routes.Assets.versioned("js/jquery-3.2.1.min.js")" type="text/javascript"></script>

@@ -31,7 +31,6 @@
     border: 2px solid #000;
     border-radius: 10px;
     padding-top: 3px;;
-/ / without a background or border applied you won 't be able to see if its rounded
 }
 
 .rounded-scrollbar-left {
