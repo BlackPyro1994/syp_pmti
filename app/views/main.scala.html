@@ -19,14 +19,14 @@
         <br>
         <div class="row">
             <span class="col" align="center">
-                <h2>
+                <h1>
                     Planungsunterstzützungstool Master technische Informatik
-                </h2>
+                </h1>
             </span>
         </div>
         <br>
-        <div class="container">
 <!--Menüleiste -->
+        <div class="container">
             <div class="row rounded" align="center">
                 <div class="col" align="center">
                     <button type="button" class="btn btn-primary" style="width: 100%">Neuer Plan</button>
@@ -56,10 +56,16 @@
             </div>
 <!-- Menüleiste Ende -->
             <br>
-<!-- Katalogliste -->
+<!--################################## Modulkataloge #####################################-->
             <div class="row semester-border">
-<!--################################## LINKS #####################################-->
                 <div class="col-3 scrollbar rounded-scrollbar-left">
+                    <div class="row">
+                        <span class="col" align="left">
+                            <h4>
+                    Modulkataloge
+                            </h4>
+                        </span>
+                    </div>
                     <div class="katalog">
                         <ul class="tree collapsibleList">
                             <li>
@@ -112,22 +118,21 @@
                             </li>
                         </ul>
                     </div>
-                </div>
-<!--################################## RECHTS #####################################-->
-                <div class="col" style="margin: 0.25%">
-                    <div class="row"style="border: 2px solid #000;border-radius: 5px;border-color:#EC4141;margin-bottom: 5px;padding: 1px;background: #ffffff;width: 100%">
-                        <div class="row">
-                            <div style="border: 2px solid #000;border-radius: 5px;border-color:#a94442;margin: 0px;padding: 0px;background: #ffffff;display:table">
-                                <span>Regel 1</span>
-                            </div>
+                </div> <!-- Katalogliste Ende -->
+<!--################################## Warnungen #####################################-->
+                <div class="col rounded-semester">
+                    <div class="col">
+                        <div class="warnungen">
+                            <p>
+                            Regel 1
+                            </p>
                         </div>
-                    </div>
-                    <div class="row" style="border: 2px solid #000;border-radius: 10px">
-                    </div>
+                    </div> <!-- Katalogliste Ende -->
                 </div>
             </div>
+
         </div>
-<!-- Katalogliste Ende -->
+<!--################################## Warnungen Ende #####################################-->
         <script>
 
       CollapsibleLists.apply();

@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 .my_button {
     padding: 15px 25px;
     font-size: 24px;
@@ -24,7 +28,6 @@
     max-height: 450px;
     background: #fff;
     overflow-y: auto;
-    border-radius: 10px;
 }
 
 .rounded {
@@ -33,11 +36,18 @@
     padding-top: 3px;;
 }
 
+.rounded-semester {
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding-top: 3px;;
+    margin-left: 0.3%;
+}
+
 .rounded-scrollbar-left {
     border: 2px solid #000;
     border-radius: 10px;
     padding: 5px;
-    height: 4000px;
+    overflow-x: hidden;;
 }
 
 .katalog {
@@ -54,8 +64,18 @@
     padding: 5px;
 }
 
-div, p {margin:0px; padding:0px;}
+div, p {
+    margin:0px;
+    padding:0px;
+}
 
 html, body {
     height: 100%;
+}
+
+.warnungen {
+    margin-left: 0.3%;
+    border: 2px solid #dc3545;
+    border-radius: 10px;
+    padding: 5px;
 }
