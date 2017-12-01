@@ -20,7 +20,7 @@
         <div class="row">
             <span class="col" align="center">
                 <h1>
-                    Planungsunterstzützungstool Master technische Informatik
+                    Planungsunterstützungstool Master technische Informatik
                 </h1>
             </span>
         </div>
@@ -29,26 +29,23 @@
         <div class="container">
             <div class="row rounded" align="center">
                 <div class="col" align="center">
-                    <button type="button" class="btn btn-primary" style="width: auto">Neuer Plan</button>
+                    <button type="button" class="btn btn-primary">Neuer Plan</button>
                 </div>
-                <div class="row">
-                    <span class="col-3" align="center">
+                <div class="col mar" align="center">
                     <h5>Semesteranzahl</h5>
-                    </span>
-                    <span class="col-3" align="center">
-                        <button type="button" style="width: auto" onclick="counter_minus()" class="btn btn-primary">-</button>
-                    </span>
-                    <span class="col-3" align="center">
-                        <h5 id="count">0</h5>
-                    </span>
-                    <span class="col-3" align="center">
-                        <button type="button" style="width: auto" onclick="counter_plus()" class="btn btn-primary">+</button>
-                    </span>
                 </div>
                 <div class="col" align="center">
-                    <button id="button" class="btn btn-primary" style="width: auto">Plan laden</button>
+                    <button type="button" onclick="counter_minus()" class="btn btn-primary">-</button>
+                </div>
+                <div class="col mar" align="center">
+                    <h5 id="count">0</h5>
+                </div>
+                <div class="col" align="center">
+                    <button type="button" onclick="counter_plus()" class="btn btn-primary">+</button>
+                </div>
+                <div class="col" align="center">
+                    <button id="button" class="btn btn-primary">Plan laden</button>
                     <input id="file-input" type="file" name="name" style="display: none;"/>
-
                 </div>
                 <div class="col" align="center">
                     <button type="button" class="btn btn-primary" style="width: auto">Plan speichern</button>
@@ -56,13 +53,11 @@
                 <div class="col" align="center">
                     <button type="button" class="btn btn-primary" style="width: auto">PDF erstellen</button>
                 </div>
-                <div class="row">
-                    <span class="col-10" align="center">
-                        <h5>Master ECTS-P:</h5>
-                    </span>
-                    <span class="col" align="center">
-                        <h5>0</h5>
-                    </span>
+                <div class="col mar" align="center">
+                    <h5>ECTS:</h5>
+                </div>
+                <div class="col mar" align="center">
+                    <h5>0</h5>
                 </div>
             </div>
 <!-- Menüleiste Ende -->
@@ -144,9 +139,7 @@
 
         </div>
 <!--################################## Warnungen Ende #####################################-->
-        <script>
-
-      CollapsibleLists.apply();
+    <script>
 
       $('#button').on('click', function ()
       {
