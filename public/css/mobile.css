@@ -1,0 +1,8 @@
+.warnungen {
+    margin-top: 0.5%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    border: 2px solid #dc3545;
+    border-radius: 10px;
+    height: auto;
+}
