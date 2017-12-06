@@ -17,127 +17,240 @@
     </head>
 
     <body>
-        <br>
-        <div class="row">
-            <span class="col" align="center">
-                <h1>
+        <!-- Container full website -->
+        <div class="container-fluid">
+            <div class="row">
+                <span class="col" align="center">
+                    <br>
+                    <h1>
                     Planungsunterstützungstool Master technische Informatik
-                </h1>
-            </span>
-        </div>
-        <br>
-<!--Menüleiste -->
-        <div class="container">
-            <div class="row rounded" align="center">
-                <div class="col" align="center">
-                    <button type="button" class="btn btn-primary">Neuer Plan</button>
-                </div>
-                <div class="col mar" align="center">
-                    <h5>Semesteranzahl</h5>
-                </div>
-                <div class="col" align="center">
-                    <button type="button" onclick="counter_minus()" class="btn btn-primary">-</button>
-                </div>
-                <div class="col mar" align="center">
-                    <h5 id="count">0</h5>
-                </div>
-                <div class="col" align="center">
-                    <button type="button" onclick="counter_plus()" class="btn btn-primary">+</button>
-                </div>
-                <div class="col" align="center">
-                    <button id="button" class="btn btn-primary">Plan laden</button>
-                    <input id="file-input" type="file" name="name" style="display: none;"/>
-                </div>
-                <div class="col" align="center">
-                    <button type="button" class="btn btn-primary" style="width: auto">Plan speichern</button>
-                </div>
-                <div class="col" align="center">
-                    <button type="button" class="btn btn-primary" style="width: auto">PDF erstellen</button>
-                </div>
-                <div class="col mar" align="center">
-                    <h5>ECTS:</h5>
-                </div>
-                <div class="col mar" align="center">
-                    <h5>0</h5>
+                    </h1>
+                </span>
+            </div>
+            <!-- Container Menüleiste -->
+            <div class="container">
+                <div class="row rounded" align="center">
+                    <div class="col" align="center">
+                        <button type="button" class="btn btn-primary">Neuer Plan</button>
+                    </div>
+                    <div class="col mar" align="center">
+                        <h5>Semesteranzahl</h5>
+                    </div>
+                    <div class="col" align="center">
+                        <button type="button" onclick="counter_minus()" class="btn btn-primary">-</button>
+                    </div>
+                    <div class="col mar" align="center">
+                        <h5 id="count">0</h5>
+                    </div>
+                    <div class="col" align="center">
+                        <button type="button" onclick="counter_plus()" class="btn btn-primary">+</button>
+                    </div>
+                    <div class="col" align="center">
+                        <button id="button" class="btn btn-primary">Plan laden</button>
+                        <input id="file-input" type="file" name="name" style="display: none;"/>
+                    </div>
+                    <div class="col" align="center">
+                        <button type="button" class="btn btn-primary" style="width: auto">Plan speichern</button>
+                    </div>
+                    <div class="col" align="center">
+                        <button type="button" class="btn btn-primary" style="width: auto">PDF erstellen</button>
+                    </div>
+                    <div class="col mar" align="center">
+                        <h5>ECTS:</h5>
+                    </div>
+                    <div class="col mar" align="center">
+                        <h5>0</h5>
+                    </div>
                 </div>
             </div>
-<!-- Menüleiste Ende -->
-            <br>
-<!--################################## Modulkataloge #####################################-->
-            <div class="row semester-border">
-                <div class="col-3 scrollbar rounded-scrollbar-left">
-                    <div class="row">
-                        <span class="col" align="left">
-                            <h4>
-                    Modulkataloge
-                            </h4>
-                        </span>
-                    </div>
-                    <div class="katalog">
-                        <ul class="tree collapsibleList">
-                            <li>
-							Katalog 1
-                                <ul>
-                                    <li><a href="#">Modul 1</a></li>
-                                    <li><a href="#">Modul 2</a></li>
-                                    <li><a href="#">Modul 3</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="katalog">
-                        <ul class="tree collapsibleList">
-                            <li>
-							Katalog 2
-                                <ul>
-                                    <ul class="collasibleList"></ul>
-                                    <li>
-									Unterkatalog 1
-                                        <ul>
-                                            <li><a href="#">Modul 1</a></li>
-                                            <li><a href="#">Modul 2</a></li>
-                                            <li><a href="#">Modul 3</a></li>
-                                        </ul>
-                                    </li>
+                <!-- Container um Katalogliste, Regeln, Semester -->
+                <div class="container">
+                    <div class="row rounded">
+                        <!-- Container Katalogliste -->
+                        <div class="col-4 container">
+                            <div class="col scrollbar rounded-scrollbar-left">
+                                <div class="row">
+                                    <span class="col" align="left">
+                                        <h4>
+	                    Modulkataloge
+                                        </h4>
+                                    </span>
+                                </div>
+                                <div class="katalog">
+                                    <ul class="tree collapsibleList">
+                                        <li>
+								Katalog 1
+                                            <ul>
+                                                <li><a href="#">Modul 1</a></li>
+                                                <li><a href="#">Modul 2</a></li>
+                                                <li><a href="#">Modul 3</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="katalog">
+                                    <ul class="tree collapsibleList">
+                                        <li>
+								Katalog 2
+                                            <ul>
+                                                <ul class="collasibleList"></ul>
+                                                <li>
+										Unterkatalog 1
+                                                    <ul>
+                                                        <li><a href="#">Modul 1</a></li>
+                                                        <li><a href="#">Modul 2</a></li>
+                                                        <li><a href="#">Modul 3</a></li>
+                                                    </ul>
+                                                </li>
 
-                                    <ul class="collasibleList"></ul>
-                                    <li>
-									Unterkatalog 2
-                                        <ul>
-                                            <li><a href="#">Modul 1</a></li>
-                                            <li><a href="#">Modul 2</a></li>
-                                            <li><a href="#">Modul 3</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="katalog">
-                        <ul class="tree collapsibleList">
-                            <li>
-							Katalog 3
-                                <ul>
-                                    <li><a href="#">Modul 1</a></li>
-                                    <li><a href="#">Modul 2</a></li>
-                                    <li><a href="#">Modul 3</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div> <!-- Katalogliste Ende -->
-<!--################################## Warnungen #####################################-->
-                <div class="col">
-                    <div class="row">
-                        <div class="col warnungen">
-                            <p>Regel 1</p>
+                                                <ul class="collasibleList"></ul>
+                                                <li>
+										Unterkatalog 2
+                                                    <ul>
+                                                        <li><a href="#">Modul 1</a></li>
+                                                        <li><a href="#">Modul 2</a></li>
+                                                        <li><a href="#">Modul 3</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="katalog">
+                                    <ul class="tree collapsibleList">
+                                        <li>
+								Katalog 3
+                                            <ul>
+                                                <li><a href="#">Modul 1</a></li>
+                                                <li><a href="#">Modul 2</a></li>
+                                                <li><a href="#">Modul 3</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                    </div> <!-- Katalogliste Ende -->
+                        <!--  Container um Regeln, Semester -->
+                        <div class="col container">
+                            <!--  Container Regeln -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col warnungen">
+                                        <p>Regel 1</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Container Semester -->
+                            <div class="container semester-gesamt">
+                                <div class="row">
+                                    <h6>Semester 1:</h6>
+                                </div>
+                                    <div class="row semester">
+                                        <div class="col tags" id="id">
+                                            <p>ID:</p>
+                                        </div>
+                                        <div class="col tags" id="name">
+                                            <p>Name</p>
+                                        </div>
+                                        <div class="col tags" id="sws">
+                                            <p>SWS:</p>
+                                        </div>
+                                        <div class="col tags" id="dozent">
+                                            <p>Dozent:</p>
+                                        </div>
+                                        <div class="col tags" id="ulp">
+                                            <p>ULP</p>
+                                        </div>
+                                        <div class="col tags" id="ects">
+                                            <p>ECTS:</p>
+                                        </div>
+                                        <div class="col tags" id="btnloeschen">
+                                    </div>
+                                        <div class="col" id="btnverschieben">
+                                    </div>
+                                    </div>
+                                    <div class="row semester">
+                                        <div class="col tags" id="id">
+                                            <p>ID:</p>
+                                        </div>
+                                        <div class="col tags" id="name">
+                                            <p>Name</p>
+                                        </div>
+                                        <div class="col tags" id="sws">
+                                            <p>SWS:</p>
+                                        </div>
+                                        <div class="col tags" id="dozent">
+                                            <p>Dozent:</p>
+                                        </div>
+                                        <div class="col tags" id="ulp">
+                                            <p>ULP</p>
+                                        </div>
+                                        <div class="col tags" id="ects">
+                                            <p>ECTS:</p>
+                                        </div>
+                                        <div class="col tags" id="btnloeschen">
+                                    </div>
+                                        <div class="col" id="btnverschieben">
+                                    </div>
+                                    </div>
+                                </div>
+                            <div class="container semester-gesamt">
+                                <div class="row">
+                                    <h6>Semester 2:</h6>
+                                </div>
+                                <div class="row semester">
+                                    <div class="col tags" id="id">
+                                        <p>ID:</p>
+                                    </div>
+                                    <div class="col tags" id="name">
+                                        <p>Name</p>
+                                    </div>
+                                    <div class="col tags" id="sws">
+                                        <p>SWS:</p>
+                                    </div>
+                                    <div class="col tags" id="dozent">
+                                        <p>Dozent:</p>
+                                    </div>
+                                    <div class="col tags" id="ulp">
+                                        <p>ULP</p>
+                                    </div>
+                                    <div class="col tags" id="ects">
+                                        <p>ECTS:</p>
+                                    </div>
+                                    <div class="col tags" id="btnloeschen">
+                                    </div>
+                                    <div class="col" id="btnverschieben">
+                                    </div>
+                                </div>
+                                <div class="row semester">
+                                    <div class="col tags" id="id">
+                                        <p>ID:</p>
+                                    </div>
+                                    <div class="col tags" id="name">
+                                        <p>Name</p>
+                                    </div>
+                                    <div class="col tags" id="sws">
+                                        <p>SWS:</p>
+                                    </div>
+                                    <div class="col tags" id="dozent">
+                                        <p>Dozent:</p>
+                                    </div>
+                                    <div class="col tags" id="ulp">
+                                        <p>ULP</p>
+                                    </div>
+                                    <div class="col tags" id="ects">
+                                        <p>ECTS:</p>
+                                    </div>
+                                    <div class="col tags" id="btnloeschen">
+                                    </div>
+                                    <div class="col" id="btnverschieben">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-        </div>
-<!--################################## Warnungen Ende #####################################-->
     <script>
 
       $('#button').on('click', function ()
@@ -161,8 +274,7 @@
           }
           document.getElementById("count").textContent = wert;
       }
-
-	</script>
+      </script>
     </body>
 
     <script src="@routes.Assets.versioned("js/jquery-3.2.1.min.js")" type="text/javascript"></script>
