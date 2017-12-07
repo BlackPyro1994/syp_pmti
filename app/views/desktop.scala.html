@@ -226,10 +226,12 @@
               $("#semester").append(
                       '<div class = "container semester-gesamt">' +
                       '<div class = "row">' +
-                      '<h6>Semester 1:</h6>' +
+                      '<h6 id="test">Semester 1:</h6>' +
                       '</div>' +
                       '</div>'
               );
+
+              document.getElementById('para').innerHTML = str;
           }
 
           function deleteLast()
@@ -238,11 +240,10 @@
               //$("#semester").find("row:nth-last-child(1)").empty();
               // console.log($("#semester"));
               // console.log($("#semester:last-child").lastChild);
-              console.log($("#semester").filter(":last"));
-              console.log($("#semester").filter(":last").empty());
-              console.log($("#semester").children.empty());
-
-
+              // econsole.log($("#semester").filter(":last"));
+              // console.log($("#semester").filter(":last").empty());
+              // console.log($("#semester").children().first().empty());
+              console.log($("#semester").children().last().remove());
           }
 
           //function module(id);
