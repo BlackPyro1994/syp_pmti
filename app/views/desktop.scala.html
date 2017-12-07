@@ -251,30 +251,76 @@
                     </div>
                 </div>
             </div>
-    <script>
+        <script>
 
-      $('#button').on('click', function ()
-      {
-          $('#file-input').trigger('click');
-      });
-
-      function counter_plus()
-      {
-          var wert = Number(document.getElementById("count").textContent);
-          wert++;
-          document.getElementById("count").textContent = wert;
-      }
-
-      function counter_minus()
-      {
-          var wert = Number(document.getElementById("count").textContent);
-          if (wert > 0)
+          $('#button').on('click', function ()
           {
-              wert--;
+              $('#file-input').trigger('click');
+          });
+
+          function counter_plus()
+          {
+              var wert = Number(document.getElementById("count").textContent);
+              wert++;
+              document.getElementById("count").textContent = wert;
           }
-          document.getElementById("count").textContent = wert;
-      }
-      </script>
+
+          function counter_minus()
+          {
+              var wert = Number(document.getElementById("count").textContent);
+              if (wert > 0)
+              {
+                  wert--;
+              }
+              document.getElementById("count").textContent = wert;
+          }
+
+
+          function semesterMarkieren(id)
+          {
+              $(document).ready(function ()
+              {
+                  $("#semester").addClass('dim');
+
+                  $(".sectionBox")
+                          .click(function ()
+                          {
+                              $(this).removeClass('dim');
+                              $(".sectionBox").not(this).addClass('dim')
+                          })
+                  $(".sectionBox *").focus(function ()
+                  {
+                      $(this).closest(".sectionBox").trigger('click');
+                  });
+              });
+          }
+
+          function add()
+          {
+              $("#semester").append(
+                      '<div class = "container semester-gesamt">' +
+                      '<div class = "row">' +
+                      '<h6>Semester 1:</h6>' +
+                      '</div>' +
+                      '</div>'
+              );
+          }
+
+          function deleteLast()
+          {
+              //$("#semester row:nth-last-child(1)").filter( ":last" ).empty();
+              //$("#semester").find("row:nth-last-child(1)").empty();
+              // console.log($("#semester"));
+              // console.log($("#semester:last-child").lastChild);
+              console.log($("#semester").filter(":last"));
+              console.log($("#semester").filter(":last").empty());
+
+
+          }
+
+          //function module(id);
+
+	</script>
     </body>
 
     <script src="@routes.Assets.versioned("js/jquery-3.2.1.min.js")" type="text/javascript"></script>
