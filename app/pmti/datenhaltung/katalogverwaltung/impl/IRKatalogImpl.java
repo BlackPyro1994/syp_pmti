@@ -8,7 +8,7 @@ import java.util.List;
 
 public class IRKatalogImpl implements IRKatalog {
     @Override
-    public List<Modulkatalog> readKatalogFile() {
+    public List<Modulkatalog> getAlleKataloge() {
         AlleKataloge alleKataloge = AlleKataloge.exemplar();
 
         return alleKataloge.katalogeEinlesen();

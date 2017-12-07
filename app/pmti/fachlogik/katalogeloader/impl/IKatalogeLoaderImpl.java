@@ -21,7 +21,7 @@ public class IKatalogeLoaderImpl implements IKatalogeLoader {
     public List<KatalogGrenz> getKataloge() {
         ArrayList<KatalogGrenz> rueckgabe = new ArrayList<>();
 
-        List<Modulkatalog> alleKataloge = kataloge.readKatalogFile();
+        List<Modulkatalog> alleKataloge = kataloge.getAlleKataloge();
 
         for(Modulkatalog mk : alleKataloge){
 
