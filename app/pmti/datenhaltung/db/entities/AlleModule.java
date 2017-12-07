@@ -31,7 +31,7 @@ public class AlleModule {
 
 
         try{
-            fr=new FileReader("public/CSV/Module.CSV");
+            fr=new FileReader("public/csv/Module.CSV");
             br = new BufferedReader(fr);
 
             while(null!=(csvZeile=br.readLine())) {
