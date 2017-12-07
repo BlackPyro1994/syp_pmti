@@ -142,34 +142,34 @@
                         </div>
                             <!--  Container Semester -->
                         <div id = "semester">
-                            <div class = "container semester-gesamt">
+                            <!--<div class = "container semester-gesamt">
                                 <div class = "row">
-                                    <h6 class="label">Semester 1</h6>
+                                    <h6 class ="label">Semester 1</h6>
                                 </div>
                                 <div class = "row semester">
-                                    <div class = "col tags" id = "id">
+                                    <div class = "col tags id">
                                         <p>ID:</p>
                                     </div>
-                                    <div class = "col tags" id = "name">
+                                    <div class = "col tags name">
                                         <p>Name</p>
                                     </div>
-                                    <div class = "col tags" id = "sws">
+                                    <div class = "col tags sws">
                                         <p>SWS:</p>
                                     </div>
-                                    <div class = "col tags" id = "dozent">
+                                    <div class = "col tags dozent">
                                         <p>Dozent:</p>
                                     </div>
-                                    <div class = "col tags" id = "ulp">
+                                    <div class = "col tags ulp">
                                         <p>ULP</p>
                                     </div>
-                                    <div class = "col tags" id = "ects">
+                                    <div class = "col tags ects">
                                         <p>ECTS:</p>
                                     </div>
-                                    <div class = "col tags" id = "btnloeschen">
+                                    <div class = "col tags btnloeschen">
 								</div>
-                                    <div class = "col" id = "btnverschieben">
+                                    <div class = "col btnverschieben">
 								</div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 
@@ -226,13 +226,13 @@
           {
               $("#semester").append(
                       '<div class = "container semester-gesamt">' +
-                      '<div class = "row">' +
-                      '<h6 class="label"></h6>' +
-                      '</div>' +
+                        '<div class = "row">' +
+                            '<h6 class="label"></h6>' +
+                        '</div>' +
                       '</div>'
               );
               $(".label").last().text("Semester "+$("#count").html());
-                        }
+          }
 
           function deleteLast()
           {
