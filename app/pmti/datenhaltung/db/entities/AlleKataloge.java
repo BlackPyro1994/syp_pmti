@@ -31,7 +31,7 @@ public class AlleKataloge {
 
 
         try{
-            fr=new FileReader("Modulkataloge.CSV");
+            fr=new FileReader("public/CSV/Modulkataloge.CSV");
             br = new BufferedReader(fr);
 
             while(null!=(csvZeile=br.readLine())) {
