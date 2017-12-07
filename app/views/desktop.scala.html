@@ -31,49 +31,11 @@
                     </h1>
                 </span>
             </div>
-            <!-- PopUp -->
-            <div id="myModal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                    <!-- PopUp Inhalt-->
-                    <div class="modal-content">
-                        <!-- PopUp Kopfzeile -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Neuen Plan erstellen</h4>
-                        </div>
-                        <!-- PopUp Körper -->
-                        <div class="modal-body">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5>Semesteranzahl:</h5>
-                                        <input  type="text" class="form-control" id="input-semesteranzahl" placeholder="Semesteranzahl">
-                                    </div>
-                                    <div class="col">
-                                        <h5>Studienstart:</h5>
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio" id="radio-winter">Winter</label>
-                                        </div>
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio" id="radio-sommer">Sommer</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- PopUp Fußzeile -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" id="popup-abbrechen">Abbrechen</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal" id="popup-ok" onclick="okbtn()">OK</button>
-                        </div>
-                    </div>
-                </div>
-
-                </div>
-            <!-- Container Menüleiste -->
+                <!-- Container Menüleiste -->
             <div class = "container">
                 <div class = "row rounded" align = "center">
                     <div class = "col" align = "center">
-                        <button type = "button" class = "btn btn-primary" data-toggle="modal" data-target="#myModal">Neuer Plan</button>
+                        <button type = "button" class = "btn btn-primary">Neuer Plan</button>
                     </div>
                     <div class = "col mar" align = "center">
                         <h5>Semesteranzahl</h5>
@@ -184,9 +146,9 @@
                         </div>
                             <!--  Container Semester -->
                         <div id = "semester">
-                            <!--<div class = "container semester-gesamt">
+                            <div class = "container semester-gesamt">
                                 <div class = "row">
-                                    <h6 class ="label">Semester 1</h6>
+                                    <h6 class = "label">Semester 1</h6>
                                 </div>
                                 <div class = "row semester">
                                     <div class = "col tags id">
@@ -208,23 +170,26 @@
                                         <p>ECTS:</p>
                                     </div>
                                     <div class = "col tags btnloeschen">
-								    </div>
+								</div>
                                     <div class = "col btnverschieben">
-								    </div>
+								</div>
                                 </div>
-                            </div>-->
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
+
         </div>
-
         <script>
-            CollapsibleLists.apply();
 
-            $('#button').on('click', function() {
-                $('#file-input').trigger('click');
-            });
+          CollapsibleLists.apply();
+
+          $('#button').on('click', function ()
+          {
+              $('#file-input').trigger('click');
+          });
 
           function counter_plus()
           {
@@ -245,52 +210,37 @@
               deleteLast();
           }
 
-          function okbtn()
-          {
-              var count = 0;
-              wert = $("#input-semesteranzahl").val();
-              for(i = 0; i < wert; i++) {
-                  count++;
-                  document.getElementById("count").textContent = count;
-                  add();
-              }
-          }
 
-          function neuerPlan()
+          $(document).ready(function ()
           {
-            okbtn();
-          }
 
-          function semesterMarkieren(id)
-          {
-              $(document).ready(function ()
+              // $("#semester").children().addClass('ausgewaehlt');
+
+              $(".sectionBox")
+                      .click(function ()
+                      {
+                          $("#semester").children().addClass('ausgewaehlt');
+                          // $(this).removeClass('dim');
+                          // $(".sectionBox").not(this).addClass('dim')
+                      })
+              $(".sectionBox *").focus(function ()
               {
-                  $("#semester").addClass('dim');
-
-                  $(".sectionBox")
-                          .click(function ()
-                          {
-                              $(this).removeClass('dim');
-                              $(".sectionBox").not(this).addClass('dim')
-                          })
-                  $(".sectionBox *").focus(function ()
-                  {
-                      $(this).closest(".sectionBox").trigger('click');
-                  });
+                  $(this).closest(".sectionBox").trigger('click');
               });
-          }
+          });
+
 
           function add()
           {
               $("#semester").append(
                       '<div class = "container semester-gesamt">' +
-                        '<div class = "row">' +
-                            '<h6 class="label"></h6>' +
-                        '</div>' +
+                      '<div class = "row">' +
+                      '<h6 class="label"></h6>' +
+                      '</div>' +
                       '</div>'
               );
-              $(".label").last().text("Semester "+$("#count").html());
-          }
+              $(".label").last().text("Semester " + $("#count").html());
+          };
 
           function deleteLast()
           {
@@ -301,11 +251,32 @@
               // econsole.log($("#semester").filter(":last"));
               // console.log($("#semester").filter(":last").empty());
               // console.log($("#semester").children().first().empty());
-              console.log($("#semester").children().last().remove());
-          }
+              console.log($("#semester").children().remove());
+          };
 
-          //function module(id);
+          function deleteByID(id)
+          {
+              //$("#semester row:nth-last-child(1)").filter( ":last" ).empty();
+              //$("#semester").find("row:nth-last-child(1)").empty();
+              // console.log($("#semester"));
+              // console.log($("#semester:last-child").lastChild);
+              // econsole.log($("#semester").filter(":last"));
+              // console.log($("#semester").filter(":last").empty());
+              // console.log($("#semester").children().first().empty());
+              console.log($("#semester").children().filter(":nth-child(" + id + ")").remove());
+          };
 
-	    </script>
+          function deleteAll()
+          {
+              console.log($("#semester").children().remove());
+          };
+
+
+          function toFile()
+          {
+              saveTextAs("", "test.csv");
+          };
+
+	</script>
     </body>
 </html>
