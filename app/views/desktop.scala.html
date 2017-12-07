@@ -144,7 +144,7 @@
                         <div id = "semester">
                             <div class = "container semester-gesamt">
                                 <div class = "row">
-                                    <h6>Semester 1:</h6>
+                                    <h6 class="label">Semester 1</h6>
                                 </div>
                                 <div class = "row semester">
                                     <div class = "col tags" id = "id">
@@ -189,6 +189,7 @@
               var wert = Number(document.getElementById("count").textContent);
               wert++;
               document.getElementById("count").textContent = wert;
+              add();
           }
 
           function counter_minus()
@@ -226,13 +227,12 @@
               $("#semester").append(
                       '<div class = "container semester-gesamt">' +
                       '<div class = "row">' +
-                      '<h6 id="test">Semester 1:</h6>' +
+                      '<h6 class="label"></h6>' +
                       '</div>' +
                       '</div>'
               );
-
-              document.getElementById('para').innerHTML = str;
-          }
+              $(".label").last().text("Semester "+$("#count").html());
+                        }
 
           function deleteLast()
           {
