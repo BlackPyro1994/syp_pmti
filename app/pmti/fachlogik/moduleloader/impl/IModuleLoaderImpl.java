@@ -20,7 +20,7 @@ public class IModuleLoaderImpl implements IModuleLoader {
     public List<ModulGrenz> getModule() {
         ArrayList<ModulGrenz> rueckgabe = new ArrayList<>();
 
-        List<Modul> alleModule = module.readModulFile();
+        List<Modul> alleModule = module.getAlleModule();
 
         for(Modul m : alleModule){
 
