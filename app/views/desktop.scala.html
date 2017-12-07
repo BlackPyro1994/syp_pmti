@@ -31,11 +31,48 @@
                     </h1>
                 </span>
             </div>
+                <!-- PopUp -->
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                        <!-- PopUp Inhalt-->
+                    <div class="modal-content">
+                            <!-- PopUp Kopfzeile -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Neuen Plan erstellen</h4>
+                        </div>
+                            <!-- PopUp Körper -->
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5>Semesteranzahl:</h5>
+                                        <input type="text" class="form-control" id="input-semesteranzahl" placeholder="Semesteranzahl">
+                                    </div>
+                                    <div class="col">
+                                        <h5>Studienstart:</h5>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" id="radio-winter" value="winter">Winter</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" id="radio-sommer" value="sommer">Sommer</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- PopUp Fußzeile -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="popup-abbrechen">Abbrechen</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="popup-ok" onclick="okbtn()">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
                 <!-- Container Menüleiste -->
             <div class = "container">
                 <div class = "row rounded" align = "center">
                     <div class = "col" align = "center">
-                        <button type = "button" class = "btn btn-primary">Neuer Plan</button>
+                        <button type = "button" class = "btn btn-primary" data-toggle="modal" data-target="#myModal">Neuer Plan</button>
                     </div>
                     <div class = "col mar" align = "center">
                         <h5>Semesteranzahl</h5>
@@ -228,28 +265,19 @@
                       '</div>' +
                       '</div>'
               );
-              $(".label").last().text("Semester " + $("#count").html());
+              var wert = Number(document.getElementById("count").textContent);
+              if (wert % 2 == 0) {
+                  $(".label").last().text(""+$("#count").html()+": Sommersemester");
+              } else {
+                  $(".label").last().text(""+$("#count").html()+": Wintersemester");
+              }
           };
 
           function deleteLast() {
-              //$("#semester row:nth-last-child(1)").filter( ":last" ).empty();
-              //$("#semester").find("row:nth-last-child(1)").empty();
-              // console.log($("#semester"));
-              // console.log($("#semester:last-child").lastChild);
-              // econsole.log($("#semester").filter(":last"));
-              // console.log($("#semester").filter(":last").empty());
-              // console.log($("#semester").children().first().empty());
-              console.log($("#semester").children().remove());
+              console.log($("#semester").children().last().remove());
           };
 
           function deleteByID(id) {
-              //$("#semester row:nth-last-child(1)").filter( ":last" ).empty();
-              //$("#semester").find("row:nth-last-child(1)").empty();
-              // console.log($("#semester"));
-              // console.log($("#semester:last-child").lastChild);
-              // econsole.log($("#semester").filter(":last"));
-              // console.log($("#semester").filter(":last").empty());
-              // console.log($("#semester").children().first().empty());
               console.log($("#semester").children().filter(":nth-child(" + id + ")").remove());
           };
 
@@ -261,6 +289,24 @@
           function toFile() {
               saveTextAs("", "test.csv");
           };
+
+          function okbtn() {
+              deleteAll();
+              var count = 0;
+              var myRadio = $('input[name="optradio"]');
+              var startSem = myRadio.filter(':checked').val();
+              wert = $("#input-semesteranzahl").val();
+              for (i = 0; i < wert; i++) {
+                  count++;
+                  document.getElementById("count").textContent = count;
+                  add(startSem);
+              }
+          }
+
+          function neuerPlan() {
+              wert = $("#input-semesteranzahl").val();
+              okbtn();
+          }
 
 	</script>
     </body>
