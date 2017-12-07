@@ -16,6 +16,10 @@
 
     </head>
 
+    <script src="@routes.Assets.versioned("js/jquery-3.2.1.min.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("js/bootstrap.bundle.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("js/CollapsibleLists.js")" type="text/javascript"></script>
+
     <body>
             <!-- Container full website -->
         <div class = "container-fluid">
@@ -27,50 +31,11 @@
                     </h1>
                 </span>
             </div>
-            <!-- PopUp -->
-            <div id="myModal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                    <!-- PopUp Inhalt-->
-                    <div class="modal-content">
-                        <!-- PopUp Kopfzeile -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Neuen Plan erstellen</h4>
-                        </div>
-                        <!-- PopUp Körper -->
-                        <div class="modal-body">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5>Semesteranzahl:</h5>
-                                        <input  type="text" class="form-control" id="input1" placeholder="Semesteranzahl">
-                                    </div>
-                                    <div class="col">
-                                        <h5>Studienstart:</h5>
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio">Winter</label>
-                                        </div>
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio">Sommer</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- PopUp Fußzeile -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-                        </div>
-                    </div>
-                </div>
-
-                </div>
-            </div>
                 <!-- Container Menüleiste -->
             <div class = "container">
                 <div class = "row rounded" align = "center">
                     <div class = "col" align = "center">
-                        <button type = "button" class = "btn btn-primary" data-toggle="modal" data-target="#myModal">Neuer Plan</button>
+                        <button type = "button" class = "btn btn-primary">Neuer Plan</button>
                     </div>
                     <div class = "col mar" align = "center">
                         <h5>Semesteranzahl</h5>
@@ -181,9 +146,9 @@
                         </div>
                             <!--  Container Semester -->
                         <div id = "semester">
-                            <!--<div class = "container semester-gesamt">
+                            <div class = "container semester-gesamt">
                                 <div class = "row">
-                                    <h6 class ="label">Semester 1</h6>
+                                    <h6 class = "label">Semester 1</h6>
                                 </div>
                                 <div class = "row semester">
                                     <div class = "col tags id">
@@ -208,15 +173,19 @@
 								</div>
                                     <div class = "col btnverschieben">
 								</div>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
+            </div>
+
+        </div>
         <script>
 
-            CollapsibleLists.apply();
+          CollapsibleLists.apply();
+
           $('#button').on('click', function ()
           {
               $('#file-input').trigger('click');
@@ -241,41 +210,37 @@
               deleteLast();
           }
 
-          function neuerPlan()
-          {
-              window.prompt();
-          }
 
-          function semesterMarkieren(id)
+          $(document).ready(function ()
           {
-              $(document).ready(function ()
+
+              // $("#semester").children().addClass('ausgewaehlt');
+
+              $(".sectionBox")
+                      .click(function ()
+                      {
+                          $("#semester").children().addClass('ausgewaehlt');
+                          // $(this).removeClass('dim');
+                          // $(".sectionBox").not(this).addClass('dim')
+                      })
+              $(".sectionBox *").focus(function ()
               {
-                  $("#semester").addClass('dim');
-
-                  $(".sectionBox")
-                          .click(function ()
-                          {
-                              $(this).removeClass('dim');
-                              $(".sectionBox").not(this).addClass('dim')
-                          })
-                  $(".sectionBox *").focus(function ()
-                  {
-                      $(this).closest(".sectionBox").trigger('click');
-                  });
+                  $(this).closest(".sectionBox").trigger('click');
               });
-          }
+          });
+
 
           function add()
           {
               $("#semester").append(
                       '<div class = "container semester-gesamt">' +
-                        '<div class = "row">' +
-                            '<h6 class="label"></h6>' +
-                        '</div>' +
+                      '<div class = "row">' +
+                      '<h6 class="label"></h6>' +
+                      '</div>' +
                       '</div>'
               );
-              $(".label").last().text("Semester "+$("#count").html());
-          }
+              $(".label").last().text("Semester " + $("#count").html());
+          };
 
           function deleteLast()
           {
@@ -287,16 +252,19 @@
               // console.log($("#semester").filter(":last").empty());
               // console.log($("#semester").children().first().empty());
               console.log($("#semester").children().last().remove());
-          }
+          };
 
           //function module(id);
+
+          function toFile()
+          {
+              saveTextAs("", "test.csv");
+          };
 
 	</script>
     </body>
 
-    <script src="@routes.Assets.versioned("js/jquery-3.2.1.min.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("js/bootstrap.bundle.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("js/CollapsibleLists.js")" type="text/javascript"></script>
-    <!--<script src="@routes.Assets.versioned("js/desktop.js")" type="text/javascript"></script>-->
+    @*<script src="@routes.Assets.versioned("js/desktop.js")" type="text/javascript"></script>*@
+
 
 </html>
