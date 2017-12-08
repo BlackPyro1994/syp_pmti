@@ -1,4 +1,4 @@
-package pmti.datenhaltung.db.entities;
+package pmti.datenhaltung.modulverwaltung.entities;
 
 public class Modul {
     private String modulid;

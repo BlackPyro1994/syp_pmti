@@ -1,6 +1,6 @@
 package pmti.fachlogik.moduleloader.impl;
 
-import pmti.datenhaltung.db.entities.Modul;
+import pmti.datenhaltung.modulverwaltung.entities.Modul;
 import pmti.datenhaltung.modulverwaltung.impl.IRModulImpl;
 import pmti.datenhaltung.modulverwaltung.services.IRModul;
 import pmti.fachlogik.grenzklassen.ModulGrenz;

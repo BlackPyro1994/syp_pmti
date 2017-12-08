@@ -1,4 +1,4 @@
-package pmti.datenhaltung.db.entities;
+package pmti.datenhaltung.katalogverwaltung.entities;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

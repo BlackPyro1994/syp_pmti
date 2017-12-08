@@ -1,6 +1,6 @@
 package pmti.datenhaltung.modulverwaltung.services;
 
-import pmti.datenhaltung.db.entities.Modul;
+import pmti.datenhaltung.modulverwaltung.entities.Modul;
 
 import java.util.List;
 

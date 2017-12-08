@@ -1,6 +1,6 @@
 package pmti.fachlogik.katalogeloader.impl;
 
-import pmti.datenhaltung.db.entities.Modulkatalog;
+import pmti.datenhaltung.katalogverwaltung.entities.Modulkatalog;
 import pmti.datenhaltung.katalogverwaltung.impl.IRKatalogImpl;
 import pmti.datenhaltung.katalogverwaltung.services.IRKatalog;
 import pmti.fachlogik.grenzklassen.KatalogGrenz;
