@@ -119,9 +119,9 @@
                             </div>
                             <div class = "katalog">
                                 <ul class = "tree collapsibleList">
-                                    <li>
+                                    <li class="strich">
 									Katalog 1
-                                        <ul>
+                                        <ul class="strich abstand">
                                             <li><a href = "#">Modul 1</a></li>
                                             <li><a href = "#">Modul 2</a></li>
                                             <li><a href = "#">Modul 3</a></li>
@@ -133,26 +133,10 @@
                                 <ul class = "tree collapsibleList">
                                     <li>
 									Katalog 2
-                                        <ul>
-                                            <ul class = "collasibleList"></ul>
-                                            <li>
-											Unterkatalog 1
-                                                <ul>
-                                                    <li><a href = "#">Modul 1</a></li>
-                                                    <li><a href = "#">Modul 2</a></li>
-                                                    <li><a href = "#">Modul 3</a></li>
-                                                </ul>
-                                            </li>
-
-                                            <ul class = "collasibleList"></ul>
-                                            <li>
-											Unterkatalog 2
-                                                <ul>
-                                                    <li><a href = "#">Modul 1</a></li>
-                                                    <li><a href = "#">Modul 2</a></li>
-                                                    <li><a href = "#">Modul 3</a></li>
-                                                </ul>
-                                            </li>
+                                        <ul class="abstand">
+                                            <li><a href = "#">Modul 1</a></li>
+                                            <li><a href = "#">Modul 2</a></li>
+                                            <li><a href = "#">Modul 3</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -161,7 +145,7 @@
                                 <ul class = "tree collapsibleList">
                                     <li>
 									Katalog 3
-                                        <ul>
+                                        <ul class="abstand">
                                             <li><a href = "#">Modul 1</a></li>
                                             <li><a href = "#">Modul 2</a></li>
                                             <li><a href = "#">Modul 3</a></li>
@@ -207,23 +191,74 @@
                                         <p>ECTS:</p>
                                     </div>
                                     <div class = "col tags btnloeschen">
+								    </div>
+                                    <div class = "col btnverschieben">
 								</div>
+                            </div>
+                                <div class = "row semester">
+                                    <div class = "col tags id">
+                                        <p>ID:</p>
+                                    </div>
+                                    <div class = "col tags name">
+                                        <p>Name</p>
+                                    </div>
+                                    <div class = "col tags sws">
+                                        <p>SWS:</p>
+                                    </div>
+                                    <div class = "col tags dozent">
+                                        <p>Dozent:</p>
+                                    </div>
+                                    <div class = "col tags ulp">
+                                        <p>ULP</p>
+                                    </div>
+                                    <div class = "col tags ects">
+                                        <p>ECTS:</p>
+                                    </div>
+                                    <div class = "col tags btnloeschen">
+								    </div>
                                     <div class = "col btnverschieben">
 								</div>
                                 </div>
-                            </div>
+                                <div class = "row semester">
+                                    <div class = "col tags id">
+                                        <p>ID:</p>
+                                    </div>
+                                    <div class = "col tags name">
+                                        <p>Name</p>
+                                    </div>
+                                    <div class = "col tags sws">
+                                        <p>SWS:</p>
+                                    </div>
+                                    <div class = "col tags dozent">
+                                        <p>Dozent:</p>
+                                    </div>
+                                    <div class = "col tags ulp">
+                                        <p>ULP</p>
+                                    </div>
+                                    <div class = "col tags ects">
+                                        <p>ECTS:</p>
+                                    </div>
+                                    <div class = "col tags btnloeschen">
+								    </div>
+                                    <div class = "col btnverschieben">
+								</div>
+                                </div>
                         </div>
-
                     </div>
                 </div>
             </div>
 
         </div>
+    </div>
         <script>
 
           var ausgewaehlt;
 
           CollapsibleLists.apply();
+
+          function test() {
+              $('.semester').css("display","none");
+          }
 
           $('#button').on('click', function () {
               $('#file-input').trigger('click');
