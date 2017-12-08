@@ -95,6 +95,21 @@ html, body {
     border-radius: 10px;
     margin:0.3%;
 }
+
+.modul {
+    border: 2px solid #000;
+    border-radius: 10px;
+    margin:0.3%;
+    display:block;
+}
+
+.modul .hidden {
+    border: 2px solid #000;
+    border-radius: 10px;
+    margin:0.3%;
+    display:none;
+}
+
 .semester .tags {
     border-right: 1px solid #000;
 }
