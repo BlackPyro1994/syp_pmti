@@ -11,8 +11,6 @@ public class Modul {
     private String katalogid;
 
 
-    public Modul(){}
-
     public String getModulid() {
         return modulid;
     }

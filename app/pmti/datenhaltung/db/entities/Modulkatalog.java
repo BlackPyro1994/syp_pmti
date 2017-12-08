@@ -5,7 +5,6 @@ public class Modulkatalog {
     private String katalogname;
     private int belegungsanzahl;
 
-    public Modulkatalog(){}
 
     public String getKatalogid() {
         return katalogid;
