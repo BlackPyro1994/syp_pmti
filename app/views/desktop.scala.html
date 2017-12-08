@@ -281,11 +281,15 @@
                       '</div>' +
                       '</div>'
               );
-
-              if(startSem == "winter") {
+              var wert = Number(document.getElementById("count").textContent);
+              if(startSem == "winter" && wert % 2 == 1) {
                   $(".label").last().text(""+$("#count").html()+": Wintersemester");
-              } else if(startSem == "sommer") {
+              } else if(startSem == "winter" && wert % 2 == 0) {
                   $(".label").last().text(""+$("#count").html()+": Sommersemester");
+              } else if(startSem == "sommer" && wert % 2 == 1) {
+                  $(".label").last().text(""+$("#count").html()+": Sommersemester");
+              } else {
+                  $(".label").last().text(""+$("#count").html()+": Wintersemester");
               }
           }
 
