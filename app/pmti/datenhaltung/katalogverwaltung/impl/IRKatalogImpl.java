@@ -1,7 +1,7 @@
 package pmti.datenhaltung.katalogverwaltung.impl;
 
-import pmti.datenhaltung.db.entities.AlleKataloge;
-import pmti.datenhaltung.db.entities.Modulkatalog;
+import pmti.datenhaltung.katalogverwaltung.entities.AlleKataloge;
+import pmti.datenhaltung.katalogverwaltung.entities.Modulkatalog;
 import pmti.datenhaltung.katalogverwaltung.services.IRKatalog;
 
 import java.util.List;

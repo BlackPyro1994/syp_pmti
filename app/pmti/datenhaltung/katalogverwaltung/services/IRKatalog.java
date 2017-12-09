@@ -1,6 +1,6 @@
 package pmti.datenhaltung.katalogverwaltung.services;
 
-import pmti.datenhaltung.db.entities.Modulkatalog;
+import pmti.datenhaltung.katalogverwaltung.entities.Modulkatalog;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package pmti.datenhaltung.db.entities;
+package pmti.datenhaltung.modulverwaltung.entities;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -31,7 +31,7 @@ public class AlleModule {
 
 
         try{
-            fr=new FileReader("public/csv/Module.CSV");
+            fr=new FileReader("public/csv/Module.cvs");
             br = new BufferedReader(fr);
 
             while(null!=(csvZeile=br.readLine())) {
