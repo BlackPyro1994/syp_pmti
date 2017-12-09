@@ -58,7 +58,9 @@ public class AlleModule {
 
                 module.add(m);
             }
-        } catch (IOException e){}
+        } catch (IOException e){
+             System.out.println("Hinweis für den Administrator: IOException beim Zugriff auf die 'Datei Module.csv'!");
+        }
 
         return module;
 

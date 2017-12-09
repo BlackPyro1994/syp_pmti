@@ -45,7 +45,9 @@ public class AlleKataloge {
                 kataloge.add(mk);
             }
 
-        } catch (IOException e){}
+        } catch (IOException e){
+            System.out.println("Hinweis für den Administrator: IOException beim Zugriff auf die Datei 'Modulkataloge.csv'!");
+        }
 
         return kataloge;
 

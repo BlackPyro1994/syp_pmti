@@ -10,4 +10,4 @@ CI;Computational Intelligence;2;1;1;0;0;1;Bartz;5;false;WPP
 DMC;Digital Motion Control;2;1;1;0;0;1;[NN];5;false;WPK
 DMC;Digital Motion Control;2;1;1;0;0;1;[NN];5;false;WPP
 PL(PLTIN);Projektleitung;0;0;0;3;1;0;Hartung;5;false;WPP
-M07;Wahl(beliebig aus MaSG der F07);2;1;1;0;1;1;[NN];5;false;WPP
+M07;Wahl(beliebig aus MaSG der F07)[editierbar];2;1;1;0;1;1;[editierbar];5;false;WPP
