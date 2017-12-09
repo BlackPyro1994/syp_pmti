@@ -92,6 +92,7 @@ p {
 .blocked {
     color: #aaa;
     background-color: #8c8c8c;
+    border-radius: 10px;
 
 }
 

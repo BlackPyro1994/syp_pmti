@@ -33,8 +33,8 @@
                     </h1>
                 </span>
             </div>
-                <!-- PopUp -->
-            <div id = "myModal" class = "modal fade" role = "dialog">
+                <!-- PopUp Neuer Plan -->
+            <div id = "myModal-neuerPlan" class = "modal fade" role = "dialog">
                 <div class = "modal-dialog">
                         <!-- PopUp Inhalt-->
                     <div class = "modal-content">
@@ -53,10 +53,9 @@
                                     </div>
                                     <div class = "col">
                                         <h5>Studienstart:</h5>
-                                        -
                                         <div class = "radio">
                                             <label><input type = "radio" name = "optradio" id = "radio-winter"
-                                            value = "winter">
+                                            value = "winter" checked ="checked">
                                                 Winter</label>
                                         </div>
                                         <div class = "radio">
@@ -80,11 +79,79 @@
                     </div>
                 </div>
             </div>
+            <!-- PopUp Freitextmodul -->
+            <div id = "myModal-freitext" class = "modal fade" role = "dialog">
+                <div class = "modal-dialog">
+                        <!-- PopUp Inhalt-->
+                    <div class = "modal-content">
+                            <!-- PopUp Kopfzeile -->
+                        <div class = "modal-header">
+                            <h4 class = "modal-title">Daten ergänzen</h4>
+                        </div>
+                            <!-- PopUp Körper -->
+                        <div class = "modal-body">
+                            <div class = "container">
+                                <div class = "row">
+                                    <div class = "col">
+                                        <h5>ID:</h5>
+                                        <input type = "text" class = "form-control" id = "input-semesteranzahl"
+                                        placeholder = "ID">
+                                    </div>
+                                </div>
+                                <div class = "row">
+                                    <div class = "col">
+                                        <h5>Name:</h5>
+                                        <input type = "text" class = "form-control" id = "input-semesteranzahl"
+                                        placeholder = "Name">
+                                    </div>
+                                </div>
+                                <div class = "row">
+                                    <div class = "col">
+                                        <h5>SWS:</h5>
+                                        <input type = "text" class = "form-control" id = "input-semesteranzahl"
+                                        placeholder = "SWS,V,Ü,P">
+                                    </div>
+                                </div>
+                                <div class = "row">
+                                    <div class = "col">
+                                        <h5>Dozent:</h5>
+                                        <input type = "text" class = "form-control" id = "input-semesteranzahl"
+                                        placeholder = "Dozent">
+                                    </div>
+                                </div>
+                                <div class = "row">
+                                    <div class = "col">
+                                        <h5>ULP:</h5>
+                                        <input type = "text" class = "form-control" id = "input-semesteranzahl"
+                                        placeholder = "Ja/Nein">
+                                    </div>
+                                </div>
+                                <div class = "row">
+                                    <div class = "col">
+                                        <h5>ECTS:</h5>
+                                        <input type = "text" class = "form-control" id = "input-semesteranzahl"
+                                        placeholder = "Anzahl">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- PopUp Fußzeile -->
+                        <div class = "modal-footer">
+                            <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-abbrechen">
+							Abbrechen
+                            </button>
+                            <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-ok"
+                            onclick = "freitext_popup()">OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
                 <!-- Container Menüleiste -->
             <div class = "container">
                 <div class = "row rounded" align = "center">
                     <div class = "col" align = "center">
-                        <button type = "button" class = "btn btn-primary" data-toggle = "modal" data-target = "#myModal">Neuer Plan
+                        <button type = "button" class = "btn btn-primary" data-toggle = "modal" data-target = "#myModal-neuerPlan">Neuer Plan
                         </button>
                     </div>
                     <div class = "col mar" align = "center">
@@ -105,6 +172,7 @@
                     </div>
                     <div class = "col" align = "center">
                         <button type = "button" class = "btn btn-primary" style = "width: auto">Plan speichern</button>
+                        <!-- data-toggle = "modal" data-target="#myModal-freitext" -->
                     </div>
                     <div class = "col" align = "center">
                         <button type = "button" class = "btn btn-primary" onclick = "pdf()" style = "width: auto">PDF erstellen</button>
@@ -181,11 +249,6 @@
             var ausgewaehlt_modul = "";
 
             CollapsibleLists.apply();
-
-            function test()
-            {
-                $('.semester').css("display", "none");
-            }
 
             $('#button').on('click', function ()
             {
