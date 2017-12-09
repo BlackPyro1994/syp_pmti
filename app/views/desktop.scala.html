@@ -53,17 +53,16 @@
                                     </div>
                                     <div class = "col">
                                         <h5>Studienstart:</h5>
-                                        - <div class = "radio">
-                                        <label><input type = "radio" name = "optradio" id = "radio-winter"
-                                        value = "winter">
-                                            Winter
-                                        </label>
-                                    </div>
+                                        -
+                                        <div class = "radio">
+                                            <label><input type = "radio" name = "optradio" id = "radio-winter"
+                                            value = "winter">
+                                                Winter</label>
+                                        </div>
                                         <div class = "radio">
                                             <label><input type = "radio" name = "optradio" id = "radio-sommer"
                                             value = "sommer">
-                                                Sommer
-                                            </label>
+                                                Sommer</label>
                                         </div>
                                     </div>
                                 </div>
@@ -108,7 +107,7 @@
                         <button type = "button" class = "btn btn-primary" style = "width: auto">Plan speichern</button>
                     </div>
                     <div class = "col" align = "center">
-                        <button type = "button" class = "btn btn-primary" style = "width: auto">PDF erstellen</button>
+                        <button type = "button" class = "btn btn-primary" onclick = "pdf()" style = "width: auto">PDF erstellen</button>
                     </div>
                     <div class = "col mar" align = "center">
                         <h5>ECTS:</h5>
@@ -178,359 +177,412 @@
 
             <script>
 
-                        var ausgewaehlt_semester = "";
-                        var ausgewaehlt_modul = "";
+            var ausgewaehlt_semester = "";
+            var ausgewaehlt_modul = "";
 
-                        CollapsibleLists.apply();
+            CollapsibleLists.apply();
 
-                        function test() {
-                            $('.semester').css("display", "none");
-                        }
+            function test()
+            {
+                $('.semester').css("display", "none");
+            }
 
-                        $('#button').on('click', function () {
-                            $('#file-input').trigger('click');
+            $('#button').on('click', function ()
+            {
+                $('#file-input').trigger('click');
+            });
+
+            function counter_plus()
+            {
+                var wert = Number(document.getElementById("count").textContent);
+                wert++;
+                document.getElementById("count").textContent = wert;
+                add_Semester();
+            }
+
+            function counter_minus()
+            {
+                var wert = Number(document.getElementById("count").textContent);
+
+                if (wert > 0)
+                {
+                    wert--;
+                }
+
+                document.getElementById("count").textContent = wert;
+
+                console.log($("#semester").children().filter(":nth-child(" + wert + ")").attr("class"));
+                console.log($("#semester").children().filter(":nth-child(" + wert + ")").children().attr("class"));
+                console.log($("#semester").children().filter(":nth-child(" + wert + ")").children().children().attr("class"));
+                console.log($("#semester").children().filter(":nth-child(" + wert + ")").children().children().children().attr("class"));
+                // deleteLast();
+            }
+
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+            function semester_Markieren(caller)
+            {
+
+                $('#semester').children().removeClass('ausgewaehlt');
+                $(caller).toggleClass('semester ausgewaehlt');
+
+                if (ausgewaehlt_modul != "")
+                {
+                    module_in_semester_einfügen(ausgewaehlt_modul, $(caller).children().children().html().substring(0, 1));
+                }
+                else
+                {
+                    // ausgewaehlt_semester = $(caller).children().children().html().replace("Semester ", "");
+                    ausgewaehlt_semester = $(caller).children().children().html().substring(0, 1);
+                    console.log(ausgewaehlt_semester);
+                }
+
+
+            }
+
+            function modul_Markieren(caller)
+            {
+                if (!$(caller).parent().attr('class').includes("blocked"))
+                {
+
+                    if ($(caller).attr('class').includes("ausgewaehlt"))
+                    {
+                        $(caller).toggleClass('ausgewaehlt');
+                    }
+                    else
+                    {
+                        $(".class_p").removeClass('ausgewaehlt');
+                        $(caller).addClass('ausgewaehlt');
+                    }
+
+                    if (ausgewaehlt_semester != "")
+                    {
+                        module_in_semester_einfügen($(caller).attr('id'), ausgewaehlt_semester);
+                    }
+                    else
+                    {
+                        ausgewaehlt_modul = $(caller).attr('id');
+                    }
+                }
+            }
+
+            function module_in_semester_einfügen(mod_id, sem_id)
+            {
+                console.log("Modul : " + mod_id + " in Semester : " + sem_id);
+
+                add_empty_modul(mod_id, sem_id);
+
+
+                ausgewaehlt_modul = "";
+                ausgewaehlt_semester = "";
+
+                $(".class_p").removeClass('ausgewaehlt');
+
+                // $("#mod_id").toggleClass('unblocked blocked');
+
+                // $("#"+mod_id).parent().removeClass('unblocked');
+                $("#" + mod_id).parent().addClass('blocked');
+
+                // $('#semester').children().removeClass('ausgewaehlt');
+
+                $('.container.semester-gesamt').removeClass('ausgewaehlt');
+
+            }
+
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+            $('.katalog').on('click', function (e)
+            {
+                e.preventDefault();
+
+                if ($(e.target).parent().parent().attr('class').includes("row modul"))
+                {
+                    modul_Markieren(e.target);
+                }
+                else
+                {
+                    katalog_Open(e.target);
+                }
+            });
+
+            function katalog_Open(caller)
+            {
+                $(caller).parent().parent().find('.modul').toggle("hidden");
+            }
+
+            function add_Semester()
+            {
+                $("#semester").append(
+                        '<div class = "container semester-gesamt" onclick="semester_Markieren(this)">' +
+                        '<div class = "row">' +
+                        '<h6 class="label"></h6>' +
+                        '</div>' +
+                        '</div>'
+                );
+                var wert = Number(document.getElementById("count").textContent);
+                if (wert % 2 == 0)
+                {
+                    $(".label").last().text("" + $("#count").html() + ": Sommersemester");
+                }
+                else
+                {
+                    $(".label").last().text("" + $("#count").html() + ": Wintersemester");
+                }
+            };
+
+            function add_neuer_Plan(startSem)
+            {
+                $("#semester").append(
+                        '<div class = "container semester-gesamt" onclick="semester_Markieren(this)">' +
+                        '<div class = "row">' +
+                        '<h6 class="label"></h6>' +
+                        '</div>' +
+                        '</div>'
+                );
+                var wert = Number(document.getElementById("count").textContent);
+                if (startSem == "winter" && wert % 2 == 1)
+                {
+                    $(".label").last().text("" + $("#count").html() + ": Wintersemester");
+                }
+                else if (startSem == "winter" && wert % 2 == 0)
+                {
+                    $(".label").last().text("" + $("#count").html() + ": Sommersemester");
+                }
+                else if (startSem == "sommer" && wert % 2 == 1)
+                {
+                    $(".label").last().text("" + $("#count").html() + ": Sommersemester");
+                }
+                else
+                {
+                    $(".label").last().text("" + $("#count").html() + ": Wintersemester");
+                }
+            }
+
+            function deleteLast()
+            {
+                console.log($("#semester").children().last().remove());
+            };
+
+            function deleteByID(id)
+            {
+                console.log($("#semester").children().filter(":nth-child(" + id + ")").remove());
+            };
+
+            function deleteAll()
+            {
+                console.log($("#semester").children().remove());
+            };
+
+            function toFile()
+            {
+                saveTextAs("", "test.csv");
+            };
+
+            function okbtn()
+            {
+                deleteAll();
+                var count = 0;
+                var myRadio = $('input[name="optradio"]');
+                var startSem = myRadio.filter(':checked').val();
+                wert = $("#input-semesteranzahl").val();
+                for (i = 0; i < wert; i++)
+                {
+                    count++;
+                    document.getElementById("count").textContent = count;
+                    add_neuer_Plan(startSem);
+                }
+
+                $(".class_p").removeClass('ausgewaehlt');
+                $(".class_p").parent().removeClass('blocked');
+            }
+
+            function add_empty_modul(mod_id, sem_id)
+            {
+                $("#semester").children().filter(":nth-child(" + sem_id + ")").append(
+                        '<div class = "row semester">' +
+                        '<div class = "col tags id">' +
+                        '<p>ID: '
+
+                        + mod_id +
+
+                        '</p>' +
+                        '</div>' +
+                        '<div class = "col tags name">' +
+                        '<p>Name</p>' +
+                        '</div>' +
+                        '<div class = "col tags sws">' +
+                        '<p>SWS:</p>' +
+                        '</div>' +
+                        '<div class = "col tags dozent">' +
+                        '<p>Dozent:</p>' +
+                        '</div>' +
+                        '<div class = "col tags ulp">' +
+                        '<p>ULP</p>' +
+                        '</div>' +
+                        '<div class = "col tags ects">' +
+                        '<p>ECTS:</p>' +
+                        '</div>' +
+                        '<div class = "col tags btnloeschen">' +
+                        '</div>' +
+                        '<div class = "col btnverschieben">' +
+                        '</div>' +
+                        '</div>'
+                );
+
+            }
+
+            function neuerPlan()
+            {
+                wert = $("#input-semesteranzahl").val();
+                okbtn();
+            }
+
+            var form = $('.form'),
+                    cache_width = form.width(),
+                    a4 = [595.28, 990.89]; // for a4 size paper width and height
+
+            var canvasImage,
+                    winHeight = a4[1],
+                    formHeight = form.height(),
+                    formWidth = form.width();
+
+            var imagePieces = [];
+
+            // on create pdf button click
+            // $('#create_pdf').on('click', function ()
+
+            function pdf()
+            {
+                var node = document.getElementById('semester');
+
+                domtoimage.toSvg(node).then(function (dataUrl)
+                {
+                    img = new Image();
+                    img.src = dataUrl;
+
+                    // var svgData = new XMLSerializer().serializeToString(img);
+
+                    document.body.appendChild(img);
+
+                    var canvas = document.createElement("canvas");
+                    var ctx = canvas.getContext("2d");
+
+                    // img.setAttribute("src", "data:image/svg+xml;base64," + btoa(svgData));
+
+                    img.onload = function ()
+                    {
+                        ctx.drawImage(img, 0, 0);
+
+                        document.body.appendChild(img);
+
+                        // Now is done
+                        // console.log(canvas.toDataURL("image/png"));
+
+                        var doc = new jsPDF({
+                            unit: 'px',
+                            format: 'a4'
                         });
 
-                        function counter_plus() {
-                            var wert = Number(document.getElementById("count").textContent);
-                            wert++;
-                            document.getElementById("count").textContent = wert;
-                            add_Semester();
-                        }
-
-                        function counter_minus() {
-                            var wert = Number(document.getElementById("count").textContent);
-                            if (wert > 0) {
-                                wert--;
-                            }
-                            document.getElementById("count").textContent = wert;
-                            deleteLast();
-                        }
-
-                        <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
-
-                        function semester_Markieren(caller) {
-
-                            $('#semester').children().removeClass('ausgewaehlt');
-                            $(caller).toggleClass('semester ausgewaehlt');
-
-                            if (ausgewaehlt_modul != "") {
-                                module_in_semester_einfügen(ausgewaehlt_modul, $(caller).children().children().html().substring(0, 1));
-                            }
-                            else {
-                                // ausgewaehlt_semester = $(caller).children().children().html().replace("Semester ", "");
-                                ausgewaehlt_semester = $(caller).children().children().html().substring(0, 1);
-                                console.log(ausgewaehlt_semester);
-                            }
-
-
-                        }
-
-                        function modul_Markieren(caller) {
-
-                            if ($(caller).attr('class').includes("ausgewaehlt")) {
-                                $(caller).toggleClass('ausgewaehlt');
-                            }
-                            else {
-                                $(".class_p").removeClass('ausgewaehlt');
-                                $(caller).addClass('ausgewaehlt');
-                            }
-
-                            if (ausgewaehlt_semester != "") {
-                                module_in_semester_einfügen($(caller).attr('id'), ausgewaehlt_semester);
-                            }
-                            else {
-                                ausgewaehlt_modul = $(caller).attr('id');
-                            }
-                        }
-
-                        function module_in_semester_einfügen(mod_id, sem_id) {
-                            console.log("Modul : " + mod_id + " in Semester : " + sem_id);
-
-                            add_empty_modul(mod_id, sem_id);
-
-
-                            ausgewaehlt_modul = "";
-                            ausgewaehlt_semester = "";
-
-                            $(".class_p").removeClass('ausgewaehlt');
-
-                            // $("#mod_id").toggleClass('unblocked blocked');
-
-                            // $("#"+mod_id).parent().removeClass('unblocked');
-                            $("#" + mod_id).parent().addClass('blocked');
-
-                            // $('#semester').children().removeClass('ausgewaehlt');
-
-                            $('.container.semester-gesamt').removeClass('ausgewaehlt');
-
-                        }
-
-                        function sperre_modul(mod_id) {
-
-                        }
-
-                        <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
-
-                        $('.katalog').on('click', function (e) {
-                            e.preventDefault();
-
-                            if ($(e.target).parent().parent().attr('class').includes("row modul")) {
-                                modul_Markieren(e.target);
-                            }
-                            else {
-                                katalog_Open(e.target);
-                            }
-                        });
-
-                        function katalog_Open(caller) {
-                            $(caller).parent().parent().find('.modul').toggle("hidden");
-                        }
-
-                        function add_Semester() {
-                            $("#semester").append(
-                                    '<div class = "container semester-gesamt" onclick="semester_Markieren(this)">' +
-                                    '<div class = "row">' +
-                                    '<h6 class="label"></h6>' +
-                                    '</div>' +
-                                    '</div>'
-                            );
-                            var wert = Number(document.getElementById("count").textContent);
-                            if (wert % 2 == 0) {
-                                $(".label").last().text("" + $("#count").html() + ": Sommersemester");
-                            }
-                            else {
-                                $(".label").last().text("" + $("#count").html() + ": Wintersemester");
-                            }
-                        };
-
-                        function add_neuer_Plan(startSem) {
-                            $("#semester").append(
-                                    '<div class = "container semester-gesamt" onclick="semester_Markieren(this)">' +
-                                    '<div class = "row">' +
-                                    '<h6 class="label"></h6>' +
-                                    '</div>' +
-                                    '</div>'
-                            );
-                            var wert = Number(document.getElementById("count").textContent);
-                            if (startSem == "winter" && wert % 2 == 1) {
-                                $(".label").last().text("" + $("#count").html() + ": Wintersemester");
-                            }
-                            else if (startSem == "winter" && wert % 2 == 0) {
-                                $(".label").last().text("" + $("#count").html() + ": Sommersemester");
-                            }
-                            else if (startSem == "sommer" && wert % 2 == 1) {
-                                $(".label").last().text("" + $("#count").html() + ": Sommersemester");
-                            }
-                            else {
-                                $(".label").last().text("" + $("#count").html() + ": Wintersemester");
-                            }
-                        }
-
-                        function deleteLast() {
-                            console.log($("#semester").children().last().remove());
-                        };
-
-                        function deleteByID(id) {
-                            console.log($("#semester").children().filter(":nth-child(" + id + ")").remove());
-                        };
-
-                        function deleteAll() {
-                            console.log($("#semester").children().remove());
-                        };
-
-                        function toFile() {
-                            saveTextAs("", "test.csv");
-                        };
-
-                        function okbtn() {
-                            deleteAll();
-                            var count = 0;
-                            var myRadio = $('input[name="optradio"]');
-                            var startSem = myRadio.filter(':checked').val();
-                            wert = $("#input-semesteranzahl").val();
-                            for (i = 0; i < wert; i++) {
-                                count++;
-                                document.getElementById("count").textContent = count;
-                                add_neuer_Plan(startSem);
-                            }
-                        }
-
-                        function add_empty_modul(mod_id, sem_id) {
-                            $("#semester").children().filter(":nth-child(" + sem_id + ")").append(
-                                    '<div class = "row semester">' +
-                                    '<div class = "col tags id">' +
-                                    '<p>ID: '
-
-                                    + mod_id +
-
-                                    '</p>' +
-                                    '</div>' +
-                                    '<div class = "col tags name">' +
-                                    '<p>Name</p>' +
-                                    '</div>' +
-                                    '<div class = "col tags sws">' +
-                                    '<p>SWS:</p>' +
-                                    '</div>' +
-                                    '<div class = "col tags dozent">' +
-                                    '<p>Dozent:</p>' +
-                                    '</div>' +
-                                    '<div class = "col tags ulp">' +
-                                    '<p>ULP</p>' +
-                                    '</div>' +
-                                    '<div class = "col tags ects">' +
-                                    '<p>ECTS:</p>' +
-                                    '</div>' +
-                                    '<div class = "col tags btnloeschen">' +
-                                    '</div>' +
-                                    '<div class = "col btnverschieben">' +
-                                    '</div>' +
-                                    '</div>'
-                            );
-
-                        }
-
-                        function neuerPlan() {
-                            wert = $("#input-semesteranzahl").val();
-                            okbtn();
-                        }
-
-                        var form = $('.form'),
-                                cache_width = form.width(),
-                                a4 = [595.28, 990.89]; // for a4 size paper width and height
-
-                        var canvasImage,
-                                winHeight = a4[1],
-                                formHeight = form.height(),
-                                formWidth = form.width();
-
-                        var imagePieces = [];
-
-                        // on create pdf button click
-                        // $('#create_pdf').on('click', function ()
-
-                        function pdf() {
-                            var node = document.getElementById('semester');
-
-                            domtoimage.toSvg(node).then(function (dataUrl) {
-                                img = new Image();
-                                img.src = dataUrl;
-
-                                // var svgData = new XMLSerializer().serializeToString(img);
-
-                                document.body.appendChild(img);
-
-                                var canvas = document.createElement("canvas");
-                                var ctx = canvas.getContext("2d");
-
-                                // img.setAttribute("src", "data:image/svg+xml;base64," + btoa(svgData));
-
-                                img.onload = function () {
-                                    ctx.drawImage(img, 0, 0);
-
-                                    document.body.appendChild(img);
-
-                                    // Now is done
-                                    // console.log(canvas.toDataURL("image/png"));
-
-                                    var doc = new jsPDF({
-                                        unit: 'px',
-                                        format: 'a4'
-                                    });
-
-                                    doc.addImage(img, 'PNG', 10, 10);
-                                    doc.addPage();
-
-                                    doc.save('techumber-html-to-pdf.pdf');
-                                    form.width(cache_width);
-                                };
-                            });
-
-                            /*
-                             domtoimage.toSvg(document.getElementById('semester'))
-                             .then(function (dataUrl)
-                             {
-                             var img = new Image();
-                             img.src = dataUrl;
-
-                             document.body.appendChild(img);
-
-                             // img.src = img.toDataURL("image/png");
-                             // img.onload = splitImage;
-
-                             var doc = new jsPDF({
-                             unit: 'px',
-                             format: 'a4'
-                             });
-                             imagePieces.forEach(function (img)
-                             {
-                             doc.addImage(img, 'JPEG', 20, 40);
-                             if (totalPieces)
-                             doc.addPage();
-                             totalPieces--;
-                             });
-                             doc.save('techumber-html-to-pdf.pdf');
-                             form.width(cache_width);
-
-
-                             });
-
-                             */
-                        }
-
-                        // main code
-                        function main() {
-                            getCanvas().then(function (canvas) {
-                                canvasImage = new Image();
-                                canvasImage.src = canvas.toDataURL("image/png");
-                                canvasImage.onload = splitImage;
-                            });
-                        }
-
-                        // create canvas object
-                        function getCanvas() {
-                            form.width((a4[0] * 1.33333) - 80).css('max-width', 'none');
-                            return html2canvas(form, {
-                                imageTimeout: 2000,
-                                removeContainer: true
-                            });
-                        }
-
-                        // chop image horizontally
-                        function splitImage(e) {
-                            var totalImgs = Math.round(formHeight / winHeight);
-                            for (var i = 0; i < totalImgs; i++) {
-                                var canvas = document.createElement('canvas'),
-                                        ctx = canvas.getContext('2d');
-                                canvas.width = formWidth;
-                                canvas.height = winHeight;
-                                //                    source region                   dest. region
-                                ctx.drawImage(canvasImage, 0, i * winHeight, formWidth, winHeight, 0, 0, canvas.width, canvas.height);
-
-                                imagePieces.push(canvas.toDataURL("image/png"));
-                            }
-                                ;
-                            console.log(imagePieces.length);
-                            createPDF();
-                        }
-
-                        // crete pdf using chopped images
-                        function createPDF() {
-                            var totalPieces = imagePieces.length - 1;
-                            var doc = new jsPDF({
-                                unit: 'px',
-                                format: 'a4'
-                            });
-                            imagePieces.forEach(function (img) {
-                                doc.addImage(img, 'JPEG', 20, 40);
-                                if (totalPieces)
-                                    doc.addPage();
-                                totalPieces--;
-                            });
-                            doc.save('techumber-html-to-pdf.pdf');
-                            form.width(cache_width);
-
-                        }
+                        doc.addImage(img, 'PNG', 10, 10);
+                        doc.addPage();
+
+                        doc.save('techumber-html-to-pdf.pdf');
+                        form.width(cache_width);
+                    };
+                });
+
+                /*
+                 domtoimage.toSvg(document.getElementById('semester'))
+                 .then(function (dataUrl)
+                 {
+                 var img = new Image();
+                 img.src = dataUrl;
+
+                 document.body.appendChild(img);
+
+                 // img.src = img.toDataURL("image/png");
+                 // img.onload = splitImage;
+
+                 var doc = new jsPDF({
+                 unit: 'px',
+                 format: 'a4'
+                 });
+                 imagePieces.forEach(function (img)
+                 {
+                 doc.addImage(img, 'JPEG', 20, 40);
+                 if (totalPieces)
+                 doc.addPage();
+                 totalPieces--;
+                 });
+                 doc.save('techumber-html-to-pdf.pdf');
+                 form.width(cache_width);
+
+
+                 });
+
+                 */
+            }
+
+            // main code
+            function main()
+            {
+                getCanvas().then(function (canvas)
+                {
+                    canvasImage = new Image();
+                    canvasImage.src = canvas.toDataURL("image/png");
+                    canvasImage.onload = splitImage;
+                });
+            }
+
+            // create canvas object
+            function getCanvas()
+            {
+                form.width((a4[0] * 1.33333) - 80).css('max-width', 'none');
+                return html2canvas(form, {
+                    imageTimeout: 2000,
+                    removeContainer: true
+                });
+            }
+
+            // chop image horizontally
+            function splitImage(e)
+            {
+                var totalImgs = Math.round(formHeight / winHeight);
+                for (var i = 0; i < totalImgs; i++)
+                {
+                    var canvas = document.createElement('canvas'),
+                            ctx = canvas.getContext('2d');
+                    canvas.width = formWidth;
+                    canvas.height = winHeight;
+                    //                    source region                   dest. region
+                    ctx.drawImage(canvasImage, 0, i * winHeight, formWidth, winHeight, 0, 0, canvas.width, canvas.height);
+
+                    imagePieces.push(canvas.toDataURL("image/png"));
+                }
+                ;
+                console.log(imagePieces.length);
+                createPDF();
+            }
+
+            // crete pdf using chopped images
+            function createPDF()
+            {
+                var totalPieces = imagePieces.length - 1;
+                var doc = new jsPDF({
+                    unit: 'px',
+                    format: 'a4'
+                });
+                imagePieces.forEach(function (img)
+                {
+                    doc.addImage(img, 'JPEG', 20, 40);
+                    if (totalPieces)
+                        doc.addPage();
+                    totalPieces--;
+                });
+                doc.save('techumber-html-to-pdf.pdf');
+                form.width(cache_width);
+
+            }
 
 		</script>
         </div>
