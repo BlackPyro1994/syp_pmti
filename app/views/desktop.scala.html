@@ -53,9 +53,8 @@
                                     </div>
                                     <div class = "col">
                                         <h5>Studienstart:</h5>
-                                        -
                                         <div class = "radio">
-                                            <label><input type = "radio" name = "optradio" id = "radio-winter"
+                                            <label><input type = "radio" name = "optradio" checked="checked" id = "radio-winter"
                                             value = "winter">
                                                 Winter
                                             </label>
@@ -76,7 +75,7 @@
 							Abbrechen
                             </button>
                             <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-ok"
-                            onclick = "okbtn()">OK
+                            onclick = "ok_btn_neuerPlan()">OK
                             </button>
                         </div>
                     </div>
@@ -120,7 +119,7 @@
                     </div>
 
                     <div class = "col mar" align = "center">
-                        <h5>Master-ECTS:</h5>
+                        <h5>ECTS:</h5>
                     </div>
 
                     <div class = "col mar" align = "center">
@@ -263,6 +262,7 @@
 
             <script>
 
+            var startSem;
             var ausgewaehlt_semester = "";
             var ausgewaehlt_modul = "";
 
@@ -271,9 +271,13 @@
             $(document).ready(function () {
                 console.log("ready!");
 
-                $("#button_plus").trigger("click");
-                $("#button_plus").trigger("click");
-                $("#button_plus").trigger("click");
+                startSem = "winter";
+                counter_plus();
+                counter_plus();
+                counter_plus();
+                //$("#button_plus").trigger("click");
+                //$("#button_plus").trigger("click");
+                //$("#button_plus").trigger("click");
 
                 // module_in_semester_einfügen('THI',1);
                 // module_in_semester_einfügen(2,1);
@@ -297,7 +301,7 @@
                 var wert = Number(document.getElementById("count").textContent);
                 wert++;
                 document.getElementById("count").textContent = wert;
-                add_Semester();
+                add_Semester(startSem);
             }
 
             function counter_minus() {
@@ -408,7 +412,8 @@
                 }
             });
 
-            function add_Semester() {
+            function add_Semester(startSem)
+            {
                 $("#semester").append(
                         '<div class = "container semester-gesamt" onclick="semester_Markieren(this)">' +
                         '<div class = "row">' +
@@ -417,34 +422,20 @@
                         '</div>'
                 );
                 var wert = Number(document.getElementById("count").textContent);
-                if (wert % 2 == 0) {
-                    // $(".label").last().text("" + $("#count").html() + ": Sommersemester");
-                    $(".label").last().text($("#count").html() + ": Sommersemester");
-                }
-                else {
-                    $(".label").last().text($("#count").html() + ": Wintersemester");
-                }
-            };
-
-            function add_neuer_Plan(startSem) {
-                $("#semester").append(
-                        '<div class = "container semester-gesamt" onclick="semester_Markieren(this)">' +
-                        '<div class = "row">' +
-                        '<h6 class="label"></h6>' +
-                        '</div>' +
-                        '</div>'
-                );
-                var wert = Number(document.getElementById("count").textContent);
-                if (startSem == "winter" && wert % 2 == 1) {
+                if (startSem == "winter" && wert % 2 == 1)
+                {
                     $(".label").last().text("" + $("#count").html() + ": Wintersemester");
                 }
-                else if (startSem == "winter" && wert % 2 == 0) {
+                else if (startSem == "winter" && wert % 2 == 0)
+                {
                     $(".label").last().text("" + $("#count").html() + ": Sommersemester");
                 }
-                else if (startSem == "sommer" && wert % 2 == 1) {
+                else if (startSem == "sommer" && wert % 2 == 1)
+                {
                     $(".label").last().text("" + $("#count").html() + ": Sommersemester");
                 }
-                else {
+                else
+                {
                     $(".label").last().text("" + $("#count").html() + ": Wintersemester");
                 }
             }
@@ -467,26 +458,28 @@
                 saveTextAs("", "test.csv");
             };
 
-            function okbtn() {
+            function ok_btn_neuerPlan()
+            {
                 deleteAll();
                 var count = 0;
-
-                // var myRadio = $('input[name="optradio"]');
-                // var startSem = myRadio.filter(':checked').val();
-
-                var startSem = $('input[name="optradio"]').filter(':checked').val();
-
+                var myRadio = $('input[name="optradio"]');
+                startSem = myRadio.filter(':checked').val();
                 wert = $("#input-semesteranzahl").val();
 
-                for (i = 0; i < wert; i++) {
+                if(wert == "") {
+                    document.getElementById("#fehlermeldung").innerHTML = "Bitte geben Sie eine Anzahl an";
+                }
+                for (i = 0; i < wert; i++)
+                {
                     count++;
                     document.getElementById("count").textContent = count;
-                    add_neuer_Plan(startSem);
+                    add_Semester(startSem);
                 }
 
                 $(".class_p").removeClass('ausgewaehlt');
-                $(".class_p").parent().parent().removeClass('blocked');
+                $(".class_p").parent().removeClass('blocked');
             }
+
 
             function add_empty_modul(mod_id, sem_id) {
                 $("#semester").children().filter(":nth-child(" + sem_id + ")").append(
@@ -524,7 +517,7 @@
 
             function neuerPlan() {
                 wert = $("#input-semesteranzahl").val();
-                okbtn();
+                ok_btn_neuerPlan();
             }
 
             var form = $('.form'), cache_width = form.width(), a4 = [595.28, 990.89]; // for a4 size paper width and height
