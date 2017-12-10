@@ -335,9 +335,9 @@
                 //$("#button_plus").trigger("click");
                 //$("#button_plus").trigger("click");
 
-                // module_in_semester_einfügen('THI',1);
-                // module_in_semester_einfügen(2,1);
-                // module_in_semester_einfügen(3,1);
+                module_in_semester_einfügen('THI',1);
+                module_in_semester_einfügen(2,1);
+                module_in_semester_einfügen(3,1);
 
                 // $( "#button_minus" ).trigger( "click" );
 
@@ -500,9 +500,19 @@
             };
 
             function delete_module_from_semester(id) {
-                // CODE ANPASSEN !!!
+                // CODE ANPASSEN !!!.
+                //id = '"ID: '+id + '"';
+                //console.log($('.row.modul :input[value=' + id + ']'));
 
-                // ($("#semester").children().filter(":nth-child(" + id + ")").remove());
+                ($('#semester')).document.getElementById(id);
+                var birds = document.getElementById(id);
+                console.log(birds.parentNode.removeChild(birds));
+
+                //console.log($("#"+id).remove());
+                //console.log($( "#semester" ).filter( document.getElementsByName("ID: " + id)).remove());
+                //console.log($( "#semester" ).contents().find(id).parent().parent().remove());
+                //console.log($('#semester :input').filter(function(){return this.value==id}).remove());
+                //($('#semester :input[value="ID: "+id]').remove());
             };
 
             function deleteAll() {
@@ -544,7 +554,7 @@
 
             function add_empty_modul(mod_id, sem_id) {
                 $("#semester").children().filter(":nth-child(" + sem_id + ")").append(
-                        '<div class = "row semester">' +
+                        '<div id="'+mod_id+'"class = "row semester">' +
                         '<div class = "col tags id">' +
                         '<p>ID: '
 
