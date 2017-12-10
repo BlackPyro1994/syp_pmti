@@ -1,9 +1,9 @@
-@(message: String)
+@(message: String)(modulListe:List[Array[Object]])
 
 @if(!message.contains("Mobile")) {
-    @desktop()
+    @desktop(modulListe)
 } else {
-    @mobile()
+    @mobile(modulListe)
 }
 
 
