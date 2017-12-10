@@ -156,6 +156,15 @@ ul .abstand li {
     padding: 1%;
 }
 
+#fehlermeldung {
+    color: red;
+}
+
+.datenergaenzen {
+    margin-bottom: 2%;
+    width: auto;
+}
+
 /* .blocked {
     -webkit-user-select: none;
     -khtml-user-select: none;

@@ -33,8 +33,8 @@
                     </h1>
                 </span>
             </div>
-                <!-- PopUp -->
-            <div id = "myModal" class = "modal fade" role = "dialog">
+                <!-- PopUp Neuer Plan -->
+            <div id = "myModal-neuerPlan" class = "modal fade" role = "dialog">
                 <div class = "modal-dialog">
                         <!-- PopUp Inhalt-->
                     <div class = "modal-content">
@@ -50,6 +50,7 @@
                                         <h5>Semesteranzahl:</h5>
                                         <input type = "text" class = "form-control" id = "input-semesteranzahl"
                                         placeholder = "Semesteranzahl">
+                                        <p id="fehlermeldung"></p>
                                     </div>
                                     <div class = "col">
                                         <h5>Studienstart:</h5>
@@ -74,8 +75,63 @@
                             <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-abbrechen">
 							Abbrechen
                             </button>
-                            <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-ok"
+                            <button type = "button" class = "btn btn-default" id = "popup-ok"
                             onclick = "ok_btn_neuerPlan()">OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- PopUp Freitextmodul -->
+            <div id = "myModal-freitext" class = "modal fade" role = "dialog">
+                <div class = "modal-dialog">
+                        <!-- PopUp Inhalt-->
+                    <div class = "modal-content">
+                            <!-- PopUp Kopfzeile -->
+                        <div class = "modal-header">
+                            <h4 class = "modal-title">Daten ergänzen</h4>
+                        </div>
+                            <!-- PopUp Körper -->
+                        <div class = "modal-body">
+                            <div class = "container">
+                                <div class = "row datenergaenzen">
+                                    <input type = "text" class = "form-control" id = "input-id" placeholder = "ID">
+                                </div>
+                                <div class = "row datenergaenzen">
+                                    <input type = "text" class = "form-control" id = "input-name" placeholder = "Name">
+                                </div>
+                                <div class = "row datenergaenzen">
+                                    <div class ="col">
+                                        <input type = "text" class = "form-control" id = "input-name" placeholder = "SWS">
+                                    </div>
+                                    <div class ="col">
+                                        <input type = "text" class = "form-control" id = "input-name" placeholder = "V">
+                                    </div>
+                                    <div class ="col">
+                                        <input type = "text" class = "form-control" id = "input-name" placeholder = "Ü">
+                                    </div>
+                                    <div class ="col">
+                                        <input type = "text" class = "form-control" id = "input-name" placeholder = "P">
+                                    </div>
+                                    <div class ="col">
+                                        <input type = "text" class = "form-control" id = "input-name" placeholder = "Pr">
+                                    </div>
+                                </div>
+                                <div class = "row datenergaenzen">
+                                    <input type = "text" class = "form-control" id = "input-name" placeholder = "Dozent">
+                                </div>
+                                <div class = "row datenergaenzen">
+                                    <input type = "text" class = "form-control" id = "input-name" placeholder = "ECTS">
+                                </div>
+                            </div>
+                        </div>
+                            <!-- PopUp Fußzeile -->
+                        <div class = "modal-footer">
+                            <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-abbrechen">
+							Abbrechen
+                            </button>
+                            <button type = "button" class = "btn btn-default" id = "popup-ok"
+                            onclick = "ok_btn_Datenergaenzen()">OK
                             </button>
                         </div>
                     </div>
@@ -86,7 +142,7 @@
                 <div class = "row rounded" align = "center">
 
                     <div class = "col" align = "center">
-                        <button type = "button" class = "btn btn-primary" data-toggle = "modal" data-target = "#myModal">Neuer Plan</button>
+                        <button type = "button" class = "btn btn-primary" data-toggle = "modal" data-target = "#myModal-neuerPlan">Neuer Plan</button>
                     </div>
 
                     <div class = "col mar" align = "center">
@@ -111,7 +167,7 @@
                     </div>
 
                     <div class = "col" align = "center">
-                        <button type = "button" class = "btn btn-primary" style = "width: auto">Plan speichern</button>
+                        <button type = "button" class = "btn btn-primary" data-toggle = "modal" data-target = "#myModal-freitext">Plan speichern</button>
                     </div>
 
                     <div class = "col" align = "center">
@@ -405,9 +461,9 @@
 
                     var target = ($(e.target).val());
 
-                    $('.row.modul :input[value=' + target + ']').toggle("hidden");;
+                    //$('.row.modul :input[value=' + target + ']').toggle("hidden");;
 
-                    // $(e.target).parent().parent().find('.modul').toggle("hidden");
+                    $(e.target).parent().parent().find('.modul').toggle("hidden");
                     // $(e.target).parent().parent().find('.modul').addClass("hidden");
                 }
             });
@@ -460,24 +516,31 @@
 
             function ok_btn_neuerPlan()
             {
-                deleteAll();
                 var count = 0;
+                var meldung = "Bitte eine Anzahl angeben";
                 var myRadio = $('input[name="optradio"]');
                 startSem = myRadio.filter(':checked').val();
                 wert = $("#input-semesteranzahl").val();
 
                 if(wert == "") {
-                    document.getElementById("#fehlermeldung").innerHTML = "Bitte geben Sie eine Anzahl an";
+                    document.getElementById("fehlermeldung").textContent = meldung;
+                } else if(wert != ""){
+                    deleteAll();
+                    for (i = 0; i < wert; i++)
+                    {
+                        count++;
+                        document.getElementById("count").textContent = count;
+                        add_Semester(startSem);
+                    }
+                    document.getElementById("fehlermeldung").textContent = "";
+                    $('#myModal-neuerPlan').modal('hide');
+                    $(".class_p").removeClass('ausgewaehlt');
+                    $(".class_p").parent().removeClass('blocked');
                 }
-                for (i = 0; i < wert; i++)
-                {
-                    count++;
-                    document.getElementById("count").textContent = count;
-                    add_Semester(startSem);
-                }
+            }
 
-                $(".class_p").removeClass('ausgewaehlt');
-                $(".class_p").parent().removeClass('blocked');
+            function ok_btn_Datenergaenzen() {
+
             }
 
 
