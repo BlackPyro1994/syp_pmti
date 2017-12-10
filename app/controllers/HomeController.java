@@ -31,15 +31,7 @@ public class HomeController extends Controller {
         modulListe.add(new Object[]{10,"Modul Delta"});
         modulListe.add(new Object[]{11,"Modul Epsilon"});
 
-        // String[] userAgent = request().headers().get(Http.HeaderNames.USER_AGENT);
-
-        String userAgent = request().getHeader("User-Agent");
-
-        String[] arr = new String[]{"abc", "abc2"};
-
-        // return ok(index.render("asdasd"));
-
-        return ok(index.render(userAgent, modulListe));
+        return ok(index.render(request().getHeader("User-Agent"), modulListe));
     }
 
 }
