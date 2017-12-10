@@ -35,18 +35,25 @@ public class AlleKataloge {
             br = new BufferedReader(fr);
 
             while(null!=(csvZeile=br.readLine())) {
-                mk = new Modulkatalog();
-                String[] zeileSegmentieren = csvZeile.split(";");
-                mk.setKatalogid(zeileSegmentieren[0]);
-                mk.setKatalogname(zeileSegmentieren[1]);
-                intVar = Integer.parseInt(zeileSegmentieren[2]);
-                mk.setBelegungsanzahl(intVar);
+                try{
+                    mk = new Modulkatalog();
+                    String[] zeileSegmentieren = csvZeile.split(";");
+                    mk.setKatalogid(zeileSegmentieren[0]);
+                    mk.setKatalogname(zeileSegmentieren[1]);
+                    intVar = Integer.parseInt(zeileSegmentieren[2]);
+                    mk.setBelegungsanzahl(intVar);
 
-                kataloge.add(mk);
+                    kataloge.add(mk);
+
+                } catch (RuntimeException e) {
+                    System.err.println("Hinweis für den Administrator: Es gab eine RuntimeException beim Lesen der Daten aus der Datei 'Modulkataloge.csv'. Siehe StackTrace:");
+                    e.printStackTrace();
+                }
             }
 
         } catch (IOException e){
-            System.out.println("Hinweis für den Administrator: IOException beim Zugriff auf die Datei 'Modulkataloge.csv'!");
+            System.err.println("Hinweis für den Administrator: IOException beim Zugriff auf die Datei 'Modulkataloge.csv'. Siehe StackTrace:");
+            e.printStackTrace();
         }
 
         return kataloge;
