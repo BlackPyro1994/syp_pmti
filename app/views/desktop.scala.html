@@ -29,12 +29,12 @@
                 <span class = "col" align = "center">
                     <br>
                     <h1>
-                    Planungsunterstützungstool Master technische Informatik
+                    Planungsunterstützungstool Master Technische Informatik
                     </h1>
                 </span>
             </div>
-                <!-- PopUp Neuer Plan -->
-            <div id = "myModal-neuerPlan" class = "modal fade" role = "dialog">
+                <!-- PopUp -->
+            <div id = "myModal" class = "modal fade" role = "dialog">
                 <div class = "modal-dialog">
                         <!-- PopUp Inhalt-->
                     <div class = "modal-content">
@@ -53,15 +53,18 @@
                                     </div>
                                     <div class = "col">
                                         <h5>Studienstart:</h5>
+                                        -
                                         <div class = "radio">
                                             <label><input type = "radio" name = "optradio" id = "radio-winter"
-                                            value = "winter" checked ="checked">
-                                                Winter</label>
+                                            value = "winter">
+                                                Winter
+                                            </label>
                                         </div>
                                         <div class = "radio">
                                             <label><input type = "radio" name = "optradio" id = "radio-sommer"
                                             value = "sommer">
-                                                Sommer</label>
+                                                Sommer
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -79,101 +82,47 @@
                     </div>
                 </div>
             </div>
-            <!-- PopUp Freitextmodul -->
-            <div id = "myModal-freitext" class = "modal fade" role = "dialog">
-                <div class = "modal-dialog">
-                        <!-- PopUp Inhalt-->
-                    <div class = "modal-content">
-                            <!-- PopUp Kopfzeile -->
-                        <div class = "modal-header">
-                            <h4 class = "modal-title">Daten ergänzen</h4>
-                        </div>
-                            <!-- PopUp Körper -->
-                        <div class = "modal-body">
-                            <div class = "container">
-                                <div class = "row">
-                                    <div class = "col">
-                                        <input type = "text" class = "form-control" id = "input-semesteranzahl"
-                                        placeholder = "ID">
-                                    </div>
-                                </div>
-                                <div class = "row">
-                                    <div class = "col">
-                                        <input type = "text" class = "form-control" id = "input-semesteranzahl"
-                                        placeholder = "Name">
-                                    </div>
-                                </div>
-                                <div class = "row">
-                                    <div class = "col">
-                                        <input type = "text" class = "form-control" id = "input-semesteranzahl"
-                                        placeholder = "SWS,V,Ü,P">
-                                    </div>
-                                </div>
-                                <div class = "row">
-                                    <div class = "col">
-                                        <input type = "text" class = "form-control" id = "input-semesteranzahl"
-                                        placeholder = "Dozent">
-                                    </div>
-                                </div>
-                                <div class = "row">
-                                    <div class = "col">
-                                        <input type = "text" class = "form-control" id = "input-semesteranzahl"
-                                        placeholder = "Ja/Nein">
-                                    </div>
-                                </div>
-                                <div class = "row">
-                                    <div class = "col">
-                                        <input type = "text" class = "form-control" id = "input-semesteranzahl"
-                                        placeholder = "Anzahl">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            <!-- PopUp Fußzeile -->
-                        <div class = "modal-footer">
-                            <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-abbrechen">
-							Abbrechen
-                            </button>
-                            <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-ok"
-                            onclick = "freitext_popup()">OK
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
                 <!-- Container Menüleiste -->
             <div class = "container">
                 <div class = "row rounded" align = "center">
+
                     <div class = "col" align = "center">
-                        <button type = "button" class = "btn btn-primary" data-toggle = "modal" data-target = "#myModal-neuerPlan">Neuer Plan
-                        </button>
+                        <button type = "button" class = "btn btn-primary" data-toggle = "modal" data-target = "#myModal">Neuer Plan</button>
                     </div>
+
                     <div class = "col mar" align = "center">
                         <h5>Semesteranzahl</h5>
                     </div>
+
                     <div class = "col" align = "center">
-                        <button type = "button" onclick = "counter_minus()" class = "btn btn-primary">-</button>
+                        <button type = "button" id = "button_minus" onclick = "counter_minus()" class = "btn btn-primary">-</button>
                     </div>
+
                     <div class = "col mar" align = "center">
                         <h5 id = "count">0</h5>
                     </div>
+
                     <div class = "col" align = "center">
-                        <button type = "button" onclick = "counter_plus()" class = "btn btn-primary">+</button>
+                        <button type = "button" id = "button_plus" onclick = "counter_plus()" class = "btn btn-primary">+</button>
                     </div>
+
                     <div class = "col" align = "center">
-                        <button id = "button" class = "btn btn-primary">Plan laden</button>
+                        <button id = "button_planLaden" class = "btn btn-primary">Plan laden</button>
                         <input id = "file-input" type = "file" name = "name" style = "display: none;"/>
                     </div>
+
                     <div class = "col" align = "center">
                         <button type = "button" class = "btn btn-primary" style = "width: auto">Plan speichern</button>
-                        <!--<button type = "button" class = "btn btn-primary" style = "width: auto" data-toggle="modal" data-target ="#myModal-freitext">Plan speichern</button>-->
                     </div>
+
                     <div class = "col" align = "center">
                         <button type = "button" class = "btn btn-primary" onclick = "pdf()" style = "width: auto">PDF erstellen</button>
                     </div>
+
                     <div class = "col mar" align = "center">
-                        <h5>ECTS:</h5>
+                        <h5>Master-ECTS:</h5>
                     </div>
+
                     <div class = "col mar" align = "center">
                         <h5>0</h5>
                     </div>
@@ -193,9 +142,9 @@
                                 </span>
                             </div>
                                 <!--<div id = "katalog" class = "katalog" onclick = "katalog_Open(this)">-->
-                            <div id = "PM" class = "katalog">
+                            <div id = "k1" class = "katalog">
                                 <div class = "tags">
-                                    <h6 class = "label">Pflichtmodule</h6>
+                                    <h6 class = "label">Katalog 1</h6>
                                 </div>
                                 <div class = "row modul">
                                     <div class = "tags" style = "text-align: center"><p id = "THI" class = "class_p">Modul A</p>
@@ -218,9 +167,59 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id = "WPMT" class = "katalog">
+                            <div id = "k2" class = "katalog">
                                 <div class = "tags">
-                                    <h6 class = "label">Vertiefung Mathematik</h6>
+                                    <h6 class = "label">Katalog 2</h6>
+                                </div>
+                                <div class = "row modul">
+                                    <div class = "tags" style = "text-align: center"><p id = "THI" class = "class_p">Modul A</p>
+                                    </div>
+                                </div>
+                                <div class = "row modul">
+                                    <div class = "tags" style = "text-align: center"><p id = "2" class = "class_p">Modul A</p>
+                                    </div>
+                                </div>
+                                <div class = "row modul">
+                                    <div class = "tags" style = "text-align: center"><p id = "3" class = "class_p">Modul A</p>
+                                    </div>
+                                </div>
+                                <div class = "row modul">
+                                    <div class = "tags" style = "text-align: center"><p id = "4" class = "class_p">Modul A</p>
+                                    </div>
+                                </div>
+                                <div class = "row modul">
+                                    <div class = "tags" style = "text-align: center"><p id = "5" class = "class_p">Modul A</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id = "k3" class = "katalog">
+                                <div class = "tags">
+                                    <h6 class = "label">Katalog 3</h6>
+                                </div>
+                                <div class = "row modul">
+                                    <div class = "tags" style = "text-align: center"><p id = "THI" class = "class_p">Modul A</p>
+                                    </div>
+                                </div>
+                                <div class = "row modul">
+                                    <div class = "tags" style = "text-align: center"><p id = "2" class = "class_p">Modul A</p>
+                                    </div>
+                                </div>
+                                <div class = "row modul">
+                                    <div class = "tags" style = "text-align: center"><p id = "3" class = "class_p">Modul A</p>
+                                    </div>
+                                </div>
+                                <div class = "row modul">
+                                    <div class = "tags" style = "text-align: center"><p id = "4" class = "class_p">Modul A</p>
+                                    </div>
+                                </div>
+                                <div class = "row modul">
+                                    <div class = "tags" style = "text-align: center"><p id = "5" class = "class_p">Modul A</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id = "k4" class = "katalog">
+                                <div class = "tags">
+                                    <h6 class = "label">Katalog 4</h6>
                                 </div>
                                 <div class = "row modul">
                                     <div class = "tags" style = "text-align: center"><p id = "THI" class = "class_p">Modul A</p>
@@ -267,53 +266,73 @@
             var ausgewaehlt_semester = "";
             var ausgewaehlt_modul = "";
 
-            CollapsibleLists.apply();
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
-            $('#button').on('click', function ()
-            {
+            $(document).ready(function () {
+                console.log("ready!");
+
+                $("#button_plus").trigger("click");
+                $("#button_plus").trigger("click");
+                $("#button_plus").trigger("click");
+
+                // module_in_semester_einfügen('THI',1);
+                // module_in_semester_einfügen(2,1);
+                // module_in_semester_einfügen(3,1);
+
+                // $( "#button_minus" ).trigger( "click" );
+
+            });
+
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+            function test() {
+                $('.semester').css("display", "none");
+            }
+
+            $('#button_planLaden').on('click', function () {
                 $('#file-input').trigger('click');
             });
 
-            function counter_plus()
-            {
+            function counter_plus() {
                 var wert = Number(document.getElementById("count").textContent);
                 wert++;
                 document.getElementById("count").textContent = wert;
                 add_Semester();
             }
 
-            function counter_minus()
-            {
+            function counter_minus() {
                 var wert = Number(document.getElementById("count").textContent);
 
-                if (wert > 0)
-                {
+                if (wert > 0) {
                     wert--;
                 }
 
                 document.getElementById("count").textContent = wert;
 
-                console.log($("#semester").children().filter(":nth-child(" + wert + ")").attr("class"));
-                console.log($("#semester").children().filter(":nth-child(" + wert + ")").children().attr("class"));
-                console.log($("#semester").children().filter(":nth-child(" + wert + ")").children().children().attr("class"));
-                console.log($("#semester").children().filter(":nth-child(" + wert + ")").children().children().children().attr("class"));
-                // deleteLast();
+                // console.log($("#semester").children());
+                // console.log("----------------");
+                // console.log($("#semester").children().last().children().attr('id'));
+                // console.log($("#semester").children().last().children().children().attr('id'));
+                // console.log($("#semester").children().last().find('.class_p').attr('id'));
+
+                delete_last_semester();
             }
 
             <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
-            function semester_Markieren(caller)
-            {
+            function semester_Markieren(caller) {
+
+                // Zweites h-Label hinzufügen ... Einmal Zahl und dann WinterSommerSemester Label
+                console.log($(caller).children().children().html().substring(0, 1));
 
                 $('#semester').children().removeClass('ausgewaehlt');
-                $(caller).toggleClass('semester ausgewaehlt');
 
-                if (ausgewaehlt_modul != "")
-                {
+                $(caller).toggleClass('ausgewaehlt');
+
+                if (ausgewaehlt_modul != "") {
                     module_in_semester_einfügen(ausgewaehlt_modul, $(caller).children().children().html().substring(0, 1));
                 }
-                else
-                {
+                else {
                     // ausgewaehlt_semester = $(caller).children().children().html().replace("Semester ", "");
                     ausgewaehlt_semester = $(caller).children().children().html().substring(0, 1);
                     console.log(ausgewaehlt_semester);
@@ -322,78 +341,74 @@
 
             }
 
-            function modul_Markieren(caller)
-            {
-                if (!$(caller).parent().attr('class').includes("blocked"))
-                {
+            function modul_Markieren(caller) {
+                console.log($(caller).attr('id'));
 
-                    if ($(caller).attr('class').includes("ausgewaehlt"))
-                    {
+                if (!$(caller).parent().attr('class').includes("blocked")) {
+
+                    if ($(caller).attr('class').includes("ausgewaehlt")) {
                         $(caller).toggleClass('ausgewaehlt');
                     }
-                    else
-                    {
+                    else {
                         $(".class_p").removeClass('ausgewaehlt');
                         $(caller).addClass('ausgewaehlt');
                     }
 
-                    if (ausgewaehlt_semester != "")
-                    {
+                    if (ausgewaehlt_semester != "") {
                         module_in_semester_einfügen($(caller).attr('id'), ausgewaehlt_semester);
                     }
-                    else
-                    {
+                    else {
                         ausgewaehlt_modul = $(caller).attr('id');
                     }
                 }
             }
 
-            function module_in_semester_einfügen(mod_id, sem_id)
-            {
+            function module_in_semester_einfügen(mod_id, sem_id) {
                 console.log("Modul : " + mod_id + " in Semester : " + sem_id);
 
                 add_empty_modul(mod_id, sem_id);
 
-
                 ausgewaehlt_modul = "";
                 ausgewaehlt_semester = "";
 
-                $(".class_p").removeClass('ausgewaehlt');
+                // $(".class_p").removeClass('ausgewaehlt');
+                $("#" + mod_id).removeClass('ausgewaehlt');
+
 
                 // $("#mod_id").toggleClass('unblocked blocked');
-
                 // $("#"+mod_id).parent().removeClass('unblocked');
-                $("#" + mod_id).parent().addClass('blocked');
+
+                $("#" + mod_id).parent().parent().addClass('blocked');
 
                 // $('#semester').children().removeClass('ausgewaehlt');
 
+                // $('.container').removeClass('ausgewaehlt');
                 $('.container.semester-gesamt').removeClass('ausgewaehlt');
 
             }
 
             <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
-            $('.katalog').on('click', function (e)
-            {
+            $('.katalog').on('click', function (e) {
                 e.preventDefault();
 
-                if ($(e.target).parent().parent().attr('class').includes("row modul"))
-                {
+                // if ($(e.target).parent().parent().attr('class').includes("row modul"))
+                if ($(e.target).attr('class').includes("class_p")) {
                     modul_Markieren(e.target);
                 }
-                else
-                {
-                    katalog_Open(e.target);
+                else {
+                    console.log($(e.target).val());
+
+                    var target = ($(e.target).val());
+
+                    $('.row.modul :input[value=' + target + ']').toggle("hidden");;
+
+                    // $(e.target).parent().parent().find('.modul').toggle("hidden");
+                    // $(e.target).parent().parent().find('.modul').addClass("hidden");
                 }
             });
 
-            function katalog_Open(caller)
-            {
-                $(caller).parent().parent().find('.modul').toggle("hidden");
-            }
-
-            function add_Semester()
-            {
+            function add_Semester() {
                 $("#semester").append(
                         '<div class = "container semester-gesamt" onclick="semester_Markieren(this)">' +
                         '<div class = "row">' +
@@ -402,18 +417,16 @@
                         '</div>'
                 );
                 var wert = Number(document.getElementById("count").textContent);
-                if (wert % 2 == 0)
-                {
-                    $(".label").last().text("" + $("#count").html() + ": Sommersemester");
+                if (wert % 2 == 0) {
+                    // $(".label").last().text("" + $("#count").html() + ": Sommersemester");
+                    $(".label").last().text($("#count").html() + ": Sommersemester");
                 }
-                else
-                {
-                    $(".label").last().text("" + $("#count").html() + ": Wintersemester");
+                else {
+                    $(".label").last().text($("#count").html() + ": Wintersemester");
                 }
             };
 
-            function add_neuer_Plan(startSem)
-            {
+            function add_neuer_Plan(startSem) {
                 $("#semester").append(
                         '<div class = "container semester-gesamt" onclick="semester_Markieren(this)">' +
                         '<div class = "row">' +
@@ -422,64 +435,60 @@
                         '</div>'
                 );
                 var wert = Number(document.getElementById("count").textContent);
-                if (startSem == "winter" && wert % 2 == 1)
-                {
+                if (startSem == "winter" && wert % 2 == 1) {
                     $(".label").last().text("" + $("#count").html() + ": Wintersemester");
                 }
-                else if (startSem == "winter" && wert % 2 == 0)
-                {
+                else if (startSem == "winter" && wert % 2 == 0) {
                     $(".label").last().text("" + $("#count").html() + ": Sommersemester");
                 }
-                else if (startSem == "sommer" && wert % 2 == 1)
-                {
+                else if (startSem == "sommer" && wert % 2 == 1) {
                     $(".label").last().text("" + $("#count").html() + ": Sommersemester");
                 }
-                else
-                {
+                else {
                     $(".label").last().text("" + $("#count").html() + ": Wintersemester");
                 }
             }
 
-            function deleteLast()
-            {
+            function delete_last_semester() {
                 console.log($("#semester").children().last().remove());
             };
 
-            function deleteByID(id)
-            {
-                console.log($("#semester").children().filter(":nth-child(" + id + ")").remove());
+            function delete_module_from_semester(id) {
+                // CODE ANPASSEN !!!
+
+                // ($("#semester").children().filter(":nth-child(" + id + ")").remove());
             };
 
-            function deleteAll()
-            {
+            function deleteAll() {
                 console.log($("#semester").children().remove());
             };
 
-            function toFile()
-            {
+            function toFile() {
                 saveTextAs("", "test.csv");
             };
 
-            function okbtn()
-            {
+            function okbtn() {
                 deleteAll();
                 var count = 0;
-                var myRadio = $('input[name="optradio"]');
-                var startSem = myRadio.filter(':checked').val();
+
+                // var myRadio = $('input[name="optradio"]');
+                // var startSem = myRadio.filter(':checked').val();
+
+                var startSem = $('input[name="optradio"]').filter(':checked').val();
+
                 wert = $("#input-semesteranzahl").val();
-                for (i = 0; i < wert; i++)
-                {
+
+                for (i = 0; i < wert; i++) {
                     count++;
                     document.getElementById("count").textContent = count;
                     add_neuer_Plan(startSem);
                 }
 
                 $(".class_p").removeClass('ausgewaehlt');
-                $(".class_p").parent().removeClass('blocked');
+                $(".class_p").parent().parent().removeClass('blocked');
             }
 
-            function add_empty_modul(mod_id, sem_id)
-            {
+            function add_empty_modul(mod_id, sem_id) {
                 $("#semester").children().filter(":nth-child(" + sem_id + ")").append(
                         '<div class = "row semester">' +
                         '<div class = "col tags id">' +
@@ -513,32 +522,21 @@
 
             }
 
-            function neuerPlan()
-            {
+            function neuerPlan() {
                 wert = $("#input-semesteranzahl").val();
                 okbtn();
             }
 
-            var form = $('.form'),
-                    cache_width = form.width(),
-                    a4 = [595.28, 990.89]; // for a4 size paper width and height
+            var form = $('.form'), cache_width = form.width(), a4 = [595.28, 990.89]; // for a4 size paper width and height
 
-            var canvasImage,
-                    winHeight = a4[1],
-                    formHeight = form.height(),
-                    formWidth = form.width();
+            var canvasImage, winHeight = a4[1], formHeight = form.height(), formWidth = form.width();
 
             var imagePieces = [];
 
-            // on create pdf button click
-            // $('#create_pdf').on('click', function ()
-
-            function pdf()
-            {
+            function pdf() {
                 var node = document.getElementById('semester');
 
-                domtoimage.toSvg(node).then(function (dataUrl)
-                {
+                domtoimage.toSvg(node).then(function (dataUrl) {
                     img = new Image();
                     img.src = dataUrl;
 
@@ -551,8 +549,7 @@
 
                     // img.setAttribute("src", "data:image/svg+xml;base64," + btoa(svgData));
 
-                    img.onload = function ()
-                    {
+                    img.onload = function () {
                         ctx.drawImage(img, 0, 0);
 
                         document.body.appendChild(img);
@@ -606,10 +603,8 @@
             }
 
             // main code
-            function main()
-            {
-                getCanvas().then(function (canvas)
-                {
+            function main() {
+                getCanvas().then(function (canvas) {
                     canvasImage = new Image();
                     canvasImage.src = canvas.toDataURL("image/png");
                     canvasImage.onload = splitImage;
@@ -617,8 +612,7 @@
             }
 
             // create canvas object
-            function getCanvas()
-            {
+            function getCanvas() {
                 form.width((a4[0] * 1.33333) - 80).css('max-width', 'none');
                 return html2canvas(form, {
                     imageTimeout: 2000,
@@ -627,11 +621,9 @@
             }
 
             // chop image horizontally
-            function splitImage(e)
-            {
+            function splitImage(e) {
                 var totalImgs = Math.round(formHeight / winHeight);
-                for (var i = 0; i < totalImgs; i++)
-                {
+                for (var i = 0; i < totalImgs; i++) {
                     var canvas = document.createElement('canvas'),
                             ctx = canvas.getContext('2d');
                     canvas.width = formWidth;
@@ -647,15 +639,13 @@
             }
 
             // crete pdf using chopped images
-            function createPDF()
-            {
+            function createPDF() {
                 var totalPieces = imagePieces.length - 1;
                 var doc = new jsPDF({
                     unit: 'px',
                     format: 'a4'
                 });
-                imagePieces.forEach(function (img)
-                {
+                imagePieces.forEach(function (img) {
                     doc.addImage(img, 'JPEG', 20, 40);
                     if (totalPieces)
                         doc.addPage();
