@@ -45,15 +45,13 @@ public class AlleKataloge {
 
                     kataloge.add(mk);
 
-                } catch (RuntimeException e) {
-                    System.err.println("Hinweis für den Administrator: Es gab eine RuntimeException beim Lesen der Daten aus der Datei 'Modulkataloge.csv'. Siehe StackTrace:");
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    System.err.println("Hinweis fuer den Administrator: Es gab eine Exception beim Lesen der Daten aus der Datei 'Modulkataloge.csv': "+e.getClass().getName()+": "+e.getMessage());
                 }
             }
 
         } catch (IOException e){
-            System.err.println("Hinweis für den Administrator: IOException beim Zugriff auf die Datei 'Modulkataloge.csv'. Siehe StackTrace:");
-            e.printStackTrace();
+            System.err.println("Hinweis fuer den Administrator: Es gab eine IOException beim Zugriff auf die Datei 'Modulkataloge.csv': "+e.getClass().getName()+": "+e.getMessage());
         }
 
         return kataloge;
