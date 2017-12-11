@@ -299,11 +299,9 @@
         <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
         function semester_Markieren(caller) {
 
-            console.log("SEMESTER MARKIEREN lol");
-            console.log($('.container.semester-gesamt').attr('class'));
-            console.log($('.container.semester-gesamt').attr('class').includes('ausgewaehlt'));
-
-            /*if(moving)
+            moving = true;
+            /*
+            if(moving)
             {
                 module_in_semester_einfügen(ausgewaehlt_modul, $(caller).children().children().html().substring(0, 1));
 
@@ -311,7 +309,8 @@
 
                 moving = false;
                 return;
-            }*/
+            }
+            */
 
             // Zweites h-Label hinzufügen ... Einmal Zahl und dann WinterSommerSemester Label
             // console.log($(caller).children().children().html().substring(0, 1));
@@ -335,8 +334,6 @@
                 ausgewaehlt_semester = $(caller).children().children().html().substring(0, 1);
                 // console.log(ausgewaehlt_semester);
             }
-
-
         }
 
         <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
@@ -361,8 +358,6 @@
 
         <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
         function module_in_semester_einfügen(mod_id, sem_id) {
-
-            // console.log("Modul : " + mod_id + " in Semester : " + sem_id);
 
             add_empty_modul(mod_id, sem_id);
 
@@ -412,45 +407,44 @@
             console.log($("#semester").children().last().remove());
         };
 
-        function remove_Semester_Border {
-            $(caller).toggleClass('ausgewaehlt');
-        }
         <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
         function delete_module_from_semester(caller) {
             var id = $(caller).parent().parent().children().first().text().replace("ID: ","");
+            var sem = $(caller).parent().parent().parent();
             var mod_id = "mod_"+id;
 
             $("#"+mod_id).remove();
             $("#" + id).parent().parent().removeClass('blocked');
 
             // Grünen Rahmen löschen RECHTS
-            //$('.container.semester-gesamt').removeClass('ausgewaehlt');
+            semester_Markieren(sem);
 
             // ausgewaehlt_semester (Rechts) RESET-EN !!
-            //ausgewaehlt_semester = "";
+            ausgewaehlt_semester = "";
 
         };
 
         <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
         function move_module_to_semester(caller) {
+            var id = $(caller).parent().parent().children().first().text().replace("ID: ","");
+            var sem = $(caller).parent().parent().parent().parent().children().children().children().first().text();
+            moving = false;
 
-            caller.preventDefault();
+            module_in_semester_einfügen(id,sem);
+            console.log(moving);
+            //$("#"+mod_id).remove();
+            /*
+                        ausgewaehlt_modul = id;
 
-            var id = $(caller).parent().parent().children().first().text().replace("ID: ", "");
+                        console.log("move module : " + id );
 
-            console.log($(caller).parent().parent().children().first());
+                        $("p:contains(" + id + ")").parent().parent().remove();
 
-            ausgewaehlt_modul = id;
+                        // Grünen Rahmen löschen RECHTS
+                        $('.container.semester-gesamt').removeClass('ausgewaehlt');
 
-            console.log("move module : " + id );
-
-            $("p:contains(" + id + ")").parent().parent().remove();
-
-            // Grünen Rahmen löschen RECHTS
-            $('.container.semester-gesamt').removeClass('ausgewaehlt');
-
-            moving = true;
-
+                        moving = true;
+                        */
         };
 
         <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
