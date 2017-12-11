@@ -428,9 +428,11 @@
         <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
         function move_module_to_semester(caller) {
 
-            event.preventDefault();
+            caller.preventDefault();
 
             var id = $(caller).parent().parent().children().first().text().replace("ID: ", "");
+
+            console.log($(caller).parent().parent().children().first());
 
             ausgewaehlt_modul = id;
 
