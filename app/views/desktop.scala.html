@@ -392,13 +392,13 @@
             );
 
             if (startSem == "winter" && wert % 2 == 1) {
-                $(".label").last().text("" + ": Wintersemester");
+                $(".label").last().text(" : Winter-Semester");
             }
             else if (startSem == "winter" && wert % 2 == 0) {
-                $(".label").last().text("" + ": Sommersemester");
+                $(".label").last().text(" : Sommer-Semester");
             }
             else if (startSem == "sommer" && wert % 2 == 1) {
-                $(".label").last().text("" + ": Sommersemester");
+                $(".label").last().text(" : Sommer-Semester");
             }
             else {
                 $(".label").last().text("" + $("#count").html() + ": Wintersemester");
