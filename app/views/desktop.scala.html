@@ -254,6 +254,10 @@
         var katalog_open = 0;
         var moving = false;
 
+        var form = $('.form'), cache_width = form.width(), a4 = [595.28, 990.89]; // for a4 size paper width and height
+        var canvasImage, winHeight = a4[1], formHeight = form.height(), formWidth = form.width();
+        var imagePieces = [];
+
         <!--############################################################################################################################-->
         <!--############################################################################################################################-->
         <!--############################################################################################################################-->
@@ -295,12 +299,11 @@
         <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
         function semester_Markieren(caller) {
 
-            console.log("vorheriges ausgewaehlt_semester :: " + ausgewaehlt_semester);
-            console.log("vorheriges ausgewaehlt_semester :: " + ausgewaehlt_semester);
+            console.log("SEMESTER MARKIEREN lol");
+            console.log($('.container.semester-gesamt').attr('class'));
+            console.log($('.container.semester-gesamt').attr('class').includes('ausgewaehlt'));
 
-            console.log(moving == true ? "moving ON" : "moving off");
-
-            if(moving)
+            /*if(moving)
             {
                 module_in_semester_einfügen(ausgewaehlt_modul, $(caller).children().children().html().substring(0, 1));
 
@@ -308,13 +311,12 @@
 
                 moving = false;
                 return;
-            }
+            }*/
 
             // Zweites h-Label hinzufügen ... Einmal Zahl und dann WinterSommerSemester Label
             // console.log($(caller).children().children().html().substring(0, 1));
 
             console.log("ausgewaehlt_modul :: " + ausgewaehlt_modul);
-
 
             if ($(caller).attr('class').includes("ausgewaehlt")) {
                 $(caller).toggleClass('ausgewaehlt');
@@ -410,18 +412,22 @@
             console.log($("#semester").children().last().remove());
         };
 
+        function remove_Semester_Border {
+            $(caller).toggleClass('ausgewaehlt');
+        }
         <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
         function delete_module_from_semester(caller) {
-            var id = $(caller).parent().parent().children().first().text().replace("ID: ", "");
-            console.log(id);
-            console.log($("p:contains(" + id + ")").parent().parent().remove());
+            var id = $(caller).parent().parent().children().first().text().replace("ID: ","");
+            var mod_id = "mod_"+id;
+
+            $("#"+mod_id).remove();
             $("#" + id).parent().parent().removeClass('blocked');
 
             // Grünen Rahmen löschen RECHTS
-            $('.container.semester-gesamt').removeClass('ausgewaehlt');
+            //$('.container.semester-gesamt').removeClass('ausgewaehlt');
 
             // ausgewaehlt_semester (Rechts) RESET-EN !!
-            ausgewaehlt_semester = "";
+            //ausgewaehlt_semester = "";
 
         };
 
@@ -486,7 +492,7 @@
         <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
         function add_empty_modul(mod_id, sem_id) {
             $("#semester").children().filter(":nth-child(" + sem_id + ")").append(
-                    '<div id="' + mod_id + '"class = "row semester">' +
+                    '<div id="mod_'+mod_id+'"class = "row semester">' +
                     '<div class = "col tags id">' +
                     '<p>ID: '
 
@@ -571,12 +577,6 @@
         <!--############################################################################################################################-->
         <!--############################################################################################################################-->
         <!--############################################################################################################################-->
-
-        var form = $('.form'), cache_width = form.width(), a4 = [595.28, 990.89]; // for a4 size paper width and height
-
-        var canvasImage, winHeight = a4[1], formHeight = form.height(), formWidth = form.width();
-
-        var imagePieces = [];
 
         function pdf() {
             var node = document.getElementById('semester');
