@@ -295,6 +295,21 @@
         <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
         function semester_Markieren(caller) {
 
+            console.log("vorheriges ausgewaehlt_semester :: " + ausgewaehlt_semester);
+            console.log("vorheriges ausgewaehlt_semester :: " + ausgewaehlt_semester);
+
+            console.log(moving == true ? "moving ON" : "moving off");
+
+            if(moving)
+            {
+                module_in_semester_einfügen(ausgewaehlt_modul, $(caller).children().children().html().substring(0, 1));
+
+                console.log("moving auf false gesetzt");
+
+                moving = false;
+                return;
+            }
+
             // Zweites h-Label hinzufügen ... Einmal Zahl und dann WinterSommerSemester Label
             // console.log($(caller).children().children().html().substring(0, 1));
 
@@ -364,22 +379,26 @@
 
         <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
         function add_Semester(startSem) {
+
+            var wert = Number(document.getElementById("count").textContent);
+
             $("#semester").append(
                     '<div class = "container semester-gesamt" onclick="semester_Markieren(this)">' +
-                    '<div class = "row">' +
-                    '<h6 class="label"></h6>' +
-                    '</div>' +
+                        '<div class = "row">' +
+                            '<h6 id="'+ 'sem'+ wert +'"class="label">'+ wert +'</h6>' +
+                            '<h6 class="label"></h6>' +
+                        '</div>' +
                     '</div>'
             );
-            var wert = Number(document.getElementById("count").textContent);
+
             if (startSem == "winter" && wert % 2 == 1) {
-                $(".label").last().text("" + $("#count").html() + ": Wintersemester");
+                $(".label").last().text("" + ": Wintersemester");
             }
             else if (startSem == "winter" && wert % 2 == 0) {
-                $(".label").last().text("" + $("#count").html() + ": Sommersemester");
+                $(".label").last().text("" + ": Sommersemester");
             }
             else if (startSem == "sommer" && wert % 2 == 1) {
-                $(".label").last().text("" + $("#count").html() + ": Sommersemester");
+                $(".label").last().text("" + ": Sommersemester");
             }
             else {
                 $(".label").last().text("" + $("#count").html() + ": Wintersemester");
@@ -409,16 +428,20 @@
         <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
         function move_module_to_semester(caller) {
 
+            event.preventDefault();
+
             var id = $(caller).parent().parent().children().first().text().replace("ID: ", "");
 
             ausgewaehlt_modul = id;
+
+            console.log("move module : " + id );
 
             $("p:contains(" + id + ")").parent().parent().remove();
 
             // Grünen Rahmen löschen RECHTS
             $('.container.semester-gesamt').removeClass('ausgewaehlt');
 
-
+            moving = true;
 
         };
 
@@ -689,14 +712,16 @@
             // counter_plus();
 
             $("#button_plus").trigger("click");
+            $("#button_plus").trigger("click");
 
-            // module_in_semester_einfügen('THI', 1);
+            module_in_semester_einfügen(1, 1);
 
             // module_in_semester_einfügen(2, 1);
 
             // $( "#button_minus" ).trigger( "click" );
 
             add_katalog("Katalog 2");
+
             @for(mod <- modulListe) {
             insert_module_in_katalog("k2", "@{mod(0)}", "@{mod(1)}");
             }
