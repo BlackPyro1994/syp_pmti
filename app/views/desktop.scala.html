@@ -247,12 +247,12 @@
         </div>
 
         <script>
-            
+
         var ausgewaehlt_semester = "";
         var ausgewaehlt_modul = "";
         var startSem = "winter";
         var katalog_open = 0;
-
+        var moving = false;
 
         <!--############################################################################################################################-->
         <!--############################################################################################################################-->
@@ -297,6 +297,9 @@
 
             // Zweites h-Label hinzufügen ... Einmal Zahl und dann WinterSommerSemester Label
             // console.log($(caller).children().children().html().substring(0, 1));
+
+            console.log("ausgewaehlt_modul :: " + ausgewaehlt_modul);
+
 
             if ($(caller).attr('class').includes("ausgewaehlt")) {
                 $(caller).toggleClass('ausgewaehlt');
@@ -404,6 +407,22 @@
         };
 
         <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+        function move_module_to_semester(caller) {
+
+            var id = $(caller).parent().parent().children().first().text().replace("ID: ", "");
+
+            ausgewaehlt_modul = id;
+
+            $("p:contains(" + id + ")").parent().parent().remove();
+
+            // Grünen Rahmen löschen RECHTS
+            $('.container.semester-gesamt').removeClass('ausgewaehlt');
+
+
+
+        };
+
+        <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
         function toFile() {
             saveTextAs("", "test.csv");
         };
@@ -466,7 +485,7 @@
                     '<button type = "button" id = "button_loeschen" onClick="delete_module_from_semester(this)" class = "btn btn-danger btn-sm btn-block">x</button>' +
                     '</div>' +
                     '<div class = "col">' +
-                    '<button type = "button" id = "button_verschieben" class = "btn btn-warning btn-sm btn-block">>></button>' +
+                    '<button type = "button" id = "button_verschieben" onClick="move_module_to_semester(this)" class = "btn btn-warning btn-sm btn-block">>></button>' +
                     '</div>' +
                     '</div>'
             );
