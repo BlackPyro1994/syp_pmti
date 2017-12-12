@@ -5,10 +5,15 @@ import play.mvc.*;
 
 import pmti.fachlogik.grenzklassen.KatalogGrenz;
 import pmti.fachlogik.grenzklassen.ModulGrenz;
+import pmti.fachlogik.katalogeloader.impl.IKatalogeLoaderImpl;
+import pmti.fachlogik.katalogeloader.services.IKatalogeLoader;
+import pmti.fachlogik.moduleloader.impl.IModuleLoaderImpl;
+import pmti.fachlogik.moduleloader.services.IModuleLoader;
 import views.html.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,33 +31,29 @@ public class HomeController extends Controller {
     public Result index() {
 
         ArrayList<Object[]> modulListe = new ArrayList<Object[]>();
+        ArrayList<Object[]> katalogListe = new ArrayList<Object[]>();
 
         // ArrayList a = new ArrayList((new pmti.fachlogik.katalogeloader.impl.IKatalogeLoaderImpl().getKataloge()));
 
-/*        for (int i = 0; i < a.size(); i++) {
-            System.out.println((ModulGrenz)(a.get(i))));
+        /*
 
-            modulListe.add(new Object[]{, "Modul Alpha"});
-        }*/
-
-
-        for (ModulGrenz mg : (new pmti.fachlogik.moduleloader.impl.IModuleLoaderImpl().getModule())) {
-           //  System.out.println("modulid: "+mg.getModulid()+" modulname: "+mg.getModulname()+" modulkomponenten: "+(mg.getModulkomponenten())[0]+(mg.getModulkomponenten())[1]+(mg.getModulkomponenten())[2]+(mg.getModulkomponenten())[3]+" semesterzuordnung: "+(mg.getSemesterzuordnung())[0]+(mg.getSemesterzuordnung())[1]+" dozent: "+mg.getDozent()+" ects: "+mg.getEcts()+" istPflicht: "+ mg.getIstPflicht() + " katalogid: "+mg.getKatalogid());
-
-            // System.out.println("modulid: "+mg.getModulid()+" modulname: "+mg.getModulname()+" modulkomponenten: "+(mg.getModulkomponenten())[0]+(mg.getModulkomponenten())[1]+(mg.getModulkomponenten())[2]+(mg.getModulkomponenten())[3]+" semesterzuordnung: "+(mg.getSemesterzuordnung())[0]+(mg.getSemesterzuordnung())[1]+" dozent: "+mg.getDozent()+" ects: "+mg.getEcts()+" istPflicht: "+ mg.getIstPflicht() + " katalogid: "+mg.getKatalogid());
+         for (ModulGrenz mg : (new pmti.fachlogik.moduleloader.impl.IModuleLoaderImpl().getModule()) ) {
             modulListe.add(new Object[]{mg.getModulid(), mg.getModulname()});
         };
+        */
 
-        /*for (KatalogGrenz kg : alleKataloge) {
-            //System.out.println(kg.getKatalogid()+" "+kg.getKatalogname() + " "+kg.getBelegungsanzahl());
-        }*/
+        IModuleLoader ml = new IModuleLoaderImpl();
+        IKatalogeLoader kl = new IKatalogeLoaderImpl();
 
-        modulListe.add(new Object[]{8, "Modul Beta"});
-        modulListe.add(new Object[]{9, "Modul Gamma"});
-        modulListe.add(new Object[]{10, "Modul Delta"});
-        modulListe.add(new Object[]{11, "Modul Epsilon"});
+        for (ModulGrenz mg : ml.getModule()) {
+            modulListe.add(new Object[]{mg.getModulid(),mg.getModulname(),(mg.getModulkomponenten())[0], (mg.getModulkomponenten())[1],(mg.getModulkomponenten())[2],(mg.getModulkomponenten())[3],(mg.getSemesterzuordnung())[0],(mg.getSemesterzuordnung())[1],mg.getDozent(),mg.getEcts(),mg.getIstPflicht(),mg.getKatalogid()});
+        }
 
-        return ok(index.render(request().getHeader("User-Agent"), modulListe));
+        for (KatalogGrenz kg : kl.getKataloge()) {
+            katalogListe.add(new Object[]{kg.getKatalogid(),kg.getKatalogname(),kg.getBelegungsanzahl()});
+        }
+
+        return ok(index.render(request().getHeader("User-Agent"),modulListe,katalogListe));
     }
 
 }
