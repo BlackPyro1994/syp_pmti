@@ -236,6 +236,7 @@
             var ausgewaehlt_modul = "";
             var startSem = "winter";
             var all_catalogs_closed = 0;
+            var moving = 0;
 
             <!--############################################################################################################################-->
 
@@ -283,11 +284,21 @@
 
 
                 if (ausgewaehlt_modul != "") {
-                    insert_Module_In_Semester(ausgewaehlt_modul, $(caller).children().children().html().substring(0, 1));
+                    if(moving == 1) {
+                        var id = "mod_"+ausgewaehlt_modul;
+                        console.log("moving = "+moving);
+                        console.log(ausgewaehlt_modul);
+                        insert_Module_In_Semester(ausgewaehlt_modul, $(caller).children().children().html().substring(0, 1));
+                        $("#" + id).remove();
+                        moving = 0;
+                     } else {
+                        insert_Module_In_Semester(ausgewaehlt_modul, $(caller).children().children().html().substring(0, 1));
+                    }
+
+
                 }
                 else {
                     // ausgewaehlt_semester = $(caller).children().children().html().replace("Semester ", "");
-
                     ausgewaehlt_semester = $(caller).children().children().html().substring(0, 1);
                 }
 
@@ -360,14 +371,14 @@
                     $(".label").last().text(" : Sommer-Semester");
                 }
                 else {
-                    $(".label").last().text("" + $("#count").html() + ": Wintersemester");
+                    $(".label").last().text(" : Winter-Semester");
                 }
             }
 
             <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
             function delete_last_semester() {
-                console.log($("#semester").children().last().remove());
+                $("#semester").children().last().remove();
             };
 
             <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
@@ -397,7 +408,7 @@
                 var id = $(caller).parent().parent().children().first().text().replace("ID: ", "");
                 var mod_id = "mod_" + id;
 
-                //$("#" + mod_id).remove();
+                console.log(moving);
 
             };
 
@@ -413,7 +424,7 @@
                     document.getElementById("fehlermeldung").textContent = meldung;
                 }
                 else if (wert != "") {
-                    console.log($("#semester").children().remove());
+                    $("#semester").children().remove();
 
                     for (i = 0; i < wert; i++) {
                         count++;
@@ -539,7 +550,7 @@
 
                                     // console.log($(".modul:hidden").innerText);
                                     // $( ".modul:visible" ).toogle("hidden");
-                                    console.log($( ".modul:visible" ).closest(".class_click_katalog").attr("id"));
+                                    $( ".modul:visible" ).closest(".class_click_katalog").attr("id");
                                 }
 
                             }
@@ -593,7 +604,8 @@
                     }
                     else if ($(click).attr('class').includes("class_click_move")) {
                         // VERSCHIEBEN
-                        $(click).addClass("ausgewählt");
+                        //$(click).addClass("ausgewählt");
+                        moving = 1;
                         move_module_to_semester(click);
                     }
                     else if ($(click).attr('class').includes("class_click_p")) {
