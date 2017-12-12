@@ -411,12 +411,6 @@
             };
 
             <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
-            function toFile() {
-                saveTextAs("", "test.csv");
-            };
-
-            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
-
             function ok_btn_neuerPlan() {
                 var count = 0;
                 var meldung = "Bitte eine Anzahl angeben";
@@ -517,49 +511,9 @@
                 );
             }
 
-            function pdf() {
-                var node = document.getElementById('semester');
-
-                domtoimage.toSvg(node).then(function (dataUrl) {
-                    img = new Image();
-                    img.src = dataUrl;
-
-                    // var svgData = new XMLSerializer().serializeToString(img);
-
-                    document.body.appendChild(img);
-
-                    var canvas = document.createElement("canvas");
-                    var ctx = canvas.getContext("2d");
-
-                    // img.setAttribute("src", "data:image/svg+xml;base64," + btoa(svgData));
-
-                    img.onload = function () {
-                        ctx.drawImage(img, 0, 0);
-
-                        document.body.appendChild(img);
-
-                        // Now is done
-                        // console.log(canvas.toDataURL("image/png"));
-
-                        var doc = new jsPDF({
-                            unit: 'px',
-                            format: 'a4'
-                        });
-
-                        doc.addImage(img, 'PNG', 10, 10);
-                        doc.addPage();
-
-                        doc.save('techumber-html-to-pdf.pdf');
-                        form.width(cache_width);
-                    };
-                });
-
-            }
-
             <!--############################################################################################################################-->
             <!--############################################################################################################################-->
             <!--############################################################################################################################-->
-
 
             $(document).ready(function () {
 
@@ -637,7 +591,7 @@
 
                 <!--############################################################-->
 
-                $('.class_click_semester').on('click', function (click) {
+                $('#semester').on('click', '.class_click_semester', function (click) {
                     click.preventDefault();
 
                     click = click.target;
