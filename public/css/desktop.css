@@ -37,9 +37,9 @@ body {
 }
 
 .scrollbar {
-    max-height: 450px;
+    max-height: 600px;
     background: #fff;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 .rounded {

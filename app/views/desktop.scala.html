@@ -391,22 +391,13 @@
 
             function move_module_to_semester(caller) {
 
-                caller.preventDefault();
-
+                var modul = $(caller).parent().parent();
+                var mod_id = modul.attr("id").replace("mod_","");
+                ausgewaehlt_modul = mod_id;
                 var id = $(caller).parent().parent().children().first().text().replace("ID: ", "");
+                var mod_id = "mod_" + id;
 
-                console.log($(caller).parent().parent().children().first());
-
-                ausgewaehlt_modul = id;
-
-                console.log("move module : " + id);
-
-                $("p:contains(" + id + ")").parent().parent().remove();
-
-                // Grünen Rahmen löschen RECHTS
-                $('.container.semester-gesamt').removeClass('ausgewaehlt');
-
-                moving = true;
+                //$("#" + mod_id).remove();
 
             };
 
@@ -540,7 +531,7 @@
 
                                 if (all_catalogs_closed == 0) {
                                     var new_click = $(click);
-                                    $(new_click).parent().siblings().toggle("hidden");
+                                    $(new_click).parent().siblings().slideToggle("slow");
 
                                     // console.log($("#div_kataloge").filter( $("[display=block]")));
                                     // console.log($("#div_kataloge").filter( $("[display=none]")));
@@ -593,12 +584,8 @@
 
                 $('#semester').on('click', '.class_click_semester', function (click) {
                     click.preventDefault();
-
                     click = click.target;
 
-                    console.log("click ===== " + click);
-
-                    console.log("$(click).html() ===== " + $(click).html());
 
                     if ($(click).attr('class').includes("class_click_delete")) {
                         // LOESCHEN
@@ -606,21 +593,20 @@
                     }
                     else if ($(click).attr('class').includes("class_click_move")) {
                         // VERSCHIEBEN
+                        $(click).addClass("ausgewählt");
+                        move_module_to_semester(click);
                     }
                     else if ($(click).attr('class').includes("class_click_p")) {
                         var new_click = $(click).parent().parent().parent();
-                        console.log("$(click).parent() ==== " + new_click)
                         semester_Markieren(new_click);
                     }
                     // Winter / Sommer - Semester Label wurde geklickt
                     else if ($(click).attr('class').includes("label")) {
                         var new_click = $(click).parent().parent();
-                        console.log("$(click).parent() ==== " + new_click)
                         semester_Markieren(new_click);
                     }
                     else if ($(click).attr('class').includes("class_click_semester_row")) {
                         var new_click = $(click).parent();
-                        console.log("$(click).parent() ==== " + new_click)
                         semester_Markieren(new_click);
                     }
 
