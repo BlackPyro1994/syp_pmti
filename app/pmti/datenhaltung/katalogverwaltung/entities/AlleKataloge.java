@@ -9,7 +9,6 @@ import java.util.List;
 
 public class AlleKataloge {
 
-    private ArrayList<Modulkatalog> kataloge = new ArrayList<Modulkatalog>();
     private static AlleKataloge einzigesExemplar;
 
     private AlleKataloge(){}
@@ -28,7 +27,7 @@ public class AlleKataloge {
         String csvZeile;
         Modulkatalog mk;
         int intVar;
-
+        ArrayList<Modulkatalog> kataloge = new ArrayList<Modulkatalog>();
 
         try{
             fr=new FileReader("public/csv/Modulkataloge.csv");

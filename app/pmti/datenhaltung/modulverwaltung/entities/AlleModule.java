@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class AlleModule {
-    private ArrayList<Modul> module = new ArrayList<>();
+
     private static AlleModule einzigesExemplar;
 
     private AlleModule(){}
@@ -28,6 +28,7 @@ public class AlleModule {
         int intVar;
         int[] intArr4;
         int[] intArr2;
+        ArrayList<Modul> module = new ArrayList<>();
 
 
         try{
