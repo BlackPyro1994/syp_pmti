@@ -11,7 +11,7 @@ public class IRKatalogImpl implements IRKatalog {
     public List<Modulkatalog> getAlleKataloge() {
         AlleKataloge alleKataloge = AlleKataloge.exemplar();
 
-        return alleKataloge.katalogeEinlesen();
+        return alleKataloge.katalogeRueckgabe();
 
     }
 }

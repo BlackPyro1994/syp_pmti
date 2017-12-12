@@ -11,6 +11,6 @@ public class IRModulImpl implements IRModul {
     public List<Modul> getAlleModule() {
         AlleModule alleModule = AlleModule.exemplar();
 
-        return alleModule.moduleEinlesen();
+        return alleModule.moduleRueckgabe();
     }
 }

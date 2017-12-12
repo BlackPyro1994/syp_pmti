@@ -9,25 +9,15 @@ import java.util.List;
 
 public class AlleKataloge {
 
+    ArrayList<Modulkatalog> kataloge = new ArrayList<Modulkatalog>();
     private static AlleKataloge einzigesExemplar;
 
-    private AlleKataloge(){}
-
-    public static AlleKataloge exemplar(){
-        if(einzigesExemplar==null){
-            einzigesExemplar=new AlleKataloge();
-        }
-        return einzigesExemplar;
-    }
-
-    public List<Modulkatalog> katalogeEinlesen(){
-
+    private AlleKataloge(){
         FileReader fr;
         BufferedReader br;
         String csvZeile;
         Modulkatalog mk;
         int intVar;
-        ArrayList<Modulkatalog> kataloge = new ArrayList<Modulkatalog>();
 
         try{
             fr=new FileReader("public/csv/Modulkataloge.csv");
@@ -52,9 +42,18 @@ public class AlleKataloge {
         } catch (IOException e){
             System.err.println("Hinweis fuer den Administrator: Es gab eine IOException beim Zugriff auf die Datei 'Modulkataloge.csv': "+e.getClass().getName()+": "+e.getMessage());
         }
+    }
+
+    public static AlleKataloge exemplar(){
+        if(einzigesExemplar==null){
+            einzigesExemplar=new AlleKataloge();
+        }
+        return einzigesExemplar;
+    }
+
+    public List<Modulkatalog> katalogeRueckgabe(){
 
         return kataloge;
-
 
     }
 }
