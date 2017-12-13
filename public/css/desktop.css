@@ -66,8 +66,8 @@ body {
 .katalog {
     border: 1px solid #000;
     border-radius: 10px;
-    margin-bottom: 8px;
-    padding: 5px;
+    /*margin-bottom: 8px;*/
+    /*padding: 5px;*/
     background: #eee;
 }
 
@@ -138,6 +138,14 @@ html, body {
 
 .semester .tags {
     border-right: 1px solid #000;
+    /*pointer-events: none;*/
+}
+
+.katalog_label {
+    border-right: 1px solid #000;
+    width:100%;
+    heigth:100%;
+    /*pointer-events: none;*/
 }
 
 .ausgewaehlt {
