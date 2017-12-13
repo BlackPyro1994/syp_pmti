@@ -139,7 +139,7 @@
     </div>
    </div>
     <!-- Container Menüleiste -->
-   <div class = "container">
+   <div class = "container-fluid">
     <div class = "row rounded" align = "center">
 
      <div class = "col" align = "center">
@@ -195,10 +195,10 @@
     </div>
    </div>
     <!-- Container um Katalogliste, Regeln, Semester -->
-   <div class = "container">
+   <div class = "container-fluid">
     <div class = "row rounded">
-      <!-- Container Katalogliste -->
-     <div class = "col-4 container">
+      <!-- container-fluid Katalogliste -->
+     <div class = "col-3 container-fluid">
       <div id = "div_kataloge" class = "col scrollbar rounded-scrollbar-left">
        <div class = "row">
         <span class = "col" align = "left">
@@ -210,17 +210,17 @@
       </div>
      </div>
 
-      <!--  Container um Regeln, Semester -->
-     <div class = "col container">
-       <!--  Container Regeln -->
-      <div class = "container" id = "regeln">
+      <!--  container-fluid um Regeln, Semester -->
+     <div class = "col container-fluid">
+       <!--  container-fluid Regeln -->
+      <div class = "container-fluid" id = "regeln">
        <div class = "row">
         <div class = "col warnungen">
          <p>Regel 1</p>
         </div>
        </div>
       </div>
-       <!--  Container Semester -->
+       <!--  container-fluid Semester -->
       <div id = "semester">
       </div>
      </div>
@@ -363,7 +363,7 @@
           $("#" + mod_id).parent().parent().addClass('blocked');
 
           // Grünen Rahmen löschen RECHTS
-          $('.container.semester-gesamt').removeClass('ausgewaehlt');
+          $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
 
          }
 
@@ -374,7 +374,7 @@
           var wert = Number(document.getElementById("count").textContent);
 
           $("#semester").append(
-                  '<div class = "container semester-gesamt class_click_semester">' +
+                  '<div class = "container-fluid semester-gesamt class_click_semester">' +
                   '<div class = "class_click_semester_row row">' +
                   '<h6 id="' + 'sem' + wert + '"class="label">' + wert + '</h6>' +
                   '<h6 class="label"></h6>' +
@@ -412,7 +412,7 @@
           $("#" + id).parent().parent().removeClass('blocked');
 
           // Grünen Rahmen löschen RECHTS
-          //$('.container.semester-gesamt').removeClass('ausgewaehlt');
+          //$('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
 
           // ausgewaehlt_semester (Rechts) RESET-EN !!
           //ausgewaehlt_semester = "";
@@ -466,35 +466,47 @@
          <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
          function add_empty_modul(mod_id, sem_id) {
-          $("#semester").children().filter(":nth-child(" + sem_id + ")").append(
-                  '<div id="mod_' + mod_id + '"class = "row semester">' +
-                  '<div class = "col tags id">' +
-                  '<p class="class_click_p">ID: '
 
-                  + mod_id +
+          console.log("add_empty_modul");
 
-                  '</p>' +
-                  '</div>' +
-                  '<div class = "col tags name">' +
-                  '<p class="class_click_p">Name</p>' +
-                  '</div>' +
-                  '<div class = "col tags sws">' +
-                  '<p class="class_click_p">SWS:</p>' +
-                  '</div>' +
-                  '<div class = "col tags dozent">' +
-                  '<p class="class_click_p">Dozent:</p>' +
-                  '</div>' +
-                  '<div class = "col tags ects">' +
-                  '<p class="class_click_p">ECTS:</p>' +
-                  '</div>' +
-                  '<div class = "col tags">' +
-                  '<button type = "button" id = "button_loeschen" class = "btn btn-danger btn-sm btn-block class_click_delete">x</button>' +
-                  '</div>' +
-                  '<div class = "col">' +
-                  '<button type = "button" id = "button_verschieben" class = "btn btn-warning btn-sm btn-block class_click_move">>></button>' +
-                  '</div>' +
-                  '</div>'
-          );
+          @for(mod <- modulListe) {
+          console.log(mod_id + " == " + "@{mod(0)}" + " ? ");
+          if ("@{mod(0)}"==mod_id) {
+
+           @*insert_module_in_katalog("@{mod(11)}", "@{mod(0)}", "@{mod(1)}");*@
+
+           $("#semester").children().filter(":nth-child(" + sem_id + ")").append(
+                   '<div id="mod_' + mod_id + '"class = "row semester">' +
+                   '<div class = "col tags id">' +
+                   '<p class="class_click_p">ID: '
+
+                   + mod_id +
+
+                   '</p>' +
+                   '</div>' +
+                   '<div class = "col tags name">' +
+                   '<p class="class_click_p"> @{mod(1)} </p>' +
+                   '</div>' +
+                   '<div class = "col tags sws">' +
+                   '<p class="class_click_p">V:@{mod(2)},Ü:@{mod(3)},P:@{mod(4)},Pr:@{mod(5)}</p>' +
+                   '</div>' +
+                   '<div class = "col tags dozent">' +
+                   '<p class="class_click_p">@{mod(8)}</p>' +
+                   '</div>' +
+                   '<div class = "col tags ects">' +
+                   '<p class="class_click_p" style="vertical-align: middle,text-align: center">ECTS: @{mod(9)}</p>' +
+                   '</div>' +
+                   '<div class = "col-1 tags">' +
+                   '<button type = "button" id = "button_loeschen" class = " btn btn-danger btn-sm btn-block class_click_delete">x</button>' +
+                   '</div>' +
+                   '<div class = "col-1">' +
+                   '<button type = "button" id = "button_verschieben" class = "btn btn-warning btn-sm btn-block class_click_move">>></button>' +
+                   '</div>' +
+                   '</div>'
+           );
+          }
+          }
+
 
          }
 
@@ -511,10 +523,9 @@
 
           // var katalog_count = $("#div_kataloge").children().length;
           $("#div_kataloge").append(
-
-                  '<div id="' + kat_id + '" class = "class_click_katalog katalog"  style="padding:0%">' +
+                  '<div id="' + kat_id + '" class = "class_click_katalog katalog">' +
                   '<div class = "class_click_katalog_tags tags">' +
-                  '<h6 class = "class_click_katalog_label label">' + title + '</h6>' +
+                  '<h6 class = "class_click_katalog_label katalog_label" style="margin:5%">' + title + '</h6>' +
                   '</div>' +
                   '</div>'
           );
@@ -530,7 +541,7 @@
 
           $("#" + katalog_id).append(
                   '<div class = "class_click_module_row row modul">'
-                  + '<div class = "class_click_module_tag tags" style = "text-align: center,margin:5%">'
+                  + '<div class = "class_click_module_tag tags" style = "text-align: center">'
 
                   + '<p id = ' + module_id + ' class = "class_click_module_p">'
 
@@ -558,62 +569,63 @@
           insert_module_in_katalog("@{mod(11)}", "@{mod(0)}", "@{mod(1)}");
           }
 
-          $('.class_click_katalog').on('click', function (click) {
+          $('#div_kataloge').on('click', '.class_click_katalog', function (click) {
 
-                   click.preventDefault();
-                   click = click.target;
+           click.preventDefault();
+           click = click.target;
 
-                   if ($(click).attr('class').includes("class_click_katalog")) {
+           console.log("click : " + click);
 
-                    if (all_catalogs_closed == 0) {
-                     var new_click = $(click);
-                     $(new_click).parent().siblings().toggle("hidden");
+           if ($(click).attr('class').includes("class_click_katalog")) {
 
-                     // console.log($("#div_kataloge").filter( $("[display=block]")));
-                     // console.log($("#div_kataloge").filter( $("[display=none]")));
-                     // console.log($( "div:hidden" ));
+            if (all_catalogs_closed == 0) {
+             var new_click = $(click);
+             $(new_click).parent().siblings().toggle("hidden");
 
-                     // console.log($(".modul:hidden").innerText);
-                     // $( ".modul:visible" ).toogle("hidden");
-                     $(".modul:visible").closest(".class_click_katalog").attr("id");
-                    }
+             // console.log($("#div_kataloge").filter( $("[display=block]")));
+             // console.log($("#div_kataloge").filter( $("[display=none]")));
+             // console.log($( "div:hidden" ));
 
-                   }
-                   else if ($(click).attr('class').includes("class_click_module_p")) {
-                    modul_Markieren(click);
-                   }
-                   else if ($(click).attr('class').includes("class_click_module_row")) {
-                    return;
-                   }
+             // console.log($(".modul:hidden").innerText);
+             // $( ".modul:visible" ).toogle("hidden");
+             $(".modul:visible").closest(".class_click_katalog").attr("id");
+            }
 
-                   /*
-                    if (katalog_open == 0)
-                    {
+           }
+           else if ($(click).attr('class').includes("class_click_module_p")) {
+            modul_Markieren(click);
+           }
+           else if ($(click).attr('class').includes("class_click_module_row")) {
+            return;
+           }
 
-                    $(e).parent().parent().find('.modul').removeClass("hidden");
+           /*
+            if (katalog_open == 0)
+            {
 
-                    katalog_open = e.parent().parent().attr('id');
+            $(e).parent().parent().find('.modul').removeClass("hidden");
 
-                    }
-                    else if (e.parent().parent().attr('id') == katalog_open)
-                    {
+            katalog_open = e.parent().parent().attr('id');
 
-                    $(e).parent().parent().parent().children().find('.modul').addClass("hidden");
+            }
+            else if (e.parent().parent().attr('id') == katalog_open)
+            {
 
-                    katalog_open = 0;
+            $(e).parent().parent().parent().children().find('.modul').addClass("hidden");
 
-                    }
-                    else
-                    {
+            katalog_open = 0;
 
-                    $(e).parent().parent().parent().children().find('.modul').addClass("hidden");
-                    $(e).parent().parent().removeClass("hidden");
+            }
+            else
+            {
 
-                    katalog_open = e.parent().parent().attr('id');
+            $(e).parent().parent().parent().children().find('.modul').addClass("hidden");
+            $(e).parent().parent().removeClass("hidden");
 
-                    }*/
-                  }
-          );
+            katalog_open = e.parent().parent().attr('id');
+
+            }*/
+          });
 
           $('#semester').on('click', '.class_click_semester', function (click) {
            click.preventDefault();
@@ -645,6 +657,7 @@
            }
 
           });
+
 
          });
 
