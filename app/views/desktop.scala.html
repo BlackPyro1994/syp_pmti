@@ -35,7 +35,7 @@
     </span>
    </div>
     <!-- PopUp Neuer Plan -->
-   <div id = "myModal-neuerPlan" class = "modal fade" role = "dialog">
+   <div id = "myModal-new_plan" class = "modal fade" role = "dialog">
     <div class = "modal-dialog">
       <!-- PopUp Inhalt-->
      <div class = "modal-content">
@@ -77,7 +77,7 @@
         Abbrechen
        </button>
        <button type = "button" class = "btn btn-default" id = "popup-ok"
-       onclick = "ok_btn_neuerPlan()">OK
+       onclick = "ok_button_new_plan()">OK
        </button>
       </div>
      </div>
@@ -143,7 +143,7 @@
     <div class = "row rounded" align = "center">
 
      <div class = "col" align = "center">
-      <button type = "button" class = "btn btn-primary" data-toggle = "modal" data-target = "#myModal-neuerPlan">
+      <button type = "button" class = "btn btn-primary" data-toggle = "modal" data-target = "#myModal-new_plan">
        Neuer Plan
       </button>
      </div>
@@ -216,11 +216,11 @@
      <div class = "col container-fluid">
        <!--  container-fluid Regeln -->
       <div class = "container-fluid" id = "regeln">
-       <div class = "row">
-        <div class = "col warnungen">
-         <p>Regel 1</p>
-        </div>
-       </div>
+       @*  <div class = "row">  *@
+        @*  <div class = "col warnungen">  *@
+         @*  <p>Regel 1</p>  *@
+       @*  </div>  *@
+       @*  </div>  *@
       </div>
        <!--  container-fluid Semester -->
       <div id = "div_semester">
@@ -239,6 +239,8 @@
          var startSem = "winter";
          var all_catalogs_closed = 0;
          var moving = 0;
+
+         var blocked = true;
 
          <!--############################################################################################################################-->
 
@@ -542,12 +544,12 @@
 
          <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
-         function neuerPlan() {
+         function new_plan() {
           wert = $("#input-semesteranzahl").val();
-          ok_btn_neuerPlan();
+          ok_button_new_plan();
          }
 
-         function ok_btn_neuerPlan() {
+         function ok_button_new_plan() {
 
           var count = 0;
           var meldung = "Bitte eine Anzahl angeben";
@@ -567,7 +569,7 @@
             add_semester(startSem);
            }
            document.getElementById("fehlermeldung").textContent = "";
-           $('#myModal-neuerPlan').modal('hide');
+           $('#myModal-new_plan').modal('hide');
            $(".class_p").removeClass('ausgewaehlt');
            $(".class_p").parent().removeClass('blocked');
           }
@@ -577,10 +579,11 @@
           document.getElementById("button_speichern").disabled = false;
           document.getElementById("button_pdf").disabled = false;
 
+          blocked = false;
+
          }
 
          <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
-
 
          $(document).ready(function () {
 
@@ -594,6 +597,7 @@
 
           $('#div_kataloge').on('click', '.class_click_katalog', function (click) {
 
+           if(!blocked){
            click.preventDefault();
            click = click.target;
 
@@ -648,7 +652,7 @@
             katalog_open = e.parent().parent().attr('id');
 
             }*/
-          });
+           }});
           $('#div_semester').on('click', '.class_click_semester', function (click) {
 
            click.preventDefault();
@@ -679,10 +683,7 @@
            }
 
           });
-
-          $('#button_plus').trigger('click');
-
-          $( ".modul" ).toggle("hidden");
+          
 
          });
 
