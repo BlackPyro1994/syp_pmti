@@ -254,6 +254,7 @@
           document.getElementById("count").textContent = wert;
           add_semester(startSem);
          }
+
          function counter_minus() {
           var wert = Number(document.getElementById("count").textContent);
 
@@ -269,34 +270,76 @@
          <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
          function select_module(caller) {
+
+          console.log("mmmmmmmmmmmmmmmmmmmmmmmmm");
+          // console.log(caller);
+
+          // $(caller).removeClass('ausgewaehlt');
+
+          console.log("ID von altes: " + ausgewaehlt_modul);
+          console.log("ID von neues : " + $(caller).attr('id'));
+
           if (!$(caller).parent().parent().attr('class').includes("blocked")) {
 
-           // WENN MOD BEREITS AUSGEWÄHLT ---> INVERTIERE
-           if (!$(caller).attr('class').includes("ausgewaehlt")) {
-            console.log("A");
-            $(caller).toggleClass('ausgewaehlt');
-           }
-           else {
-            console.log("B");
-            $(".class_p").removeClass('ausgewaehlt');
-            $(caller).addClass('ausgewaehlt');
-           }
+          if (ausgewaehlt_semester != "") {
+           console.log("Semester bereits gewählt.");
+           insert_module_in_semester($(caller).attr('id'), ausgewaehlt_semester);
+           return;
+          }
 
-           if (ausgewaehlt_semester != "") {
-            insert_module_in_semester($(caller).attr('id'), ausgewaehlt_semester);
-           }
-           else {
+           if ((!$(caller).attr('class').includes("ausgewaehlt")) && ausgewaehlt_modul=="") {
+
+            console.log("1 Fall");
+            // $(".class_click_module_p").toggleClass('ausgewaehlt');
+            $(caller).toggleClass('ausgewaehlt');
             ausgewaehlt_modul = $(caller).attr('id');
+
+
+           }
+           else if ($(caller).attr('id') == ausgewaehlt_modul) {
+
+            console.log("2 Fall");
+            // console.log($(caller).attr('class'));
+            $(caller).toggleClass('ausgewaehlt');
+            // $(caller).removeClass('ausgewaehlt');
+            // $("#mod_"+ausgewaehlt_modul).removeClass('ausgewaehlt');
+            // console.log($(caller).attr('class'));
+            ausgewaehlt_modul = "";
+
+           }
+           else if($("#"+ausgewaehlt_modul).attr('class').includes("ausgewaehlt") && ausgewaehlt_modul!= $(caller).attr('id')) {
+
+            console.log("3 Fall");
+            // $(".class_click_module_p").removeClass('ausgewaehlt');
+            $("#"+ausgewaehlt_modul).removeClass('ausgewaehlt');
+            $(caller).addClass('ausgewaehlt');
+            ausgewaehlt_modul =$(caller).attr('id');
+
            }
           }
-         }
+
+          console.log("Ausgewaehltes Modul : " + ausgewaehlt_modul);
+
+          // WENN MOD BEREITS AUSGEWÄHLT ---> INVERTIERE
+
+          /* if(){
+           console.log("B");
+           $(".class_click_module_p").removeClass('ausgewaehlt');
+           $(caller).addClass('ausgewaehlt');
+          }
+          else if(!$(caller).attr('class').includes("ausgewaehlt")) {
+           console.log("A");
+           $(caller).toggleClass('ausgewaehlt');
+          }
+          */
+
+          }
 
          function select_semester(caller) {
 
           if ($(caller).attr('class').includes("ausgewaehlt")) {
 
            console.log("BEREITS AUSGEWÄHLT ---> ENTFERNE AUSGEWÄHLT");
-
            $(caller).toggleClass('ausgewaehlt');
           }
           else {
@@ -388,6 +431,7 @@
                   '</div>'
           );
          }
+
          function add_semester(startSem) {
 
           var wert = Number(document.getElementById("count").textContent);
@@ -437,6 +481,7 @@
           //ausgewaehlt_semester = "";
 
          };
+
          function move_module_to_semester(caller) {
 
           console.log("---------------------------------------------------");
@@ -450,6 +495,7 @@
           // var id = $(caller).parent().parent().children().first().text().replace("ID: ", "");
 
          };
+
          function append_module(mod_id, sem_id) {
 
           console.log("append_module");
@@ -500,6 +546,7 @@
           wert = $("#input-semesteranzahl").val();
           ok_btn_neuerPlan();
          }
+
          function ok_btn_neuerPlan() {
 
           var count = 0;
@@ -533,7 +580,6 @@
          }
 
          <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
-
 
 
          $(document).ready(function () {
@@ -634,12 +680,11 @@
 
           });
 
+          $('#button_plus').trigger('click');
+
+          $( ".modul" ).toggle("hidden");
+
          });
-
-
-
-
-
 
  </script>
 </html>
