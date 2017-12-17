@@ -216,11 +216,11 @@
      <div class = "col container-fluid">
        <!--  container-fluid Regeln -->
       <div class = "container-fluid" id = "regeln">
-       @*  <div class = "row">  *@
-        @*  <div class = "col warnungen">  *@
-         @*  <p>Regel 1</p>  *@
-       @*  </div>  *@
-       @*  </div>  *@
+       @* <div class = "row"> *@
+       @* <div class = "col warnungen"> *@
+       @* <p>Regel 1</p> *@
+       @* </div> *@
+       @* </div> *@
       </div>
        <!--  container-fluid Semester -->
       <div id = "div_semester">
@@ -258,6 +258,7 @@
          }
 
          function counter_minus() {
+
           var wert = Number(document.getElementById("count").textContent);
 
           if (wert > 0) {
@@ -266,6 +267,18 @@
 
           document.getElementById("count").textContent = wert;
 
+          modules_in_sem = $("#div_semester").children().last().children().length;
+
+          for (i = 1; i <= modules_in_sem; i++) {
+           var id = $("#div_semester").children().last().children().filter(":nth-child(" + i + ")").children().first().text().replace("ID: ", "");
+
+           var mod_id = "mod_" + id;
+
+           $("#" + mod_id).remove();
+
+           $("#" + id).parent().parent().removeClass('blocked');
+          }
+
           delete_last_semester();
          }
 
@@ -273,94 +286,54 @@
 
          function select_module(caller) {
 
-          console.log("mmmmmmmmmmmmmmmmmmmmmmmmm");
-          // console.log(caller);
-
-          // $(caller).removeClass('ausgewaehlt');
-
-          console.log("ID von altes: " + ausgewaehlt_modul);
-          console.log("ID von neues : " + $(caller).attr('id'));
-
           if (!$(caller).parent().parent().attr('class').includes("blocked")) {
 
-          if (ausgewaehlt_semester != "") {
-           console.log("Semester bereits gewählt.");
-           insert_module_in_semester($(caller).attr('id'), ausgewaehlt_semester);
-           return;
-          }
+           if (ausgewaehlt_semester != "") {
+            insert_module_in_semester($(caller).attr('id'), ausgewaehlt_semester);
+            return;
+           }
 
-           if ((!$(caller).attr('class').includes("ausgewaehlt")) && ausgewaehlt_modul=="") {
+           if ((!$(caller).attr('class').includes("ausgewaehlt")) && ausgewaehlt_modul == "") {
 
-            console.log("1 Fall");
-            // $(".class_click_module_p").toggleClass('ausgewaehlt');
             $(caller).toggleClass('ausgewaehlt');
             ausgewaehlt_modul = $(caller).attr('id');
-
 
            }
            else if ($(caller).attr('id') == ausgewaehlt_modul) {
 
-            console.log("2 Fall");
-            // console.log($(caller).attr('class'));
             $(caller).toggleClass('ausgewaehlt');
-            // $(caller).removeClass('ausgewaehlt');
-            // $("#mod_"+ausgewaehlt_modul).removeClass('ausgewaehlt');
-            // console.log($(caller).attr('class'));
             ausgewaehlt_modul = "";
 
            }
-           else if($("#"+ausgewaehlt_modul).attr('class').includes("ausgewaehlt") && ausgewaehlt_modul!= $(caller).attr('id')) {
+           else if ($("#" + ausgewaehlt_modul).attr('class').includes("ausgewaehlt") && ausgewaehlt_modul != $(caller).attr('id')) {
 
-            console.log("3 Fall");
-            // $(".class_click_module_p").removeClass('ausgewaehlt');
-            $("#"+ausgewaehlt_modul).removeClass('ausgewaehlt');
+            $("#" + ausgewaehlt_modul).removeClass('ausgewaehlt');
             $(caller).addClass('ausgewaehlt');
-            ausgewaehlt_modul =$(caller).attr('id');
+            ausgewaehlt_modul = $(caller).attr('id');
 
            }
           }
-
-          console.log("Ausgewaehltes Modul : " + ausgewaehlt_modul);
-
-          // WENN MOD BEREITS AUSGEWÄHLT ---> INVERTIERE
-
-          /* if(){
-           console.log("B");
-           $(".class_click_module_p").removeClass('ausgewaehlt');
-           $(caller).addClass('ausgewaehlt');
-          }
-          else if(!$(caller).attr('class').includes("ausgewaehlt")) {
-           console.log("A");
-           $(caller).toggleClass('ausgewaehlt');
-          }
-          */
-
-          }
+         }
 
          function select_semester(caller) {
 
           if ($(caller).attr('class').includes("ausgewaehlt")) {
 
-           console.log("BEREITS AUSGEWÄHLT ---> ENTFERNE AUSGEWÄHLT");
            $(caller).toggleClass('ausgewaehlt');
           }
           else {
 
            $('#div_semester').children().removeClass('ausgewaehlt');
-           console.log("---> AUSGEWÄHLT");
            $(caller).toggleClass('ausgewaehlt');
 
           }
-
 
           if (ausgewaehlt_modul != "") {
 
            if (moving == 1) {
 
-            console.log("MOVE IN PROGRESS");
-            console.log("ZU VERSCHIEBENDES MODUL : " + ausgewaehlt_modul);
             var target = $(caller).children().children().html().substring(0, 1);
-            console.log("ZIEL : " + target);
+
             var id = "mod_" + ausgewaehlt_modul;
             $("#" + id).remove();
             insert_module_in_semester(ausgewaehlt_modul, target);
@@ -373,13 +346,11 @@
 
            }
 
-
           }
           else {
            // ausgewaehlt_semester = $(caller).children().children().html().replace("Semester ", "");
            ausgewaehlt_semester = $(caller).children().children().html().substring(0, 1);
           }
-
 
          }
 
@@ -403,9 +374,9 @@
 
          function insert_module_in_semester(mod_id, sem_id) {
 
-          // console.log("Modul : " + mod_id + " in Semester : " + sem_id);
-
           append_module(mod_id, sem_id);
+
+          // $("#div_semester").children().filter(":nth-child(" + sem_id + ")").append(
 
           ausgewaehlt_modul = "", ausgewaehlt_semester = "";
 
@@ -470,17 +441,12 @@
          <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
          function delete_module_from_semester(caller) {
+
           var id = $(caller).parent().parent().children().first().text().replace("ID: ", "");
           var mod_id = "mod_" + id;
 
           $("#" + mod_id).remove();
           $("#" + id).parent().parent().removeClass('blocked');
-
-          // Grünen Rahmen löschen RECHTS
-          //$('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
-
-          // ausgewaehlt_semester (Rechts) RESET-EN !!
-          //ausgewaehlt_semester = "";
 
          };
 
@@ -496,10 +462,8 @@
 
          function append_module(mod_id, sem_id) {
 
-          console.log("append_module");
-
           @for(mod <- modulListe) {
-          console.log(mod_id + " == " + "@{mod(0)}" + " ? ");
+
           if ("@{mod(0)}" == mod_id) {
 
            @*insert_module_in_catalog("@{mod(11)}", "@{mod(0)}", "@{mod(1)}");*@
@@ -579,6 +543,67 @@
 
          }
 
+         <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+         $('#div_kataloge').on('click', '.class_click_katalog', function (click) {
+
+          if (!blocked) {
+           click.preventDefault();
+           click = click.target;
+
+           if ($(click).attr('class').includes("class_click_katalog")) {
+
+            if (all_catalogs_closed == 0) {
+
+             var new_click = $(click);
+             console.log(click);
+             $(new_click).parent().siblings().toggle("hidden");
+
+             $(".modul:visible").closest(".class_click_katalog").attr("id");
+            }
+
+           }
+           else if ($(click).attr('class').includes("class_click_module_p")) {
+            select_module(click);
+           }
+           else if ($(click).attr('class').includes("class_click_module_row")) {
+            return;
+           }
+
+          }
+         });
+
+         $('#div_semester').on('click', '.class_click_semester', function (click) {
+
+          click.preventDefault();
+          click = click.target;
+
+          if ($(click).attr('class').includes("class_click_delete")) {
+           // LOESCHEN
+           delete_module_from_semester(click);
+          }
+          else if ($(click).attr('class').includes("class_click_move")) {
+           // VERSCHIEBEN
+           //$(click).addClass("ausgewählt");
+           moving = 1;
+           move_module_to_semester(click);
+          }
+          else if ($(click).attr('class').includes("class_click_p")) {
+           var new_click = $(click).parent().parent().parent();
+           select_semester(new_click);
+          }
+          // Winter / Sommer - Semester Label wurde geklickt
+          else if ($(click).attr('class').includes("label")) {
+           var new_click = $(click).parent().parent();
+           select_semester(new_click);
+          }
+          else if ($(click).attr('class').includes("class_click_semester_row")) {
+           var new_click = $(click).parent();
+           select_semester(new_click);
+          }
+
+         });
+         
          <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
          $(document).ready(function () {
@@ -591,95 +616,27 @@
           insert_module_in_catalog("@{mod(11)}", "@{mod(0)}", "@{mod(1)}");
           }
 
-          $('#div_kataloge').on('click', '.class_click_katalog', function (click) {
+          //////////////////////////////////////////////////////////////////////////
 
-           if(!blocked){
-           click.preventDefault();
-           click = click.target;
+          for (i = 1; i <= 4; i++) {
+           document.getElementById("count").textContent = i;
+           add_semester("winter");
+          }
 
-           console.log("click : " + click);
+          insert_module_in_semester("THI", 4);
+          insert_module_in_semester("FP", 4);
+          insert_module_in_semester("MAA", 4);
+          insert_module_in_semester("KOLL", 4);
 
-           if ($(click).attr('class').includes("class_click_katalog")) {
+          blocked = false;
 
-            if (all_catalogs_closed == 0) {
-             var new_click = $(click);
-             $(new_click).parent().siblings().toggle("hidden");
-
-             // console.log($("#div_kataloge").filter( $("[display=block]")));
-             // console.log($("#div_kataloge").filter( $("[display=none]")));
-             // console.log($( "div:hidden" ));
-
-             // console.log($(".modul:hidden").innerText);
-             // $( ".modul:visible" ).toogle("hidden");
-             $(".modul:visible").closest(".class_click_katalog").attr("id");
-            }
-
-           }
-           else if ($(click).attr('class').includes("class_click_module_p")) {
-            select_module(click);
-           }
-           else if ($(click).attr('class').includes("class_click_module_row")) {
-            return;
-           }
-
-           /*
-            if (katalog_open == 0)
-            {
-
-            $(e).parent().parent().find('.modul').removeClass("hidden");
-
-            katalog_open = e.parent().parent().attr('id');
-
-            }
-            else if (e.parent().parent().attr('id') == katalog_open)
-            {
-
-            $(e).parent().parent().parent().children().find('.modul').addClass("hidden");
-
-            katalog_open = 0;
-
-            }
-            else
-            {
-
-            $(e).parent().parent().parent().children().find('.modul').addClass("hidden");
-            $(e).parent().parent().removeClass("hidden");
-
-            katalog_open = e.parent().parent().attr('id');
-
-            }*/
-           }});
-          $('#div_semester').on('click', '.class_click_semester', function (click) {
-
-           click.preventDefault();
-           click = click.target;
-
-           if ($(click).attr('class').includes("class_click_delete")) {
-            // LOESCHEN
-            delete_module_from_semester(click);
-           }
-           else if ($(click).attr('class').includes("class_click_move")) {
-            // VERSCHIEBEN
-            //$(click).addClass("ausgewählt");
-            moving = 1;
-            move_module_to_semester(click);
-           }
-           else if ($(click).attr('class').includes("class_click_p")) {
-            var new_click = $(click).parent().parent().parent();
-            select_semester(new_click);
-           }
-           // Winter / Sommer - Semester Label wurde geklickt
-           else if ($(click).attr('class').includes("label")) {
-            var new_click = $(click).parent().parent();
-            select_semester(new_click);
-           }
-           else if ($(click).attr('class').includes("class_click_semester_row")) {
-            var new_click = $(click).parent();
-            select_semester(new_click);
-           }
-
+          $(document).ready(function () {
+          console.log("test");
+           var click = '#PM > div.class_click_katalog_tags.tags > h6';
+           var new_click = $(click);
+           console.log(new_click);
+           $(new_click).parent().siblings().toggle("hidden");
           });
-          
 
          });
 
