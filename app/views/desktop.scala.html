@@ -267,16 +267,20 @@
 
           document.getElementById("count").textContent = wert;
 
-          modules_in_sem = $("#div_semester").children().last().children().length;
+          modules_in_sem = $("#div_semester").children().last().children().length - 1;
 
-          for (i = 1; i <= modules_in_sem; i++) {
-           var id = $("#div_semester").children().last().children().filter(":nth-child(" + i + ")").children().first().text().replace("ID: ", "");
+          console.log("Children in Semester : " + modules_in_sem);
+
+          for (i = 0; i < modules_in_sem; i++) {
+
+           var id = $("#div_semester").children().last().children().filter(":nth-child(" + 2 + ")").children().first().text().replace("ID: ", "");
 
            var mod_id = "mod_" + id;
 
            $("#" + mod_id).remove();
 
            $("#" + id).parent().parent().removeClass('blocked');
+
           }
 
           delete_last_semester();
@@ -603,7 +607,7 @@
           }
 
          });
-         
+
          <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
          $(document).ready(function () {
@@ -631,11 +635,17 @@
           blocked = false;
 
           $(document).ready(function () {
-          console.log("test");
+
            var click = '#PM > div.class_click_katalog_tags.tags > h6';
+
            var new_click = $(click);
-           console.log(new_click);
+
            $(new_click).parent().siblings().toggle("hidden");
+
+           document.getElementById("button_minus").disabled = false;
+
+           $('#button_minus').trigger('click');
+
           });
 
          });
