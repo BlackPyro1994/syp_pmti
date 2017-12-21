@@ -192,7 +192,7 @@
                     </div>
 
                     <div class = "col mar" align = "center">
-                        <h5>0</h5>
+                        <h5 id="master_ects">0</h5>
                     </div>
                 </div>
             </div>
@@ -247,28 +247,24 @@
 
             <!--############################################################################################################################-->
 
-            $('#button_planLaden').on('click', function ()
-            {
+            $('#button_planLaden').on('click', function () {
                 $('#file-input').trigger('click');
             });
 
             <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
-            function counter_plus()
-            {
+            function counter_plus() {
                 var wert = Number(document.getElementById("count").textContent);
                 wert++;
                 document.getElementById("count").textContent = wert;
                 add_semester(startSem);
             }
 
-            function counter_minus()
-            {
+            function counter_minus() {
 
                 var wert = Number(document.getElementById("count").textContent);
 
-                if (wert > 0)
-                {
+                if (wert > 0) {
                     wert--;
                 }
 
@@ -276,8 +272,7 @@
 
                 modules_in_sem = $("#div_semester").children().last().children().length - 1;
 
-                for (i = 0; i < modules_in_sem; i++)
-                {
+                for (i = 0; i < modules_in_sem; i++) {
 
                     var id = $("#div_semester").children().last().children().filter(":nth-child(" + 2 + ")").children().first().text().replace("ID: ", "");
 
@@ -292,650 +287,617 @@
                 delete_last_semester();
             }
 
+
             <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
-            function select_module(caller)
-            {
+            function update_master_ects(mod_id, wert) {
+                // wert = auswahl ob adieren oder subtrahieren
+                // 1 == adieren 0 == subtrahieren
 
-                console.log("mmmmmmmmmmmmmmmmmmmmmmmm");
-
-                if (!$(caller).parent().parent().attr('class').includes("blocked"))
-                {
-
-                    // Semester bereits ausgewählt
-
-                    if (ausgewaehlt_semester != "")
-                    {
-
-                        console.log("1");
-
-                        insert_module_in_semester($(caller).attr('id'), ausgewaehlt_semester);
-
-                        return;
+                if (wert == 1) {
+                    @for(mod <- modulListe) {
+                        if ("@{mod(0)}" == mod_id) {
+                            var ects = Number(document.getElementById("master_ects").textContent);
+                            ects = ects + @{mod(9)};
+                            document.getElementById("master_ects").textContent = ects;
+                        }
                     }
-
-                    // ################################################################################################
-                    //              Neues Module
-                    // ################################################################################################
-
-
-                    if ((!$(caller).attr('class').includes("ausgewaehlt")) && ausgewaehlt_modul == "")
-                    {
-
-                        console.log("Modul Ausgewählt");
-
-                        $(caller).toggleClass('ausgewaehlt');
-
-                        ausgewaehlt_modul = $(caller).attr('id');
-
-                        availability_mask_semesters(ausgewaehlt_modul);
-
-                    }
-
-                    // ################################################################################################
-                    //              Gleiche Module (deaktivieren)
-                    // ################################################################################################
-
-
-                    else if ($(caller).attr('id') == ausgewaehlt_modul)
-                    {
-
-                        console.log("Module Nochmal Angeklickt");
-
-                        $(caller).toggleClass('ausgewaehlt');
-
-                        ausgewaehlt_modul = "";
-
-                        availability_mask_semesters(0);
-
-                    }
-
-                    // ################################################################################################
-                    //              Wechsel von Modules
-                    // ################################################################################################
-
-
-                    else if ($("#" + ausgewaehlt_modul).attr('class').includes("ausgewaehlt") && ausgewaehlt_modul != $(caller).attr('id'))
-                    {
-
-                        console.log("Anderes Modul Ausgewählt");
-
-                        $("#" + ausgewaehlt_modul).removeClass('ausgewaehlt');
-
-                        $(caller).addClass('ausgewaehlt');
-
-                        ausgewaehlt_modul = $(caller).attr('id');
-
-                        availability_mask_semesters(ausgewaehlt_modul);
-
+                } else if(wert == 0) {
+                    @for(mod <- modulListe) {
+                        if ("@{mod(0)}" == mod_id) {
+                            var ects = Number(document.getElementById("master_ects").textContent);
+                            ects = ects - @{mod(9)};
+                            document.getElementById("master_ects").textContent = ects;
+                        }
                     }
                 }
             }
 
-            function select_semester(caller)
-            {
+                <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
-                $("#div_semester").children().removeClass('include');
-                $("#div_semester").children().filter(":odd").children().first().siblings().show();
+                function select_module(caller) {
 
-                if ($(caller).attr('class').includes("ausgewaehlt"))
-                {
+                    console.log("mmmmmmmmmmmmmmmmmmmmmmmm");
 
-                    $(caller).toggleClass('ausgewaehlt');
+                    if (!$(caller).parent().parent().attr('class').includes("blocked")) {
+
+                        // Semester bereits ausgewählt
+
+                        if (ausgewaehlt_semester != "") {
+
+                            console.log("1");
+
+                            insert_module_in_semester($(caller).attr('id'), ausgewaehlt_semester);
+
+                            return;
+                        }
+
+                        // ################################################################################################
+                        //              Neues Module
+                        // ################################################################################################
+
+
+                        if ((!$(caller).attr('class').includes("ausgewaehlt")) && ausgewaehlt_modul == "") {
+
+                            console.log("Modul Ausgewählt");
+
+                            $(caller).toggleClass('ausgewaehlt');
+
+                            ausgewaehlt_modul = $(caller).attr('id');
+
+                            availability_mask_semesters(ausgewaehlt_modul);
+
+                        }
+
+                        // ################################################################################################
+                        //              Gleiche Module (deaktivieren)
+                        // ################################################################################################
+
+
+                        else if ($(caller).attr('id') == ausgewaehlt_modul) {
+
+                            console.log("Module Nochmal Angeklickt");
+
+                            $(caller).toggleClass('ausgewaehlt');
+
+                            ausgewaehlt_modul = "";
+
+                            availability_mask_semesters(0);
+
+                        }
+
+                        // ################################################################################################
+                        //              Wechsel von Modules
+                        // ################################################################################################
+
+
+                        else if ($("#" + ausgewaehlt_modul).attr('class').includes("ausgewaehlt") && ausgewaehlt_modul != $(caller).attr('id')) {
+
+                            console.log("Anderes Modul Ausgewählt");
+
+                            $("#" + ausgewaehlt_modul).removeClass('ausgewaehlt');
+
+                            $(caller).addClass('ausgewaehlt');
+
+                            ausgewaehlt_modul = $(caller).attr('id');
+
+                            availability_mask_semesters(ausgewaehlt_modul);
+
+                        }
+                    }
                 }
-                else
-                {
 
-                    $('#div_semester').children().removeClass('ausgewaehlt');
-                    $(caller).toggleClass('ausgewaehlt');
+                function select_semester(caller) {
 
-                }
+                    $("#div_semester").children().removeClass('include');
+                    $("#div_semester").children().filter(":odd").children().first().siblings().show();
 
-                if (ausgewaehlt_modul != "")
-                {
+                    if ($(caller).attr('class').includes("ausgewaehlt")) {
 
-                    if (moving == 1)
-                    {
+                        $(caller).toggleClass('ausgewaehlt');
+                    }
+                    else {
 
-                        var target = $(caller).children().children().html().substring(0, 1);
-
-                        var id = "mod_" + ausgewaehlt_modul;
-                        $("#" + id).remove();
-                        insert_module_in_semester(ausgewaehlt_modul, target);
-                        moving = 0;
+                        $('#div_semester').children().removeClass('ausgewaehlt');
+                        $(caller).toggleClass('ausgewaehlt');
 
                     }
-                    else
-                    {
 
-                        insert_module_in_semester(ausgewaehlt_modul, $(caller).children().children().html().substring(0, 1));
+                    if (ausgewaehlt_modul != "") {
 
+                        if (moving == 1) {
+
+                            var target = $(caller).children().children().html().substring(0, 1);
+
+                            var id = "mod_" + ausgewaehlt_modul;
+                            $("#" + id).remove();
+                            insert_module_in_semester(ausgewaehlt_modul, target);
+                            moving = 0;
+
+                        }
+                        else {
+
+                            insert_module_in_semester(ausgewaehlt_modul, $(caller).children().children().html().substring(0, 1));
+
+                        }
+
+                    }
+                    else {
+                        // ausgewaehlt_semester = $(caller).children().children().html().replace("Semester ", "");
+                        ausgewaehlt_semester = $(caller).children().children().html().substring(0, 1);
                     }
 
                 }
-                else
-                {
-                    // ausgewaehlt_semester = $(caller).children().children().html().replace("Semester ", "");
-                    ausgewaehlt_semester = $(caller).children().children().html().substring(0, 1);
+
+                <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+                function availability_mask_semesters(module_id) {
+
+                    if (module_id) {
+
+                        @for(mod <- modulListe) {
+
+                        if ("@{mod(0)}" == module_id) {
+
+                            // Sommer und nicht Winter
+
+                            if (@{mod(6)} &&
+                            !(@{mod(7)})
+                        )
+                            {
+
+                                console.log("SOMMER");
+
+                                $("#div_semester").children().filter(":even").addClass('include');
+                                $("#div_semester").children().filter(":odd").removeClass('include');
+
+                                // $("#div_semester").children().children().not('.class_click_semester_row').hide(200);
+
+                                $("#div_semester").children().children().not('.class_click_semester_row').css('display', 'none');
+
+                            }
+
+                            // Winter und nicht Sommer
+
+                        else
+                            if ((!@{mod(6)}) && @{mod(7)}) {
+
+                                console.log("WINTER");
+
+                                $("#div_semester").children().filter(":odd").addClass('include');
+                                $("#div_semester").children().filter(":even").removeClass('include');
+
+                                $("#div_semester").children().children().not('.class_click_semester_row').hide(200);
+                                // $("#div_semester").children().children().not('.class_click_semester_row').css('display', 'block');
+
+                            }
+
+                            return;
+
+                        }
+                        }
+                    }
+                    else {
+
+                        console.log("ELSE");
+
+                        $("#div_semester").children().removeClass('include');
+
+                        $("#div_semester").children().children().not('.class_click_semester_row').show(200);
+
+                    }
                 }
 
-            }
+                function availability_mask_modules(semester_id) {
+                }
 
-            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+                <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
-            function availability_mask_semesters(module_id)
-            {
+                function insert_module_in_catalog(katalog_id, module_id, module_title) {
 
-                if (module_id)
-                {
+                    $("#" + katalog_id).append('<div class = "class_click_module_row row modul">' + '<div class = "class_click_module_tag tags" style = "text-align: center">'
+
+                            + '<p id = ' + module_id + ' class = "class_click_module_p">'
+
+                            + module_title
+
+                            + '</p>'
+
+                            + '</div>');
+                }
+
+                function insert_module_in_semester(mod_id, sem_id) {
+                    $("#" + mod_id).css("background", "#eee");
+                    $("#" + mod_id).removeClass("open_catalog");
+
+                    console.log($("#div_kataloge"));
+
+                    console.log($("#div_kataloge").children());
+
+                    console.log($("#div_kataloge").children().find('.module'));
+
+                    //toggle("hidden");
+
+                    append_module(mod_id, sem_id);
+
+                    // $("#div_semester").children().filter(":nth-child(" + sem_id + ")").append(
+
+                    ausgewaehlt_modul = "", ausgewaehlt_semester = "";
+
+                    // Grünen Rahmen löschen LINKS
+                    $("#" + mod_id).removeClass('ausgewaehlt');
+
+                    // Modul Aus-Grauen Links
+                    $("#" + mod_id).parent().parent().addClass('blocked');
+
+                    // Grünen Rahmen löschen RECHTS
+                    $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
+
+                    console.log("addieren: "+mod_id);
+                    update_master_ects(mod_id, 1);
+                }
+
+
+                <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+                function add_catalog(kat_id, title) {
+
+                    // var katalog_count = $("#div_kataloge").children().length;
+                    $("#div_kataloge").append('<div id="' + kat_id + '" class = "class_click_katalog katalog">' + '<div class = "class_click_katalog_tags tags">' + '<h6 class = "class_click_katalog_label katalog_label" style="margin:5%">' + title + '</h6>' + '</div>' + '</div>');
+                }
+
+                function add_semester(startSem) {
+
+                    var wert = Number(document.getElementById("count").textContent);
+
+                    $("#div_semester").append('<div class = "container-fluid semester-gesamt class_click_semester">' + '<div class = "class_click_semester_row row">' + '<h6 id="' + 'sem' + wert + '"class="label">' + wert + '</h6>' + '<h6 class="label"></h6>' + '</div>' + '</div>');
+
+                    if (startSem == "winter" && wert % 2 == 1) {
+                        $(".label").last().text(" : Winter-Semester");
+                    }
+                    else if (startSem == "winter" && wert % 2 == 0) {
+                        $(".label").last().text(" : Sommer-Semester");
+                    }
+                    else if (startSem == "sommer" && wert % 2 == 1) {
+                        $(".label").last().text(" : Sommer-Semester");
+                    }
+                    else {
+                        $(".label").last().text(" : Winter-Semester");
+                    }
+                }
+
+                <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+                function delete_last_semester() {
+                    $("#div_semester").children().last().remove();
+                };
+
+                <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+                function delete_module_from_semester(caller) {
+
+                    var id = $(caller).parent().parent().children().first().text().replace("ID: ", "");
+                    var mod_id = "mod_" + id;
+
+                    $("#" + mod_id).remove();
+                    $("#" + id).parent().parent().removeClass('blocked');
+
+                    update_master_ects(id, 0);
+                };
+
+                function move_module_to_semester(caller) {
+
+                    var modul = $(caller).parent().parent();
+
+                    var mod_id = modul.attr("id").replace("mod_", "");
+
+                    ausgewaehlt_modul = mod_id;
+
+                };
+
+                function append_module(mod_id, sem_id) {
 
                     @for(mod <- modulListe) {
 
-                    if ("@{mod(0)}" == module_id)
-                    {
+                    if ("@{mod(0)}" == mod_id) {
 
-                        // Sommer und nicht Winter
+                        $("#div_semester").children().filter(":nth-child(" + sem_id + ")").append(
+                                '<div id="mod_' + mod_id + '"' + ' class = "row semester">' +
+                                '<div class = "col tags id">' +
+                                '<p class="class_click_p">ID: ' + mod_id + '</p>' +
+                                '</div>' +
+                                '<div class = "col tags name">' +
+                                '<p class="class_click_p"> @{mod(1)} </p>' + '</div>' +
+                                '<div class = "col tags sws">' +
+                                '<p class="class_click_p">V:@{mod(2)},Ü:@{mod(3)},P:@{mod(4)},Pr:@{mod(5)}</p>' +
+                                '</div>' +
+                                '<div class = "col tags dozent">' +
+                                '<p class="class_click_p">@{mod(8)}</p>' +
+                                '</div>' +
+                                '<div class = "col tags ects">' +
+                                '<p class="class_click_p" style="vertical-align: middle,text-align: center">ECTS: @{mod(9)}</p>' +
+                                '</div>' +
+                                '<div class = "col-1 tags">' +
+                                '<button type = "button" id = "button_loeschen" class = " btn btn-danger btn-sm btn-block class_click_delete">x</button>' +
+                                '</div>' +
+                                '<div class = "col-1">' +
+                                '<button type = "button" id = "button_verschieben" class = "btn btn-warning btn-sm btn-block class_click_move">>></button>' +
+                                '</div>' +
+                                '</div>');
+                    }
+                    }
 
-                        if (@{mod(6)} &&
-                        !(@{mod(7)})
-                    )
-                        {
+                };
 
-                            console.log("SOMMER");
+                <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
-                            $("#div_semester").children().filter(":even").addClass('include');
-                            $("#div_semester").children().filter(":odd").removeClass('include');
+                function new_plan() {
+                    wert = $("#input-semesteranzahl").val();
+                    ok_button_new_plan();
+                }
 
-                            // $("#div_semester").children().children().not('.class_click_semester_row').hide(200);
+                function ok_button_new_plan() {
 
-                            $("#div_semester").children().children().not('.class_click_semester_row').css('display', 'none');
+                    var count = 0;
+                    var meldung = "Bitte eine Anzahl angeben";
+                    var myRadio = $('input[name="optradio"]');
+                    startSem = myRadio.filter(':checked').val();
+                    wert = $("#input-semesteranzahl").val();
 
+                    if (wert == "") {
+                        document.getElementById("fehlermeldung").textContent = meldung;
+                    }
+                    else if (wert != "") {
+                        $("#div_semester").children().remove();
+
+                        for (i = 0; i < wert; i++) {
+                            count++;
+                            document.getElementById("count").textContent = count;
+                            add_semester(startSem);
                         }
-
-                        // Winter und nicht Sommer
-
-                    else
-                        if ((!@{mod(6)}) && @{mod(7)})
-                        {
-
-                            console.log("WINTER");
-
-                            $("#div_semester").children().filter(":odd").addClass('include');
-                            $("#div_semester").children().filter(":even").removeClass('include');
-
-                            $("#div_semester").children().children().not('.class_click_semester_row').hide(200);
-                            // $("#div_semester").children().children().not('.class_click_semester_row').css('display', 'block');
-
-                        }
-
-                        return;
-
+                        document.getElementById("fehlermeldung").textContent = "";
+                        $('#myModal-new_plan').modal('hide');
+                        $(".class_p").removeClass('ausgewaehlt');
+                        $(".class_p").parent().removeClass('blocked');
                     }
-                    }
-                }
-                else
-                {
 
-                    console.log("ELSE");
+                    document.getElementById("button_minus").disabled = false;
+                    document.getElementById("button_plus").disabled = false;
+                    document.getElementById("button_speichern").disabled = false;
+                    document.getElementById("button_pdf").disabled = false;
 
-                    $("#div_semester").children().removeClass('include');
-
-                    $("#div_semester").children().children().not('.class_click_semester_row').show(200);
+                    blocked = false;
 
                 }
-            }
 
-            function availability_mask_modules(semester_id)
-            {
-            }
+                <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
-            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+                $('#div_kataloge').on('click', '.class_click_katalog', function (click) {
+                    if (!blocked) {
+                        click.preventDefault();
 
-            function insert_module_in_catalog(katalog_id, module_id, module_title)
-            {
+                        click = click.target;
 
-                $("#" + katalog_id).append('<div class = "class_click_module_row row modul">' + '<div class = "class_click_module_tag tags" style = "text-align: center">'
+                        $(click).closest(".class_click_katalog").css("background", "#eee");
 
-                        + '<p id = ' + module_id + ' class = "class_click_module_p">'
+                        if ($(click).attr('class').includes("class_click_katalog")) {
 
-                        + module_title
+                            if (all_catalogs_closed == 0) {
 
-                        + '</p>'
+                                // ################################################################################################
+                                //              Neuer Katalog
+                                // ################################################################################################
 
-                        + '</div>');
-            }
+                                if (($(click).parent().siblings().is(':hidden')) && open_catalog == "") {
+                                    console.log("Neuer Katalog");
 
-            function insert_module_in_semester(mod_id, sem_id)
-            {
-                $("#" + mod_id).css("background", "#eee");
-                $("#" + mod_id).removeClass("open_catalog");
+                                    var new_click = $(click);
 
-                console.log($("#div_kataloge"));
+                                    $(new_click).parent().siblings().toggle(200);
 
-                console.log($("#div_kataloge").children());
+                                    open_catalog = $(".modul:visible").closest(".class_click_katalog").attr("id");
 
-                console.log($("#div_kataloge").children().find('.module'));
+                                    // $(click).parent().parent().toggleClass("open_catalog");
 
-                //toggle("hidden");
+                                    $(click).closest(".class_click_katalog").toggleClass("open_catalog");
 
-                append_module(mod_id, sem_id);
+                                }
 
-                // $("#div_semester").children().filter(":nth-child(" + sem_id + ")").append(
+                                // ################################################################################################
+                                //              Gleiche Katalog (schließen)
+                                // ################################################################################################
 
-                ausgewaehlt_modul = "", ausgewaehlt_semester = "";
 
-                // Grünen Rahmen löschen LINKS
-                $("#" + mod_id).removeClass('ausgewaehlt');
+                                else if ($(click).closest(".class_click_katalog").attr("id") == open_catalog) {
 
-                // Modul Aus-Grauen Links
-                $("#" + mod_id).parent().parent().addClass('blocked');
+                                    console.log("Gleicher Katalog");
 
-                // Grünen Rahmen löschen RECHTS
-                $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
+                                    $(click).closest(".class_click_katalog").toggleClass("open_catalog");
 
-            }
+                                    var new_click = $(click);
 
-            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+                                    $(new_click).parent().siblings().not('.class_click_katalog').not('.class_click_katalog_label').toggle(200);
 
-            function add_catalog(kat_id, title)
-            {
+                                    open_catalog = "";
 
-                // var katalog_count = $("#div_kataloge").children().length;
-                $("#div_kataloge").append('<div id="' + kat_id + '" class = "class_click_katalog katalog">' + '<div class = "class_click_katalog_tags tags">' + '<h6 class = "class_click_katalog_label katalog_label" style="margin:5%">' + title + '</h6>' + '</div>' + '</div>');
-            }
+                                    // $(click).parent().parent().toggleClass("open_catalog");
 
-            function add_semester(startSem)
-            {
+                                    // $(click).closest(".class_click_katalog").toggleClass("open_catalog");
 
-                var wert = Number(document.getElementById("count").textContent);
+                                }
 
-                $("#div_semester").append('<div class = "container-fluid semester-gesamt class_click_semester">' + '<div class = "class_click_semester_row row">' + '<h6 id="' + 'sem' + wert + '"class="label">' + wert + '</h6>' + '<h6 class="label"></h6>' + '</div>' + '</div>');
+                                // ################################################################################################
+                                //              Wechsel von Katalogen
+                                // ################################################################################################
 
-                if (startSem == "winter" && wert % 2 == 1)
-                {
-                    $(".label").last().text(" : Winter-Semester");
-                }
-                else if (startSem == "winter" && wert % 2 == 0)
-                {
-                    $(".label").last().text(" : Sommer-Semester");
-                }
-                else if (startSem == "sommer" && wert % 2 == 1)
-                {
-                    $(".label").last().text(" : Sommer-Semester");
-                }
-                else
-                {
-                    $(".label").last().text(" : Winter-Semester");
-                }
-            }
+                                else if (( $("#" + open_catalog).children().first().siblings().is(':visible')) && open_catalog != $(click).closest(".class_click_katalog").attr("id")) {
 
-            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+                                    console.log("Wechsel von Katalog");
 
-            function delete_last_semester()
-            {
-                $("#div_semester").children().last().remove();
-            };
+                                    $("#" + open_catalog).children().first().siblings().toggle("hidden");
 
-            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+                                    $("#" + open_catalog).removeClass("open_catalog");
 
-            function delete_module_from_semester(caller)
-            {
+                                    // $(click).parent().parent().toggleClass("open_catalog");
 
-                var id = $(caller).parent().parent().children().first().text().replace("ID: ", "");
-                var mod_id = "mod_" + id;
+                                    $(click).closest(".class_click_katalog").toggleClass("open_catalog");
 
-                $("#" + mod_id).remove();
-                $("#" + id).parent().parent().removeClass('blocked');
-
-            };
-
-            function move_module_to_semester(caller)
-            {
-
-                var modul = $(caller).parent().parent();
-
-                var mod_id = modul.attr("id").replace("mod_", "");
-
-                ausgewaehlt_modul = mod_id;
-
-            };
-
-            function append_module(mod_id, sem_id)
-            {
-
-                @for(mod <- modulListe) {
-
-                if ("@{mod(0)}" == mod_id)
-                {
-
-                    $("#div_semester").children().filter(":nth-child(" + sem_id + ")").append(
-                            '<div id="mod_' + mod_id + '"' + ' class = "row semester">' +
-                            '<div class = "col tags id">' +
-                            '<p class="class_click_p">ID: ' + mod_id + '</p>' +
-                            '</div>' +
-                            '<div class = "col tags name">' +
-                            '<p class="class_click_p"> @{mod(1)} </p>' + '</div>' +
-                            '<div class = "col tags sws">' +
-                            '<p class="class_click_p">V:@{mod(2)},Ü:@{mod(3)},P:@{mod(4)},Pr:@{mod(5)}</p>' +
-                            '</div>' +
-                            '<div class = "col tags dozent">' +
-                            '<p class="class_click_p">@{mod(8)}</p>' +
-                            '</div>' +
-                            '<div class = "col tags ects">' +
-                            '<p class="class_click_p" style="vertical-align: middle,text-align: center">ECTS: @{mod(9)}</p>' +
-                            '</div>' +
-                            '<div class = "col-1 tags">' +
-                            '<button type = "button" id = "button_loeschen" class = " btn btn-danger btn-sm btn-block class_click_delete">x</button>' +
-                            '</div>' +
-                            '<div class = "col-1">' +
-                            '<button type = "button" id = "button_verschieben" class = "btn btn-warning btn-sm btn-block class_click_move">>></button>' +
-                            '</div>' +
-                            '</div>');
-                }
-                }
+                                    var new_click = $(click);
 
-            };
+                                    $(new_click).parent().siblings().show(200);
 
-            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+                                    open_catalog = $(click).parent().parent().attr("id");
 
-            function new_plan()
-            {
-                wert = $("#input-semesteranzahl").val();
-                ok_button_new_plan();
-            }
+                                }
 
-            function ok_button_new_plan()
-            {
-
-                var count = 0;
-                var meldung = "Bitte eine Anzahl angeben";
-                var myRadio = $('input[name="optradio"]');
-                startSem = myRadio.filter(':checked').val();
-                wert = $("#input-semesteranzahl").val();
-
-                if (wert == "")
-                {
-                    document.getElementById("fehlermeldung").textContent = meldung;
-                }
-                else if (wert != "")
-                {
-                    $("#div_semester").children().remove();
-
-                    for (i = 0; i < wert; i++)
-                    {
-                        count++;
-                        document.getElementById("count").textContent = count;
-                        add_semester(startSem);
-                    }
-                    document.getElementById("fehlermeldung").textContent = "";
-                    $('#myModal-new_plan').modal('hide');
-                    $(".class_p").removeClass('ausgewaehlt');
-                    $(".class_p").parent().removeClass('blocked');
-                }
-
-                document.getElementById("button_minus").disabled = false;
-                document.getElementById("button_plus").disabled = false;
-                document.getElementById("button_speichern").disabled = false;
-                document.getElementById("button_pdf").disabled = false;
-
-                blocked = false;
-
-            }
-
-            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
-
-            $('#div_kataloge').on('click', '.class_click_katalog', function (click)
-            {
-                if (!blocked)
-                {
-                    click.preventDefault();
-
-                    click = click.target;
-
-                    $(click).closest(".class_click_katalog").css("background", "#eee");
-
-                    if ($(click).attr('class').includes("class_click_katalog"))
-                    {
-
-                        if (all_catalogs_closed == 0)
-                        {
-
-                            // ################################################################################################
-                            //              Neuer Katalog
-                            // ################################################################################################
-
-                            if (($(click).parent().siblings().is(':hidden')) && open_catalog == "")
-                            {
-                                console.log("Neuer Katalog");
-
-                                var new_click = $(click);
-
-                                $(new_click).parent().siblings().toggle(200);
-
-                                open_catalog = $(".modul:visible").closest(".class_click_katalog").attr("id");
-
-                                // $(click).parent().parent().toggleClass("open_catalog");
-
-                                $(click).closest(".class_click_katalog").toggleClass("open_catalog");
 
                             }
 
-                            // ################################################################################################
-                            //              Gleiche Katalog (schließen)
-                            // ################################################################################################
-
-
-                            else if ($(click).closest(".class_click_katalog").attr("id") == open_catalog)
-                            {
-
-                                console.log("Gleicher Katalog");
-
-                                $(click).closest(".class_click_katalog").toggleClass("open_catalog");
-
-                                var new_click = $(click);
-
-                                $(new_click).parent().siblings().not('.class_click_katalog').not('.class_click_katalog_label').toggle(200);
-
-                                open_catalog = "";
-
-                                // $(click).parent().parent().toggleClass("open_catalog");
-
-                                // $(click).closest(".class_click_katalog").toggleClass("open_catalog");
-
-                            }
-
-                            // ################################################################################################
-                            //              Wechsel von Katalogen
-                            // ################################################################################################
-
-                            else if (( $("#" + open_catalog).children().first().siblings().is(':visible')) && open_catalog != $(click).closest(".class_click_katalog").attr("id"))
-                            {
-
-                                console.log("Wechsel von Katalog");
-
-                                $("#" + open_catalog).children().first().siblings().toggle("hidden");
-
-                                $("#" + open_catalog).removeClass("open_catalog");
-
-                                // $(click).parent().parent().toggleClass("open_catalog");
-
-                                $(click).closest(".class_click_katalog").toggleClass("open_catalog");
-
-                                var new_click = $(click);
-
-                                $(new_click).parent().siblings().show(200);
-
-                                open_catalog = $(click).parent().parent().attr("id");
-
-                            }
-
-
+                        }
+                        else if ($(click).attr('class').includes("class_click_module_p")) {
+                            select_module(click);
+                        }
+                        else if ($(click).attr('class').includes("class_click_module_row")) {
+                            return;
                         }
 
                     }
-                    else if ($(click).attr('class').includes("class_click_module_p"))
-                    {
-                        select_module(click);
-                    }
-                    else if ($(click).attr('class').includes("class_click_module_row"))
-                    {
-                        return;
-                    }
-
-                }
-
-            });
-
-            $('#div_kataloge').on('mouseover', '.class_click_katalog_label', function (event)
-            {
-                if (!blocked)
-                {
-                    if ($(event.target).parent().parent().attr('id') != open_catalog)
-                    {
-                        console.log(event);
-                        $(this).parent().parent().css("background", "red");
-                    }
-                }
-
-            });
-
-            $('#div_kataloge').on('mouseout', '.class_click_katalog_label', function (event)
-            {
-                console.log(event);
-                $(this).parent().parent().css("background", "#eee");
-
-            });
-
-            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
-
-            $('#div_kataloge').on('mouseover', '.class_click_module_p', function (event)
-            {
-                console.log(event);
-                $(this).fadeOut(50);
-                $(this).fadeIn(200);
-            });
-
-            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
-
-            $('#div_semester').on('click', '.class_click_semester', function (click)
-            {
-
-                click.preventDefault();
-                click = click.target;
-
-                if ($(click).attr('class').includes("class_click_delete"))
-                {
-                    // LOESCHEN
-                    delete_module_from_semester(click);
-                }
-                else if ($(click).attr('class').includes("class_click_move"))
-                {
-                    // VERSCHIEBEN
-                    //$(click).addClass("ausgewählt");
-                    moving = 1;
-                    move_module_to_semester(click);
-                }
-                else if ($(click).attr('class').includes("class_click_p"))
-                {
-                    var new_click = $(click).parent().parent().parent();
-                    select_semester(new_click);
-                }
-                // Winter / Sommer - Semester Label wurde geklickt
-                else if ($(click).attr('class').includes("label"))
-                {
-                    var new_click = $(click).parent().parent();
-                    select_semester(new_click);
-                }
-                else if ($(click).attr('class').includes("class_click_semester_row"))
-                {
-                    var new_click = $(click).parent();
-                    select_semester(new_click);
-                }
-
-            });
-
-            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
-
-            $(document).ready(function ()
-            {
-
-                @for(katal <- katalogListe) {
-                add_catalog("@{katal(0)}", "@{katal(1)}");
-                }
-
-                @for(mod <- modulListe) {
-                insert_module_in_catalog("@{mod(11)}", "@{mod(0)}", "@{mod(1)}");
-                }
-
-                //////////////////////////////////////////////////////////////////////////
-
-                test_1();
-
-                // test_2();
-
-                $(document).ready(function ()
-                {
-
-                    // test_3();
 
                 });
 
-            });
+                $('#div_kataloge').on('mouseover', '.class_click_katalog_label', function (event) {
+                    if (!blocked) {
+                        if ($(event.target).parent().parent().attr('id') != open_catalog) {
+                            console.log(event);
+                            $(this).parent().parent().css("background", "red");
+                        }
+                    }
 
-            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+                });
 
-            function test_1()
-            {
+                $('#div_kataloge').on('mouseout', '.class_click_katalog_label', function (event) {
+                    console.log(event);
+                    $(this).parent().parent().css("background", "#eee");
 
-                for (i = 1; i <= 4; i++)
-                {
-                    document.getElementById("count").textContent = i;
-                    add_semester("winter");
+                });
+
+                <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+                $('#div_kataloge').on('mouseover', '.class_click_module_p', function (event) {
+                    console.log(event);
+                    $(this).fadeOut(50);
+                    $(this).fadeIn(200);
+                });
+
+                <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+                $('#div_semester').on('click', '.class_click_semester', function (click) {
+
+                    click.preventDefault();
+                    click = click.target;
+
+                    if ($(click).attr('class').includes("class_click_delete")) {
+                        // LOESCHEN
+                        delete_module_from_semester(click);
+                    }
+                    else if ($(click).attr('class').includes("class_click_move")) {
+                        // VERSCHIEBEN
+                        //$(click).addClass("ausgewählt");
+                        moving = 1;
+                        move_module_to_semester(click);
+                    }
+                    else if ($(click).attr('class').includes("class_click_p")) {
+                        var new_click = $(click).parent().parent().parent();
+                        select_semester(new_click);
+                    }
+                    // Winter / Sommer - Semester Label wurde geklickt
+                    else if ($(click).attr('class').includes("label")) {
+                        var new_click = $(click).parent().parent();
+                        select_semester(new_click);
+                    }
+                    else if ($(click).attr('class').includes("class_click_semester_row")) {
+                        var new_click = $(click).parent();
+                        select_semester(new_click);
+                    }
+
+                });
+
+                <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+                $(document).ready(function () {
+
+                    @for(katal <- katalogListe) {
+                    add_catalog("@{katal(0)}", "@{katal(1)}");
+                    }
+
+                    @for(mod <- modulListe) {
+                    insert_module_in_catalog("@{mod(11)}", "@{mod(0)}", "@{mod(1)}");
+                    }
+
+                    //////////////////////////////////////////////////////////////////////////
+
+                    test_1();
+
+                    // test_2();
+
+                    $(document).ready(function () {
+
+                        // test_3();
+
+                    });
+
+                });
+
+                <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+                function test_1() {
+
+                    for (i = 1; i <= 4; i++) {
+                        document.getElementById("count").textContent = i;
+                        add_semester("winter");
+                    }
+
+                    document.getElementById("button_minus").disabled = false;
+                    document.getElementById("button_plus").disabled = false;
+                    document.getElementById("button_speichern").disabled = false;
+                    document.getElementById("button_pdf").disabled = false;
+
+                    blocked = false;
                 }
 
-                document.getElementById("button_minus").disabled = false;
-                document.getElementById("button_plus").disabled = false;
-                document.getElementById("button_speichern").disabled = false;
-                document.getElementById("button_pdf").disabled = false;
+                function test_2() {
+                    insert_module_in_semester("THI", 1);
+                    insert_module_in_semester("FP", 2);
+                    insert_module_in_semester("MAA", 3);
+                    insert_module_in_semester("KOLL", 4);
 
-                blocked = false;
-            }
+                }
 
-            function test_2()
-            {
-                insert_module_in_semester("THI", 1);
-                insert_module_in_semester("FP", 2);
-                insert_module_in_semester("MAA", 3);
-                insert_module_in_semester("KOLL", 4);
+                function test_3() {
 
-            }
+                    var click = '#PM > div.class_click_katalog_tags.tags > h6';
 
-            function test_3()
-            {
+                    var new_click = $(click);
 
-                var click = '#PM > div.class_click_katalog_tags.tags > h6';
+                    // $(new_click).parent().siblings().toggle("hidden");
 
-                var new_click = $(click);
+                    $(new_click).trigger('click');
 
-                // $(new_click).parent().siblings().toggle("hidden");
+                    // $('#WPMT > div.class_click_katalog_tags.tags > h6').parent().siblings().toggle("hidden");
 
-                $(new_click).trigger('click');
+                    $('#WPMT > div.class_click_katalog_tags.tags > h6').trigger('click');
 
-                // $('#WPMT > div.class_click_katalog_tags.tags > h6').parent().siblings().toggle("hidden");
+                    // $('#KRY').trigger('click');
 
-                $('#WPMT > div.class_click_katalog_tags.tags > h6').trigger('click');
+                    // document.getElementById("button_minus").disabled = false;
 
-                // $('#KRY').trigger('click');
+                    // $('#button_minus').trigger('click');
 
-                // document.getElementById("button_minus").disabled = false;
+                    // $("#div_semester").children().last().addClass('blocked');
 
-                // $('#button_minus').trigger('click');
+                    // $("#div_semester").children().last().children().first().siblings().toggle("hidden");
 
-                // $("#div_semester").children().last().addClass('blocked');
-
-                // $("#div_semester").children().last().children().first().siblings().toggle("hidden");
-
-            }
+                }
 
     </script>
 </html>
