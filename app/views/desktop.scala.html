@@ -87,7 +87,7 @@
             <div id = "myModal-freitext" class = "modal fade" role = "dialog">
                 <div class = "modal-dialog">
                         <!-- PopUp Inhalt-->
-                    <div class = "modal-content freitext">
+                    <div class = "modal-content">
                             <!-- PopUp Kopfzeile -->
                         <div class = "modal-header">
                             <h4 class = "modal-title">Daten ergänzen</h4>
@@ -122,7 +122,7 @@
                         </div>
                             <!-- PopUp Fußzeile -->
                         <div class = "modal-footer">
-                            <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-abbrechen">
+                            <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-freitext-abbrechen">
                                 Abbrechen
                             </button>
                             <button type = "button" class = "btn btn-default" id = "popup-freitext-ok">OK
@@ -153,7 +153,7 @@
                         </div>
                             <!-- PopUp Fußzeile -->
                         <div class = "modal-footer">
-                            <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-abbrechen">
+                            <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-m07-abbrechen">
                                 Abbrechen
                             </button>
                             <button type = "button" class = "btn btn-default" id = "popup-m07-ok">OK
@@ -554,11 +554,13 @@
 
 
             function fill_data(mod_id, sem_id) {
+                //console.log($("#"+sem_id).textContent);
+
                 if(mod_id == "M07") {
                     $('#myModal-m07').modal('toggle');
 
-                    $("#input-name").val("");
-                    $("#input-dozent").val("");
+                    $("#input-name-m07").val("");
+                    $("#input-dozent-m07").val("");
 
                     global_sem_id = sem_id;
                     global_mod_id = mod_id;
@@ -578,6 +580,15 @@
                     global_mod_id = mod_id;
                 }
             }
+
+            $('#myModal-freitext').on('click', '#popup-freitext-abbrechen', function (click) {
+                $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
+                $("#" + global_mod_id).removeClass('ausgewaehlt');
+            });
+            $('#myModal-m07').on('click', '#popup-m07-abbrechen', function (click) {
+                $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
+                $("#" + global_mod_id).removeClass('ausgewaehlt');
+            });
 
             $('#myModal-freitext').on('click', '#popup-freitext-ok', function (click) {
                 var name;
@@ -618,6 +629,9 @@
                 append_free_module(global_mod_id,global_sem_id,name,v,u,p,pr,dozent,ects);
 
                 $('#myModal-freitext').modal('hide');
+
+                $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
+                $("#" + global_mod_id).removeClass('ausgewaehlt');
             });
 
             $('#myModal-m07').on('click', '#popup-m07-ok', function (click) {
@@ -641,8 +655,13 @@
                     dozent = "Dozent";
                 }
                 append_free_module(global_mod_id,global_sem_id,name,v,u,p,pr,dozent,ects);
+                $("#" + global_mod_id).parent().parent().addClass('blocked');
 
                 $('#myModal-m07').modal('hide');
+
+                $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
+                $("#" + global_mod_id).removeClass('ausgewaehlt');
+
             });
             <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
@@ -690,20 +709,18 @@
                         fill_data(mod_id, sem_id);
                     } else {
                         append_module(mod_id, sem_id);
+                        // Modul Aus-Grauen Links
+                        $("#" + mod_id).parent().parent().addClass('blocked');
+                        $("#" + mod_id).removeClass('ausgewaehlt');
+                        $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
                     }
-
-                    // $("#div_semester").children().filter(":nth-child(" + sem_id + ")").append(
-
                     ausgewaehlt_modul = "", ausgewaehlt_semester = "";
 
                     // Grünen Rahmen löschen LINKS
-                    $("#" + mod_id).removeClass('ausgewaehlt');
 
-                    // Modul Aus-Grauen Links
-                    $("#" + mod_id).parent().parent().addClass('blocked');
 
                     // Grünen Rahmen löschen RECHTS
-                    $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
+
 
                     update_master_ects(mod_id, 1);
                 }
@@ -1069,8 +1086,6 @@
                     // $("#div_semester").children().last().addClass('blocked');
 
                     // $("#div_semester").children().last().children().first().siblings().toggle("hidden");
-
                 }
-
     </script>
 </html>
