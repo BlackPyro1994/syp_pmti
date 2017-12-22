@@ -3,43 +3,24 @@ FP;Forschungsprojekt;0;0;0;1;1;1;[NN];10;true;PM
 MAA;Masterarbeit;0;0;0;0;1;1;[NN];27;true;PM
 KOLL;Kolloquium zur Masterarbeit;0;0;0;0;1;1;[NN];3;true;PM
 KRY;Kryptographie;2;1;1;0;0;1;Knospe;5;false;WPMT
-KRY;Kryptographie;2;1;1;0;0;1;Knospe;5;false;WPP
 KOGA;Kombinatorische Optimierung und Graphenalgorithmen;2;2;0;0;1;0;Randerath;5;false;WPMT
-KOGA;Kombinatorische Optimierung und Graphenalgorithmen;2;2;0;0;1;0;Randerath;5;false;WPP
 WR;Wissenschaftliches Rechnen;2;1;1;0;0;1;Rhein;5;false;WPMT
-WR;Wissenschaftliches Rechnen;2;1;1;0;0;1;Rhein;5;false;WPP
 HIM;Höhere Ingenieurmathematik;3;1;0;0;1;1;Knospe oder Schellong;5;false;WPMT
-HIM;Höhere Ingenieurmathematik;3;1;0;0;1;1;Knospe oder Schellong;5;false;WPP
 NGN;Next Generation Networks;2;1;1;0;0;1;Grebe;5;false;WPTI
-NGN;Next Generation Networks;2;1;1;0;0;1;Grebe;5;false;WPP
 ARP;Alternative Rechnerarchitekturen und Programmiersprachen;2;1;1;0;1;0;Hartung;5;false;WPTI
-ARP;Alternative Rechnerarchitekturen und Programmiersprachen;2;1;1;0;1;0;Hartung;5;false;WPP
 CI;Computational Intelligence;2;1;1;0;0;1;Bartz;5;false;WPI
-CI;Computational Intelligence;2;1;1;0;0;1;Bartz;5;false;WPP
 DBW;Datenbanken und Wissensrepräsentation;2;1;1;0;0;1;Büchel;5;false;WPI
-DBW;Datenbanken und Wissensrepräsentation;2;1;1;0;0;1;Büchel;5;false;WPP
 ITS;IT-Sicherheit;2;1;1;0;1;0;Knospe;5;false;WPI
-ITS;IT-Sicherheit;2;1;1;0;1;0;Knospe;5;false;WPP
 VKS;Verifikation komplexer SW-Systeme;2;1;1;0;0;1;[NN];5;false;WPI
-VKS;Verifikation komplexer SW-Systeme;2;1;1;0;0;1;[NN];5;false;WPP
 SEKM;Entwurf komplexer Softwaresysteme mit Komponenten und Mustern;2;1;1;0;1;0;Kreiser;5;false;WPI
-SEKM;Entwurf komplexer Softwaresysteme mit Komponenten und Mustern;2;1;1;0;1;0;Kreiser;5;false;WPP
 AMC;Advanced Multimedia Communications;2;1;1;0;1;0;Grebe;5;false;WPI
-AMC;Advanced Multimedia Communications;2;1;1;0;1;0;Grebe;5;false;WPP
 AMS;Spezielle Aspekte autonomer mobiler Systeme;2;1;1;0;1;0;Yuan;5;false;WPI
-AMS;Spezielle Aspekte autonomer mobiler Systeme;2;1;1;0;1;0;Yuan;5;false;WPP
 DMC;Digital Motion Control;2;1;1;0;0;1;[NN];5;false;WPK
-DMC;Digital Motion Control;2;1;1;0;0;1;[NN];5;false;WPP
 DSP;Digital Signal Processing;2;1;1;0;0;1;Elders-Boll;5;false;WPK
-DSP;Digital Signal Processing;2;1;1;0;0;1;Elders-Boll;5;false;WPP
 DC;Digital Communications;2;1;0;1;1;0;Dettmar;5;false;WPK
-DC;Digital Communications;2;1;0;1;1;0;Dettmar;5;false;WPP
 AVC;Audio-/Video Coding;2;1;0;0;0;1;Pörschmann/Silverberg;5;false;WPK
-AVC;Audio-/Video Coding;2;1;0;0;0;1;Pörschmann/Silverberg;5;false;WPP
 RFSD;RF System Design;2;1;1;0;0;1;Kronberger;5;false;WPK
-RFSD;RF System Design;2;1;1;0;0;1;Kronberger;5;false;WPP
 ACC;Advanced Channel Coding;2;1;0;0;1;0;Dettmar;5;false;WPK
-ACC;Advanced Channel Coding;2;1;0;0;1;0;Dettmar;5;false;WPP
 PL(PLTIN);Projektleitung;0;0;0;3;1;0;[NN];5;false;WPP
+ALM;Auflagenmodul;1;1;1;1;1;1;[NN];1;false;AM
 M07;-Wahl(beliebig aus MaSG der F07);2;1;1;0;1;1;-[NN];5;false;WPP
-ALM;-Auflagenmodul;-1;-1;-1;-1;1;1;-[NN];-1;false;AM

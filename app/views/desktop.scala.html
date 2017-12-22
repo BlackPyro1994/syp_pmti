@@ -76,7 +76,7 @@
                             <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-abbrechen">
                                 Abbrechen
                             </button>
-                            <button type = "button" class = "btn btn-default" id = "popup-ok"
+                            <button type = "button" class = "btn btn-default" id = "popup-new-ok"
                             onclick = "ok_button_new_plan()">OK
                             </button>
                         </div>
@@ -85,6 +85,54 @@
             </div>
                 <!-- PopUp Freitextmodul -->
             <div id = "myModal-freitext" class = "modal fade" role = "dialog">
+                <div class = "modal-dialog">
+                        <!-- PopUp Inhalt-->
+                    <div class = "modal-content freitext">
+                            <!-- PopUp Kopfzeile -->
+                        <div class = "modal-header">
+                            <h4 class = "modal-title">Daten ergänzen</h4>
+                        </div>
+                            <!-- PopUp Körper -->
+                        <div class = "modal-body">
+                            <div class = "container">
+                                <div class = "row datenergaenzen">
+                                    <input type = "text" class = "form-control" id = "input-name" placeholder = "Name">
+                                </div>
+                                <div class = "row datenergaenzen">
+                                    <div class = "col">
+                                        <input type = "text" class = "form-control" id = "input-v" placeholder = "V">
+                                    </div>
+                                    <div class = "col">
+                                        <input type = "text" class = "form-control" id = "input-u" placeholder = "Ü">
+                                    </div>
+                                    <div class = "col">
+                                        <input type = "text" class = "form-control" id = "input-p" placeholder = "P">
+                                    </div>
+                                    <div class = "col">
+                                        <input type = "text" class = "form-control" id = "input-pr" placeholder = "Pr">
+                                    </div>
+                                </div>
+                                <div class = "row datenergaenzen">
+                                    <input type = "text" class = "form-control" id = "input-dozent" placeholder = "Dozent">
+                                </div>
+                                <div class = "row datenergaenzen">
+                                    <input type = "text" class = "form-control" id = "input-ects" placeholder = "ECTS">
+                                </div>
+                            </div>
+                        </div>
+                            <!-- PopUp Fußzeile -->
+                        <div class = "modal-footer">
+                            <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-abbrechen">
+                                Abbrechen
+                            </button>
+                            <button type = "button" class = "btn btn-default" id = "popup-freitext-ok">OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- PopUp M07 -->
+            <div id = "myModal-m07" class = "modal fade" role = "dialog">
                 <div class = "modal-dialog">
                         <!-- PopUp Inhalt-->
                     <div class = "modal-content">
@@ -96,33 +144,10 @@
                         <div class = "modal-body">
                             <div class = "container">
                                 <div class = "row datenergaenzen">
-                                    <input type = "text" class = "form-control" id = "input-id" placeholder = "ID">
+                                    <input type = "text" class = "form-control" id = "input-name-m07" placeholder = "Name">
                                 </div>
                                 <div class = "row datenergaenzen">
-                                    <input type = "text" class = "form-control" id = "input-name" placeholder = "Name">
-                                </div>
-                                <div class = "row datenergaenzen">
-                                    <div class = "col">
-                                        <input type = "text" class = "form-control" id = "input-name" placeholder = "SWS">
-                                    </div>
-                                    <div class = "col">
-                                        <input type = "text" class = "form-control" id = "input-name" placeholder = "V">
-                                    </div>
-                                    <div class = "col">
-                                        <input type = "text" class = "form-control" id = "input-name" placeholder = "Ü">
-                                    </div>
-                                    <div class = "col">
-                                        <input type = "text" class = "form-control" id = "input-name" placeholder = "P">
-                                    </div>
-                                    <div class = "col">
-                                        <input type = "text" class = "form-control" id = "input-name" placeholder = "Pr">
-                                    </div>
-                                </div>
-                                <div class = "row datenergaenzen">
-                                    <input type = "text" class = "form-control" id = "input-name" placeholder = "Dozent">
-                                </div>
-                                <div class = "row datenergaenzen">
-                                    <input type = "text" class = "form-control" id = "input-name" placeholder = "ECTS">
+                                    <input type = "text" class = "form-control" id = "input-dozent-m07" placeholder = "Dozent">
                                 </div>
                             </div>
                         </div>
@@ -131,8 +156,7 @@
                             <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-abbrechen">
                                 Abbrechen
                             </button>
-                            <button type = "button" class = "btn btn-default" id = "popup-ok"
-                            onclick = "ok_btn_Datenergaenzen()">OK
+                            <button type = "button" class = "btn btn-default" id = "popup-m07-ok">OK
                             </button>
                         </div>
                     </div>
@@ -236,6 +260,7 @@
 
             var ausgewaehlt_semester = "";
             var ausgewaehlt_modul = "";
+            var global_mod_id, global_sem_id;
 
             var open_catalog = "";
 
@@ -291,23 +316,31 @@
             <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
             function update_master_ects(mod_id, wert) {
-                // wert = auswahl ob adieren oder subtrahieren
-                // 1 == adieren 0 == subtrahieren
 
+                var ects = Number(document.getElementById("master_ects").textContent);
+
+                // wert = auswahl ob addieren oder subtrahieren
+                // 1 == adieren 0 == subtrahieren
                 if (wert == 1) {
                     @for(mod <- modulListe) {
                         if ("@{mod(0)}" == mod_id) {
-                            var ects = Number(document.getElementById("master_ects").textContent);
-                            ects = ects + @{mod(9)};
-                            document.getElementById("master_ects").textContent = ects;
+                            if(mod_id == "ALM") {
+                                document.getElementById("master_ects").textContent = ects;
+                            } else {
+                                ects = ects + @{mod(9)};
+                                document.getElementById("master_ects").textContent = ects;
+                            }
                         }
                     }
                 } else if(wert == 0) {
                     @for(mod <- modulListe) {
                         if ("@{mod(0)}" == mod_id) {
-                            var ects = Number(document.getElementById("master_ects").textContent);
-                            ects = ects - @{mod(9)};
-                            document.getElementById("master_ects").textContent = ects;
+                            if(mod_id == "ALM") {
+                                document.getElementById("master_ects").textContent = ects;
+                            } else {
+                                ects = ects - @{mod(9)};
+                                document.getElementById("master_ects").textContent = ects;
+                            }
                         }
                     }
                 }
@@ -389,12 +422,12 @@
 
                 function select_semester(caller) {
 
-                    $("#div_semester").children().removeClass('include');
-                    $("#div_semester").children().filter(":odd").children().first().siblings().show();
+// ###                     $("#div_semester").children().removeClass('include');
+// ###                     $("#div_semester").children().filter(":odd").children().first().siblings().show();
 
-                    if ($(caller).attr('class').includes("ausgewaehlt")) {
+                     if ($(caller).attr('class').includes("ausgewaehlt")) {
 
-                        $(caller).toggleClass('ausgewaehlt');
+                         $(caller).toggleClass('ausgewaehlt');
                     }
                     else {
 
@@ -448,12 +481,12 @@
 
                                 console.log("SOMMER");
 
-                                $("#div_semester").children().filter(":even").addClass('include');
-                                $("#div_semester").children().filter(":odd").removeClass('include');
+// ###                                 $("#div_semester").children().filter(":even").addClass('include');
+// ###                                 $("#div_semester").children().filter(":odd").removeClass('include');
 
                                 // $("#div_semester").children().children().not('.class_click_semester_row').hide(200);
 
-                                $("#div_semester").children().children().not('.class_click_semester_row').css('display', 'none');
+// ###                                 $("#div_semester").children().children().not('.class_click_semester_row').css('display', 'none');
 
                             }
 
@@ -464,10 +497,10 @@
 
                                 console.log("WINTER");
 
-                                $("#div_semester").children().filter(":odd").addClass('include');
-                                $("#div_semester").children().filter(":even").removeClass('include');
+// ###                                 $("#div_semester").children().filter(":odd").addClass('include');
+// ###                                 $("#div_semester").children().filter(":even").removeClass('include');
 
-                                $("#div_semester").children().children().not('.class_click_semester_row').hide(200);
+// ###                                 $("#div_semester").children().children().not('.class_click_semester_row').hide(200);
                                 // $("#div_semester").children().children().not('.class_click_semester_row').css('display', 'block');
 
                             }
@@ -481,9 +514,9 @@
 
                         console.log("ELSE");
 
-                        $("#div_semester").children().removeClass('include');
+// ###                         $("#div_semester").children().removeClass('include');
 
-                        $("#div_semester").children().children().not('.class_click_semester_row').show(200);
+// ###                         $("#div_semester").children().children().not('.class_click_semester_row').show(200);
 
                     }
                 }
@@ -506,19 +539,158 @@
                             + '</div>');
                 }
 
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+
+            function fill_data(mod_id, sem_id) {
+                if(mod_id == "M07") {
+                    $('#myModal-m07').modal('toggle');
+
+                    $("#input-name").val("");
+                    $("#input-dozent").val("");
+
+                    global_sem_id = sem_id;
+                    global_mod_id = mod_id;
+
+                } else if (mod_id == "ALM") {
+                    $('#myModal-freitext').modal('toggle');
+
+                    $("#input-name").val("");
+                    $("#input-v").val("");
+                    $("#input-u").val("");
+                    $("#input-p").val("");
+                    $("#input-pr").val("");
+                    $("#input-dozent").val("");
+                    $("#input-ects").val("");
+
+                    global_sem_id = sem_id;
+                    global_mod_id = mod_id;
+                }
+            }
+
+            $('#myModal-freitext').on('click', '#popup-freitext-ok', function (click) {
+                var name;
+                var v,u,p,pr;
+                var dozent;
+                var ects;
+
+                name = $("#input-name").val();
+                v = $("#input-v").val();
+                u = $("#input-u").val();
+                p = $("#input-p").val();
+                pr = $("#input-pr").val();
+                dozent = $("#input-dozent").val();
+                ects = $("#input-ects").val();
+
+                if(global_mod_id == "ALM" && name == "") {
+                    name = "Name";
+                }
+                if(global_mod_id == "ALM" && dozent == "") {
+                    dozent = "Dozent";
+                }
+                if(global_mod_id == "ALM" && ects == "") {
+                    ects = 0;
+                }
+                if(global_mod_id == "ALM" && v == "") {
+                    v = 0;
+                }
+                if(global_mod_id == "ALM" && u == "") {
+                    u = 0;
+                }
+                if(global_mod_id == "ALM" && p == "") {
+                    p = 0;
+                }
+                if(global_mod_id == "ALM" && pr == "") {
+                    pr = 0;
+                }
+
+                append_free_module(global_mod_id,global_sem_id,name,v,u,p,pr,dozent,ects);
+
+                $('#myModal-freitext').modal('hide');
+            });
+
+            $('#myModal-m07').on('click', '#popup-m07-ok', function (click) {
+                var name;
+                var v,u,p,pr;
+                var dozent;
+                var ects;
+
+                name = $("#input-name-m07").val();
+                v = 2;
+                u = 1;
+                p = 1;
+                pr = 0;
+                dozent = $("#input-dozent-m07").val();
+                ects = 5;
+
+                if(global_mod_id == "M07" && name == "") {
+                    name = "Name";
+                }
+                if(global_mod_id == "M07" && dozent == "") {
+                    dozent = "Dozent";
+                }
+                append_free_module(global_mod_id,global_sem_id,name,v,u,p,pr,dozent,ects);
+
+                $('#myModal-m07').modal('hide');
+            });
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+            function append_free_module(mod_id,sem_id,name,v,u,p,pr,dozent,ects) {
+                $("#div_semester").children().filter(":nth-child(" + sem_id + ")").append(
+                        '<div id="mod_' + mod_id + '"' + ' class = "row semester">' +
+                        '<div class = "col tags id">' +
+                        '<p class="class_click_p">ID: '+mod_id+'</p>' +
+                        '</div>' +
+                        '<div class = "col tags name">' +
+                        '<p class="class_click_p">'+name+'</p>' +
+                        '</div>' +
+                        '<div class = "col tags sws">' +
+                        '<p class="class_click_p">V:'+v+',Ü:'+u+',P:'+p+',Pr:'+pr+'</p>' +
+                        '</div>' +
+                        '<div class = "col tags dozent">' +
+                        '<p class="class_click_p">'+dozent+'</p>' +
+                        '</div>' +
+                        '<div class = "col tags ects">' +
+                        '<p class="class_click_p" style="vertical-align: middle,text-align: center">ECTS: '+ects+'</p>' +
+                        '</div>' +
+                        '<div class = "col-1 tags">' +
+                        '<button type = "button" id = "button_loeschen" class = " btn btn-danger btn-sm btn-block class_click_delete">x</button>' +
+                        '</div>' +
+                        '<div class = "col-1">' +
+                        '<button type = "button" id = "button_verschieben" class = "btn btn-warning btn-sm btn-block class_click_move">>></button>' +
+                        '</div>' +
+                        '</div>');
+
+            }
+            <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
                 function insert_module_in_semester(mod_id, sem_id) {
                     $("#" + mod_id).css("background", "#eee");
                     $("#" + mod_id).removeClass("open_catalog");
 
-                    console.log($("#div_kataloge"));
+                    //console.log($("#div_kataloge"));
 
-                    console.log($("#div_kataloge").children());
+                    //console.log($("#div_kataloge").children());
 
-                    console.log($("#div_kataloge").children().find('.module'));
+                    //console.log($("#div_kataloge").children().find('.module'));
 
                     //toggle("hidden");
 
-                    append_module(mod_id, sem_id);
+                    if((mod_id == "ALM" || mod_id == "M07") && (!moving)) {
+                        fill_data(mod_id, sem_id);
+                    } else {
+                        append_module(mod_id, sem_id);
+                    }
 
                     // $("#div_semester").children().filter(":nth-child(" + sem_id + ")").append(
 
@@ -533,7 +705,6 @@
                     // Grünen Rahmen löschen RECHTS
                     $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
 
-                    console.log("addieren: "+mod_id);
                     update_master_ects(mod_id, 1);
                 }
 
@@ -631,6 +802,8 @@
 
                 <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
+                <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
                 function new_plan() {
                     wert = $("#input-semesteranzahl").val();
                     ok_button_new_plan();
@@ -695,11 +868,11 @@
 
                                     $(new_click).parent().siblings().toggle(200);
 
-                                    open_catalog = $(".modul:visible").closest(".class_click_katalog").attr("id");
+                                    // ### open_catalog = $(".modul:visible").closest(".class_click_katalog").attr("id");
 
                                     // $(click).parent().parent().toggleClass("open_catalog");
 
-                                    $(click).closest(".class_click_katalog").toggleClass("open_catalog");
+                                    // ### $(click).closest(".class_click_katalog").toggleClass("open_catalog");
 
                                 }
 
@@ -710,15 +883,15 @@
 
                                 else if ($(click).closest(".class_click_katalog").attr("id") == open_catalog) {
 
-                                    console.log("Gleicher Katalog");
+                                    // ###  console.log("Gleicher Katalog");
 
-                                    $(click).closest(".class_click_katalog").toggleClass("open_catalog");
+                                    // ### $(click).closest(".class_click_katalog").toggleClass("open_catalog");
 
-                                    var new_click = $(click);
+                                    // ###  var new_click = $(click);
 
-                                    $(new_click).parent().siblings().not('.class_click_katalog').not('.class_click_katalog_label').toggle(200);
+                                    // ### $(new_click).parent().siblings().not('.class_click_katalog').not('.class_click_katalog_label').toggle(200);
 
-                                    open_catalog = "";
+                                    // ###  open_catalog = "";
 
                                     // $(click).parent().parent().toggleClass("open_catalog");
 
