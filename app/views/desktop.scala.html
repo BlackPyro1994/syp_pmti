@@ -310,6 +310,8 @@
                 }
 
                 delete_last_semester();
+
+                update_rules();
             }
 
 
@@ -723,6 +725,8 @@
 
 
                     update_master_ects(mod_id, 1);
+
+                    update_rules();
                 }
 
 
@@ -771,6 +775,8 @@
                     $("#" + id).parent().parent().removeClass('blocked');
 
                     update_master_ects(id, 0);
+
+                    update_rules();
                 };
 
                 function move_module_to_semester(caller) {
@@ -818,12 +824,67 @@
                 };
 
                 <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+                function update_rules(){
 
+                    $("#regeln").children().remove();
+
+                    @for(kat <- katalogListe){
+
+                        var katID = "@{kat(0)}";
+                        var belegAnz = @kat(2);
+                        var countBlocked = $("#" + katID).children().filter(".blocked").length;
+
+                        if((belegAnz > 0) && (countBlocked<belegAnz)) {
+
+                            var pm = "Verpflichtend zu wählen:";
+
+                            @for(mod <-modulListe){
+
+                                if(("@{mod(10)}" == "true") && ("@{mod(11)}" == katID)){
+                                    pm +=" ";
+                                    pm += "@{mod(0)}";
+                                }
+                            }
+
+                            if(pm!= "Verpflichtend zu wählen:") {
+                                $("#regeln").append(
+                                        '<div class ="row">' +
+                                        '<div class ="col warnungen">' +
+                                        '<p>' +
+                                        'Aus dem Katalog ' +
+                                        '"@{kat(1)}"' +
+                                        ' fehlen noch ' +
+                                        (belegAnz - countBlocked) +
+                                        ' Modul(e).' +
+                                        ' (' +
+                                        pm +
+                                        ')' +
+                                        '</p>'
+                                );
+                            } else {
+                                $("#regeln").append(
+                                        '<div class ="row">' +
+                                        '<div class ="col warnungen">' +
+                                        '<p>' +
+                                        'Aus dem Katalog ' +
+                                        '"@{kat(1)}"' +
+                                        ' fehlen noch ' +
+                                        (belegAnz - countBlocked) +
+                                        ' Modul(e).' +
+                                        '</p>'
+                                );
+                            }
+
+                        }
+                    }
+
+                }
                 <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
                 function new_plan() {
                     wert = $("#input-semesteranzahl").val();
                     ok_button_new_plan();
+                    update_rules();
                 }
 
                 function ok_button_new_plan() {
