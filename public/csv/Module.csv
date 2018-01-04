@@ -21,6 +21,6 @@ DC;Digital Communications;2;1;0;1;1;0;Dettmar;5;false;WPK
 AVC;Audio-/Video Coding;2;1;0;0;0;1;Pörschmann/Silverberg;5;false;WPK
 RFSD;RF System Design;2;1;1;0;0;1;Kronberger;5;false;WPK
 ACC;Advanced Channel Coding;2;1;0;0;1;0;Dettmar;5;false;WPK
-PL(PLTIN);Projektleitung;0;0;0;3;1;0;[NN];5;false;WPP
+PL;Projektleitung;0;0;0;3;1;0;[NN];5;false;WPP
 ALM;Auflagenmodul;1;1;1;1;1;1;[NN];1;false;AM
 M07;-Wahl(beliebig aus MaSG der F07);2;1;1;0;1;1;-[NN];5;false;WPP
