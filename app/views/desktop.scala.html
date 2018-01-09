@@ -318,6 +318,7 @@
             <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
             function update_semester_ects(mod_id,sem_id,wert) {
                 var id = "sem_ects_anz"+sem_id;
+                console.log(id);
                 var ects = Number(document.getElementById(""+id).textContent);
 
                 // wert = auswahl ob addieren oder subtrahieren
@@ -805,12 +806,14 @@
                 function delete_module_from_semester(caller) {
 
                     var id = $(caller).parent().parent().children().first().text().replace("ID: ", "");
+                    var sem_id = $(caller).parent().parent().parent().children().children().first().text();
                     var mod_id = "mod_" + id;
 
                     $("#" + mod_id).remove();
                     $("#" + id).parent().parent().removeClass('blocked');
 
                     update_master_ects(id, 0);
+                    update_semester_ects(id, sem_id,0);
 
                     update_rules();
                 };
