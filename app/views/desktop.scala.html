@@ -732,59 +732,6 @@
 
 		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
-		  function insert_module_in_semester(mod_id, sem_id, optional)
-		  {
-			$("#" + mod_id).css("background", "#eee");
-			$("#" + mod_id).removeClass("open_catalog");
-
-			//($("#div_kataloge"));
-
-			//($("#div_kataloge").children());
-
-			//($("#div_kataloge").children().find('.module'));
-
-			//toggle("hidden");
-
-			// getElementByIndex(content, sem_id).push(new Array());
-
-			console.log("-------------------------------------------------");
-			console.log(content);
-
-			if (optional == null)
-			{
-
-			  if ((mod_id == "ALM" || mod_id == "M07") && (!moving))
-			  {
-				fill_data(mod_id, sem_id);
-			  }
-			  else
-			  {
-				append_module(mod_id, sem_id);
-				// Modul Aus-Grauen Links
-				$("#" + mod_id).parent().parent().addClass('blocked');
-				$("#" + mod_id).removeClass('ausgewaehlt');
-				$('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
-			  }
-			}
-			else
-			{
-			  append_free_module(optional["mod_id"], optional["sem_id"], optional["name"], optional["v"], optional["u"], optional["p"], optional["pr"], optional["dozent"], optional["ects"]);
-			}
-
-			ausgewaehlt_modul = "", ausgewaehlt_semester = "";
-
-			// Grünen Rahmen löschen LINKS
-
-			// Grünen Rahmen löschen RECHTS
-
-			update_semester_ects(mod_id, sem_id, 1);
-			update_master_ects(mod_id, 1);
-
-			update_rules();
-		  }
-
-		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
-
 		  function add_catalog(kat_id, title)
 		  {
 
@@ -870,7 +817,7 @@
 
 			  // getLast(getElementByIndex(content, sem_id)).push("," + mod_id);
 
-			  console.log("getElementByIndex(content, " + sem_id - 1 + ")");
+			  console.log("getElementByIndex(content, " + (sem_id - 1) + ")");
 
 			  // getElementByIndex(content, sem_id-1).push("," + mod_id);
 
@@ -934,7 +881,7 @@
 
 			// getLast(getElementByIndex(content, sem_id)).push("#" + sem_id + "," + mod_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + dozent + "," + ects);
 
-		    console.log("getElementByIndex(content, " + sem_id - 1 + ")");
+			console.log("getElementByIndex(content, " + (sem_id - 1) + ")");
 
 			// getElementByIndex(content, sem_id-1).push("#" + sem_id + "," + mod_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + dozent + "," + ects);
 
@@ -942,6 +889,49 @@
 
 			$("#div_semester").children().filter(":nth-child(" + sem_id + ")").append('<div id="mod_' + mod_id + '"' + ' class = "row semester">' + '<div class = "col tags id">' + '<p class="class_click_p">ID: ' + mod_id + '</p>' + '</div>' + '<div class = "col tags name">' + '<p class="class_click_p">' + name + '</p>' + '</div>' + '<div class = "col tags sws">' + '<p class="class_click_p">V:' + v + ',Ü:' + u + ',P:' + p + ',Pr:' + pr + '</p>' + '</div>' + '<div class = "col tags dozent">' + '<p class="class_click_p">' + dozent + '</p>' + '</div>' + '<div class = "col tags ects">' + '<p class="class_click_p" style="vertical-align: middle,text-align: center">ECTS: ' + ects + '</p>' + '</div>' + '<div class = "col-1 tags">' + '<button type = "button" id = "button_loeschen" class = " btn btn-danger btn-sm btn-block class_click_delete">x</button>' + '</div>' + '<div class = "col-1">' + '<button type = "button" id = "button_verschieben" class = "btn btn-warning btn-sm btn-block class_click_move">>></button>' + '</div>' + '</div>');
 
+		  }
+
+		  function insert_module_in_semester(mod_id, sem_id, optional)
+		  {
+
+		    console.log("Insert : " + mod_id + " into : " + sem_id);
+
+			$("#" + mod_id).css("background", "#eee");
+			$("#" + mod_id).removeClass("open_catalog");
+
+			getElementByIndex(content, sem_id).push(new Array());
+
+			if (optional == null)
+			{
+
+			  if ((mod_id == "ALM" || mod_id == "M07") && (!moving))
+			  {
+				fill_data(mod_id, sem_id);
+			  }
+			  else
+			  {
+				append_module(mod_id, sem_id);
+				// Modul Aus-Grauen Links
+				$("#" + mod_id).parent().parent().addClass('blocked');
+				$("#" + mod_id).removeClass('ausgewaehlt');
+				$('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
+			  }
+			}
+			else
+			{
+			  append_free_module(optional["mod_id"], optional["sem_id"], optional["name"], optional["v"], optional["u"], optional["p"], optional["pr"], optional["dozent"], optional["ects"]);
+			}
+
+			ausgewaehlt_modul = "", ausgewaehlt_semester = "";
+
+			// Grünen Rahmen löschen LINKS
+
+			// Grünen Rahmen löschen RECHTS
+
+			update_semester_ects(mod_id, sem_id, 1);
+			update_master_ects(mod_id, 1);
+
+			update_rules();
 		  }
 
 		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
@@ -1210,7 +1200,7 @@
 		  function save()
 		  {
 
-		    console.log("#####################################");
+			console.log("#####################################");
 
 			console.log(content);
 
@@ -1243,7 +1233,7 @@
 
 			//			mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
-		    console.log(text);
+			console.log(text);
 
 			var element = document.createElement('a');
 			element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
@@ -1323,7 +1313,7 @@
 			  {
 				temp = lines[line];
 
-			    console.log("ID des Moduls : " + temp.split(',')[1]);
+				console.log("ID des Moduls : " + temp.split(',')[1]);
 
 				if (temp.split(',')[1] === "M07" || temp.split(',')[1] === "ALM")
 				{
@@ -1354,7 +1344,7 @@
 
 				  console.log("Temp Länge :" + temp.length);
 
-				  for (var pos = 1; pos <= temp.length; pos++)
+				  for (var pos = 1; pos < temp.length; pos++)
 				  {
 					console.log("Modul : " + temp[pos] + " in Semester : " + temp[0]);
 
