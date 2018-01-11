@@ -170,7 +170,7 @@
 		<div class = "row rounded" align = "center">
 
 		  <div class = "col" align = "center">
-			<button type = "button" class = "btn btn-primary" content-toggle = "modal" content-target = "#myModal-new_plan">
+			<button type = "button" class = "btn btn-primary" content-toggle = "modal" onclick="new_plan()">
 			  Neuer Plan
 			</button>
 		  </div>
@@ -662,6 +662,10 @@
 			}
 		  }
 
+		  $('#myModal-new_plan').on('click', '#popup-abbrechen', function (click) {
+			  $('#myModal-new_plan').modal('hide');
+		  });
+
 		  $('#myModal-freitext').on('click', '#popup-freitext-abbrechen', function (click)
 		  {
 			$('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
@@ -978,11 +982,8 @@
 
 		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
-		  function new_plan()
-		  {
-			wert = $("#input-semesteranzahl").val();
-			ok_button_new_plan();
-			update_rules();
+		  function new_plan() {
+		  	$('#myModal-new_plan').modal('toggle');
 		  }
 
 		  function ok_button_new_plan(options)
