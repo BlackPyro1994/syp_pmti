@@ -807,8 +807,7 @@
 
 		  function append_module(mod_id, sem_id)
 		  {
-			console.log("-------------------------------------------------");
-			console.log(content);
+			console.log("append_module(" + mod_id + "," + sem_id + ")");
 
 			@for(mod <- modulListe) {
 
@@ -856,6 +855,8 @@
 
 		  function append_free_module(mod_id, sem_id, name, v, u, p, pr, dozent, ects)
 		  {
+			console.log("append_module(" + mod_id + "," + sem_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + dozent + "," + ects + ")");
+
 			if (global_mod_id == "ALM" && name == "")
 			  name = "Name";
 
@@ -894,7 +895,7 @@
 		  function insert_module_in_semester(mod_id, sem_id, optional)
 		  {
 
-		    console.log("Insert : " + mod_id + " into : " + sem_id);
+			console.log("Insert : " + mod_id + " into : " + sem_id);
 
 			$("#" + mod_id).css("background", "#eee");
 			$("#" + mod_id).removeClass("open_catalog");
@@ -1230,7 +1231,6 @@
 
 			});
 
-
 			//			mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
 			console.log(text);
@@ -1344,7 +1344,7 @@
 
 				  console.log("Temp Länge :" + temp.length);
 
-				  for (var pos = 1; pos < temp.length; pos++)
+				  for (var pos = 1; pos <= temp.length; pos++)
 				  {
 					console.log("Modul : " + temp[pos] + " in Semester : " + temp[0]);
 
@@ -1360,7 +1360,6 @@
 
 		  $(document).ready(function ()
 		  {
-
 			@for(katal <- katalogListe) {
 			add_catalog("@{katal(0)}", "@{katal(1)}");
 			}
