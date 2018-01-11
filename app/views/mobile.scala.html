@@ -147,6 +147,7 @@
             var count = 0;
             var startSem = "winter";
             var semester_array = [];
+            var catalogs = 0;
 
             //#########################################################################################################
             function overview() {
@@ -267,17 +268,23 @@
             }
 
             //#########################################################################################################
-            function add_catalogs() {
+            function show_catalogs() {
                 @for(katal <- katalogListe) {
-                show_catalogs("@{katal(0)}", "@{katal(1)}");
+                add_catalogs("@{katal(0)}", "@{katal(1)}");
                 }
+                catalogs = 1;
                 $('#myModal-catalogs').modal('toggle');
             }
 
             //#########################################################################################################
-            function show_catalogs(catalog_id, catalog_name) {
-                console.log("show_catalogs()");
-                $("#catalog_list").append('<div id ="'+catalog_id+'" class="row catalog_border class_click_catalog"><button class="btn btn-block text-left">'+catalog_name+'</button></div>');
+            function add_catalogs(catalog_id, catalog_name) {
+                if(!catalogs) {
+                    console.log("add_catalogs("+catalog_id+","+catalog_name+")");
+                    $("#catalog_list").append('<div id="'+catalog_id+'" class="row catalog_border class_click_catalog"><button class="btn btn-block text-left" onclick="getID('+catalog_id+')">'+catalog_name+'</button></div>');;
+                }
+                else {
+                    return;
+                }
             }
 
             //#########################################################################################################
@@ -291,7 +298,7 @@
                 $("#div_semester").children().remove();
                 $("#button_minus").hide();
                 $("#button_plus").text("Module");
-                $("#button_plus").attr("onclick","add_catalogs()");
+                $("#button_plus").attr("onclick","show_catalogs()");
                 count = 0;
 
                 /*if ($(click).attr('class').includes("class_click_delete")) {
@@ -316,6 +323,22 @@
                     var new_click = $(click).parent();
                 }*/
             });
+
+            function getID(cat_id) {
+                var name = cat_id.innerText;
+                var id;
+
+                @for(katal <- katalogListe) {
+                    if ("@{katal(1)}" == name) {
+                        id = "@{katal(0)}";
+                        console.log("INNEN: "+id);
+                    } else {
+                        return;
+                    }
+                }
+                console.log("AUßEN: "+id);
+            }
+
             $('#catalog_list').on('click', '.class_click_catalog', function (click) {
 
             });
