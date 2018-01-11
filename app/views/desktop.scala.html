@@ -272,6 +272,8 @@
 		  var all_catalogs_closed = 0;
 		  var moving = 0;
 
+		  var count = 0;
+
 		  var blocked = true;
 
 		  var content = new Array();
@@ -283,6 +285,8 @@
 			$('#file-input').trigger('click');
 		  });
 
+		  $('#button_pdf').on('click', create_pdf);
+
 		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
 		  function counter_plus()
@@ -291,12 +295,18 @@
 			wert++;
 			document.getElementById("count").textContent = wert;
 			add_semester(startSem);
+
+			count++;
+			console.log(count);
 		  }
 
 		  function counter_minus()
 		  {
 
 			content.pop();
+
+			count = (count == 0 ? 0 : count++);
+			console.log(count);
 
 			var wert = Number(document.getElementById("count").textContent);
 
@@ -662,10 +672,6 @@
 			}
 		  }
 
-		  $('#myModal-new_plan').on('click', '#popup-abbrechen', function (click) {
-			  $('#myModal-new_plan').modal('hide');
-		  });
-
 		  $('#myModal-freitext').on('click', '#popup-freitext-abbrechen', function (click)
 		  {
 			$('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
@@ -940,54 +946,212 @@
 		  }
 
 		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+		  function update_rules(){
 
-		  function update_rules()
-		  {
+			  $("#regeln").children().remove();
 
-			$("#regeln").children().remove();
+			  @for(kat <- katalogListe){
 
-			@for(kat <- katalogListe){
+				  var katID = "@{kat(0)}";
+				  var belegAnz = @kat(2);
+				  var countBlocked = $("#" + katID).children().filter(".blocked").length;
 
-			var katID = "@{kat(0)}";
-			var belegAnz = @kat(2);
-			var countBlocked = $("#" + katID).children().filter(".blocked").length;
+				  if((belegAnz > 0) && (countBlocked<belegAnz)) {
 
-			if ((belegAnz > 0) && (countBlocked < belegAnz))
-			{
+					  var pm = "Verpflichtend zu wählen:";
 
-			  var pm = "Verpflichtend zu wählen:";
+					  @for(mod <-modulListe){
 
-			  @for(mod <-modulListe){
+						  if(("@{mod(10)}" == "true") && ("@{mod(11)}" == katID)){
+							  pm +=" ";
+							  pm += "@{mod(0)}";
+						  }
+					  }
 
-			  if (("@{mod(10)}" == "true") && ("@{mod(11)}" == katID))
-			  {
-				pm += " ";
-				pm += "@{mod(0)}";
+					  if(pm!= "Verpflichtend zu wählen:") {
+						  $("#regeln").append(
+								  '<div class ="row">' +
+								  '<div class ="col warnungen">' +
+								  '<p>' +
+								  'Aus dem Katalog ' +
+								  '"@{kat(1)}"' +
+								  ' fehlen noch ' +
+								  (belegAnz - countBlocked) +
+								  ' Modul(e).' +
+								  ' (' +
+								  pm +
+								  ')' +
+								  '</p>'
+						  );
+					  } else {
+						  $("#regeln").append(
+								  '<div class ="row">' +
+								  '<div class ="col warnungen">' +
+								  '<p>' +
+								  'Aus dem Katalog ' +
+								  '"@{kat(1)}"' +
+								  ' fehlen noch ' +
+								  (belegAnz - countBlocked) +
+								  ' Modul(e).' +
+								  '</p>'
+						  );
+					  }
+
+				  }
 			  }
+
+		  }
+
+
+		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+		  function create_pdf() {
+			  var doc = new jsPDF();
+			  var x = 11;
+			  var xq = 10;
+			  var y = 20;
+			  var id, name, v, u, p, pr, dozent, ects;
+			  var sem_zahl, wi_so, sem_ects, str;
+			  var master_ects =0;
+			  var restplatz = 249;
+
+			  doc.setFontSize(20);
+			  doc.text(45, y, "Individualisierter Studienverlaufsplan");
+			  y+=13;
+
+//ab hier 1 hart geschriebener Wert zu tauschen:
+			  master_ects = "90";
+
+			  str = "Master-ECTS insgesamt: "+master_ects;
+
+			  doc.setFontSize(10);
+			  doc.text(155,y,str);
+			  y+=7;
+
+			  var anz_Sem = Number(document.getElementById("count").textContent);
+			  console.log(anz_Sem);
+
+			  for (i = 1; i <= anz_Sem; i++) {
+
+				  var anz_Module = $("#div_semester").children().filter(":nth-child(" + i + ")").children().length - 1;
+				  console.log(anz_Module);
+
+				  if(((anz_Module*5)+16) > restplatz) {
+					  doc.addPage();
+					  var restplatz = 249;
+					  y=35;
+				  }
+				  restplatz -=((anz_Module*5)+12);
+
+//ab hier 3 hart geschriebene Werte zu tauschen:
+				  sem_zahl = "1";
+				  wi_so = "Wintersemester";
+				  sem_ects = "30";
+
+
+				  str = sem_zahl+": "+ wi_so+" ("+sem_ects+" ECTS)";
+
+				  doc.setFontSize(14);
+				  doc.text(x, y, str);
+				  y+=5;
+
+				  if (anz_Module > 0) {
+
+					  doc.setFontSize(9);
+					  doc.text(x, y, "LVID");
+					  x+=13;
+
+					  doc.text(x,y, "LV-Bezeichnung");
+					  x+=111;
+
+					  doc.text(x,y, "V");
+					  x+=4;
+
+					  doc.text(x,y, "Ü");
+					  x+=4;
+
+					  doc.text(x,y, "P");
+					  x+=4;
+
+					  doc.text(x,y, "Pr");
+					  x+=5;
+
+					  doc.text(x,y, "DozentIn");
+					  x+=39;
+
+					  doc.text(x,y, "ECTS");
+
+					  y+=4;
+					  restplatz -= 4;
+					  x=11;
+
+					  for (j = 2; j <= anz_Module + 1; j++) {
+						  //  module = $("#div_semester").children().filter(":nth-child(" + i + ")").children().filter(":nth-child(" + j + ")");
+						  // console.log(module);
+
+//ab hier 8 hart geschriebene Werte zu tauschen:
+						  id = "SEKM";
+						  name = "Entwurf komplexer Softwaresysteme mit Komponenten und Mustern";
+						  v = "2";
+						  u = "1";
+						  p = "0";
+						  pr = "0";
+						  dozent = "Knospe oder Schellong";
+						  ects = "5";
+
+						  doc.setFontSize(10);
+
+						  // Empty square
+						  doc.rect(xq,(y-3), 190, 4);
+
+						  doc.text(x, y, id);
+						  x+=13;
+
+						  doc.text(x,y, name);
+						  x+=111;
+
+						  doc.text(x,y, v);
+						  x+=4;
+
+						  doc.text(x,y, u);
+						  x+=4;
+
+						  doc.text(x,y, p);
+						  x+=4;
+
+						  doc.text(x,y, pr);
+						  x+=5;
+
+						  doc.text(x,y, dozent);
+						  x+=39;
+
+						  doc.text(x,y, ects);
+
+						  y+=5;
+						  x=11;
+					  }
+
+				  }
+				  y+=7;
 			  }
 
-			  if (pm != "Verpflichtend zu wählen:")
-			  {
-				$("#regeln").append('<div class ="row">' + '<div class ="col warnungen">' + '<p>' + 'Aus dem Katalog ' + '"@{kat(1)}"' + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + ' (' + pm + ')' + '</p>');
-			  }
-			  else
-			  {
-				$("#regeln").append('<div class ="row">' + '<div class ="col warnungen">' + '<p>' + 'Aus dem Katalog ' + '"@{kat(1)}"' + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + '</p>');
-			  }
-
-			}
-			}
+			  doc.save('Studienverlaufsplan.pdf');
 
 		  }
 
 		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
-		  function new_plan() {
-		  	$('#myModal-new_plan').modal('toggle');
+
+		  function new_plan()
+		  {
+			$('#myModal-new_plan').modal('toggle');
 		  }
 
 		  function ok_button_new_plan(options)
 		  {
+			console.log()
+
+			console.log("options : " + options);
 
 			if (options)
 			{
@@ -1148,6 +1312,11 @@
 		  {
 			$(this).parent().parent().css("background", "#eee");
 
+		  });
+
+		  $('#myModal-new_plan').on('click', '#popup-abbrechen', function (click)
+		  {
+			$('#myModal-new_plan').modal('hide');
 		  });
 
 		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
@@ -1448,6 +1617,16 @@
 		  function getElementByIndex(Object, index)
 		  {
 			return Object.slice(index, index + 1);
+		  }
+
+		  function test(str)
+		  {
+			var hex = '';
+			for (var i = 0; i < str.length; i++)
+			{
+			  hex += '' + str.charCodeAt(i).toString(16);
+			}
+			return hex;
 		  }
 
   </script>
