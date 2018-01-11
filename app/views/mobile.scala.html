@@ -95,7 +95,7 @@
                     </div>
                         <!-- PopUp Fußzeile -->
                     <div class = "modal-footer">
-                        <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-abbrechen">Abbrechen</button>
+                        <button type = "button" class = "btn btn-default" data-dismiss = "modal" id="popup-abbrechen">Abbrechen</button>
                         <button type = "button" class = "btn btn-default" id = "popup-new-ok"
                         onclick = "ok_button_new_plan()">OK
                         </button>
@@ -121,11 +121,11 @@
                         </div>
                     </div>
                         <!-- PopUp Fußzeile -->
-                    <div class = "modal-footer">
-                        <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-abbrechen">Abbrechen</button>
-                        <button type = "button" class = "btn btn-default" id="popup-new-ok"
+                    <div class = "modal-footer" id="cat_footer">
+                        <button type = "button" class = "btn btn-default" id = "popup-catalogs-back">Zurück</button>
+                            <!--<button type = "button" class = "btn btn-default" id="popup-new-ok"
                         onclick = "ok_button_new_plan()">OK
-                        </button>
+                        </button> -->
                     </div>
                 </div>
             </div>
@@ -147,7 +147,7 @@
             var count = 0;
             var startSem = "winter";
             var semester_array = [];
-            var catalogs = 0;
+            var open = 0;
 
             //#########################################################################################################
             function overview() {
@@ -269,26 +269,42 @@
 
             //#########################################################################################################
             function show_catalogs() {
+                console.log("show_catalogs()");
+                emptyModal();
+                $("#cat_footer").hide();
+
                 @for(katal <- katalogListe) {
                 add_catalogs("@{katal(0)}", "@{katal(1)}");
                 }
-                catalogs = 1;
-                $('#myModal-catalogs').modal('toggle');
-            }
-
-            //#########################################################################################################
-            function add_catalogs(catalog_id, catalog_name) {
-                if(!catalogs) {
-                    console.log("add_catalogs("+catalog_id+","+catalog_name+")");
-                    $("#catalog_list").append('<div id="'+catalog_id+'" class="row catalog_border class_click_catalog"><button class="btn btn-block text-left" onclick="getID('+catalog_id+')">'+catalog_name+'</button></div>');;
-                }
-                else {
+                if(!open) {
+                    $('#myModal-catalogs').modal('show');
+                } else {
+                    emptyModal();
+                    open = 0;
+                    show_catalogs();
                     return;
                 }
             }
 
             //#########################################################################################################
+            function add_catalogs(catalog_id, catalog_name) {
+                console.log("add_catalogs("+catalog_id+","+catalog_name+")");
+                $("#catalog_list").append('<div id="'+catalog_id+'" class="row catalog_border class_click_catalog"><button id="'+catalog_id+'" class="btn btn-block text-left fett">'+catalog_name+'</button></div>');
+            }
 
+            //#########################################################################################################
+            function add_modules(id) {
+                console.log("add_modules("+id+")");
+                var mod_id;
+                emptyModal();
+                //$("#cat_footer").append('<button type = "button" class = "btn btn-default" id = "popup-catalogs-back">Zurück</button>');
+                @for(mod <- modulListe) {
+                    if("@{mod(11)}" == id) {
+                        mod_id = "@{mod(0)}";
+                        $("#catalog_list").append('<div id="'+mod_id+'" class="row modules_border class_click_modules"><button id="'+mod_id+'" class="btn btn-block"><div class="row text-left"><div class="col fett"><p>'+"@{mod(0)}"+'</p></div><div class="col text-right"><p>ECTS: '+"@{mod(9)}"+'</p></div></div><div class="row normal text-left"><div class="col"><p>Dozent: '+"@{mod(8)}"+'</p></div></div></button></div>');
+                    }
+                }
+            }
             //#########################################################################################################
             //on click handler
             $('#div_semester').on('click', '.class_click_semester', function (click) {
@@ -300,47 +316,40 @@
                 $("#button_plus").text("Module");
                 $("#button_plus").attr("onclick","show_catalogs()");
                 count = 0;
-
-                /*if ($(click).attr('class').includes("class_click_delete")) {
-                    // LOESCHEN
-                    delete_module_from_semester(click);
-                }
-                else if ($(click).attr('class').includes("class_click_move")) {
-                    // VERSCHIEBEN
-                    //$(click).addClass("ausgewählt");
-                    moving = 1;
-                    move_module_to_semester(click);
-                }
-                else if ($(click).attr('class').includes("class_click_p")) {
-                    var new_click = $(click).parent().parent().parent();
-
-                }
-                // Winter / Sommer - Semester Label wurde geklickt
-                else if ($(click).attr('class').includes("label")) {
-                    var new_click = $(click).parent().parent();
-                }
-                else if ($(click).attr('class').includes("class_click_semester_row")) {
-                    var new_click = $(click).parent();
-                }*/
             });
 
-            function getID(cat_id) {
-                var name = cat_id.innerText;
-                var id;
+            function emptyModal() {
+                console.log("emptyModal()");
 
                 @for(katal <- katalogListe) {
-                    if ("@{katal(1)}" == name) {
-                        id = "@{katal(0)}";
-                        console.log("INNEN: "+id);
-                    } else {
-                        return;
-                    }
+                $("#" + "@{katal(0)}").remove();
                 }
-                console.log("AUßEN: "+id);
+                @for(mod <- modulListe) {
+                $("#" + "@{mod(0)}").remove();
+                }
             }
 
-            $('#catalog_list').on('click', '.class_click_catalog', function (click) {
+            $('#myModal-catalogs').on('click', '#popup-catalogs-back', function (click) {
+                console.log("Zurück");
+                open = 1;
+                $("#cat_footer").hide();
+                show_catalogs();
+            });
 
+            $('#catalog_list').on('click', '.class_click_catalog', function (click) {
+                console.log("Click on Katalog ID: "+(click.target).id);
+                var id = (click.target).id;
+
+                $("#cat_footer").show();
+                add_modules(id);
             });
     </script>
 </html>
+
+
+
+
+
+
+
+
