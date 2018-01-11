@@ -278,14 +278,18 @@
 
 		  var content = new Array();
 
+		  var katalogListe = new Array();
+		  var modulListe = new Array();
+
+		  var modulString = "";
+
+
 		  <!--############################################################################################################################-->
 
 		  $('#button_planLaden').on('click', function ()
 		  {
 			$('#file-input').trigger('click');
 		  });
-
-		  $('#button_pdf').on('click', create_pdf);
 
 		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
@@ -297,7 +301,6 @@
 			add_semester(startSem);
 
 			count++;
-			console.log(count);
 		  }
 
 		  function counter_minus()
@@ -306,7 +309,6 @@
 			content.pop();
 
 			count = (count == 0 ? 0 : count++);
-			console.log(count);
 
 			var wert = Number(document.getElementById("count").textContent);
 
@@ -817,56 +819,39 @@
 
 		  function append_module(mod_id, sem_id)
 		  {
-			console.log("append_module(" + mod_id + "," + sem_id + ")");
 
-			@for(mod <- modulListe) {
+		    updateModuleString(mod_id);
 
-			if (mod_id === "@{mod(0)}")
-			{
+			var append = modulString;
 
-			  // getLast(getElementByIndex(content, sem_id)).push("," + mod_id);
+			console.log("Append : " + append);
 
-			  console.log("getElementByIndex(content, " + (sem_id - 1) + ")");
+			append = append.split(",");
 
-			  // getElementByIndex(content, sem_id-1).push("," + mod_id);
+			$("#div_semester").children().filter(":nth-child(" + sem_id + ")").append('<div id="mod_' + mod_id + '"' + ' class = "row semester">' + '<div class = "col tags id">' + '<p class="class_click_p">ID: ' + mod_id + '</p>' + '</div>' +
 
-			  content[sem_id - 1].push("," + mod_id);
+					'<div class = "col tags name">' + '<p class="class_click_p">' + append[1] + '</p>' + '</div>' +
 
-			  // content[sem_id].push("@{mod(1)}");
-			  // content[sem_id].push("@{mod(2)}");
-			  // content[sem_id].push("@{mod(3)}");
-			  // content[sem_id].push("@{mod(4)}");
-			  // content[sem_id].push("@{mod(5)}");
-			  // content[sem_id].push("@{mod(8)}");
-			  // content[sem_id].push("@{mod(9)}");
+					'<div class = "col tags sws">' + '<p class="class_click_p">V:' + append[2] + ',Ü:' + append[3] + ',P:' + append[4] + ',Pr:' + append[5] + '</p>' + '</div>' +
 
-			  // console.log(content[sem_id]);
+					'<div class = "col tags dozent">' + '<p class="class_click_p">' + append[8] + '</p>' + '</div>' +
 
-			  $("#div_semester").children().filter(":nth-child(" + sem_id + ")").append('<div id="mod_' + mod_id + '"' + ' class = "row semester">' + '<div class = "col tags id">' + '<p class="class_click_p">ID: ' + mod_id + '</p>' + '</div>' +
+					'<div class = "col tags ects">' + '<p class="class_click_p" style="vertical-align: middle,text-align: center">ECTS:' + append[9] + '</p>' + '</div>' +
 
-					  '<div class = "col tags name">' + '<p class="class_click_p"> @{mod(1)} </p>' + '</div>' +
+					'<div class = "col-1 tags">' + '<button type = "button" id = "button_loeschen" class = " btn btn-danger btn-sm btn-block class_click_delete">x</button>' + '</div>' +
 
-					  '<div class = "col tags sws">' + '<p class="class_click_p">V:@{mod(2)},Ü:@{mod(3)},P:@{mod(4)},Pr:@{mod(5)}</p>' + '</div>' +
+					'<div class = "col-1">' + '<button type = "button" id = "button_verschieben" class = "btn btn-warning btn-sm btn-block class_click_move">>></button>' + '</div>' +
 
-					  '<div class = "col tags dozent">' + '<p class="class_click_p">@{mod(8)}</p>' + '</div>' +
+					'</div>');
 
-					  '<div class = "col tags ects">' + '<p class="class_click_p" style="vertical-align: middle,text-align: center">ECTS: @{mod(9)}</p>' + '</div>' +
 
-					  '<div class = "col-1 tags">' + '<button type = "button" id = "button_loeschen" class = " btn btn-danger btn-sm btn-block class_click_delete">x</button>' + '</div>' +
+			content[sem_id - 1].push("," + append);
 
-					  '<div class = "col-1">' + '<button type = "button" id = "button_verschieben" class = "btn btn-warning btn-sm btn-block class_click_move">>></button>' + '</div>' +
 
-					  '</div>');
-			}
-
-			}
-
-		  };
+		  }
 
 		  function append_free_module(mod_id, sem_id, name, v, u, p, pr, dozent, ects)
 		  {
-			console.log("append_module(" + mod_id + "," + sem_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + dozent + "," + ects + ")");
-
 			if (global_mod_id == "ALM" && name == "")
 			  name = "Name";
 
@@ -892,8 +877,6 @@
 
 			// getLast(getElementByIndex(content, sem_id)).push("#" + sem_id + "," + mod_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + dozent + "," + ects);
 
-			console.log("getElementByIndex(content, " + (sem_id - 1) + ")");
-
 			// getElementByIndex(content, sem_id-1).push("#" + sem_id + "," + mod_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + dozent + "," + ects);
 
 			content[sem_id - 1].push("," + mod_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + dozent + "," + ects);
@@ -904,8 +887,7 @@
 
 		  function insert_module_in_semester(mod_id, sem_id, optional)
 		  {
-
-			console.log("Insert : " + mod_id + " into : " + sem_id);
+		    console.log("Insert Module in Semester : "+mod_id);
 
 			$("#" + mod_id).css("background", "#eee");
 			$("#" + mod_id).removeClass("open_catalog");
@@ -946,201 +928,47 @@
 		  }
 
 		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
-		  function update_rules(){
 
-			  $("#regeln").children().remove();
+		  function update_rules()
+		  {
 
-			  @for(kat <- katalogListe){
+			$("#regeln").children().remove();
 
-				  var katID = "@{kat(0)}";
-				  var belegAnz = @kat(2);
-				  var countBlocked = $("#" + katID).children().filter(".blocked").length;
+			@for(kat <- katalogListe){
 
-				  if((belegAnz > 0) && (countBlocked<belegAnz)) {
+			var katID = "@{kat(0)}";
+			var belegAnz = @kat(2);
+			var countBlocked = $("#" + katID).children().filter(".blocked").length;
 
-					  var pm = "Verpflichtend zu wählen:";
+			if ((belegAnz > 0) && (countBlocked < belegAnz))
+			{
 
-					  @for(mod <-modulListe){
+			  var pm = "Verpflichtend zu wählen:";
 
-						  if(("@{mod(10)}" == "true") && ("@{mod(11)}" == katID)){
-							  pm +=" ";
-							  pm += "@{mod(0)}";
-						  }
-					  }
+			  @for(mod <-modulListe){
 
-					  if(pm!= "Verpflichtend zu wählen:") {
-						  $("#regeln").append(
-								  '<div class ="row">' +
-								  '<div class ="col warnungen">' +
-								  '<p>' +
-								  'Aus dem Katalog ' +
-								  '"@{kat(1)}"' +
-								  ' fehlen noch ' +
-								  (belegAnz - countBlocked) +
-								  ' Modul(e).' +
-								  ' (' +
-								  pm +
-								  ')' +
-								  '</p>'
-						  );
-					  } else {
-						  $("#regeln").append(
-								  '<div class ="row">' +
-								  '<div class ="col warnungen">' +
-								  '<p>' +
-								  'Aus dem Katalog ' +
-								  '"@{kat(1)}"' +
-								  ' fehlen noch ' +
-								  (belegAnz - countBlocked) +
-								  ' Modul(e).' +
-								  '</p>'
-						  );
-					  }
-
-				  }
+			  if (("@{mod(10)}" == "true") && ("@{mod(11)}" == katID))
+			  {
+				pm += " ";
+				pm += "@{mod(0)}";
+			  }
 			  }
 
-		  }
-
-
-		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
-
-		  function create_pdf() {
-			  var doc = new jsPDF();
-			  var x = 11;
-			  var xq = 10;
-			  var y = 20;
-			  var id, name, v, u, p, pr, dozent, ects;
-			  var sem_zahl, wi_so, sem_ects, str;
-			  var master_ects =0;
-			  var restplatz = 249;
-
-			  doc.setFontSize(20);
-			  doc.text(45, y, "Individualisierter Studienverlaufsplan");
-			  y+=13;
-
-//ab hier 1 hart geschriebener Wert zu tauschen:
-			  master_ects = "90";
-
-			  str = "Master-ECTS insgesamt: "+master_ects;
-
-			  doc.setFontSize(10);
-			  doc.text(155,y,str);
-			  y+=7;
-
-			  var anz_Sem = Number(document.getElementById("count").textContent);
-			  console.log(anz_Sem);
-
-			  for (i = 1; i <= anz_Sem; i++) {
-
-				  var anz_Module = $("#div_semester").children().filter(":nth-child(" + i + ")").children().length - 1;
-				  console.log(anz_Module);
-
-				  if(((anz_Module*5)+16) > restplatz) {
-					  doc.addPage();
-					  var restplatz = 249;
-					  y=35;
-				  }
-				  restplatz -=((anz_Module*5)+12);
-
-//ab hier 3 hart geschriebene Werte zu tauschen:
-				  sem_zahl = "1";
-				  wi_so = "Wintersemester";
-				  sem_ects = "30";
-
-
-				  str = sem_zahl+": "+ wi_so+" ("+sem_ects+" ECTS)";
-
-				  doc.setFontSize(14);
-				  doc.text(x, y, str);
-				  y+=5;
-
-				  if (anz_Module > 0) {
-
-					  doc.setFontSize(9);
-					  doc.text(x, y, "LVID");
-					  x+=13;
-
-					  doc.text(x,y, "LV-Bezeichnung");
-					  x+=111;
-
-					  doc.text(x,y, "V");
-					  x+=4;
-
-					  doc.text(x,y, "Ü");
-					  x+=4;
-
-					  doc.text(x,y, "P");
-					  x+=4;
-
-					  doc.text(x,y, "Pr");
-					  x+=5;
-
-					  doc.text(x,y, "DozentIn");
-					  x+=39;
-
-					  doc.text(x,y, "ECTS");
-
-					  y+=4;
-					  restplatz -= 4;
-					  x=11;
-
-					  for (j = 2; j <= anz_Module + 1; j++) {
-						  //  module = $("#div_semester").children().filter(":nth-child(" + i + ")").children().filter(":nth-child(" + j + ")");
-						  // console.log(module);
-
-//ab hier 8 hart geschriebene Werte zu tauschen:
-						  id = "SEKM";
-						  name = "Entwurf komplexer Softwaresysteme mit Komponenten und Mustern";
-						  v = "2";
-						  u = "1";
-						  p = "0";
-						  pr = "0";
-						  dozent = "Knospe oder Schellong";
-						  ects = "5";
-
-						  doc.setFontSize(10);
-
-						  // Empty square
-						  doc.rect(xq,(y-3), 190, 4);
-
-						  doc.text(x, y, id);
-						  x+=13;
-
-						  doc.text(x,y, name);
-						  x+=111;
-
-						  doc.text(x,y, v);
-						  x+=4;
-
-						  doc.text(x,y, u);
-						  x+=4;
-
-						  doc.text(x,y, p);
-						  x+=4;
-
-						  doc.text(x,y, pr);
-						  x+=5;
-
-						  doc.text(x,y, dozent);
-						  x+=39;
-
-						  doc.text(x,y, ects);
-
-						  y+=5;
-						  x=11;
-					  }
-
-				  }
-				  y+=7;
+			  if (pm != "Verpflichtend zu wählen:")
+			  {
+				$("#regeln").append('<div class ="row">' + '<div class ="col warnungen">' + '<p>' + 'Aus dem Katalog ' + '"@{kat(1)}"' + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + ' (' + pm + ')' + '</p>');
+			  }
+			  else
+			  {
+				$("#regeln").append('<div class ="row">' + '<div class ="col warnungen">' + '<p>' + 'Aus dem Katalog ' + '"@{kat(1)}"' + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + '</p>');
 			  }
 
-			  doc.save('Studienverlaufsplan.pdf');
+			}
+			}
 
 		  }
 
 		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
-
 
 		  function new_plan()
 		  {
@@ -1149,9 +977,6 @@
 
 		  function ok_button_new_plan(options)
 		  {
-			console.log()
-
-			console.log("options : " + options);
 
 			if (options)
 			{
@@ -1371,10 +1196,6 @@
 		  function save()
 		  {
 
-			console.log("#####################################");
-
-			console.log(content);
-
 			var text = "";
 
 			var currentdate = new Date();
@@ -1383,8 +1204,7 @@
 			text += startSem + ",";
 			text += document.getElementById("count").textContent + "\n" ;
 
-
-//			mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+			//			mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
 			content.forEach(function (entry)
 			{
@@ -1402,8 +1222,6 @@
 			});
 
 			//			mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-
-			console.log(text);
 
 			var element = document.createElement('a');
 			element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
@@ -1483,15 +1301,11 @@
 			  {
 				temp = lines[line];
 
-				console.log("ID des Moduls : " + temp.split(',')[1]);
-
 				if (temp.split(',')[1] === "M07" || temp.split(',')[1] === "ALM")
 				{
 
 				  // temp = temp.substring(1);
 				  temp = temp.split(',');
-
-				  console.log(temp);
 
 				  insert_module_in_semester(temp[1], temp[0], {
 					"mod_id": temp[1],
@@ -1510,16 +1324,13 @@
 				{
 				  temp = temp.split(',');
 
-				  console.log("temp : " + temp);
+				  insert_module_in_semester(temp[1], temp[0]);
 
-				  console.log("Temp Länge :" + temp.length);
+//				  for (var pos = 1; pos < temp.length; pos++)
+//				  {
+//					insert_module_in_semester(temp[pos], temp[0]);
+//				  }
 
-				  for (var pos = 1; pos <= temp.length; pos++)
-				  {
-					console.log("Modul : " + temp[pos] + " in Semester : " + temp[0]);
-
-					insert_module_in_semester(temp[pos], temp[0]);
-				  }
 				}
 			  }
 			};
@@ -1531,12 +1342,20 @@
 		  $(document).ready(function ()
 		  {
 			@for(katal <- katalogListe) {
+
 			add_catalog("@{katal(0)}", "@{katal(1)}");
+			katalogListe.push("@{katal(1)},@{katal(0)}");
+
 			}
 
 			@for(mod <- modulListe) {
+
 			insert_module_in_catalog("@{mod(11)}", "@{mod(0)}", "@{mod(1)}");
+
+			modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(8)},@{mod(9)}");
+
 			}
+
 
 			//////////////////////////////////////////////////////////////////////////
 
@@ -1547,11 +1366,26 @@
 			$(document).ready(function ()
 			{
 
+			  // debug(katalogListe);
+			  // debug(modulListe);
+
 			  // test_3();
 
 			});
 
 		  });
+
+		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
+
+		  function getLast(Object)
+		  {
+			return (Object.slice(-1).pop());
+		  }
+
+		  function getElementByIndex(Object, index)
+		  {
+			return Object.slice(index, index + 1);
+		  }
 
 		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
@@ -1609,17 +1443,7 @@
 
 		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
-		  function getLast(Object)
-		  {
-			return (Object.slice(-1).pop());
-		  }
-
-		  function getElementByIndex(Object, index)
-		  {
-			return Object.slice(index, index + 1);
-		  }
-
-		  function test(str)
+		  function hex(str)
 		  {
 			var hex = '';
 			for (var i = 0; i < str.length; i++)
@@ -1627,6 +1451,44 @@
 			  hex += '' + str.charCodeAt(i).toString(16);
 			}
 			return hex;
+		  }
+
+		  function debug(arr)
+		  {
+			for (i = 0; i < arr.length; i++)
+			{
+			  console.log(i + ":  " + arr[i]);
+			}
+		  }
+
+		  function updateModuleString(mod_id)
+		  {
+			var index = 0;
+
+			var BreakException = {};
+
+			try
+			{
+			  modulListe.forEach(function (entry)
+			  {
+
+				index++;
+
+				// console.log(index);
+
+				if (mod_id == entry.split(",")[0])
+				{
+				  // console.log(entry);
+				  modulString = entry;
+				  // return(entry);
+				  throw BreakException;
+				}
+			  });
+			} catch (e)
+			{
+			  if (e !== BreakException) throw e;
+			}
+
 		  }
 
   </script>
