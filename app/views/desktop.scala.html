@@ -820,23 +820,21 @@
 		  function append_module(mod_id, sem_id)
 		  {
 
-		    updateModuleString(mod_id);
+			updateModuleString(mod_id);
 
-			var append = modulString;
+			console.log("modulString : " + modulString);
 
-			console.log("Append : " + append);
-
-			append = append.split(",");
+			modulString = modulString.split(",");
 
 			$("#div_semester").children().filter(":nth-child(" + sem_id + ")").append('<div id="mod_' + mod_id + '"' + ' class = "row semester">' + '<div class = "col tags id">' + '<p class="class_click_p">ID: ' + mod_id + '</p>' + '</div>' +
 
-					'<div class = "col tags name">' + '<p class="class_click_p">' + append[1] + '</p>' + '</div>' +
+					'<div class = "col tags name">' + '<p class="class_click_p">' + modulString[1] + '</p>' + '</div>' +
 
-					'<div class = "col tags sws">' + '<p class="class_click_p">V:' + append[2] + ',Ü:' + append[3] + ',P:' + append[4] + ',Pr:' + append[5] + '</p>' + '</div>' +
+					'<div class = "col tags sws">' + '<p class="class_click_p">V:' + modulString[2] + ',Ü:' + modulString[3] + ',P:' + modulString[4] + ',Pr:' + modulString[5] + '</p>' + '</div>' +
 
-					'<div class = "col tags dozent">' + '<p class="class_click_p">' + append[8] + '</p>' + '</div>' +
+					'<div class = "col tags dozent">' + '<p class="class_click_p">' + modulString[6] + '</p>' + '</div>' +
 
-					'<div class = "col tags ects">' + '<p class="class_click_p" style="vertical-align: middle,text-align: center">ECTS:' + append[9] + '</p>' + '</div>' +
+					'<div class = "col tags ects">' + '<p class="class_click_p" style="vertical-align: middle,text-align: center">ECTS:' + modulString[7] + '</p>' + '</div>' +
 
 					'<div class = "col-1 tags">' + '<button type = "button" id = "button_loeschen" class = " btn btn-danger btn-sm btn-block class_click_delete">x</button>' + '</div>' +
 
@@ -845,8 +843,7 @@
 					'</div>');
 
 
-			content[sem_id - 1].push("," + append);
-
+			content[sem_id - 1].push("," + modulString);
 
 		  }
 
@@ -887,7 +884,7 @@
 
 		  function insert_module_in_semester(mod_id, sem_id, optional)
 		  {
-		    console.log("Insert Module in Semester : "+mod_id);
+			// console.log("Insert Module in Semester : "+mod_id);
 
 			$("#" + mod_id).css("background", "#eee");
 			$("#" + mod_id).removeClass("open_catalog");
@@ -1322,13 +1319,14 @@
 				}
 				else
 				{
+
 				  temp = temp.split(',');
 
 				  insert_module_in_semester(temp[1], temp[0]);
 
 //				  for (var pos = 1; pos < temp.length; pos++)
 //				  {
-//					insert_module_in_semester(temp[pos], temp[0]);
+// 				     insert_module_in_semester(temp[pos], temp[0]);
 //				  }
 
 				}
@@ -1365,12 +1363,7 @@
 
 			$(document).ready(function ()
 			{
-
-			  // debug(katalogListe);
-			  // debug(modulListe);
-
 			  // test_3();
-
 			});
 
 		  });
@@ -1422,23 +1415,9 @@
 
 			var new_click = $(click);
 
-			// $(new_click).parent().siblings().toggle("hidden");
-
 			$(new_click).trigger('click');
 
-			// $('#WPMT > div.class_click_katalog_tags.tags > h6').parent().siblings().toggle("hidden");
-
 			$('#WPMT > div.class_click_katalog_tags.tags > h6').trigger('click');
-
-			// $('#KRY').trigger('click');
-
-			// document.getElementById("button_minus").disabled = false;
-
-			// $('#button_minus').trigger('click');
-
-			// $("#div_semester").children().last().addClass('blocked');
-
-			// $("#div_semester").children().last().children().first().siblings().toggle("hidden");
 		  }
 
 		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
@@ -1474,13 +1453,10 @@
 
 				index++;
 
-				// console.log(index);
-
 				if (mod_id == entry.split(",")[0])
 				{
-				  // console.log(entry);
 				  modulString = entry;
-				  // return(entry);
+
 				  throw BreakException;
 				}
 			  });
