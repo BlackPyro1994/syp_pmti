@@ -1,4 +1,4 @@
-﻿
+﻿Info Aufbau Datensätze: LV-ID;LV-Name;[SWS:]V;Ü;P;Pr;WiSe(1:ja/0:nein);SoSe(1:ja/0:nein);DozentIn;Pflichtseminar;Kat-ID
 THI;Theoretische Informatik;2;1;1;0;0;1;Randerath;5;true;PM
 FP;Forschungsprojekt;0;0;0;1;1;1;[NN];10;true;PM
 MAA;Masterarbeit;0;0;0;0;1;1;[NN];27;true;PM
@@ -24,4 +24,4 @@ RFSD;RF System Design;2;1;1;0;0;1;Kronberger;5;false;WPK
 ACC;Advanced Channel Coding;2;1;0;0;1;0;Dettmar;5;false;WPK
 PL;Projektleitung;0;0;0;3;1;0;[NN];5;false;WPP
 ALM;Auflagenmodul;1;1;1;1;1;1;[NN];1;false;AM
-M07;-Wahl(beliebig aus MaSG der F07);2;1;1;0;1;1;-[NN];5;false;WPP
+M07;Wahl(beliebig aus MaSG der F07);2;1;1;0;1;1;[NN];5;false;WPP
