@@ -26,6 +26,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="dropdown">
                 <button class="btn btn-primary border" type="button" data-toggle="dropdown"><span class="navbar-toggler-icon"></span></button>
+                <a id="brand" class="navbar-brand mx-2">Übersicht</a>
                 <ul class="dropdown-menu border-blue">
                     <div class="container-fluid">
                         <div class="row">
@@ -61,7 +62,7 @@
         <div id = "myModal-new_plan" class = "modal fade" role = "dialog">
             <div class = "modal-dialog">
                     <!-- PopUp Inhalt-->
-                <div class = "modal-content">
+                <div class = "modal-content modal-margin">
                         <!-- PopUp Kopfzeile -->
                     <div class="modal-header">
                         <h4 class="modal-title">Neuen Plan erstellen</h4>
@@ -147,22 +148,28 @@
             var count = 0;
             var startSem = "winter";
             var semester_array = [];
+            var module_array = [];
             var open = 0;
 
             //#########################################################################################################
             function overview() {
                 console.log("overview()");
                 var array_length = semester_array.length;
+                $("#brand").text("Übersicht");
+                $("#div_semester").children().remove();
+
+                console.log("Count: "+count);
                 if(count != 0) {
-                    return;
-                } else {
+                    count = 0;
+                    $("#button_minus").show();
+                    $("#button_plus").text("+");
+                    $("#button_plus").attr("onclick","counter_plus()");
                     for(i = 0; i < array_length; i++) {
                         count++;
                         add_semester(startSem);
-                        $("#button_minus").show();
-                        $("#button_plus").text("+");
-                        $("#button_plus").attr("onclick","counter_plus()");
                     }
+                } else {
+                    return;
                 }
             }
 
@@ -180,19 +187,15 @@
                     count--;
                 }
 
-                modules_in_sem = $("#div_semester").children().last().children().length - 1;
+                /*modules_in_sem = $("#div_semester").children().last().children().length - 1;
 
                 for (i = 0; i < modules_in_sem; i++) {
-
                     var id = $("#div_semester").children().last().children().filter(":nth-child(" + 2 + ")").children().first().text().replace("ID: ", "");
-
                     var mod_id = "mod_" + id;
 
                     $("#" + mod_id).remove();
 
-                    $("#" + id).parent().parent().removeClass('blocked');
-
-                }
+                }*/
 
                 delete_last_semester();
 
@@ -208,7 +211,6 @@
             //#########################################################################################################
             function ok_button_new_plan() {
                 console.log("ok_button_new_plan()");
-
                 count = 0;
                 var meldung = "Bitte eine Anzahl angeben";
                 var myRadio = $('input[name="optradio"]');
@@ -247,7 +249,7 @@
             function add_semester(startSem) {
                 console.log("add_semester("+startSem+")");
 
-                $("#div_semester").append('<div class = "container-fluid semester-gesamt class_click_semester">' + '<div class = "row absolute_center class_click_semester_row">' + '<div class="col">' + '<h6 id="' + 'sem' + count + '"class="label">' + '</h6>' + '</div>' + '</div>' + '</div>');
+                $("#div_semester").append('<div id="' + 'sem' + count + '" class = "container-fluid semester-gesamt class_click_semester">' + '<div id="' + 'sem' + count + '" class = "row absolute_center class_click_semester_row">' + '<div id="' + 'sem' + count + '" class="col">' + '<h6 id="' + 'sem' + count + '"class="label">' + '</h6>' + '</div>' + '</div>' + '</div>');
 
                 if (startSem == "winter" && count % 2 == 1) {
                     $(".label").last().text(count+": Winter-Semester");
@@ -261,7 +263,8 @@
                 else {
                     $(".label").last().text(count+": Winter-Semester");
                 }
-                //semester dem Array hinzufügen
+
+                //Semester dem Array hinzufügen
                 semester_array.push(new Array());
                 //spricht das letzte Element des Arrays an
                 (semester_array.slice(-1).pop()).push();
@@ -305,19 +308,46 @@
                     }
                 }
             }
+
+            //#########################################################################################################
+            function append_modul_in_semester(mod_id) {
+
+                /*Modul dem Array hinzufügen
+                module_array.push(new Array());
+                //spricht das letzte Element des Arrays an
+                (semester_array.slice(-1).pop()).push(); */
+
+
+
+                @for(mod <- modulListe) {
+                    if("@{mod(0)}" == mod_id) {
+                        $("#div_semester").append('<div id="'+mod_id+'" class="row modules_border class_click_modules_in_semester margin-top"><button id="'+mod_id+'" class="btn btn-block"><div class="row text-left"><div class="col fett"><p>'+"@{mod(0)}"+'</p></div><div class="col text-right"><p>ECTS: '+"@{mod(9)}"+'</p></div></div><div class="row normal text-left"><div class="col"><p>Dozent: '+"@{mod(8)}"+'</p></div></div></button></div>');
+                    }
+                }
+            }
+
             //#########################################################################################################
             //on click handler
             $('#div_semester').on('click', '.class_click_semester', function (click) {
-                console.log("Click div_semester");
-                click.preventDefault();
-                click = click.target;
+                var sem_id = (click.target).id;
+                console.log("Click div_semester ID: "+ sem_id);
+                var id = (click.target).id.replace("sem","");
+
                 $("#div_semester").children().remove();
                 $("#button_minus").hide();
                 $("#button_plus").text("Module");
                 $("#button_plus").attr("onclick","show_catalogs()");
-                count = 0;
-            });
+                $("#brand").text("Semester: "+id);
 
+                show_semester_content(sem_id);
+
+            });
+            //#########################################################################################################
+            function show_semester_content(sem_id) {
+                //listen inhalt auslesen mit sem_id und dann appenden
+            }
+
+            //#########################################################################################################
             function emptyModal() {
                 console.log("emptyModal()");
 
@@ -343,13 +373,14 @@
                 $("#cat_footer").show();
                 add_modules(id);
             });
+
+            $('#catalog_list').on('click', '.class_click_modules', function (click) {
+                var id = (click.currentTarget).id;
+                console.log("Click on Modul ID: "+id);
+
+                $('#myModal-catalogs').modal('hide');
+                append_modul_in_semester(id);
+                //popup ? hinzufügen - abbrechen ?
+            });
     </script>
 </html>
-
-
-
-
-
-
-
-
