@@ -301,6 +301,8 @@
 			add_semester(startSem);
 
 			count++;
+
+			update_rules();
 		  }
 
 		  function counter_minus()
@@ -740,6 +742,7 @@
 			$('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
 			$("#" + global_mod_id).removeClass('ausgewaehlt');
 
+			update_rules();
 		  });
 
 		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
@@ -1020,6 +1023,7 @@
 
 			blocked = false;
 
+			update_rules();
 		  }
 
 		  <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
