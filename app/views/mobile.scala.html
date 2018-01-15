@@ -3,384 +3,437 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.min.css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/expandable_tree_list.css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/mobile.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+  <head>
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.min.css")">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/expandable_tree_list.css")">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/mobile.css")">
+	<link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    </head>
+  </head>
 
-    <script src="@routes.Assets.versioned("js/jquery-3.2.1.min.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("js/bootstrap.bundle.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("js/CollapsibleLists.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("js/mobile.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("js/jquery-3.2.1.min.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("js/bootstrap.bundle.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("js/CollapsibleLists.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("js/mobile.js")" type="text/javascript"></script>
 
 
-    <body>
-            <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="dropdown">
-                <button class="btn btn-primary border" type="button" data-toggle="dropdown"><span class="navbar-toggler-icon"></span></button>
-                <a id="brand" class="navbar-brand mx-2">Übersicht</a>
-                <ul class="dropdown-menu border-blue">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col">
-                                <button class ="btn btn-primary btn-block btn-space" type="button" onclick="overview()">Übersicht</button>
-                            </div>
-                            <div class="col">
-                                <button class ="btn btn-primary btn-block btn-space" type="button" data-toggle = "modal" data-target = "#myModal-new_plan">Neuer Plan</button>
-                            </div>
-                            <div class="col">
-                                <button class ="btn btn-primary btn-block btn-space" type="button">Plan speichern</button>
-                            </div>
-                            <div class="col">
-                                <button class ="btn btn-primary btn-block btn-space" type="button">Plan laden</button>
-                            </div>
-                            <div class="col">
-                                <button class ="btn btn-primary btn-block" type="button">PDF erstellen</button>
-                            </div>
-                        </div>
-                    </div>
-                </ul>
-            </div>
-            <div class="ml-auto btn-space-right">
-                <button id="button_minus" class ="ml-auto btn btn-primary btn-block border btn-width" type="button" onclick = "counter_minus()">-</button>
-            </div>
-            <div class="ml-0">
-                <button id="button_plus" class ="ml-auto btn btn-primary btn-block border" type="button" onclick = "counter_plus()">+</button>
-            </div>
+  <body>
+	  <!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	  <div class="dropdown">
+		<button class="btn btn-primary border" type="button" data-toggle="dropdown"><span class="navbar-toggler-icon"></span></button>
+		<a id="brand" class="navbar-brand mx-2">Übersicht</a>
+		<ul class="dropdown-menu border-blue">
+		  <div class="container-fluid">
+			<div class="row">
+			  <div class="col">
+				<button class ="btn btn-primary btn-block btn-space" type="button" onclick="overview()">Übersicht</button>
+			  </div>
+			  <div class="col">
+				<button class ="btn btn-primary btn-block btn-space" type="button" data-toggle = "modal" data-target = "#myModal-new_plan">
+				  Neuer Plan</button>
+			  </div>
+			  <div class="col">
+				<button class ="btn btn-primary btn-block btn-space" type="button">Plan speichern</button>
+			  </div>
+			  <div class="col">
+				<button class ="btn btn-primary btn-block btn-space" type="button">Plan laden</button>
+			  </div>
+			  <div class="col">
+				<button class ="btn btn-primary btn-block" type="button">PDF erstellen</button>
+			  </div>
+			</div>
+		  </div>
+		</ul>
+	  </div>
+	  <div class="ml-auto btn-space-right">
+		<button id="button_minus" class ="ml-auto btn btn-primary btn-block border btn-width" type="button" onclick = "counter_minus()">
+		  -</button>
+	  </div>
+	  <div class="ml-0">
+		<button id="button_plus" class ="ml-auto btn btn-primary btn-block border" type="button" onclick = "counter_plus()">
+		  +</button>
+	  </div>
 
-        </nav>
+	</nav>
 
-            <!-- PopUp Neuer Plan -->
-        <div id = "myModal-new_plan" class = "modal fade" role = "dialog">
-            <div class = "modal-dialog">
-                    <!-- PopUp Inhalt-->
-                <div class = "modal-content modal-margin">
-                        <!-- PopUp Kopfzeile -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Neuen Plan erstellen</h4>
-                    </div>
-                        <!-- PopUp Körper -->
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col">
-                                    <h5>Semesteranzahl:</h5>
-                                    <input type="text" class = "form-control" id = "input-semesteranzahl"
-                                    placeholder="Semesteranzahl">
-                                    <p id="fehlermeldung"></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <h5>Studienstart:</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class = "col radio">
-                                    <label><input type = "radio" name = "optradio" checked = "checked" id = "radio-winter"
-                                    value = "winter">Winter</label>
-                                </div>
-                                <div class = "col radio">
-                                    <label><input type = "radio" name = "optradio" id = "radio-sommer" value = "sommer">Sommer</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        <!-- PopUp Fußzeile -->
-                    <div class = "modal-footer">
-                        <button type = "button" class = "btn btn-default" data-dismiss = "modal" id="popup-abbrechen">Abbrechen</button>
-                        <button type = "button" class = "btn btn-default" id = "popup-new-ok"
-                        onclick = "ok_button_new_plan()">OK
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+	  <!-- PopUp Neuer Plan -->
+	<div id = "myModal-new_plan" class = "modal fade" role = "dialog">
+	  <div class = "modal-dialog">
+		  <!-- PopUp Inhalt-->
+		<div class = "modal-content modal-margin">
+			<!-- PopUp Kopfzeile -->
+		  <div class="modal-header">
+			<h4 class="modal-title">Neuen Plan erstellen</h4>
+		  </div>
+			<!-- PopUp Körper -->
+		  <div class="modal-body">
+			<div class="container-fluid">
+			  <div class="row">
+				<div class="col">
+				  <h5>Semesteranzahl:</h5>
+				  <input type="text" class = "form-control" id = "input-semesteranzahl"
+				  placeholder="Semesteranzahl">
+				  <p id="fehlermeldung"></p>
+				</div>
+			  </div>
+			  <div class="row">
+				<div class="col">
+				  <h5>Studienstart:</h5>
+				</div>
+			  </div>
+			  <div class="row">
+				<div class = "col radio">
+				  <label><input type = "radio" name = "optradio" checked = "checked" id = "radio-winter"
+				  value = "winter">Winter</label>
+				</div>
+				<div class = "col radio">
+				  <label><input type = "radio" name = "optradio" id = "radio-sommer" value = "sommer">Sommer</label>
+				</div>
+			  </div>
+			</div>
+		  </div>
+			<!-- PopUp Fußzeile -->
+		  <div class = "modal-footer">
+			<button type = "button" class = "btn btn-default" data-dismiss = "modal" id="popup-abbrechen">Abbrechen</button>
+			<button type = "button" class = "btn btn-default" id = "popup-new-ok"
+			onclick = "ok_button_new_plan()">OK
+			</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
 
-            <!-- PopUp Katalogliste -->
-        <div id = "myModal-catalogs" class = "modal fade" role = "dialog">
-            <div class = "modal-dialog">
-                    <!-- PopUp Inhalt-->
-                <div class = "modal-content">
-                        <!-- PopUp Kopfzeile -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Modulkataloge</h4>
-                    </div>
-                        <!-- PopUp Körper -->
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <div id="catalog_list">
-                            </div>
-                        </div>
-                    </div>
-                        <!-- PopUp Fußzeile -->
-                    <div class = "modal-footer" id="cat_footer">
-                        <button type = "button" class = "btn btn-default" id = "popup-catalogs-back">Zurück</button>
-                            <!--<button type = "button" class = "btn btn-default" id="popup-new-ok"
+	  <!-- PopUp Katalogliste -->
+	<div id = "myModal-catalogs" class = "modal fade" role = "dialog">
+	  <div class = "modal-dialog">
+		  <!-- PopUp Inhalt-->
+		<div class = "modal-content">
+			<!-- PopUp Kopfzeile -->
+		  <div class="modal-header">
+			<h4 class="modal-title">Modulkataloge</h4>
+		  </div>
+			<!-- PopUp Körper -->
+		  <div class="modal-body">
+			<div class="container-fluid">
+			  <div id="catalog_list">
+			  </div>
+			</div>
+		  </div>
+			<!-- PopUp Fußzeile -->
+		  <div class = "modal-footer" id="cat_footer">
+			<button type = "button" class = "btn btn-default" id = "popup-catalogs-back">Zurück</button>
+			  <!--<button type = "button" class = "btn btn-default" id="popup-new-ok"
                         onclick = "ok_button_new_plan()">OK
                         </button> -->
-                    </div>
-                </div>
-            </div>
-        </div>
+		  </div>
+		</div>
+	  </div>
+	</div>
 
 
-            <!-- container-fluid body -->
-        <div class="container-fluid">
-                <!--  container-fluid regeln -->
-            <div class="container-fluid">
-            </div>
-                <!--  container-fluid semester (wird dynamisch erstellt -->
-            <div id = "div_semester">
-            </div>
-        </div>
-    </body>
+	  <!-- container-fluid body -->
+	<div class="container-fluid">
+		<!--  container-fluid regeln -->
+	  <div class="container-fluid">
+	  </div>
+		<!--  container-fluid semester (wird dynamisch erstellt -->
+	  <div id = "div_semester">
+	  </div>
+	</div>
+  </body>
 
-    <script>
-            var count = 0;
-            var startSem = "winter";
-            var semester_array = [];
-            var module_array = [];
-            var open = 0;
+  <script>
+		  var count = 0;
+		  var startSem = "winter";
+		  var semester_array = [];
+		  var module_array = [];
+		  var open = 0;
 
-            //#########################################################################################################
-            function overview() {
-                console.log("overview()");
-                var array_length = semester_array.length;
-                $("#brand").text("Übersicht");
-                $("#div_semester").children().remove();
+		  var safe_semester;
+		  var safe_modules;
 
-                console.log("Count: "+count);
-                if(count != 0) {
-                    count = 0;
-                    $("#button_minus").show();
-                    $("#button_plus").text("+");
-                    $("#button_plus").attr("onclick","counter_plus()");
-                    for(i = 0; i < array_length; i++) {
-                        count++;
-                        add_semester(startSem);
-                    }
-                } else {
-                    return;
-                }
-            }
+		  var flip = 0;
 
-            //#########################################################################################################
-            function counter_plus() {
-                console.log("counter_plus()");
-                count++;
-                add_semester(startSem);
-            }
-
-            //#########################################################################################################
-            function counter_minus() {
-                console.log("counter_minus()");
-                if (count > 0) {
-                    count--;
-                }
-
-                /*modules_in_sem = $("#div_semester").children().last().children().length - 1;
-
-                for (i = 0; i < modules_in_sem; i++) {
-                    var id = $("#div_semester").children().last().children().filter(":nth-child(" + 2 + ")").children().first().text().replace("ID: ", "");
-                    var mod_id = "mod_" + id;
-
-                    $("#" + mod_id).remove();
-
-                }*/
-
-                delete_last_semester();
-
-                //update_rules();
-            }
-
-            //#########################################################################################################
-            function delete_last_semester() {
-                console.log("delete_last_semester()");
-                $("#div_semester").children().last().remove();
-            }
-
-            //#########################################################################################################
-            function ok_button_new_plan() {
-                console.log("ok_button_new_plan()");
-                count = 0;
-                var meldung = "Bitte eine Anzahl angeben";
-                var myRadio = $('input[name="optradio"]');
-                startSem = myRadio.filter(':checked').val();
-                wert = $("#input-semesteranzahl").val();
-
-                if (wert == "") {
-                    document.getElementById("fehlermeldung").textContent = meldung;
-                }
-
-                else if (wert != "") {
-                    $("#div_semester").children().remove();
-
-                    for (i = 0; i < wert; i++) {
-                        count++;
-                        //document.getElementById("count").textContent = count;
-                        add_semester(startSem);
-                    }
-                    document.getElementById("fehlermeldung").textContent = "";
-                    $('#myModal-new_plan').modal('hide');
-                    /*$(".class_p").removeClass('ausgewaehlt');
-                    $(".class_p").parent().removeClass('blocked'); */
-                }
-
-                /*
-                document.getElementById("button_minus").disabled = false;
-                document.getElementById("button_plus").disabled = false;
-                document.getElementById("button_speichern").disabled = false;
-                document.getElementById("button_pdf").disabled = false;
-
-                blocked = false;
-                */
-            }
-
-            //#########################################################################################################
-            function add_semester(startSem) {
-                console.log("add_semester("+startSem+")");
-
-                $("#div_semester").append('<div id="' + 'sem' + count + '" class = "container-fluid semester-gesamt class_click_semester">' + '<div id="' + 'sem' + count + '" class = "row absolute_center class_click_semester_row">' + '<div id="' + 'sem' + count + '" class="col">' + '<h6 id="' + 'sem' + count + '"class="label">' + '</h6>' + '</div>' + '</div>' + '</div>');
-
-                if (startSem == "winter" && count % 2 == 1) {
-                    $(".label").last().text(count+": Winter-Semester");
-                }
-                else if (startSem == "winter" && count % 2 == 0) {
-                    $(".label").last().text(count+": Sommer-Semester");
-                }
-                else if (startSem == "sommer" && count % 2 == 1) {
-                    $(".label").last().text(count+": Sommer-Semester");
-                }
-                else {
-                    $(".label").last().text(count+": Winter-Semester");
-                }
-
-                //Semester dem Array hinzufügen
-                semester_array.push(new Array());
-                //spricht das letzte Element des Arrays an
-                (semester_array.slice(-1).pop()).push();
-            }
-
-            //#########################################################################################################
-            function show_catalogs() {
-                console.log("show_catalogs()");
-                emptyModal();
-                $("#cat_footer").hide();
-
-                @for(katal <- katalogListe) {
-                add_catalogs("@{katal(0)}", "@{katal(1)}");
-                }
-                if(!open) {
-                    $('#myModal-catalogs').modal('show');
-                } else {
-                    emptyModal();
-                    open = 0;
-                    show_catalogs();
-                    return;
-                }
-            }
-
-            //#########################################################################################################
-            function add_catalogs(catalog_id, catalog_name) {
-                console.log("add_catalogs("+catalog_id+","+catalog_name+")");
-                $("#catalog_list").append('<div id="'+catalog_id+'" class="row catalog_border class_click_catalog"><button id="'+catalog_id+'" class="btn btn-block text-left fett">'+catalog_name+'</button></div>');
-            }
-
-            //#########################################################################################################
-            function add_modules(id) {
-                console.log("add_modules("+id+")");
-                var mod_id;
-                emptyModal();
-                //$("#cat_footer").append('<button type = "button" class = "btn btn-default" id = "popup-catalogs-back">Zurück</button>');
-                @for(mod <- modulListe) {
-                    if("@{mod(11)}" == id) {
-                        mod_id = "@{mod(0)}";
-                        $("#catalog_list").append('<div id="'+mod_id+'" class="row modules_border class_click_modules"><button id="'+mod_id+'" class="btn btn-block"><div class="row text-left"><div class="col fett"><p>'+"@{mod(0)}"+'</p></div><div class="col text-right"><p>ECTS: '+"@{mod(9)}"+'</p></div></div><div class="row normal text-left"><div class="col"><p>Dozent: '+"@{mod(8)}"+'</p></div></div></button></div>');
-                    }
-                }
-            }
-
-            //#########################################################################################################
-            function append_modul_in_semester(mod_id) {
-
-                /*Modul dem Array hinzufügen
-                module_array.push(new Array());
-                //spricht das letzte Element des Arrays an
-                (semester_array.slice(-1).pop()).push(); */
+		  //#########################################################################################################
+		  function overview()
+		  {
 
 
+			if (!flip)
+			{
 
-                @for(mod <- modulListe) {
-                    if("@{mod(0)}" == mod_id) {
-                        $("#div_semester").append('<div id="'+mod_id+'" class="row modules_border class_click_modules_in_semester margin-top"><button id="'+mod_id+'" class="btn btn-block"><div class="row text-left"><div class="col fett"><p>'+"@{mod(0)}"+'</p></div><div class="col text-right"><p>ECTS: '+"@{mod(9)}"+'</p></div></div><div class="row normal text-left"><div class="col"><p>Dozent: '+"@{mod(8)}"+'</p></div></div></button></div>');
-                    }
-                }
-            }
+			  console.log("overview()");
+			  var array_length = semester_array.length;
+			  $("#brand").text("Übersicht");
 
-            //#########################################################################################################
-            //on click handler
-            $('#div_semester').on('click', '.class_click_semester', function (click) {
-                var sem_id = (click.target).id;
-                console.log("Click div_semester ID: "+ sem_id);
-                var id = (click.target).id.replace("sem","");
 
-                $("#div_semester").children().remove();
-                $("#button_minus").hide();
-                $("#button_plus").text("Module");
-                $("#button_plus").attr("onclick","show_catalogs()");
-                $("#brand").text("Semester: "+id);
+			  safe_modules = $("#div_semester").children();
 
-                show_semester_content(sem_id);
+			  flip = !flip;
 
-            });
-            //#########################################################################################################
-            function show_semester_content(sem_id) {
-                //listen inhalt auslesen mit sem_id und dann appenden
-            }
+			  $("#div_semester").children().remove();
 
-            //#########################################################################################################
-            function emptyModal() {
-                console.log("emptyModal()");
+			  $("#div_semester").append(safe_semester);
 
-                @for(katal <- katalogListe) {
-                $("#" + "@{katal(0)}").remove();
-                }
-                @for(mod <- modulListe) {
-                $("#" + "@{mod(0)}").remove();
-                }
-            }
 
-            $('#myModal-catalogs').on('click', '#popup-catalogs-back', function (click) {
-                console.log("Zurück");
-                open = 1;
-                $("#cat_footer").hide();
-                show_catalogs();
-            });
+			  console.log("Count: " + count);
 
-            $('#catalog_list').on('click', '.class_click_catalog', function (click) {
-                console.log("Click on Katalog ID: "+(click.target).id);
-                var id = (click.target).id;
+			  $("#button_minus").show();
+			  $("#button_plus").text("+");
+			  $("#button_plus").attr("onclick", "counter_plus()");
 
-                $("#cat_footer").show();
-                add_modules(id);
-            });
+			}
+		  }
 
-            $('#catalog_list').on('click', '.class_click_modules', function (click) {
-                var id = (click.currentTarget).id;
-                console.log("Click on Modul ID: "+id);
+		  //#########################################################################################################
+		  function counter_plus()
+		  {
+			console.log("counter_plus()");
+			count++;
+			add_semester(startSem);
+		  }
 
-                $('#myModal-catalogs').modal('hide');
-                append_modul_in_semester(id);
-                //popup ? hinzufügen - abbrechen ?
-            });
-    </script>
+		  //#########################################################################################################
+		  function counter_minus()
+		  {
+			console.log("counter_minus()");
+			if (count > 0)
+			{
+			  count--;
+			}
+
+			/*modules_in_sem = $("#div_semester").children().last().children().length - 1;
+
+			for (i = 0; i < modules_in_sem; i++) {
+				var id = $("#div_semester").children().last().children().filter(":nth-child(" + 2 + ")").children().first().text().replace("ID: ", "");
+				var mod_id = "mod_" + id;
+
+				$("#" + mod_id).remove();
+
+			}*/
+
+			delete_last_semester();
+
+			//update_rules();
+		  }
+
+		  //#########################################################################################################
+		  function delete_last_semester()
+		  {
+			console.log("delete_last_semester()");
+			$("#div_semester").children().last().remove();
+		  }
+
+		  //#########################################################################################################
+		  function ok_button_new_plan()
+		  {
+			console.log("ok_button_new_plan()");
+			count = 0;
+			var meldung = "Bitte eine Anzahl angeben";
+			var myRadio = $('input[name="optradio"]');
+			startSem = myRadio.filter(':checked').val();
+			wert = $("#input-semesteranzahl").val();
+
+			if (wert == "")
+			{
+			  document.getElementById("fehlermeldung").textContent = meldung;
+			}
+
+			else if (wert != "")
+			{
+			  $("#div_semester").children().remove();
+
+			  for (i = 0; i < wert; i++)
+			  {
+				count++;
+				//document.getElementById("count").textContent = count;
+				add_semester(startSem);
+			  }
+			  document.getElementById("fehlermeldung").textContent = "";
+			  $('#myModal-new_plan').modal('hide');
+			  /*$(".class_p").removeClass('ausgewaehlt');
+			  $(".class_p").parent().removeClass('blocked'); */
+			}
+
+			/*
+			document.getElementById("button_minus").disabled = false;
+			document.getElementById("button_plus").disabled = false;
+			document.getElementById("button_speichern").disabled = false;
+			document.getElementById("button_pdf").disabled = false;
+
+			blocked = false;
+			*/
+		  }
+
+		  //#########################################################################################################
+		  function add_semester(startSem)
+		  {
+			console.log("add_semester(" + startSem + ")");
+
+			$("#div_semester").append('<div id="' + 'sem' + count + '" class = "container-fluid semester-gesamt class_click_semester">' + '<div id="' + 'sem' + count + '" class = "row absolute_center class_click_semester_row">' + '<div id="' + 'sem' + count + '" class="col">' + '<h6 id="' + 'sem' + count + '"class="label">' + '</h6>' + '</div>' + '</div>' + '</div>');
+
+			if (startSem == "winter" && count % 2 == 1)
+			{
+			  $(".label").last().text(count + ": Winter-Semester");
+			}
+			else if (startSem == "winter" && count % 2 == 0)
+			{
+			  $(".label").last().text(count + ": Sommer-Semester");
+			}
+			else if (startSem == "sommer" && count % 2 == 1)
+			{
+			  $(".label").last().text(count + ": Sommer-Semester");
+			}
+			else
+			{
+			  $(".label").last().text(count + ": Winter-Semester");
+			}
+
+			//Semester dem Array hinzufügen
+			semester_array.push(new Array());
+			//spricht das letzte Element des Arrays an
+			(semester_array.slice(-1).pop()).push();
+		  }
+
+		  //#########################################################################################################
+		  function show_catalogs()
+		  {
+			console.log("show_catalogs()");
+			emptyModal();
+			$("#cat_footer").hide();
+
+			@for(katal <- katalogListe) {
+			add_catalogs("@{katal(0)}", "@{katal(1)}");
+			}
+			if (!open)
+			{
+			  $('#myModal-catalogs').modal('show');
+			} else
+			{
+			  emptyModal();
+			  open = 0;
+			  show_catalogs();
+			  return;
+			}
+		  }
+
+		  //#########################################################################################################
+		  function add_catalogs(catalog_id, catalog_name)
+		  {
+			console.log("add_catalogs(" + catalog_id + "," + catalog_name + ")");
+			$("#catalog_list").append('<div id="' + catalog_id + '" class="row catalog_border class_click_catalog"><button id="' + catalog_id + '" class="btn btn-block text-left fett">' + catalog_name + '</button></div>');
+		  }
+
+		  //#########################################################################################################
+		  function add_modules(id)
+		  {
+			console.log("add_modules(" + id + ")");
+			var mod_id;
+			emptyModal();
+			//$("#cat_footer").append('<button type = "button" class = "btn btn-default" id = "popup-catalogs-back">Zurück</button>');
+			@for(mod <- modulListe) {
+			if ("@{mod(11)}" == id)
+			{
+			  mod_id = "@{mod(0)}";
+			  $("#catalog_list").append('<div id="' + mod_id + '" class="row modules_border class_click_modules"><button id="' + mod_id + '" class="btn btn-block"><div class="row text-left"><div class="col fett"><p>' + "@{mod(0)}" + '</p></div><div class="col text-right"><p>ECTS: ' + "@{mod(9)}" + '</p></div></div><div class="row normal text-left"><div class="col"><p>Dozent: ' + "@{mod(8)}" + '</p></div></div></button></div>');
+			}
+			}
+		  }
+
+		  //#########################################################################################################
+		  function append_modul_in_semester(mod_id)
+		  {
+
+			/*Modul dem Array hinzufügen
+			module_array.push(new Array());
+			//spricht das letzte Element des Arrays an
+			(semester_array.slice(-1).pop()).push(); */
+
+
+			@for(mod <- modulListe) {
+			if ("@{mod(0)}" == mod_id)
+			{
+			  $("#div_semester").append('<div id="' + mod_id + '" class="row modules_border class_click_modules_in_semester margin-top"><button id="' + mod_id + '" class="btn btn-block"><div class="row text-left"><div class="col fett"><p>' + "@{mod(0)}" + '</p></div><div class="col text-right"><p>ECTS: ' + "@{mod(9)}" + '</p></div></div><div class="row normal text-left"><div class="col"><p>Dozent: ' + "@{mod(8)}" + '</p></div></div></button></div>');
+			}
+			}
+		  }
+
+		  //#########################################################################################################
+		  //on click handler
+
+		  // WECHSEL VON ÜBERSICHT NACH MODULE !
+
+		  $('#div_semester').on('click', '.class_click_semester', function (click)
+		  {
+
+			var sem_id = (click.target).id;
+			console.log("Click div_semester ID: " + sem_id);
+			var id = (click.target).id.replace("sem", "");
+
+			safe_semester = $("#div_semester").children();
+
+			$("#div_semester").children().remove();
+
+			$("#div_semester").append(safe_modules);
+
+			$("#button_minus").hide();
+			$("#button_plus").text("Module");
+			$("#button_plus").attr("onclick", "show_catalogs()");
+			$("#brand").text("Semester: " + id);
+
+			// show_semester_content(sem_id);
+
+		  });
+
+		  //#########################################################################################################
+		  function show_semester_content(sem_id)
+		  {
+			//listen inhalt auslesen mit sem_id und dann appenden
+		  }
+
+		  //#########################################################################################################
+		  function emptyModal()
+		  {
+			console.log("emptyModal()");
+
+			@for(katal <- katalogListe) {
+			$("#" + "@{katal(0)}").remove();
+			}
+			@for(mod <- modulListe) {
+			$("#" + "@{mod(0)}").remove();
+			}
+		  }
+
+		  $('#myModal-catalogs').on('click', '#popup-catalogs-back', function (click)
+		  {
+			console.log("Zurück");
+			open = 1;
+			$("#cat_footer").hide();
+			show_catalogs();
+		  });
+
+		  $('#catalog_list').on('click', '.class_click_catalog', function (click)
+		  {
+			console.log("Click on Katalog ID: " + (click.target).id);
+			var id = (click.target).id;
+
+			$("#cat_footer").show();
+			add_modules(id);
+		  });
+
+		  $('#catalog_list').on('click', '.class_click_modules', function (click)
+		  {
+			var id = (click.currentTarget).id;
+			console.log("Click on Modul ID: " + id);
+
+			$('#myModal-catalogs').modal('hide');
+			append_modul_in_semester(id);
+			//popup ? hinzufügen - abbrechen ?
+		  });
+  </script>
 </html>
