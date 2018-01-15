@@ -150,6 +150,7 @@
   <script>
 		  var count = 0;
 		  var startSem = "winter";
+		  var sem_id;
 		  var semester_array = [];
 		  var module_array = [];
 		  var open = 0;
@@ -162,33 +163,23 @@
 		  //#########################################################################################################
 		  function overview()
 		  {
-
-
-			if (!flip)
-			{
-
 			  console.log("overview()");
-			  var array_length = semester_array.length;
 			  $("#brand").text("Übersicht");
 
-
-			  safe_modules = $("#div_semester").children();
-
-			  flip = !flip;
-
-			  $("#div_semester").children().remove();
+              if (flip) {
+                  save_semester_content(sem_id);
+                  flip = !flip;
+                  $("#div_semester").children().remove();
+              }
 
 			  $("#div_semester").append(safe_semester);
-
 
 			  console.log("Count: " + count);
 
 			  $("#button_minus").show();
 			  $("#button_plus").text("+");
 			  $("#button_plus").attr("onclick", "counter_plus()");
-
 			}
-		  }
 
 		  //#########################################################################################################
 		  function counter_plus()
@@ -293,16 +284,13 @@
 			{
 			  $(".label").last().text(count + ": Winter-Semester");
 			}
-
-			//Semester dem Array hinzufügen
-			semester_array.push(new Array());
-			//spricht das letzte Element des Arrays an
-			(semester_array.slice(-1).pop()).push();
 		  }
 
 		  //#########################################################################################################
 		  function show_catalogs()
 		  {
+            safe_modules = $("#div_semester").children();
+
 			console.log("show_catalogs()");
 			emptyModal();
 			$("#cat_footer").hide();
@@ -346,55 +334,59 @@
 		  }
 
 		  //#########################################################################################################
-		  function append_modul_in_semester(mod_id)
-		  {
-
-			/*Modul dem Array hinzufügen
-			module_array.push(new Array());
-			//spricht das letzte Element des Arrays an
-			(semester_array.slice(-1).pop()).push(); */
-
-
-			@for(mod <- modulListe) {
-			if ("@{mod(0)}" == mod_id)
-			{
-			  $("#div_semester").append('<div id="' + mod_id + '" class="row modules_border class_click_modules_in_semester margin-top"><button id="' + mod_id + '" class="btn btn-block"><div class="row text-left"><div class="col fett"><p>' + "@{mod(0)}" + '</p></div><div class="col text-right"><p>ECTS: ' + "@{mod(9)}" + '</p></div></div><div class="row normal text-left"><div class="col"><p>Dozent: ' + "@{mod(8)}" + '</p></div></div></button></div>');
-			}
-			}
-		  }
+		  function append_modul_in_semester(mod_id) {
+            $("#div_semester").append(safe_modules);
+            @for(mod <- modulListe) {
+                if ("@{mod(0)}" == mod_id)
+                {
+                  $("#div_semester").append('<div id="' + mod_id + '" class="row modules_border class_click_modules_in_semester margin-top"><button id="' + mod_id + '" class="btn btn-block"><div class="row text-left"><div class="col fett"><p>' + "@{mod(0)}" + '</p></div><div class="col text-right"><p>ECTS: ' + "@{mod(9)}" + '</p></div></div><div class="row normal text-left"><div class="col"><p>Dozent: ' + "@{mod(8)}" + '</p></div></div></button></div>');
+                }
+            }
+          }
 
 		  //#########################################################################################################
 		  //on click handler
 
 		  // WECHSEL VON ÜBERSICHT NACH MODULE !
-
 		  $('#div_semester').on('click', '.class_click_semester', function (click)
 		  {
 
-			var sem_id = (click.target).id;
-			console.log("Click div_semester ID: " + sem_id);
-			var id = (click.target).id.replace("sem", "");
+			var id = (click.target).id;
+			console.log("Click div_semester ID: " + id);
+			sem_id = (click.target).id.replace("sem", "");
+			flip = 1;
 
+            show_semester_content(sem_id);
 			safe_semester = $("#div_semester").children();
 
 			$("#div_semester").children().remove();
 
-			$("#div_semester").append(safe_modules);
+			//$("#div_semester").append(safe_modules);
 
 			$("#button_minus").hide();
 			$("#button_plus").text("Module");
 			$("#button_plus").attr("onclick", "show_catalogs()");
-			$("#brand").text("Semester: " + id);
-
-			// show_semester_content(sem_id);
+			$("#brand").text("Semester: " + sem_id);
 
 		  });
 
 		  //#########################################################################################################
 		  function show_semester_content(sem_id)
 		  {
-			//listen inhalt auslesen mit sem_id und dann appenden
+              $("#div_semester").append(semester_array[sem_id]);
 		  }
+
+          //#########################################################################################################
+		  function save_semester_content(sem_id) {
+		      console.log("save_semester_content("+sem_id+")");
+             semester_array[sem_id] = $("#div_semester").children();
+          }
+
+          //#########################################################################################################
+          function getElementByIndex(Object, index)
+          {
+              return Object.slice(index, index + 1);
+          }
 
 		  //#########################################################################################################
 		  function emptyModal()
