@@ -25,6 +25,8 @@ public class AlleModule {
             fr=new FileReader("public/csv/Module.csv");
             br = new BufferedReader(fr);
 
+            br.readLine();
+
             while(null!=(csvZeile=br.readLine())) {
                 try{
                     m = new Modul();
