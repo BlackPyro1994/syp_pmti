@@ -23,6 +23,8 @@ public class AlleKataloge {
             fr=new FileReader("public/csv/Modulkataloge.csv");
             br = new BufferedReader(fr);
 
+            br.readLine();
+
             while(null!=(csvZeile=br.readLine())) {
                 try{
                     mk = new Modulkatalog();
