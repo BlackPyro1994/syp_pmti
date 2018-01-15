@@ -1354,6 +1354,9 @@
 
 			insert_module_in_catalog("@{mod(11)}", "@{mod(0)}", "@{mod(1)}");
 
+			if(("@{mod(11)}" != ("PM"))&&("@{mod(11)}" != ("AM"))&&("@{mod(11)}" != ("WPP"))){
+				insert_module_in_catalog("WPP","@{mod(0)}", "@{mod(1)}");
+			}
 			modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(8)},@{mod(9)}");
 
 			}
