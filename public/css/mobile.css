@@ -19,7 +19,7 @@
 }
 .border-blue {
     border-radius: 5px;
-    border-color: #428bca;
+    border-color: #337ab7;
 }
 .modal-margin {
     margin-top: 50%;
@@ -60,4 +60,20 @@
     margin-top: 2%;
     margin-right: 1%;
     margin-left: 1%;
+}
+.container_body {
+    height: calc(100vh - 90px);
+    overflow: auto;
+}
+
+.footer {
+    height: 30px;
+    bottom: 0;
+    position: absolute;
+}
+
+.modul_popup_buttons {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    text-align: center;
 }

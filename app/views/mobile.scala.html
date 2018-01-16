@@ -127,17 +127,38 @@
 			<!-- PopUp Fußzeile -->
 		  <div class = "modal-footer" id="cat_footer">
 			<button type = "button" class = "btn btn-default" id = "popup-catalogs-back">Zurück</button>
-			  <!--<button type = "button" class = "btn btn-default" id="popup-new-ok"
-                        onclick = "ok_button_new_plan()">OK
-                        </button> -->
 		  </div>
 		</div>
 	  </div>
 	</div>
 
+          <!-- PopUp Verschieben/Löschen -->
+      <div id = "myModal-modules" class = "modal fade" role = "dialog">
+          <div class = "modal-dialog">
+                  <!-- PopUp Inhalt-->
+              <div class = "modal-content modal-margin">
+                      <!-- PopUp Kopfzeile -->
+                  <div class="modal-header">
+                      <h4 class="modal-title">Modul...</h4>
+                  </div>
+                  <!-- PopUp Körper -->
+                  <div class="container-fluid modul_popup_buttons">
+                      <div class="row">
+                          <div class="col">
+                              <button type = "button" class = "btn btn-warning" id = "popup-module-move">Verschieben</button>
+                          </div>
+                          <div class="col">
+                              <button type = "button" class = "btn btn-danger" id = "popup-module-delete">Löschen</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
 
-	  <!-- container-fluid body -->
-	<div class="container-fluid">
+
+      <!-- container-fluid body -->
+	<div class="container-fluid container_body">
 		<!--  container-fluid regeln -->
 	  <div class="container-fluid">
 	  </div>
@@ -145,12 +166,24 @@
 	  <div id = "div_semester">
 	  </div>
 	</div>
+          <!-- container-fluid bottom für Master ECTS -->
+      <div class="container-fluid footer bg-primary text-white">
+          <div class="row absolute_center">
+              <div class="col">
+                  Master ECTS-Punkte:
+              </div>
+              <div id="master_ects" class="col">
+                  0
+              </div>
+          </div>
+      </div>
   </body>
 
   <script>
 		  var count = 0;
 		  var startSem = "winter";
-		  var sem_id;
+		  var global_sem_id;
+		  var global_mod_id;
 		  var semester_array = [];
 		  var module_array = [];
 		  var open = 0;
@@ -167,7 +200,7 @@
 			  $("#brand").text("Übersicht");
 
               if (flip) {
-                  save_semester_content(sem_id);
+                  save_semester_content(global_sem_id);
                   flip = !flip;
                   $("#div_semester").children().remove();
               }
@@ -286,6 +319,50 @@
 			}
 		  }
 
+          //#########################################################################################################
+          function update_master_ects(mod_id, wert)
+          {
+
+              var ects = Number(document.getElementById("master_ects").textContent);
+
+              // wert = auswahl ob addieren oder subtrahieren
+              // 1 == adieren 0 == subtrahieren
+              if (wert == 1)
+              {
+                  @for(mod <- modulListe) {
+                  if ("@{mod(0)}" == mod_id)
+                  {
+                      if (mod_id == "ALM")
+                      {
+                          document.getElementById("master_ects").textContent = ects;
+                      }
+                      else
+                      {
+                          ects = ects + @{mod(9)};
+                          document.getElementById("master_ects").textContent = ects;
+                      }
+                  }
+                  }
+              }
+              else if (wert == 0)
+              {
+                  @for(mod <- modulListe) {
+                  if ("@{mod(0)}" == mod_id)
+                  {
+                      if (mod_id == "ALM")
+                      {
+                          document.getElementById("master_ects").textContent = ects;
+                      }
+                      else
+                      {
+                          ects = ects - @{mod(9)};
+                          document.getElementById("master_ects").textContent = ects;
+                      }
+                  }
+                  }
+              }
+          }
+
 		  //#########################################################################################################
 		  function show_catalogs()
 		  {
@@ -320,15 +397,15 @@
 		  //#########################################################################################################
 		  function add_modules(id)
 		  {
+            emptyModal();
 			console.log("add_modules(" + id + ")");
 			var mod_id;
-			emptyModal();
 			//$("#cat_footer").append('<button type = "button" class = "btn btn-default" id = "popup-catalogs-back">Zurück</button>');
 			@for(mod <- modulListe) {
 			if ("@{mod(11)}" == id)
 			{
 			  mod_id = "@{mod(0)}";
-			  $("#catalog_list").append('<div id="' + mod_id + '" class="row modules_border class_click_modules"><button id="' + mod_id + '" class="btn btn-block"><div class="row text-left"><div class="col fett"><p>' + "@{mod(0)}" + '</p></div><div class="col text-right"><p>ECTS: ' + "@{mod(9)}" + '</p></div></div><div class="row normal text-left"><div class="col"><p>Dozent: ' + "@{mod(8)}" + '</p></div></div></button></div>');
+			  $("#catalog_list").append('<div id="' + mod_id + '" class="row modules_border class_click_modules"><button id="' + mod_id + '" class="btn btn-block"><div id="' + mod_id + '" class="row text-left"><div id="' + mod_id + '" class="col fett"><p id="' + mod_id + '">' + "@{mod(0)}" + '</p></div><div id="' + mod_id + '" class="col text-right"><p id="' + mod_id + '">ECTS: ' + "@{mod(9)}" + '</p></div></div><div id="' + mod_id + '" class="row normal text-left"><div id="' + mod_id + '" class="col"><p id="' + mod_id + '">Dozent: ' + "@{mod(8)}" + '</p></div></div></button></div>');
 			}
 			}
 		  }
@@ -339,13 +416,18 @@
             @for(mod <- modulListe) {
                 if ("@{mod(0)}" == mod_id)
                 {
-                  $("#div_semester").append('<div id="' + mod_id + '" class="row modules_border class_click_modules_in_semester margin-top"><button id="' + mod_id + '" class="btn btn-block"><div class="row text-left"><div class="col fett"><p>' + "@{mod(0)}" + '</p></div><div class="col text-right"><p>ECTS: ' + "@{mod(9)}" + '</p></div></div><div class="row normal text-left"><div class="col"><p>Dozent: ' + "@{mod(8)}" + '</p></div></div></button></div>');
+                  $("#div_semester").append('<div id="' + mod_id + '" class="row modules_border class_click_modules_in_semester margin-top"><button id="' + mod_id + '" class="btn btn-block"><div id="' + mod_id + '" class="row text-left"><div id="' + mod_id + '" class="col fett"><p>' + "@{mod(0)}" + '</p></div><div id="' + mod_id + '" class="col text-right"><p id="' + mod_id + '">ECTS: ' + "@{mod(9)}" + '</p></div></div><div id="' + mod_id + '" class="row normal text-left"><div id="' + mod_id + '" class="col"><p id="' + mod_id + '">Dozent: ' + "@{mod(8)}" + '</p></div></div></button></div>');
                 }
             }
           }
+          //#########################################################################################################
+          function delete_module_from_semester(mod_id) {
+		      console.log("delete_module_from_semester("+mod_id+")");
+              $("#" + mod_id).remove();
+          }
 
-		  //#########################################################################################################
 		  //on click handler
+
 
 		  // WECHSEL VON ÜBERSICHT NACH MODULE !
 		  $('#div_semester').on('click', '.class_click_semester', function (click)
@@ -353,10 +435,10 @@
 
 			var id = (click.target).id;
 			console.log("Click div_semester ID: " + id);
-			sem_id = (click.target).id.replace("sem", "");
+			global_sem_id = (click.target).id.replace("sem", "");
 			flip = 1;
 
-            show_semester_content(sem_id);
+            show_semester_content(global_sem_id);
 			safe_semester = $("#div_semester").children();
 
 			$("#div_semester").children().remove();
@@ -366,20 +448,20 @@
 			$("#button_minus").hide();
 			$("#button_plus").text("Module");
 			$("#button_plus").attr("onclick", "show_catalogs()");
-			$("#brand").text("Semester: " + sem_id);
+			$("#brand").text("Semester: " + global_sem_id);
 
 		  });
 
 		  //#########################################################################################################
-		  function show_semester_content(sem_id)
+		  function show_semester_content(global_sem_id)
 		  {
-              $("#div_semester").append(semester_array[sem_id]);
+              $("#div_semester").append(semester_array[global_sem_id]);
 		  }
 
           //#########################################################################################################
-		  function save_semester_content(sem_id) {
-		      console.log("save_semester_content("+sem_id+")");
-             semester_array[sem_id] = $("#div_semester").children();
+		  function save_semester_content(global_sem_id) {
+		      console.log("save_semester_content("+global_sem_id+")");
+             semester_array[global_sem_id] = $("#div_semester").children();
           }
 
           //#########################################################################################################
@@ -401,6 +483,7 @@
 			}
 		  }
 
+		  //Klick auf zurück-Button in Modulansicht im Popup "Modul"
 		  $('#myModal-catalogs').on('click', '#popup-catalogs-back', function (click)
 		  {
 			console.log("Zurück");
@@ -409,6 +492,25 @@
 			show_catalogs();
 		  });
 
+          //Klick auf move-Button (nach klick auf Modul im Semester)
+          $('#myModal-modules').on('click', '#popup-module-move', function (click)
+          {
+              console.log("Move-Button Module: "+global_mod_id);
+          });
+
+          //Klick auf delete-Button (nach klick auf Modul im Semester)
+          $('#myModal-modules').on('click', '#popup-module-delete', function (click)
+          {
+              console.log("Delete-Button Module: "+global_mod_id);
+              $('#myModal-modules').modal('hide');
+              delete_module_from_semester(global_mod_id);
+              //Sonst wird nicht gelöscht
+              delete_module_from_semester(global_mod_id);
+              update_master_ects(global_mod_id,0);
+              //update_semester_ects(sem_id,wert);
+          });
+
+          //Klick auf Kataloge im Popup
 		  $('#catalog_list').on('click', '.class_click_catalog', function (click)
 		  {
 			console.log("Click on Katalog ID: " + (click.target).id);
@@ -418,14 +520,25 @@
 			add_modules(id);
 		  });
 
+		  //Klick auf Module im Popup
 		  $('#catalog_list').on('click', '.class_click_modules', function (click)
 		  {
-			var id = (click.currentTarget).id;
-			console.log("Click on Modul ID: " + id);
+			global_mod_id = (click.currentTarget).id;
+			console.log("Add Modul ID: " + global_mod_id);
 
 			$('#myModal-catalogs').modal('hide');
-			append_modul_in_semester(id);
-			//popup ? hinzufügen - abbrechen ?
+			append_modul_in_semester(global_mod_id);
+			update_master_ects(global_mod_id, 1);
 		  });
+
+		  //Klick auf Modul in Semesteransicht
+          $('#div_semester').on('click', '.class_click_modules_in_semester', function (click)
+          {
+              global_mod_id = (click.currentTarget).id;
+              console.log("Click on Modul ID: " + global_mod_id);
+
+              $('#myModal-modules').modal('show');
+          });
+
   </script>
 </html>
