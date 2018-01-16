@@ -505,7 +505,6 @@
               $('#myModal-modules').modal('hide');
               delete_module_from_semester(global_mod_id);
               //Sonst wird nicht gelöscht
-              delete_module_from_semester(global_mod_id);
               update_master_ects(global_mod_id,0);
               //update_semester_ects(sem_id,wert);
           });
@@ -527,6 +526,7 @@
 			console.log("Add Modul ID: " + global_mod_id);
 
 			$('#myModal-catalogs').modal('hide');
+			emptyModal();
 			append_modul_in_semester(global_mod_id);
 			update_master_ects(global_mod_id, 1);
 		  });
