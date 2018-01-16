@@ -275,13 +275,10 @@
 			  for (i = 0; i < wert; i++)
 			  {
 				count++;
-				//document.getElementById("count").textContent = count;
 				add_semester(startSem);
 			  }
 			  document.getElementById("fehlermeldung").textContent = "";
 			  $('#myModal-new_plan').modal('hide');
-			  /*$(".class_p").removeClass('ausgewaehlt');
-			  $(".class_p").parent().removeClass('blocked'); */
 			}
 
 			/*
@@ -412,7 +409,8 @@
 
 		  //#########################################################################################################
 		  function append_modul_in_semester(mod_id) {
-            $("#div_semester").append(safe_modules);
+		  	console.log("append_modul_in_semester("+mod_id+")");
+            //$("#div_semester").append(safe_modules);
             @for(mod <- modulListe) {
                 if ("@{mod(0)}" == mod_id)
                 {
@@ -429,7 +427,7 @@
 		  //on click handler
 
 
-		  // WECHSEL VON ÜBERSICHT NACH MODULE !
+		  // Klick auf Semester in Übersicht
 		  $('#div_semester').on('click', '.class_click_semester', function (click)
 		  {
 
@@ -438,10 +436,9 @@
 			global_sem_id = (click.target).id.replace("sem", "");
 			flip = 1;
 
+		  	safe_semester = $("#div_semester").children();
+		  	$("#div_semester").children().remove();
             show_semester_content(global_sem_id);
-			safe_semester = $("#div_semester").children();
-
-			$("#div_semester").children().remove();
 
 			//$("#div_semester").append(safe_modules);
 
@@ -455,13 +452,14 @@
 		  //#########################################################################################################
 		  function show_semester_content(global_sem_id)
 		  {
+		      console.log("show_semester_content("+global_sem_id+")");
               $("#div_semester").append(semester_array[global_sem_id]);
 		  }
 
           //#########################################################################################################
 		  function save_semester_content(global_sem_id) {
 		      console.log("save_semester_content("+global_sem_id+")");
-             semester_array[global_sem_id] = $("#div_semester").children();
+			  semester_array[global_sem_id] = $("#div_semester").children();
           }
 
           //#########################################################################################################
@@ -474,13 +472,7 @@
 		  function emptyModal()
 		  {
 			console.log("emptyModal()");
-
-			@for(katal <- katalogListe) {
-			$("#" + "@{katal(0)}").remove();
-			}
-			@for(mod <- modulListe) {
-			$("#" + "@{mod(0)}").remove();
-			}
+		  	$("#catalog_list").children().remove();
 		  }
 
 		  //Klick auf zurück-Button in Modulansicht im Popup "Modul"
