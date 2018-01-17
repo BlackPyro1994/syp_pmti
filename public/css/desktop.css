@@ -102,6 +102,12 @@ p {
     border-radius: 10px;
 }
 
+.blocked_wpp {
+    color: #aaa;
+    background-color: #8c8c8c;
+    border-radius: 10px;
+}
+
 .include {
     color: #000000;
     background-color: #ffc107;
