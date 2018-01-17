@@ -937,7 +937,7 @@
             <!--mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm-->
 
             function create_pdf() {
-                var doc = new jsPDF();
+                var doc = new jsPDF('landscape');
                 var x = 11;
                 var xq = 10;
                 var y = 20;
@@ -946,7 +946,7 @@
                 var master_ects = 0;
                 var restplatz = 249;
 
-                doc.setFont("courier");
+                doc.setFont("times");
                 doc.setFontSize(20);
                 doc.text(45, y, "Individualisierter Studienverlaufsplan");
                 y += 13;
@@ -976,7 +976,7 @@
                     }
                     restplatz -= ((anz_Module * 5) + 12);
 
-                    //ab hier 3 hart geschriebene Werte zu tauschen:
+//ab hier 3 hart geschriebene Werte zu tauschen:
                     sem_zahl = "1";
                     wi_so = "Wintersemester";
                     sem_ects = "30";
@@ -1025,7 +1025,7 @@
 
                             var liste = entry.split(',');
                             console.log(liste);
-                            //ab hier 8 hart geschriebene Werte zu tauschen:
+
                             id = liste[0];
                             name = liste[1];
                             v = liste[2];
@@ -1035,7 +1035,7 @@
                             dozent = liste[6];
                             ects = liste[7];
 
-
+                            doc.setFont("courier");
                             doc.setFontSize(10);
 
                             // Empty square
@@ -1063,6 +1063,8 @@
                             x += 39;
 
                             doc.text(x, y, ects);
+
+                            doc.setFont("times");
 
                             y += 5;
                             x = 11;
