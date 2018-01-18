@@ -9,19 +9,25 @@
     var master_ects = 0;
     var restplatz = 249;
     
-    var horizontal_values = [13, 11, 4, 4, 4, 5, 39];
+    var horizontal_values = [20, 110, 4, 4, 4, 5, 39];
     
-    // doc.setFont("times");
+     doc.setFont("times");
     
-    doc.setFont("courier");
-    
-    doc.setFontSize(20);
-    
+    //doc.setFont("courier");
+
+    //var title = "PMTI - Individualisierter Studienverlaufsplan           " + currentdate.getDate() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getFullYear();
+
+
+
+
+    var title = "PMTI - Individualisierter Studienverlaufsplan" ;
     var currentdate = new Date();
-    
-    var title = "PMTI - Individualisierter Studienverlaufsplan           " + currentdate.getDate() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getFullYear();
-    
-    doc.text(10, y, title);
+
+//doc.text(200, 100, 'This is right aligned text', null, null, 'right');
+    doc.setFontSize(20);
+    doc.text(80, y, title);
+    doc.setFontSize(15);
+    doc.text(250,y,"(" + currentdate.getDate() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getFullYear() + ")", null, null, 'right');
     y += 13;
 
 //ab hier 1 hart geschriebener Wert zu tauschen:

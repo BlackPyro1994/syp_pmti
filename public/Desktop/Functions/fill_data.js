@@ -2,7 +2,7 @@ function fill_data(mod_id, sem_id)
 {
     //($("#"+sem_id).textContent);
 
-    if (mod_id == "M07")
+    if (mod_id == "M07_WPP")
     {
         $('#myModal-m07').modal('toggle');
 
