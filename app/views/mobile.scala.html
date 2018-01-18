@@ -4,10 +4,10 @@
 <html lang="en">
 
   <head>
-	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.min.css")">
-	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/expandable_tree_list.css")">
-	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/mobile.css")">
-	<link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/css/bootstrap.min.css")">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/css/expandable_tree_list.css")">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Mobile/mobile.css")">
+	<link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("Static_Files/images/favicon.png")">
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,11 +15,9 @@
 
   </head>
 
-  <script src="@routes.Assets.versioned("js/jquery-3.2.1.min.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("js/bootstrap.bundle.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("js/CollapsibleLists.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("js/mobile.js")" type="text/javascript"></script>
-
+  <script src="@routes.Assets.versioned("Static_Files/js/jquery-3.2.1.min.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Static_Files/js/bootstrap.bundle.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Static_Files/js/CollapsibleLists.js")" type="text/javascript"></script>
 
   <body>
 	  <!-- Navbar -->
@@ -89,7 +87,9 @@
 			  <div class="row">
 				<div class = "col radio">
 				  <label><input type = "radio" name = "optradio" checked = "checked" id = "radio-winter"
-				  value = "winter">Winter</label>
+				  value = "winter">
+					Winter
+				  </label>
 				</div>
 				<div class = "col radio">
 				  <label><input type = "radio" name = "optradio" id = "radio-sommer" value = "sommer">Sommer</label>
@@ -132,32 +132,32 @@
 	  </div>
 	</div>
 
-          <!-- PopUp Verschieben/Löschen -->
-      <div id = "myModal-modules" class = "modal fade" role = "dialog">
-          <div class = "modal-dialog">
-                  <!-- PopUp Inhalt-->
-              <div class = "modal-content modal-margin">
-                      <!-- PopUp Kopfzeile -->
-                  <div class="modal-header">
-                      <h4 class="modal-title">Modul...</h4>
-                  </div>
-                  <!-- PopUp Körper -->
-                  <div class="container-fluid modul_popup_buttons">
-                      <div class="row">
-                          <div class="col">
-                              <button type = "button" class = "btn btn-warning" id = "popup-module-move">Verschieben</button>
-                          </div>
-                          <div class="col">
-                              <button type = "button" class = "btn btn-danger" id = "popup-module-delete">Löschen</button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+	  <!-- PopUp Verschieben/Löschen -->
+	<div id = "myModal-modules" class = "modal fade" role = "dialog">
+	  <div class = "modal-dialog">
+		  <!-- PopUp Inhalt-->
+		<div class = "modal-content modal-margin">
+			<!-- PopUp Kopfzeile -->
+		  <div class="modal-header">
+			<h4 class="modal-title">Modul...</h4>
+		  </div>
+			<!-- PopUp Körper -->
+		  <div class="container-fluid modul_popup_buttons">
+			<div class="row">
+			  <div class="col">
+				<button type = "button" class = "btn btn-warning" id = "popup-module-move">Verschieben</button>
+			  </div>
+			  <div class="col">
+				<button type = "button" class = "btn btn-danger" id = "popup-module-delete">Löschen</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
 
 
-      <!-- container-fluid body -->
+	  <!-- container-fluid body -->
 	<div class="container-fluid container_body">
 		<!--  container-fluid regeln -->
 	  <div class="container-fluid">
@@ -166,17 +166,17 @@
 	  <div id = "div_semester">
 	  </div>
 	</div>
-          <!-- container-fluid bottom für Master ECTS -->
-      <div class="container-fluid footer bg-primary text-white">
-          <div class="row absolute_center">
-              <div class="col">
+	  <!-- container-fluid bottom für Master ECTS -->
+	<div class="container-fluid footer bg-primary text-white">
+	  <div class="row absolute_center">
+		<div class="col">
                   Master ECTS-Punkte:
-              </div>
-              <div id="master_ects" class="col">
+		</div>
+		<div id="master_ects" class="col">
                   0
-              </div>
-          </div>
-      </div>
+		</div>
+	  </div>
+	</div>
   </body>
 
   <script>
@@ -187,350 +187,10 @@
 		  var semester_array = [];
 		  var module_array = [];
 		  var open = 0;
-
 		  var safe_semester;
 		  var safe_modules;
-
 		  var flip = 0;
 
-		  //#########################################################################################################
-		  function overview()
-		  {
-			  console.log("overview()");
-			  $("#brand").text("Übersicht");
-
-              if (flip) {
-                  save_semester_content(global_sem_id);
-                  flip = !flip;
-                  $("#div_semester").children().remove();
-              }
-
-			  $("#div_semester").append(safe_semester);
-
-			  console.log("Count: " + count);
-
-			  $("#button_minus").show();
-			  $("#button_plus").text("+");
-			  $("#button_plus").attr("onclick", "counter_plus()");
-			}
-
-		  //#########################################################################################################
-		  function counter_plus()
-		  {
-			console.log("counter_plus()");
-			count++;
-			add_semester(startSem);
-		  }
-
-		  //#########################################################################################################
-		  function counter_minus()
-		  {
-			console.log("counter_minus()");
-			if (count > 0)
-			{
-			  count--;
-			}
-
-			/*modules_in_sem = $("#div_semester").children().last().children().length - 1;
-
-			for (i = 0; i < modules_in_sem; i++) {
-				var id = $("#div_semester").children().last().children().filter(":nth-child(" + 2 + ")").children().first().text().replace("ID: ", "");
-				var mod_id = "mod_" + id;
-
-				$("#" + mod_id).remove();
-
-			}*/
-
-			delete_last_semester();
-
-			//update_rules();
-		  }
-
-		  //#########################################################################################################
-		  function delete_last_semester()
-		  {
-			console.log("delete_last_semester()");
-			$("#div_semester").children().last().remove();
-		  }
-
-		  //#########################################################################################################
-		  function ok_button_new_plan()
-		  {
-			console.log("ok_button_new_plan()");
-			count = 0;
-			var meldung = "Bitte eine Anzahl angeben";
-			var myRadio = $('input[name="optradio"]');
-			startSem = myRadio.filter(':checked').val();
-			wert = $("#input-semesteranzahl").val();
-
-			if (wert == "")
-			{
-			  document.getElementById("fehlermeldung").textContent = meldung;
-			}
-
-			else if (wert != "")
-			{
-			  $("#div_semester").children().remove();
-
-			  for (i = 0; i < wert; i++)
-			  {
-				count++;
-				add_semester(startSem);
-			  }
-			  document.getElementById("fehlermeldung").textContent = "";
-			  $('#myModal-new_plan').modal('hide');
-			}
-
-			/*
-			document.getElementById("button_minus").disabled = false;
-			document.getElementById("button_plus").disabled = false;
-			document.getElementById("button_speichern").disabled = false;
-			document.getElementById("button_pdf").disabled = false;
-
-			blocked = false;
-			*/
-		  }
-
-		  //#########################################################################################################
-		  function add_semester(startSem)
-		  {
-			console.log("add_semester(" + startSem + ")");
-
-			$("#div_semester").append('<div id="' + 'sem' + count + '" class = "container-fluid semester-gesamt class_click_semester">' + '<div id="' + 'sem' + count + '" class = "row absolute_center class_click_semester_row">' + '<div id="' + 'sem' + count + '" class="col">' + '<h6 id="' + 'sem' + count + '"class="label">' + '</h6>' + '</div>' + '</div>' + '</div>');
-
-			if (startSem == "winter" && count % 2 == 1)
-			{
-			  $(".label").last().text(count + ": Winter-Semester");
-			}
-			else if (startSem == "winter" && count % 2 == 0)
-			{
-			  $(".label").last().text(count + ": Sommer-Semester");
-			}
-			else if (startSem == "sommer" && count % 2 == 1)
-			{
-			  $(".label").last().text(count + ": Sommer-Semester");
-			}
-			else
-			{
-			  $(".label").last().text(count + ": Winter-Semester");
-			}
-		  }
-
-          //#########################################################################################################
-          function update_master_ects(mod_id, wert)
-          {
-
-              var ects = Number(document.getElementById("master_ects").textContent);
-
-              // wert = auswahl ob addieren oder subtrahieren
-              // 1 == adieren 0 == subtrahieren
-              if (wert == 1)
-              {
-                  @for(mod <- modulListe) {
-                  if ("@{mod(0)}" == mod_id)
-                  {
-                      if (mod_id == "ALM")
-                      {
-                          document.getElementById("master_ects").textContent = ects;
-                      }
-                      else
-                      {
-                          ects = ects + @{mod(9)};
-                          document.getElementById("master_ects").textContent = ects;
-                      }
-                  }
-                  }
-              }
-              else if (wert == 0)
-              {
-                  @for(mod <- modulListe) {
-                  if ("@{mod(0)}" == mod_id)
-                  {
-                      if (mod_id == "ALM")
-                      {
-                          document.getElementById("master_ects").textContent = ects;
-                      }
-                      else
-                      {
-                          ects = ects - @{mod(9)};
-                          document.getElementById("master_ects").textContent = ects;
-                      }
-                  }
-                  }
-              }
-          }
-
-		  //#########################################################################################################
-		  function show_catalogs()
-		  {
-            safe_modules = $("#div_semester").children();
-
-			console.log("show_catalogs()");
-			emptyModal();
-			$("#cat_footer").hide();
-
-			@for(katal <- katalogListe) {
-			add_catalogs("@{katal(0)}", "@{katal(1)}");
-			}
-			if (!open)
-			{
-			  $('#myModal-catalogs').modal('show');
-			} else
-			{
-			  emptyModal();
-			  open = 0;
-			  show_catalogs();
-			  return;
-			}
-		  }
-
-		  //#########################################################################################################
-		  function add_catalogs(catalog_id, catalog_name)
-		  {
-			console.log("add_catalogs(" + catalog_id + "," + catalog_name + ")");
-			$("#catalog_list").append('<div id="' + catalog_id + '" class="row catalog_border class_click_catalog"><button id="' + catalog_id + '" class="btn btn-block text-left fett">' + catalog_name + '</button></div>');
-		  }
-
-		  //#########################################################################################################
-		  function add_modules(id)
-		  {
-            emptyModal();
-			console.log("add_modules(" + id + ")");
-			var mod_id;
-			//$("#cat_footer").append('<button type = "button" class = "btn btn-default" id = "popup-catalogs-back">Zurück</button>');
-			@for(mod <- modulListe) {
-			if ("@{mod(11)}" == id)
-			{
-			  mod_id = "@{mod(0)}";
-			  $("#catalog_list").append('<div id="' + mod_id + '" class="row modules_border class_click_modules"><button id="' + mod_id + '" class="btn btn-block"><div id="' + mod_id + '" class="row text-left"><div id="' + mod_id + '" class="col fett"><p id="' + mod_id + '">' + "@{mod(0)}" + '</p></div><div id="' + mod_id + '" class="col text-right"><p id="' + mod_id + '">ECTS: ' + "@{mod(9)}" + '</p></div></div><div id="' + mod_id + '" class="row normal text-left"><div id="' + mod_id + '" class="col"><p id="' + mod_id + '">Dozent: ' + "@{mod(8)}" + '</p></div></div></button></div>');
-			}
-			}
-		  }
-
-		  //#########################################################################################################
-		  function append_modul_in_semester(mod_id) {
-		  	console.log("append_modul_in_semester("+mod_id+")");
-            //$("#div_semester").append(safe_modules);
-            @for(mod <- modulListe) {
-                if ("@{mod(0)}" == mod_id)
-                {
-                  $("#div_semester").append('<div id="' + mod_id + '" class="row modules_border class_click_modules_in_semester margin-top"><button id="' + mod_id + '" class="btn btn-block"><div id="' + mod_id + '" class="row text-left"><div id="' + mod_id + '" class="col fett"><p>' + "@{mod(0)}" + '</p></div><div id="' + mod_id + '" class="col text-right"><p id="' + mod_id + '">ECTS: ' + "@{mod(9)}" + '</p></div></div><div id="' + mod_id + '" class="row normal text-left"><div id="' + mod_id + '" class="col"><p id="' + mod_id + '">Dozent: ' + "@{mod(8)}" + '</p></div></div></button></div>');
-                }
-            }
-          }
-          //#########################################################################################################
-          function delete_module_from_semester(mod_id) {
-		      console.log("delete_module_from_semester("+mod_id+")");
-              $("#" + mod_id).remove();
-          }
-
-		  //on click handler
-
-
-		  // Klick auf Semester in Übersicht
-		  $('#div_semester').on('click', '.class_click_semester', function (click)
-		  {
-
-			var id = (click.target).id;
-			console.log("Click div_semester ID: " + id);
-			global_sem_id = (click.target).id.replace("sem", "");
-			flip = 1;
-
-		  	safe_semester = $("#div_semester").children();
-		  	$("#div_semester").children().remove();
-            show_semester_content(global_sem_id);
-
-			//$("#div_semester").append(safe_modules);
-
-			$("#button_minus").hide();
-			$("#button_plus").text("Module");
-			$("#button_plus").attr("onclick", "show_catalogs()");
-			$("#brand").text("Semester: " + global_sem_id);
-
-		  });
-
-		  //#########################################################################################################
-		  function show_semester_content(global_sem_id)
-		  {
-		      console.log("show_semester_content("+global_sem_id+")");
-              $("#div_semester").append(semester_array[global_sem_id]);
-		  }
-
-          //#########################################################################################################
-		  function save_semester_content(global_sem_id) {
-		      console.log("save_semester_content("+global_sem_id+")");
-			  semester_array[global_sem_id] = $("#div_semester").children();
-          }
-
-          //#########################################################################################################
-          function getElementByIndex(Object, index)
-          {
-              return Object.slice(index, index + 1);
-          }
-
-		  //#########################################################################################################
-		  function emptyModal()
-		  {
-			console.log("emptyModal()");
-		  	$("#catalog_list").children().remove();
-		  }
-
-		  //Klick auf zurück-Button in Modulansicht im Popup "Modul"
-		  $('#myModal-catalogs').on('click', '#popup-catalogs-back', function (click)
-		  {
-			console.log("Zurück");
-			open = 1;
-			$("#cat_footer").hide();
-			show_catalogs();
-		  });
-
-          //Klick auf move-Button (nach klick auf Modul im Semester)
-          $('#myModal-modules').on('click', '#popup-module-move', function (click)
-          {
-              console.log("Move-Button Module: "+global_mod_id);
-          });
-
-          //Klick auf delete-Button (nach klick auf Modul im Semester)
-          $('#myModal-modules').on('click', '#popup-module-delete', function (click)
-          {
-              console.log("Delete-Button Module: "+global_mod_id);
-              $('#myModal-modules').modal('hide');
-              delete_module_from_semester(global_mod_id);
-              //Sonst wird nicht gelöscht
-              update_master_ects(global_mod_id,0);
-              //update_semester_ects(sem_id,wert);
-          });
-
-          //Klick auf Kataloge im Popup
-		  $('#catalog_list').on('click', '.class_click_catalog', function (click)
-		  {
-			console.log("Click on Katalog ID: " + (click.target).id);
-			var id = (click.target).id;
-
-			$("#cat_footer").show();
-			add_modules(id);
-		  });
-
-		  //Klick auf Module im Popup
-		  $('#catalog_list').on('click', '.class_click_modules', function (click)
-		  {
-			global_mod_id = (click.currentTarget).id;
-			console.log("Add Modul ID: " + global_mod_id);
-
-			$('#myModal-catalogs').modal('hide');
-			emptyModal();
-			append_modul_in_semester(global_mod_id);
-			update_master_ects(global_mod_id, 1);
-		  });
-
-		  //Klick auf Modul in Semesteransicht
-          $('#div_semester').on('click', '.class_click_modules_in_semester', function (click)
-          {
-              global_mod_id = (click.currentTarget).id;
-              console.log("Click on Modul ID: " + global_mod_id);
-
-              $('#myModal-modules').modal('show');
-          });
 
   </script>
 </html>

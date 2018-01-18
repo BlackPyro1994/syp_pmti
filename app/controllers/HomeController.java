@@ -46,14 +46,14 @@ public class HomeController extends Controller {
         IKatalogeLoader kl = new IKatalogeLoaderImpl();
 
         for (ModulGrenz mg : ml.getModule()) {
-            modulListe.add(new Object[]{mg.getModulid(),mg.getModulname(),(mg.getModulkomponenten())[0], (mg.getModulkomponenten())[1],(mg.getModulkomponenten())[2],(mg.getModulkomponenten())[3],(mg.getSemesterzuordnung())[0],(mg.getSemesterzuordnung())[1],mg.getDozent(),mg.getEcts(),mg.getIstPflicht(),mg.getKatalogid()});
+            modulListe.add(new Object[]{mg.getModulid(), mg.getModulname(), (mg.getModulkomponenten())[0], (mg.getModulkomponenten())[1], (mg.getModulkomponenten())[2], (mg.getModulkomponenten())[3], (mg.getSemesterzuordnung())[0], (mg.getSemesterzuordnung())[1], mg.getDozent(), mg.getEcts(), mg.getIstPflicht(), mg.getKatalogid()});
         }
 
         for (KatalogGrenz kg : kl.getKataloge()) {
-            katalogListe.add(new Object[]{kg.getKatalogid(),kg.getKatalogname(),kg.getBelegungsanzahl()});
+            katalogListe.add(new Object[]{kg.getKatalogid(), kg.getKatalogname(), kg.getBelegungsanzahl()});
         }
 
-        return ok(index.render(request().getHeader("User-Agent"),modulListe,katalogListe));
+        return ok(index.render(request().getHeader("User-Agent"), modulListe, katalogListe));
     }
 
 }

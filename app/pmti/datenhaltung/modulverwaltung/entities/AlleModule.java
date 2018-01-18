@@ -22,7 +22,7 @@ public class AlleModule {
         int[] intArr2;
 
         try{
-            fr=new FileReader("public/csv/Module.csv");
+            fr=new FileReader("public/Static_Files/csv/Module.csv");
             br = new BufferedReader(fr);
 
             br.readLine();

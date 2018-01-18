@@ -20,7 +20,7 @@ public class AlleKataloge {
         int intVar;
 
         try{
-            fr=new FileReader("public/csv/Modulkataloge.csv");
+            fr=new FileReader("public/Static_Files/csv/Modulkataloge.csv");
             br = new BufferedReader(fr);
 
             br.readLine();

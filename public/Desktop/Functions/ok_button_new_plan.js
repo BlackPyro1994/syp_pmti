@@ -9,7 +9,7 @@ function ok_button_new_plan(options)
     {
         var wert = options['count'];
         startSem = options['semStart'];
-
+        
     }
     else
     {
@@ -18,16 +18,16 @@ function ok_button_new_plan(options)
         
         var wert = $("#input-semesteranzahl").val();
         startSem = myRadio.filter(':checked').val();
-
+        
         if (wert == "")
         {
             document.getElementById("fehlermeldung").textContent = meldung;
             return;
-
+            
         }
-
+        
     }
-
+    
     $("#div_semester").children().remove();
     
     document.getElementById("master_ects").textContent = 0;
@@ -38,22 +38,22 @@ function ok_button_new_plan(options)
         document.getElementById("count").textContent++;
         add_semester(startSem);
     }
-
+    
     // $('#count').set(wert);
-
+    
     document.getElementById("fehlermeldung").textContent = "";
-
+    
     $('#myModal-new_plan').modal('hide');
     $(".class_p").removeClass('ausgewaehlt');
     $(".class_p").parent().removeClass('blocked');
     $(".class_p").parent().removeClass('blocked_wpp');
-
+    
     document.getElementById("button_minus").disabled = false;
     document.getElementById("button_plus").disabled = false;
     document.getElementById("button_speichern").disabled = false;
     document.getElementById("button_pdf").disabled = false;
-
+    
     blocked = false;
-
+    
     update_rules();
 }

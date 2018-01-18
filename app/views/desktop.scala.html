@@ -1,775 +1,640 @@
 @(modulListe: List[Array[Object]], katalogListe: List[Array[Object]])
 
-<body>
+<!DOCTYPE html>
+<html lang="en">
 
-  <div class = "container-fluid">
-	<div class = "row">
-	  <span class = "col" align = "center">
-		<br>
-		<h1>
-		  Planungsunterstützungstool Master Technische Informatik
-		</h1>
-	  </span>
-	</div>
-	  <!-- PopUp Neuer Plan -->
-	<div id = "myModal-new_plan" class = "modal fade" role = "dialog">
-	  <div class = "modal-dialog">
-		  <!-- PopUp Inhalt-->
-		<div class = "modal-content">
-			<!-- PopUp Kopfzeile -->
-		  <div class = "modal-header">
-			<h4 class = "modal-title">Neuen Plan erstellen</h4>
+  <head>
+
+	@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
+
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/css/bootstrap.min.css")">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/css/expandable_tree_list.css")">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Desktop/desktop.css")">
+	<link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("Static_Files/images/favicon.png")">
+
+	@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  </head>
+
+  @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
+
+  <script src="@routes.Assets.versioned("Static_Files/js/jquery-3.2.1.min.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Static_Files/js/bootstrap.bundle.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Static_Files/js/CollapsibleLists.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Static_Files/js/jspdf.debug.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Static_Files/js/dom-to-image.js")" type="text/javascript"></script>
+
+  @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
+
+  <script src="@routes.Assets.versioned("Desktop/Functions/add_catalog.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/add_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/append_free_module.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/append_module.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/availability_mask_modules.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/blink.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/counter_minus.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/counter_plus.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/create_pdf.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/debug.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/delete_last_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/delete_module_from_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/fill_data.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/getElementByIndex.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/getLast.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/hex.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/insert_module_in_catalog.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/insert_module_in_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/move_module_to_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/new_plan.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/ok_button_new_plan.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/save.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/saveAlt.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/select_module.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/select_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/test_1.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/test_2.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/test_3.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/test_4.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/updateModuleString.js")" type="text/javascript"></script>
+
+  <body>
+
+	<div class = "container-fluid">
+	  <div class = "row">
+		<span class = "col" align = "center">
+		  <br>
+		  <h1>
+			Planungsunterstützungstool Master Technische Informatik
+		  </h1>
+		</span>
+	  </div>
+		<!-- PopUp Neuer Plan -->
+	  <div id = "myModal-new_plan" class = "modal fade" role = "dialog">
+		<div class = "modal-dialog">
+			<!-- PopUp Inhalt-->
+		  <div class = "modal-content">
+			  <!-- PopUp Kopfzeile -->
+			<div class = "modal-header">
+			  <h4 class = "modal-title">Neuen Plan erstellen</h4>
+			</div>
+			  <!-- PopUp Körper -->
+			<div class = "modal-body">
+			  <div class = "container">
+				<div class = "row">
+				  <div class = "col">
+					<h5>Semesteranzahl:</h5>
+					<input type = "text" class = "form-control" id = "input-semesteranzahl"
+					placeholder = "Semesteranzahl">
+					<p id = "fehlermeldung"></p>
+				  </div>
+				  <div class = "col">
+					<h5>Studienstart:</h5>
+					<div class = "radio">
+					  <label><input type = "radio" name = "optradio" checked = "checked" id = "radio-winter"
+					  value = "winter">
+						Winter
+					  </label>
+					</div>
+					<div class = "radio">
+					  <label><input type = "radio" name = "optradio" id = "radio-sommer"
+					  value = "sommer">
+						Sommer
+					  </label>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			  <!-- PopUp Fußzeile -->
+			<div class = "modal-footer">
+			  <button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-abbrechen">
+				Abbrechen
+			  </button>
+			  <button type = "button" class = "btn btn-default" id = "popup-new-ok"
+			  onclick = "ok_button_new_plan()">OK
+			  </button>
+			</div>
 		  </div>
-			<!-- PopUp Körper -->
-		  <div class = "modal-body">
-			<div class = "container">
+		</div>
+	  </div>
+		<!-- PopUp Freitextmodul -->
+	  <div id = "myModal-freitext" class = "modal fade" role = "dialog">
+		<div class = "modal-dialog">
+			<!-- PopUp Inhalt-->
+		  <div class = "modal-content">
+			  <!-- PopUp Kopfzeile -->
+			<div class = "modal-header">
+			  <h4 class = "modal-title">Daten ergänzen</h4>
+			</div>
+			  <!-- PopUp Körper -->
+			<div class = "modal-body">
+			  <div class = "container">
+				<div class = "row datenergaenzen">
+				  <input type = "text" class = "form-control" id = "input-name" placeholder = "Name">
+				</div>
+				<div class = "row datenergaenzen">
+				  <div class = "col">
+					<input type = "text" class = "form-control" id = "input-v" placeholder = "V">
+				  </div>
+				  <div class = "col">
+					<input type = "text" class = "form-control" id = "input-u" placeholder = "Ü">
+				  </div>
+				  <div class = "col">
+					<input type = "text" class = "form-control" id = "input-p" placeholder = "P">
+				  </div>
+				  <div class = "col">
+					<input type = "text" class = "form-control" id = "input-pr" placeholder = "Pr">
+				  </div>
+				</div>
+				<div class = "row datenergaenzen">
+				  <input type = "text" class = "form-control" id = "input-dozent" placeholder = "Dozent">
+				</div>
+				<div class = "row datenergaenzen">
+				  <input type = "text" class = "form-control" id = "input-ects" placeholder = "ECTS">
+				</div>
+			  </div>
+			</div>
+			  <!-- PopUp Fußzeile -->
+			<div class = "modal-footer">
+			  <button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-freitext-abbrechen">
+				Abbrechen
+			  </button>
+			  <button type = "button" class = "btn btn-default" id = "popup-freitext-ok">
+				OK
+			  </button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+		<!-- PopUp M07 -->
+	  <div id = "myModal-m07" class = "modal fade" role = "dialog">
+		<div class = "modal-dialog">
+			<!-- PopUp Inhalt-->
+		  <div class = "modal-content">
+			  <!-- PopUp Kopfzeile -->
+			<div class = "modal-header">
+			  <h4 class = "modal-title">Daten ergänzen</h4>
+			</div>
+			  <!-- PopUp Körper -->
+			<div class = "modal-body">
+			  <div class = "container">
+				<div class = "row datenergaenzen">
+				  <input type = "text" class = "form-control" id = "input-name-m07" placeholder = "Name">
+				</div>
+				<div class = "row datenergaenzen">
+				  <input type = "text" class = "form-control" id = "input-dozent-m07" placeholder = "Dozent">
+				</div>
+			  </div>
+			</div>
+			  <!-- PopUp Fußzeile -->
+			<div class = "modal-footer">
+			  <button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-m07-abbrechen">
+				Abbrechen
+			  </button>
+			  <button type = "button" class = "btn btn-default" id = "popup-m07-ok">
+				OK
+			  </button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+		<!-- Container Menüleiste -->
+	  <div class = "container-fluid">
+		<div class = "row rounded" align = "center">
+
+		  <div class = "col" align = "center">
+			<button id ="button_new_plan" type = "button" class = "btn btn-primary" content-toggle = "modal" onclick="new_plan()">
+			  Neuer Plan
+			</button>
+		  </div>
+
+		  <div class = "col mar" align = "center">
+			<h5>Semesteranzahl</h5>
+		  </div>
+
+		  <div class = "col" align = "center">
+			<button type = "button" disabled id = "button_minus" onclick = "counter_minus()" class = "btn btn-primary">
+			  -
+			</button>
+		  </div>
+
+		  <div class = "col mar" align = "center">
+			<h5 id = "count">0</h5>
+		  </div>
+
+		  <div class = "col" align = "center">
+			<button disabled type = "button" id = "button_plus" onclick = "counter_plus()" class = "btn btn-primary">
+			  +
+			</button>
+		  </div>
+
+		  <div class = "col" align = "center">
+			<button id = "button_planLaden" class = "btn btn-primary">
+			  Plan laden</button>
+			@*<button id = "button_planLaden" class = "btn btn-primary">Plan laden</button>*@
+			<input id = "file-input" type = "file" name = "name" style = "display: none; "/>
+			@*<input id = "file-input" type = "file" accept='text/*' onchange='openFile(event)'><br>*@
+		  </div>
+
+		  <div class = "col" align = "center">
+			<button disabled type = "button" class = "btn btn-primary" id="button_speichern" onclick = "save()">
+			  @*<button type = "button" class = "btn btn-primary" content-toggle = "modal" content-target = "#myModal-freitext">*@
+				Plan speichern
+			</button>
+		  </div>
+
+		  <div class = "col" align = "center">
+			<button disabled type = "button" id="button_pdf" class = "btn btn-primary" style = "width: auto">
+			  PDF erstellen
+			</button>
+		  </div>
+
+		  <div class = "col mar" align = "center">
+			<h5>ECTS:</h5>
+		  </div>
+
+		  <div class = "col mar" align = "center">
+			<h5 id="master_ects">0</h5>
+		  </div>
+		</div>
+	  </div>
+		<!-- Container um Katalogliste, Regeln, Semester -->
+	  <div class = "container-fluid">
+		<div class = "row rounded">
+			<!-- container-fluid Katalogliste -->
+		  <div class = "col-3 container-fluid">
+			<div id = "div_kataloge" class = "col scrollbar rounded-scrollbar-left">
 			  <div class = "row">
-				<div class = "col">
-				  <h5>Semesteranzahl:</h5>
-				  <input type = "text" class = "form-control" id = "input-semesteranzahl"
-				  placeholder = "Semesteranzahl">
-				  <p id = "fehlermeldung"></p>
-				</div>
-				<div class = "col">
-				  <h5>Studienstart:</h5>
-				  <div class = "radio">
-					<label><input type = "radio" name = "optradio" checked = "checked" id = "radio-winter"
-					value = "winter">
-					  Winter
-					</label>
-				  </div>
-				  <div class = "radio">
-					<label><input type = "radio" name = "optradio" id = "radio-sommer"
-					value = "sommer">
-					  Sommer
-					</label>
-				  </div>
-				</div>
+				<span class = "col" align = "left">
+				  <h4>
+					Modulkataloge
+				  </h4>
+				</span>
 			  </div>
 			</div>
 		  </div>
-			<!-- PopUp Fußzeile -->
-		  <div class = "modal-footer">
-			<button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-abbrechen">
-			  Abbrechen
-			</button>
-			<button type = "button" class = "btn btn-default" id = "popup-new-ok"
-			onclick = "ok_button_new_plan()">OK
-			</button>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	  <!-- PopUp Freitextmodul -->
-	<div id = "myModal-freitext" class = "modal fade" role = "dialog">
-	  <div class = "modal-dialog">
-		  <!-- PopUp Inhalt-->
-		<div class = "modal-content">
-			<!-- PopUp Kopfzeile -->
-		  <div class = "modal-header">
-			<h4 class = "modal-title">Daten ergänzen</h4>
-		  </div>
-			<!-- PopUp Körper -->
-		  <div class = "modal-body">
-			<div class = "container">
-			  <div class = "row datenergaenzen">
-				<input type = "text" class = "form-control" id = "input-name" placeholder = "Name">
-			  </div>
-			  <div class = "row datenergaenzen">
-				<div class = "col">
-				  <input type = "text" class = "form-control" id = "input-v" placeholder = "V">
-				</div>
-				<div class = "col">
-				  <input type = "text" class = "form-control" id = "input-u" placeholder = "Ü">
-				</div>
-				<div class = "col">
-				  <input type = "text" class = "form-control" id = "input-p" placeholder = "P">
-				</div>
-				<div class = "col">
-				  <input type = "text" class = "form-control" id = "input-pr" placeholder = "Pr">
-				</div>
-			  </div>
-			  <div class = "row datenergaenzen">
-				<input type = "text" class = "form-control" id = "input-dozent" placeholder = "Dozent">
-			  </div>
-			  <div class = "row datenergaenzen">
-				<input type = "text" class = "form-control" id = "input-ects" placeholder = "ECTS">
-			  </div>
+
+			<!--  container-fluid um Regeln, Semester -->
+		  <div class = "col container-fluid">
+			  <!--  container-fluid Regeln -->
+			<div class = "container-fluid" id = "regeln">
+			  @* <div class = "row"> *@
+			  @* <div class = "col warnungen"> *@
+			  @* <p>Regel 1</p> *@
+			  @* </div> *@
+			  @* </div> *@
 			</div>
-		  </div>
-			<!-- PopUp Fußzeile -->
-		  <div class = "modal-footer">
-			<button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-freitext-abbrechen">
-			  Abbrechen
-			</button>
-			<button type = "button" class = "btn btn-default" id = "popup-freitext-ok">
-			  OK
-			</button>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	  <!-- PopUp M07 -->
-	<div id = "myModal-m07" class = "modal fade" role = "dialog">
-	  <div class = "modal-dialog">
-		  <!-- PopUp Inhalt-->
-		<div class = "modal-content">
-			<!-- PopUp Kopfzeile -->
-		  <div class = "modal-header">
-			<h4 class = "modal-title">Daten ergänzen</h4>
-		  </div>
-			<!-- PopUp Körper -->
-		  <div class = "modal-body">
-			<div class = "container">
-			  <div class = "row datenergaenzen">
-				<input type = "text" class = "form-control" id = "input-name-m07" placeholder = "Name">
-			  </div>
-			  <div class = "row datenergaenzen">
-				<input type = "text" class = "form-control" id = "input-dozent-m07" placeholder = "Dozent">
-			  </div>
-			</div>
-		  </div>
-			<!-- PopUp Fußzeile -->
-		  <div class = "modal-footer">
-			<button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-m07-abbrechen">
-			  Abbrechen
-			</button>
-			<button type = "button" class = "btn btn-default" id = "popup-m07-ok">
-			  OK
-			</button>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	  <!-- Container Menüleiste -->
-	<div class = "container-fluid">
-	  <div class = "row rounded" align = "center">
-
-		<div class = "col" align = "center">
-		  <button type = "button" class = "btn btn-primary" content-toggle = "modal" onclick="new_plan()">
-			Neuer Plan
-		  </button>
-		</div>
-
-		<div class = "col mar" align = "center">
-		  <h5>Semesteranzahl</h5>
-		</div>
-
-		<div class = "col" align = "center">
-		  <button type = "button" disabled id = "button_minus" onclick = "counter_minus()" class = "btn btn-primary">
-			-
-		  </button>
-		</div>
-
-		<div class = "col mar" align = "center">
-		  <h5 id = "count">0</h5>
-		</div>
-
-		<div class = "col" align = "center">
-		  <button disabled type = "button" id = "button_plus" onclick = "counter_plus()" class = "btn btn-primary">
-			+
-		  </button>
-		</div>
-
-		<div class = "col" align = "center">
-		  <button id = "button_planLaden" class = "btn btn-primary">
-			Plan laden</button>
-		  @*<button id = "button_planLaden" class = "btn btn-primary">Plan laden</button>*@
-		  <input id = "file-input" type = "file" name = "name" style = "display: none; "/>
-		  @*<input id = "file-input" type = "file" accept='text/*' onchange='openFile(event)'><br>*@
-		</div>
-
-		<div class = "col" align = "center">
-		  <button disabled type = "button" class = "btn btn-primary" id="button_speichern" onclick = "save()">
-			@*<button type = "button" class = "btn btn-primary" content-toggle = "modal" content-target = "#myModal-freitext">*@
-			  Plan speichern
-		  </button>
-		</div>
-
-		<div class = "col" align = "center">
-		  <button disabled type = "button" id="button_pdf" class = "btn btn-primary" style = "width: auto">
-			PDF erstellen
-		  </button>
-		</div>
-
-		<div class = "col mar" align = "center">
-		  <h5>ECTS:</h5>
-		</div>
-
-		<div class = "col mar" align = "center">
-		  <h5 id="master_ects">0</h5>
-		</div>
-	  </div>
-	</div>
-	  <!-- Container um Katalogliste, Regeln, Semester -->
-	<div class = "container-fluid">
-	  <div class = "row rounded">
-		  <!-- container-fluid Katalogliste -->
-		<div class = "col-3 container-fluid">
-		  <div id = "div_kataloge" class = "col scrollbar rounded-scrollbar-left">
-			<div class = "row">
-			  <span class = "col" align = "left">
-				<h4>
-				  Modulkataloge
-				</h4>
-			  </span>
+			  <!--  container-fluid Semester -->
+			<div id = "div_semester">
 			</div>
 		  </div>
 		</div>
-
-		  <!--  container-fluid um Regeln, Semester -->
-		<div class = "col container-fluid">
-			<!--  container-fluid Regeln -->
-		  <div class = "container-fluid" id = "regeln">
-			@* <div class = "row"> *@
-			@* <div class = "col warnungen"> *@
-			@* <p>Regel 1</p> *@
-			@* </div> *@
-			@* </div> *@
-		  </div>
-			<!--  container-fluid Semester -->
-		  <div id = "div_semester">
-		  </div>
-		</div>
 	  </div>
 	</div>
-  </div>
 
-</body>
+  </body>
 
-<script>
+  <script src="@routes.Assets.versioned("Desktop/Listener.js")" type="text/javascript"></script>
 
-		var ausgewaehlt_semester = "";
-		var ausgewaehlt_modul = "";
-		var global_mod_id, global_sem_id;
+  <script>
 
-		var open_catalog = "";
+		  var ausgewaehlt_semester = "";
+		  var ausgewaehlt_modul = "";
+		  var global_mod_id, global_sem_id;
 
-		var startSem = "winter";
-		var all_catalogs_closed = 0;
-		var moving = 0;
+		  var open_catalog = "";
 
-		var count = 0;
+		  var startSem = "winter";
+		  var all_catalogs_closed = 0;
+		  var moving = 0;
 
-		var blocked = true;
+		  var count = 0;
 
-		var content = new Array();
+		  var blocked = true;
 
-		var katalogListe = new Array();
-		var modulListe = new Array();
+		  var content = new Array();
 
-		var modulString = "";
+		  var katalogListe = new Array();
+		  var modulListe = new Array();
 
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
+		  var modulString = "";
 
-		$('#button_planLaden').on('click', function ()
-		{
-		  $('#file-input').trigger('click');
-		});
-
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		$('#button_pdf').on('click', create_pdf);
-
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		$('#myModal-freitext').on('click', '#popup-freitext-abbrechen', function (click)
-		{
-		  $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
-		  $("#" + global_mod_id).removeClass('ausgewaehlt');
-		});
-
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		$('#myModal-m07').on('click', '#popup-m07-abbrechen', function (click)
-		{
-		  $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
-		  $("#" + global_mod_id).removeClass('ausgewaehlt');
-		});
-
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		$('#myModal-freitext').on('click', '#popup-freitext-ok', function (click)
-		{
-		  var name;
-		  var v, u, p, pr;
-		  var dozent;
-		  var ects;
-
-		  name = $("#input-name").val();
-		  v = $("#input-v").val();
-		  u = $("#input-u").val();
-		  p = $("#input-p").val();
-		  pr = $("#input-pr").val();
-		  dozent = $("#input-dozent").val();
-		  ects = $("#input-ects").val();
-
-		  append_free_module(global_mod_id, global_sem_id, name, v, u, p, pr, dozent, ects);
-
-		  $('#myModal-freitext').modal('hide');
-
-		  $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
-		  $("#" + global_mod_id).removeClass('ausgewaehlt');
-		});
-
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		$('#myModal-m07').on('click', '#popup-m07-ok', function (click)
-		{
-		  var name;
-		  var v, u, p, pr;
-		  var dozent;
-		  var ects;
-
-		  name = $("#input-name-m07").val();
-		  v = 2;
-		  u = 1;
-		  p = 1;
-		  pr = 0;
-		  dozent = $("#input-dozent-m07").val();
-		  ects = 5;
-
-		  if (global_mod_id == "M07" && name == "")
+		  var loadJS = function (url, implementationCode, location)
 		  {
-			name = "Name";
-		  }
-		  if (global_mod_id == "M07" && dozent == "")
-		  {
-			dozent = "Dozent";
-		  }
-		  append_free_module(global_mod_id, global_sem_id, name, v, u, p, pr, dozent, ects);
-		  $("#" + global_mod_id).parent().parent().addClass('blocked');
+			var scriptTag = document.createElement('script');
+			scriptTag.src = url;
+			location.appendChild(scriptTag);
 
-		  $('#myModal-m07').modal('hide');
-
-		  $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
-		  $("#" + global_mod_id).removeClass('ausgewaehlt');
-
-		  update_rules();
-		});
-
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		$('#div_kataloge').on('click', '.class_click_katalog', function (click)
-		{
-		  if (!blocked)
-		  {
-			click.preventDefault();
-
-			click = click.target;
-
-			$(click).closest(".class_click_katalog").css("background", "#eee");
-
-			if ($(click).attr('class').includes("class_click_katalog"))
-			{
-
-			  if (all_catalogs_closed == 0)
-			  {
-
-				// ################################################################################################
-				//              Neuer Katalog
-				// ################################################################################################
-
-				if (($(click).parent().siblings().is(':hidden')) && open_catalog == "")
-				{
-				  var new_click = $(click);
-
-				  $(new_click).parent().siblings().toggle(200);
-
-				  // ### open_catalog = $(".modul:visible").closest(".class_click_katalog").attr("id");
-
-				  // $(click).parent().parent().toggleClass("open_catalog");
-
-				  // ### $(click).closest(".class_click_katalog").toggleClass("open_catalog");
-
-				}
-
-				// ################################################################################################
-				//              Gleiche Katalog (schließen)
-				// ################################################################################################
-
-				else if ($(click).closest(".class_click_katalog").attr("id") == open_catalog)
-				{
-
-				  // ### $(click).closest(".class_click_katalog").toggleClass("open_catalog");
-
-				  // ###  var new_click = $(click);
-
-				  // ### $(new_click).parent().siblings().not('.class_click_katalog').not('.class_click_katalog_label').toggle(200);
-
-				  // ###  open_catalog = "";
-
-				  // $(click).parent().parent().toggleClass("open_catalog");
-
-				  // $(click).closest(".class_click_katalog").toggleClass("open_catalog");
-
-				}
-
-				// ################################################################################################
-				//              Wechsel von Katalogen
-				// ################################################################################################
-
-				else if (( $("#" + open_catalog).children().first().siblings().is(':visible')) && open_catalog != $(click).closest(".class_click_katalog").attr("id"))
-				{
-
-				  $("#" + open_catalog).children().first().siblings().toggle("hidden");
-
-				  $("#" + open_catalog).removeClass("open_catalog");
-
-				  // $(click).parent().parent().toggleClass("open_catalog");
-
-				  $(click).closest(".class_click_katalog").toggleClass("open_catalog");
-
-				  var new_click = $(click);
-
-				  $(new_click).parent().siblings().show(200);
-
-				  open_catalog = $(click).parent().parent().attr("id");
-
-				}
-
-			  }
-
-			}
-			else if ($(click).attr('class').includes("class_click_module_p"))
-			{
-			  select_module(click);
-			}
-			else if ($(click).attr('class').includes("class_click_module_row"))
-			{
-			  return;
-			}
-
-		  }
-
-		});
-
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		$('#div_kataloge').on('mouseover', '.class_click_katalog_label', function (event)
-		{
-		  if (!blocked)
-		  {
-			if ($(event.target).parent().parent().attr('id') != open_catalog)
-			{
-			  $(this).parent().parent().css("background", "red");
-			}
-		  }
-
-		});
-
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		$('#div_kataloge').on('mouseout', '.class_click_katalog_label', function (event)
-		{
-		  $(this).parent().parent().css("background", "#eee");
-
-		});
-
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		$('#myModal-new_plan').on('click', '#popup-abbrechen', function (click)
-		{
-		  $('#myModal-new_plan').modal('hide');
-		});
-
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		$('#div_kataloge').on('mouseover', '.class_click_module_p', function (event)
-		{
-		  $(this).fadeOut(50);
-		  $(this).fadeIn(200);
-		});
-
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		$('#div_semester').on('click', '.class_click_semester', function (click)
-		{
-
-		  click.preventDefault();
-		  click = click.target;
-
-		  if ($(click).attr('class').includes("class_click_delete"))
-		  {
-			// LOESCHEN
-			delete_module_from_semester(click);
-		  }
-		  else if ($(click).attr('class').includes("class_click_move"))
-		  {
-			// VERSCHIEBEN
-			//$(click).addClass("ausgewählt");
-			moving = 1;
-			move_module_to_semester(click);
-		  }
-		  else if ($(click).attr('class').includes("class_click_p"))
-		  {
-			var new_click = $(click).parent().parent().parent();
-			select_semester(new_click);
-		  }
-		  // Winter / Sommer - Semester Label wurde geklickt
-		  else if ($(click).attr('class').includes("label"))
-		  {
-			var new_click = $(click).parent().parent();
-			select_semester(new_click);
-		  }
-		  else if ($(click).attr('class').includes("class_click_semester_row"))
-		  {
-			var new_click = $(click).parent();
-			select_semester(new_click);
-		  }
-
-		});
-
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		function load(filename, text)
-		{
-		  var element = document.createElement('a');
-		  element.setAttribute('href', 'content:text/plain;charset=utf-8,' + encodeURIComponent(text));
-		  element.setAttribute('download', filename);
-
-		  element.style.display = 'none';
-		  document.body.appendChild(element);
-
-		  element.click();
-
-		  document.body.removeChild(element);
-		}
-
-		function readBlob(opt_startByte, opt_stopByte)
-		{
-
-		  var files = document.getElementById('file-input').files;
-		  if (!files.length)
-		  {
-			alert('Please select a file!');
-			return;
-		  }
-
-		  var file = files[0];
-		  var start = parseInt(opt_startByte) || 0;
-		  var stop = parseInt(opt_stopByte) || file.size - 1;
-
-		  var reader = new FileReader();
-
-		  // If we use onloadend, we need to check the readyState.
-		  reader.onloadend = function (evt)
-		  {
-			if (evt.target.readyState == FileReader.DONE)
-			{ // DONE == 2
-
-			  document.getElementById('byte_content').textContent = evt.target.result;
-
-			  //                        document.getElementById('byte_range').textContent = ['Read bytes: ', start + 1, ' - ', stop + 1, ' of ', file.size, ' byte file'].join('');
-			}
 		  };
 
-		  var blob = file.slice(start, stop + 1);
-		  reader.readAsBinaryString(blob);
-		}
-
-		function update_rules()
-		{
-
-		  $("#regeln").children().remove();
-
-		  @for(kat<-katalogListe){
-
-		  var katID = "@{kat(0)}";
-		  var belegAnz = @kat(2);
-		  var countBlocked = $("#" + katID).children().filter(".blocked").length;
-		  var countWPPblocked = $("#" + katID).children().filter(".blocked_wpp").length;
-
-		  if (katID == "WPP")
+		  function update_rules()
 		  {
-			countBlocked = countWPPblocked;
+
+			$("#regeln").children().remove();
+
+			@for(kat<-katalogListe){
+
+			var katID = "@{kat(0)}";
+			var belegAnz = @kat(2);
+			var countBlocked = $("#" + katID).children().filter(".blocked").length;
+			var countWPPblocked = $("#" + katID).children().filter(".blocked_wpp").length;
+
+			if (katID == "WPP")
+			{
+			  countBlocked = countWPPblocked;
+			}
+
+			if ((belegAnz > 0) && (countBlocked < belegAnz))
+			{
+
+			  var pm = "Verpflichtend zu wählen:";
+
+			  @for(mod<-modulListe){
+
+			  if (("@{mod(10)}" == "true") && ("@{mod(11)}" == katID))
+			  {
+				pm += " ";
+				pm += "@{mod(0)}";
+			  }
+			  }
+
+			  if (pm != "Verpflichtend zu wählen:")
+			  {
+				$("#regeln").append('<div class ="row">' + '<div class ="col warnungen">' + '<p>' + 'Aus dem Katalog ' + '"@{kat(1)}"' + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + ' (' + pm + ')' + '</p>');
+			  }
+			  else
+			  {
+				$("#regeln").append('<div class ="row">' + '<div class ="col warnungen">' + '<p>' + 'Aus dem Katalog ' + '"@{kat(1)}"' + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + '</p>');
+			  }
+
+			}
+			}
+
 		  }
 
-		  if ((belegAnz > 0) && (countBlocked < belegAnz))
+		  function availability_mask_semesters(module_id)
 		  {
-
-			var pm = "Verpflichtend zu wählen:";
-
-			@for(mod<-modulListe){
-
-			if (("@{mod(10)}" == "true") && ("@{mod(11)}" == katID))
+			if (module_id)
 			{
-			  pm += " ";
-			  pm += "@{mod(0)}";
-			}
-			}
 
-			if (pm != "Verpflichtend zu wählen:")
-			{
-			  $("#regeln").append('<div class ="row">' + '<div class ="col warnungen">' + '<p>' + 'Aus dem Katalog ' + '"@{kat(1)}"' + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + ' (' + pm + ')' + '</p>');
+			  @for(mod<-modulListe){
+			  if ("@{mod(0)}" == module_id)
+			  {
+
+				// Sommer und nicht Winter
+
+				if (@{mod(6)} &&
+				!(@{mod(7)})
+			  )
+				{
+
+				  ("SOMMER");
+
+				  // ###                                 $("#div_semester").children().filter(":even").addClass('include');
+				  // ###                                 $("#div_semester").children().filter(":odd").removeClass('include');
+
+				  // $("#div_semester").children().children().not('.class_click_semester_row').hide(200);
+
+				  // ###                                 $("#div_semester").children().children().not('.class_click_semester_row').css('display', 'none');
+
+				}
+
+				// Winter und nicht Sommer
+
+			  else
+				if ((!@{mod(6)}) && @{mod(7)})
+				{
+
+				  ("WINTER");
+
+				  // ### $("#div_semester").children().filter(":odd").addClass('include');
+				  // ### $("#div_semester").children().filter(":even").removeClass('include');
+				  // ### $("#div_semester").children().children().not('.class_click_semester_row').hide(200);
+
+				  // $("#div_semester").children().children().not('.class_click_semester_row').css('display', 'block');
+
+				}
+
+				return;
+
+			  }
+			  }
 			}
 			else
 			{
-			  $("#regeln").append('<div class ="row">' + '<div class ="col warnungen">' + '<p>' + 'Aus dem Katalog ' + '"@{kat(1)}"' + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + '</p>');
+
+			  ("ELSE");
+
+			  // $("#div_semester").children().removeClass('include');
+
+			  // $("#div_semester").children().children().not('.class_click_semester_row').show(200);
+
 			}
-
-		  }
 		  }
 
-		}
-
-		function availability_mask_semesters(module_id)
-		{
-		  if (module_id)
+		  function update_semester_ects(mod_id, sem_id, wert)
 		  {
+			var id = "sem_ects_anz" + sem_id;
+			(id);
+			var ects = Number(document.getElementById("" + id).textContent);
 
-			@for(mod<-modulListe){
-			if ("@{mod(0)}" == module_id)
+			// wert = auswahl ob addieren oder subtrahieren
+			// 1 == adieren 0 == subtrahieren
+			if (wert == 1)
 			{
-
-			  // Sommer und nicht Winter
-
-			  if (@{mod(6)} &&
-			  !(@{mod(7)})
-			)
+			  @for(mod<-modulListe){
+			  if ("@{mod(0)}" == mod_id)
 			  {
-
-				("SOMMER");
-
-				// ###                                 $("#div_semester").children().filter(":even").addClass('include');
-				// ###                                 $("#div_semester").children().filter(":odd").removeClass('include');
-
-				// $("#div_semester").children().children().not('.class_click_semester_row').hide(200);
-
-				// ###                                 $("#div_semester").children().children().not('.class_click_semester_row').css('display', 'none');
-
+				if (mod_id == "ALM")
+				{
+				  document.getElementById("" + id).textContent = ects;
+				}
+				else
+				{
+				  ects = ects + @{mod(9)};
+				  document.getElementById("" + id).textContent = ects;
+				}
 			  }
-
-			  // Winter und nicht Sommer
-
-			else
-			  if ((!@{mod(6)}) && @{mod(7)})
-			  {
-
-				("WINTER");
-
-				// ### $("#div_semester").children().filter(":odd").addClass('include');
-				// ### $("#div_semester").children().filter(":even").removeClass('include');
-				// ### $("#div_semester").children().children().not('.class_click_semester_row').hide(200);
-
-				// $("#div_semester").children().children().not('.class_click_semester_row').css('display', 'block');
-
 			  }
-
-			  return;
-
 			}
-			}
-		  }
-		  else
-		  {
-
-			("ELSE");
-
-			// $("#div_semester").children().removeClass('include');
-
-			// $("#div_semester").children().children().not('.class_click_semester_row').show(200);
-
-		  }
-		}
-
-		function update_semester_ects(mod_id, sem_id, wert)
-		{
-		  var id = "sem_ects_anz" + sem_id;
-		  (id);
-		  var ects = Number(document.getElementById("" + id).textContent);
-
-		  // wert = auswahl ob addieren oder subtrahieren
-		  // 1 == adieren 0 == subtrahieren
-		  if (wert == 1)
-		  {
-			@for(mod<-modulListe){
-			if ("@{mod(0)}" == mod_id)
+			else if (wert == 0)
 			{
-			  if (mod_id == "ALM")
+			  @for(mod<-modulListe){
+			  if ("@{mod(0)}" == mod_id)
 			  {
-				document.getElementById("" + id).textContent = ects;
+				if (mod_id == "ALM")
+				{
+				  document.getElementById("" + id).textContent = ects;
+				}
+				else
+				{
+				  ects = ects - @{mod(9)};
+				  document.getElementById("" + id).textContent = ects;
+				}
 			  }
-			  else
-			  {
-				ects = ects + @{mod(9)};
-				document.getElementById("" + id).textContent = ects;
 			  }
-			}
 			}
 		  }
-		  else if (wert == 0)
+
+		  function update_master_ects(mod_id, wert)
 		  {
-			@for(mod<-modulListe){
-			if ("@{mod(0)}" == mod_id)
+
+			var ects = Number(document.getElementById("master_ects").textContent);
+
+			// wert = auswahl ob addieren oder subtrahieren
+			// 1 == adieren 0 == subtrahieren
+			if (wert == 1)
 			{
-			  if (mod_id == "ALM")
+			  @for(mod<-modulListe){
+			  if ("@{mod(0)}" == mod_id)
 			  {
-				document.getElementById("" + id).textContent = ects;
+				if (mod_id == "ALM")
+				{
+				  document.getElementById("master_ects").textContent = ects;
+				}
+				else
+				{
+				  ects = ects + @{mod(9)};
+				  document.getElementById("master_ects").textContent = ects;
+				}
 			  }
-			  else
-			  {
-				ects = ects - @{mod(9)};
-				document.getElementById("" + id).textContent = ects;
 			  }
 			}
-			}
-		  }
-		}
-
-		function update_master_ects(mod_id, wert)
-		{
-
-		  var ects = Number(document.getElementById("master_ects").textContent);
-
-		  // wert = auswahl ob addieren oder subtrahieren
-		  // 1 == adieren 0 == subtrahieren
-		  if (wert == 1)
-		  {
-			@for(mod<-modulListe){
-			if ("@{mod(0)}" == mod_id)
+			else if (wert == 0)
 			{
-			  if (mod_id == "ALM")
+			  @for(mod<-modulListe){
+			  if ("@{mod(0)}" == mod_id)
 			  {
-				document.getElementById("master_ects").textContent = ects;
+				if (mod_id == "ALM")
+				{
+				  document.getElementById("master_ects").textContent = ects;
+				}
+				else
+				{
+				  ects = ects - @{mod(9)};
+				  document.getElementById("master_ects").textContent = ects;
+				}
 			  }
-			  else
-			  {
-				ects = ects + @{mod(9)};
-				document.getElementById("master_ects").textContent = ects;
 			  }
-			}
 			}
 		  }
-		  else if (wert == 0)
+
+		  /*
+
+		  window.onload = function ()
 		  {
-			@for(mod<-modulListe){
-			if ("@{mod(0)}" == mod_id)
+			// include('javascripts/drag.js');
+			console.log("TEST");
+		  }
+
+		  function include(file)
+		  {
+			var script = document.createElement('script');
+			var type = document.createAttribute('type');
+			type.nodeValue = 'text/javascript';
+			script.setAttributeNode(type);
+			var source = document.createAttribute('src');
+			source.nodeValue = file;
+			script.setAttributeNode(source);
+			var head = document.getElementsByTagName('head')[0];
+			head.appendChild(script);
+		  }
+*/
+
+		  @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
+
+		  document.getElementById('file-input').onchange = function ()
+		  {
+			var file = this.files[0];
+
+			var reader = new FileReader();
+
+			reader.onload = function (progressEvent)
 			{
-			  if (mod_id == "ALM")
+			  var temp;
+
+			  var lines = this.result.split('\n');
+
+			  temp = lines[0].split(',');
+
+			  ok_button_new_plan({"count": temp[1], "semStart": temp[0]});
+
+			  for (var line = 1; line < lines.length; line++)
 			  {
-				document.getElementById("master_ects").textContent = ects;
+				temp = lines[line];
+
+				if (temp.split(',')[1] === "M07" || temp.split(',')[1] === "ALM")
+				{
+
+				  // temp = temp.substring(1);
+				  temp = temp.split(',');
+
+				  insert_module_in_semester(temp[1], temp[0], {
+					"mod_id": temp[1],
+					"sem_id": temp[0],
+					"name": temp[2],
+					"v": temp[3],
+					"u": temp[4],
+					"p": temp[5],
+					"pr": temp[6],
+					"dozent": temp[7],
+					"ects": temp[8]
+				  });
+
+				}
+				else
+				{
+
+				  temp = temp.split(',');
+
+				  insert_module_in_semester(temp[1], temp[0]);
+
+//				  for (var pos = 1; pos < temp.length; pos++)
+//				  {
+// 				     insert_module_in_semester(temp[pos], temp[0]);
+//				  }
+
+				}
 			  }
-			  else
-			  {
-				ects = ects - @{mod(9)};
-				document.getElementById("master_ects").textContent = ects;
-			  }
-			}
-			}
+
+			  document.getElementById('file-input').value = "";
+
+			};
+
+			reader.readAsText(file);
+
 		  }
-		}
 
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
+		  @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
 
-		document.getElementById('file-input').onchange = function ()
-		{
-		  var file = this.files[0];
-
-		  var reader = new FileReader();
-
-		  reader.onload = function (progressEvent)
+		  var openFile = function (event)
 		  {
+			var input = event.target;
+
+			var reader = new FileReader();
+			reader.onload = function ()
+			{
+			  // var dataURL = reader.result;
+
+			  loading(reader.result);
+
+			  // var output = document.getElementById('output');
+			  // output.src = dataURL;
+			};
+			reader.readAsDataURL(input.files[0]);
+		  };
+
+		  function loading(progressEvent)
+		  {
+
+			// $("#master_ects").innerText = 0;
+
+			// document.getElementById("count").textContent = 99;
+
 			var temp;
 
 			var lines = this.result.split('\n');
@@ -820,129 +685,57 @@
 
 		  };
 
-		  reader.readAsText(file);
+		  @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
 
-		}
-
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		var openFile = function (event)
-		{
-		  var input = event.target;
-
-		  var reader = new FileReader();
-		  reader.onload = function ()
+		  $(window).on('load', function ()
 		  {
-			// var dataURL = reader.result;
+			console.log("$(window).on('load', function ()");
 
-			loading(reader.result);
+			@for(katal <- katalogListe) {
 
-			// var output = document.getElementById('output');
-			// output.src = dataURL;
-		  };
-		  reader.readAsDataURL(input.files[0]);
-		};
-
-		function loading(progressEvent)
-		{
-
-		  // $("#master_ects").innerText = 0;
-
-		  // document.getElementById("count").textContent = 99;
-
-		  var temp;
-
-		  var lines = this.result.split('\n');
-
-		  temp = lines[0].split(',');
-
-		  ok_button_new_plan({"count": temp[1], "semStart": temp[0]});
-
-		  for (var line = 1; line < lines.length; line++)
-		  {
-			temp = lines[line];
-
-			if (temp.split(',')[1] === "M07" || temp.split(',')[1] === "ALM")
-			{
-
-			  // temp = temp.substring(1);
-			  temp = temp.split(',');
-
-			  insert_module_in_semester(temp[1], temp[0], {
-				"mod_id": temp[1],
-				"sem_id": temp[0],
-				"name": temp[2],
-				"v": temp[3],
-				"u": temp[4],
-				"p": temp[5],
-				"pr": temp[6],
-				"dozent": temp[7],
-				"ects": temp[8]
-			  });
+			add_catalog("@{katal(0)}", "@{katal(1)}");
+			katalogListe.push("@{katal(1)},@{katal(0)}");
 
 			}
-			else
+
+			@for(mod <- modulListe) {
+
+			if ("@{mod(11)}" == "WPP")
 			{
+			  insert_module_in_catalog("@{mod(11)}", "@{mod(0)}_WPP", "@{mod(1)}");
+			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(8)},@{mod(9)}");
+			} else
+			{
+			  insert_module_in_catalog("@{mod(11)}", "@{mod(0)}", "@{mod(1)}");
+			  modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(8)},@{mod(9)}");
+			}
 
-			  temp = temp.split(',');
-
-			  insert_module_in_semester(temp[1], temp[0]);
-
-//				  for (var pos = 1; pos < temp.length; pos++)
-//				  {
-// 				     insert_module_in_semester(temp[pos], temp[0]);
-//				  }
+			if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
+			{
+			  insert_module_in_catalog("WPP", "@{mod(0)}_WPP", "@{mod(1)}");
+			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(8)},@{mod(9)}");
+			}
 
 			}
-		  }
+			// loadJS('yourcode.js', yourCodeToBeCalled, document.body);
 
-		  document.getElementById('file-input').value = "";
-
-		};
-
-		@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		$(document).ready(function ()
-		{
-		  @for(katal <- katalogListe) {
-
-		  add_catalog("@{katal(0)}", "@{katal(1)}");
-		  katalogListe.push("@{katal(1)},@{katal(0)}");
-
-		  }
-
-		  @for(mod <- modulListe) {
-
-		  if ("@{mod(11)}" == "WPP")
-		  {
-			insert_module_in_catalog("@{mod(11)}", "@{mod(0)}_WPP", "@{mod(1)}");
-			modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(8)},@{mod(9)}");
-		  } else
-		  {
-			insert_module_in_catalog("@{mod(11)}", "@{mod(0)}", "@{mod(1)}");
-			modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(8)},@{mod(9)}");
-		  }
-
-		  if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
-		  {
-			insert_module_in_catalog("WPP", "@{mod(0)}_WPP", "@{mod(1)}");
-			modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(8)},@{mod(9)}");
-		  }
-
-		  }
-
-
-		  //////////////////////////////////////////////////////////////////////////
-
-		  // test_1();
-
-		  // test_2();
+		  });
 
 		  $(document).ready(function ()
 		  {
-			// test_3();
+			console.log("$(document).ready(function ()");
+
+			$("#button_new_plan").addClass("red_border");
+			$('#button_planLaden').addClass("red_border");
+
+			// test_1();
+			// test_2();
+
+			$(document).ready(function ()
+			{
+			  // test_3();
+			});
+
 		  });
 
-		});
-
-</script>
+  </script>

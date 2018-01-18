@@ -1,77 +1,15 @@
 @(message: String)(modulListe: List[Array[Object]], katalogListe: List[Array[Object]])
 
-<!DOCTYPE html>
-<html lang="en">
+@if(!message.contains("Mobile")) {
 
-  <head>
 
-	@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
+  @desktop(modulListe, katalogListe)
 
-	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.min.css")">
-	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/expandable_tree_list.css")">
-	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/desktop.css")">
-	<link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+} else {
 
-	@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
+  @mobile(modulListe, katalogListe)
+}
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
 
-  </head>
-
-  @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-  <script src="@routes.Assets.versioned("js/jquery-3.2.1.min.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("js/bootstrap.bundle.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("js/CollapsibleLists.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("js/jspdf.debug.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("js/dom-to-image.js")" type="text/javascript"></script>
-
-  @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-  <script src="@routes.Assets.versioned("functions/add_catalog.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/add_semester.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/append_free_module.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/append_module.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/availability_mask_modules.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/blink.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/counter_minus.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/counter_plus.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/create_pdf.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/debug.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/delete_last_semester.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/delete_module_from_semester.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/fill_data.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/getElementByIndex.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/getLast.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/hex.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/insert_module_in_catalog.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/insert_module_in_semester.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/move_module_to_semester.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/new_plan.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/ok_button_new_plan.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/save.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/saveAlt.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/select_module.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/select_semester.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/test_1.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/test_2.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/test_3.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/test_4.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("functions/updateModuleString.js")" type="text/javascript"></script>
-
-  @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-  @if(!message.contains("Mobile")) {
-
-	@desktop(modulListe, katalogListe)
-
-  } else {
-
-	@mobile(modulListe, katalogListe)
-  }
-
-  @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-</html>
+  </html>
