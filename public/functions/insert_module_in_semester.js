@@ -10,7 +10,7 @@
     if (optional == null)
     {
 
-        if ((mod_id == "ALM" || mod_id == "M07") && (!moving))
+        if ((mod_id == "ALM" || mod_id == "M07_WPP") && (!moving))
         {
             fill_data(mod_id, sem_id);
         }
