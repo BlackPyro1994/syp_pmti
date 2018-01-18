@@ -117,7 +117,10 @@
                 doc.setFontSize(10);
                 
                 // Empty square
-                doc.rect(xq, (y - 3), 190, 4);
+                
+                // doc.rect(xq, (y - 3), 190, 4);
+    
+                doc.rect(xq, (y - 3), 275, 4);
                 
                 doc.text(x, y, id);
                 x += horizontal_values[0];
