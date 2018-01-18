@@ -1,9 +1,13 @@
 function ok_button_new_plan(options)
 {
-
+    
+    // $("#master_ects").innerText = 0;
+    // $("#count").innerText = 0;
+    // $("#count").textContent = 0;
+    
     if (options)
     {
-        wert = options['count'];
+        var wert = options['count'];
         startSem = options['semStart'];
 
     }
@@ -11,8 +15,9 @@ function ok_button_new_plan(options)
     {
         var meldung = "Bitte eine Anzahl angeben";
         var myRadio = $('input[name="optradio"]');
+        
+        var wert = $("#input-semesteranzahl").val();
         startSem = myRadio.filter(':checked').val();
-        wert = $("#input-semesteranzahl").val();
 
         if (wert == "")
         {
@@ -24,7 +29,10 @@ function ok_button_new_plan(options)
     }
 
     $("#div_semester").children().remove();
-
+    
+    document.getElementById("master_ects").textContent = 0;
+    document.getElementById("count").textContent = 0;
+    
     for (i = 0; i < wert; i++)
     {
         document.getElementById("count").textContent++;
