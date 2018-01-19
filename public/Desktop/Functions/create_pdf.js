@@ -13,7 +13,6 @@
     
      doc.setFont("times");
     
-
     var title = "PMTI - Individualisierter Studienverlaufsplan" ;
     var currentdate = new Date();
 
@@ -34,9 +33,7 @@
     y += 10;
     
     var anz_Sem = Number(document.getElementById("count").textContent);
-    console.log("Anzahl Semester:" + anz_Sem);
-    console.log(startSem);
-
+    
     var semester = startSem == "winter" ? "Wintersemester" : "Sommersemester";
 
     
@@ -44,7 +41,6 @@
     {
         
         var anz_Module = $("#div_semester").children().filter(":nth-child(" + i + ")").children().length - 1;
-        console.log("Anzahl Module in Semester" + i + ": " + anz_Module);
         
         if (((anz_Module * 5) + 16) > restplatz)
         {
@@ -100,11 +96,7 @@
             
             content[i - 1].forEach(function (entry)
             {
-                
-                entry = entry.substr(1, entry.length);
-                
                 var liste = entry.split(',');
-                console.log(liste);
                 
                 id = liste[0];
                 name = liste[1];
@@ -118,7 +110,6 @@
                 doc.setFont("courier");
                 doc.setFontSize(10);
 
-    
                 doc.rect(xq, (y - 3), 275, 4);
                 
                 doc.text(x, y, id);

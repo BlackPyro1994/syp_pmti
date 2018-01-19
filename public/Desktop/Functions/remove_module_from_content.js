@@ -1,32 +1,36 @@
+var position_x;
+var position_y;
+
 function remove_module_from_content(module_id)
 {
     var BreakException = {};
-    
-    var position_x_y = [];
     
     var newArray = [];
     
     try
     {
-        for (sem_index = 0; sem_index < content.length; sem_index++)
+        
+        for (sem = 0; sem < content.length; sem++)
         {
-            for (mod_index = 0; mod_index < content[sem].length; mod_index++)
+            for (mod = 0; mod < content[sem].length; mod++)
             {
-                if ((content[sem][mod]).split(",")[1] == module_id)
+                if ((content[sem][mod].split(","))[0] == module_id)
                 {
-                    position_x_y = [sem, mod];
+                    position_x = sem;
+                    position_y = mod;
+                    
                     throw BreakException;
                 }
             }
         }
     }
-    catch (BreakException)
+    catch (e)
     {
-        for (i = 0; i < content[sem].length; i++)
+        for (i = 0; i < content[position_x].length; i++)
         {
-            if (i != mod)
+            if (i != position_y)
             {
-                newArray.push(content[sem][i]);
+                newArray.push(content[position_x][i]);
             }
             
         }

@@ -1,7 +1,14 @@
 function debug(arr)
 {
-    for (i = 0; i < arr.length; i++)
+    console.log("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+    
+    for (semester = 0; semester < arr.length; semester++)
     {
-        console.log(i + ":  " + arr[i]);
+        for (modul = 0; modul < arr[semester].length; modul++)
+        {
+            console.log(semester+1 + " : " + arr[semester][modul]);
+        }
     }
+    
+    console.log("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
 }

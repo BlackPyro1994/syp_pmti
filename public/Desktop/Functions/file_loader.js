@@ -4,12 +4,17 @@ $(document).ready(function ()
     {
         var file = this.files[0];
         var reader = new FileReader();
+        
         reader.onload = function (progressEvent)
         {
+            content = [];
+            
             var temp;
             var lines = this.result.split('\n');
             temp = lines[0].split(',');
+            
             ok_button_new_plan({"count": temp[1], "semStart": temp[0]});
+            
             for (var line = 1; line < lines.length; line++)
             {
                 temp = lines[line];
@@ -33,10 +38,6 @@ $(document).ready(function ()
                 {
                     temp = temp.split(',');
                     insert_module_in_semester(temp[1], temp[0]);
-//				  for (var pos = 1; pos < temp.length; pos++)
-//				  {
-// 				     insert_module_in_semester(temp[pos], temp[0]);
-//				  }
                 }
             }
             document.getElementById('file-input').value = "";

@@ -2,12 +2,15 @@
  * Reduziert die Anzahl der Semester (count)
  *
  */
-function counter_minus() {
+function counter_minus()
+{
     console.log("counter_minus()");
-    if (count > 0) {
+    if (count > 0)
+    {
         count--;
     }
-    delete_last_semester();
+    
+    $("#div_semester").children().last().remove();
     
     //update_rules();
 }

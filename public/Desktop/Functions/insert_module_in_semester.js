@@ -4,8 +4,8 @@
 
     $("#" + mod_id).css("background", "#eee");
     $("#" + mod_id).removeClass("open_catalog");
-
-    getElementByIndex(content, sem_id).push(new Array());
+    
+    get_element_by_index(content, sem_id).push(new Array());
 
     if (optional == null)
     {

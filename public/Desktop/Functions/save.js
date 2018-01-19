@@ -1,47 +1,30 @@
 function save()
 {
     
-    
     var text = "";
-    
     
     var currentdate = new Date();
     
     var filename = "PMTI_" + currentdate.getDate() + "/" + (currentdate.getMonth() + 1) + "/" + currentdate.getFullYear() + " _ " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
     
-    
     text += startSem + ",";
     
     text += document.getElementById("count").textContent + "\n";
     
-    
-    //            mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-    
+    debug(content);
     
     content.forEach(function (entry)
     {
-        
-        
         entry.forEach(function (inner_entry)
         {
             
-            text += (content.indexOf(entry) + 1);
-            
-            
+            text += (content.indexOf(entry) + 1) + "," ;
             text += inner_entry;
-            
-            
             text += "\n";
-            
-            
         });
         
         
     });
-    
-    
-    //            mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-    
     
     var element = document.createElement('a');
     
@@ -49,14 +32,11 @@ function save()
     
     element.setAttribute('download', filename);
     
-    
     element.style.display = 'none';
     
     document.body.appendChild(element);
     
-    
     element.click();
-    
     
     document.body.removeChild(element);
     

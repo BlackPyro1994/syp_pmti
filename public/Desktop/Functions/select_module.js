@@ -31,7 +31,8 @@
 
             ausgewaehlt_modul = $(caller).attr('id');
 
-            availability_mask_semesters(ausgewaehlt_modul);
+            // FEHLT NOCH !!!!!!!!!!!!!!!!!1
+            // availability_mask_semesters(ausgewaehlt_modul);
 
         }
 
@@ -67,7 +68,8 @@
 
             ausgewaehlt_modul = $(caller).attr('id');
 
-            availability_mask_semesters(ausgewaehlt_modul);
+            // FEHLT NOCH !!!!!!!!!!!!!!!!!1
+            //  availability_mask_semesters(ausgewaehlt_modul);
 
         }
     }

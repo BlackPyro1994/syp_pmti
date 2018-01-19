@@ -2,7 +2,10 @@
  * Übernimmt das ausgewählte Startsemester(startSem), die Anzahl an Semestern(wert) und erstellt diese.
  *
  */
-function ok_button_new_plan() {
+function ok_button_new_plan()
+{
+    content = [];
+    
     console.log("ok_button_new_plan()");
     count = 0;
     var meldung = "Bitte eine Anzahl angeben";
@@ -10,14 +13,17 @@ function ok_button_new_plan() {
     startSem = myRadio.filter(':checked').val();
     wert = $("#input-semesteranzahl").val();
     
-    if (wert == "") {
+    if (wert == "")
+    {
         document.getElementById("fehlermeldung").textContent = meldung;
     }
     
-    else if (wert != "") {
+    else if (wert != "")
+    {
         $("#div_semester").children().remove();
         
-        for (i = 0; i < wert; i++) {
+        for (i = 0; i < wert; i++)
+        {
             count++;
             add_semester(startSem);
         }

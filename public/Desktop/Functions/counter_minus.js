@@ -1,8 +1,5 @@
 function counter_minus()
 {
-
-    content.pop();
-
     count = (count == 0 ? 0 : count++);
 
     var wert = Number(document.getElementById("count").textContent);
@@ -23,6 +20,8 @@ function counter_minus()
 
         var mod_id = "mod_" + id;
 
+        remove_module_from_content(id);
+        
         $("#" + mod_id).remove();
 
         $("#" + id).parent().parent().removeClass('blocked');
@@ -33,8 +32,10 @@ function counter_minus()
         $("#" + (id).toString().replace("_WPP", "")).parent().parent().removeClass('blocked_wpp');
 
     }
-
-    delete_last_semester();
+    
+    content.pop();
+    
+    $("#div_semester").children().last().remove();
 
     update_rules();
 }

@@ -6,7 +6,7 @@ function update_master_ects(mod_id, wert)
     
     updateModuleString(mod_id);
     
-    modulString = modulString.split(",");
+    search_result = search_result.split(",");
     
     if (wert == 1)
     {
@@ -16,7 +16,7 @@ function update_master_ects(mod_id, wert)
         }
         else
         {
-            ects = Number.parseInt(ects) + Number.parseInt(modulString[9]);
+            ects = Number.parseInt(ects) + Number.parseInt(search_result[9]);
             document.getElementById("master_ects").textContent = ects;
         }
     }
@@ -28,7 +28,7 @@ function update_master_ects(mod_id, wert)
         }
         else
         {
-            ects = Number.parseInt(ects) - Number.parseInt(modulString[9]);
+            ects = Number.parseInt(ects) - Number.parseInt(search_result[9]);
             document.getElementById("master_ects").textContent = ects;
         }
     }
