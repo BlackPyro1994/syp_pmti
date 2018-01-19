@@ -311,6 +311,8 @@
 
 		  var modulString = "";
 
+		  /*
+
 		  $(window).on('load', function ()
 		  {
 		    console.log("$(window).on('load', function ()");
@@ -341,9 +343,44 @@
 
 		  });
 
+*/
+		  function jsCall()
+		  {
+
+		    console.log("$(window).on('load', function ()");
+
+		    @for(katal <- katalogListe){
+		    katalogListe.push("@{katal(0)},@{katal(1)},@{katal(2)}");
+		    }
+
+		    @for(mod <- modulListe){
+
+		    if ("@{mod(11)}" == "WPP")
+		    {
+			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+		    }
+		    else
+		    {
+			  modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+		    }
+
+		    if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
+		    {
+			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+		    }
+
+		    }
+
+		    showCatalogs();
+
+		    // loadJS('yourcode.js', yourCodeToBeCalled, document.body);
+
+		  }
+
+		  window.onload = jsCall;
+
 		  $(document).ready(function ()
 		  {
-		    showCatalogs();
 
 		    $("#button_new_plan").addClass("red_border");
 		    $('#button_planLaden').addClass("red_border");
