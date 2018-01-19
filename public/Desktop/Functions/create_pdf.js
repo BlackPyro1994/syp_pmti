@@ -9,16 +9,10 @@
     var master_ects = 0;
     var restplatz = 150;
     
-    var horizontal_values = [27, 160, 5, 5, 5, 6, 284];
+    var horizontal_values = [27, 160, 5, 5, 5, 8, 277];
     
      doc.setFont("times");
     
-    //doc.setFont("courier");
-
-    //var title = "PMTI - Individualisierter Studienverlaufsplan           " + currentdate.getDate() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getFullYear();
-
-
-
 
     var title = "PMTI - Individualisierter Studienverlaufsplan" ;
     var currentdate = new Date();
@@ -30,9 +24,8 @@
     doc.text(285,y,"(" + currentdate.getDate() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getFullYear() + ")", null, null, 'right');
     y += 17;
 
-//ab hier 1 hart geschriebener Wert zu tauschen:
     
-    master_ects = $("#master_ects").innerText;
+    master_ects = $("#master_ects").text();
     
     strMasterECTS = "Master-ECTS insgesamt: " + master_ects;
     
@@ -42,8 +35,10 @@
     
     var anz_Sem = Number(document.getElementById("count").textContent);
     console.log("Anzahl Semester:" + anz_Sem);
-    
-    var semester = startSem.replace("Winter", "Wintersemester").replace("Sommer", "Sommersemester");
+    console.log(startSem);
+
+    var semester = startSem == "winter" ? "Wintersemester" : "Sommersemester";
+
     
     for (i = 1; i <= anz_Sem; i++)
     {
@@ -59,17 +54,18 @@
         }
         restplatz -= ((anz_Module * 5) + 12);
         
-        //ab hier 3 hart geschriebene Werte zu tauschen:
+ //ab hier 1 hart geschriebene Werte zu tauschen:
         
         sem_ects = "30";
-        
+
+
         str = i + ": " + semester + " (" + sem_ects + " ECTS)";
-        
-        semester = semester == "Wintersemester" ? "Sommersemester" : "Wintersemester";
         
         doc.setFontSize(14);
         doc.text(x, y, str);
         y += 5;
+
+        semester = semester == "Wintersemester" ? "Sommersemester" : "Wintersemester";
         
         if (anz_Module > 0)
         {
@@ -95,7 +91,7 @@
             doc.text(x, y, "DozentIn");
             x = horizontal_values[6];
 
-            doc.text(x, y, "ECTS", null, null, 'right');
+            doc.text(x, y, "ECTS");
             
             y += 4;
             restplatz -= 4;
@@ -116,15 +112,12 @@
                 u = liste[3];
                 p = liste[4];
                 pr = liste[5];
-                dozent = liste[6];
-                ects = liste[7];
+                dozent = liste[8];
+                ects = liste[9];
                 
-                // doc.setFont("courier");
+                doc.setFont("courier");
                 doc.setFontSize(10);
-                
-                // Empty square
-                
-                // doc.rect(xq, (y - 3), 190, 4);
+
     
                 doc.rect(xq, (y - 3), 275, 4);
                 
@@ -149,9 +142,9 @@
                 doc.text(x, y, dozent);
                 x = horizontal_values[6];
                 
-                doc.text(x, y, ects, null, null,'right');
+                doc.text(x, y, ects);
                 
-                // doc.setFont("times");
+                 doc.setFont("times");
                 
                 y += 5;
                 x = 11;
