@@ -1,7 +1,6 @@
 function update_rules()
 {
-    console.log("");
-    
+
     $("#regeln").children().remove();
     
     katalogListe.forEach(function (katalog)
@@ -9,16 +8,10 @@ function update_rules()
         var katID = katalog.split(",")[0];
         
         var belegAnz = katalog.split(",")[2];
-        
-        console.log("Katalog Eintrag : " + katalog);
-        
+
         var countBlocked = $("#" + katID).children().filter(".blocked").length;
-        
-        console.log("Anzahl Blocked : " + countBlocked);
-        
+
         var countWPPblocked = $("#" + katID).children().filter(".blocked_wpp").length;
-        
-        console.log("Anzahl Blocked WPP : " + countWPPblocked);
         
         if (katID == "WPP")
         {
