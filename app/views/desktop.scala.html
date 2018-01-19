@@ -3,398 +3,387 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-
-        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("Desktop/desktop.css")">
-
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    </head>
-    @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-    <script src="@routes.Assets.versioned("Desktop/Functions/add_catalog.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/add_semester.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/append_free_module.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/append_module.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/availability_mask_modules.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/availability_mask_semesters.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/blink.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/click_selector.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/counter_minus.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/counter_plus.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/create_pdf.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/debug.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/delete_last_semester.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/delete_module_from_semester.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/file_input_on_change.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/fill_data.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/getElementByIndex.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/getLast.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/hex.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/include.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/insert_module_in_catalog.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/insert_module_in_semester.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/load.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/loading.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/loadJS.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/move_module_to_semester.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/new_plan.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/ok_button_new_plan.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/openFile.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/save.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/saveAlt.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/select_module.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/select_semester.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/show_catalogs_modules.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/update_master_ects.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/update_semester_ects.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/updateModuleString.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Desktop/Functions/updateRules.js")" type="text/javascript"></script>
-
-    <body>
-        <div class = "container-fluid">
-            <div class = "row">
-                <span class = "col" align = "center">
-                    <br>
-                    <h1>
-                        Planungsunterstützungstool Master Technische Informatik
-                    </h1>
-                </span>
-            </div>
-                <!-- PopUp Neuer Plan -->
-            <div id = "myModal-new_plan" class = "modal fade" role = "dialog">
-                <div class = "modal-dialog">
-                        <!-- PopUp Inhalt-->
-                    <div class = "modal-content">
-                            <!-- PopUp Kopfzeile -->
-                        <div class = "modal-header">
-                            <h4 class = "modal-title">Neuen Plan erstellen</h4>
-                        </div>
-                            <!-- PopUp Körper -->
-                        <div class = "modal-body">
-                            <div class = "container">
-                                <div class = "row">
-                                    <div class = "col">
-                                        <h5>Semesteranzahl:</h5>
-                                        <input type = "text" class = "form-control" id = "input-semesteranzahl"
-                                        placeholder = "Semesteranzahl">
-                                        <p id = "fehlermeldung"></p>
-                                    </div>
-                                    <div class = "col">
-                                        <h5>Studienstart:</h5>
-                                        <div class = "radio">
-                                            <label><input type = "radio" name = "optradio" checked = "checked" id = "radio-winter"
-                                            value = "winter">
-                                                Winter
-                                            </label>
-                                        </div>
-                                        <div class = "radio">
-                                            <label><input type = "radio" name = "optradio" id = "radio-sommer"
-                                            value = "sommer">
-                                                Sommer
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            <!-- PopUp Fußzeile -->
-                        <div class = "modal-footer">
-                            <button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-abbrechen">
-                                Abbrechen
-                            </button>
-                            <button type = "button" class = "btn btn-default" id = "popup-new-ok"
-                            onclick = "ok_button_new_plan()">OK
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                <!-- PopUp Freitextmodul -->
-            <div id = "myModal-freitext" class = "modal fade" role = "dialog">
-                <div class = "modal-dialog">
-                        <!-- PopUp Inhalt-->
-                    <div class = "modal-content">
-                            <!-- PopUp Kopfzeile -->
-                        <div class = "modal-header">
-                            <h4 class = "modal-title">Daten ergänzen</h4>
-                        </div>
-                            <!-- PopUp Körper -->
-                        <div class = "modal-body">
-                            <div class = "container">
-                                <div class = "row datenergaenzen">
-                                    <input type = "text" class = "form-control" id = "input-name" placeholder = "Name">
-                                </div>
-                                <div class = "row datenergaenzen">
-                                    <div class = "col">
-                                        <input type = "text" class = "form-control" id = "input-v" placeholder = "V">
-                                    </div>
-                                    <div class = "col">
-                                        <input type = "text" class = "form-control" id = "input-u" placeholder = "Ü">
-                                    </div>
-                                    <div class = "col">
-                                        <input type = "text" class = "form-control" id = "input-p" placeholder = "P">
-                                    </div>
-                                    <div class = "col">
-                                        <input type = "text" class = "form-control" id = "input-pr" placeholder = "Pr">
-                                    </div>
-                                </div>
-                                <div class = "row datenergaenzen">
-                                    <input type = "text" class = "form-control" id = "input-dozent" placeholder = "Dozent">
-                                </div>
-                                <div class = "row datenergaenzen">
-                                    <input type = "text" class = "form-control" id = "input-ects" placeholder = "ECTS">
-                                </div>
-                            </div>
-                        </div>
-                            <!-- PopUp Fußzeile -->
-                        <div class = "modal-footer">
-                            <button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-freitext-abbrechen">
-                                Abbrechen
-                            </button>
-                            <button type = "button" class = "btn btn-default" id = "popup-freitext-ok">
-                                OK
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                <!-- PopUp M07 -->
-            <div id = "myModal-m07" class = "modal fade" role = "dialog">
-                <div class = "modal-dialog">
-                        <!-- PopUp Inhalt-->
-                    <div class = "modal-content">
-                            <!-- PopUp Kopfzeile -->
-                        <div class = "modal-header">
-                            <h4 class = "modal-title">Daten ergänzen</h4>
-                        </div>
-                            <!-- PopUp Körper -->
-                        <div class = "modal-body">
-                            <div class = "container">
-                                <div class = "row datenergaenzen">
-                                    <input type = "text" class = "form-control" id = "input-name-m07" placeholder = "Name">
-                                </div>
-                                <div class = "row datenergaenzen">
-                                    <input type = "text" class = "form-control" id = "input-dozent-m07" placeholder = "Dozent">
-                                </div>
-                            </div>
-                        </div>
-                            <!-- PopUp Fußzeile -->
-                        <div class = "modal-footer">
-                            <button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-m07-abbrechen">
-                                Abbrechen
-                            </button>
-                            <button type = "button" class = "btn btn-default" id = "popup-m07-ok">
-                                OK
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                <!-- Container Menüleiste -->
-            <div class = "container-fluid">
-                <div class = "row rounded" align = "center">
-
-                    <div class = "col" align = "center">
-                        <button id ="button_new_plan" type = "button" class = "btn btn-primary" content-toggle = "modal" onclick="new_plan()">
-                            Neuer Plan
-                        </button>
-                    </div>
-
-                    <div class = "col mar" align = "center">
-                        <h5>Semesteranzahl</h5>
-                    </div>
-
-                    <div class = "col" align = "center">
-                        <button type = "button" disabled id = "button_minus" onclick = "counter_minus()" class = "btn btn-primary">
-                            -
-                        </button>
-                    </div>
-
-                    <div class = "col mar" align = "center">
-                        <h5 id = "count">0</h5>
-                    </div>
-
-                    <div class = "col" align = "center">
-                        <button disabled type = "button" id = "button_plus" onclick = "counter_plus()" class = "btn btn-primary">
-                            +
-                        </button>
-                    </div>
-
-                    <div class = "col" align = "center"> <button id = "button_planLaden" class = "btn btn-primary">
-                        Plan laden</button>
-
-                        <input id = "file-input" type = "file" name = "name" style = "display: none; "/>
-                        @*<input id = "file-input" type = "file" accept='text/*' style = "display: none; " onchange='loading(event)'><br>*@
-
-                    </div>
-
-                    <div class = "col" align = "center">
-                        <button disabled type = "button" class = "btn btn-primary" id="button_speichern" onclick = "save()">
-                            @*<button type = "button" class = "btn btn-primary" content-toggle = "modal" content-target = "#myModal-freitext">*@
-                                Plan speichern
-                        </button>
-                    </div>
-
-                    <div class = "col" align = "center">
-                        <button disabled type = "button" id="button_pdf" class = "btn btn-primary" style = "width: auto">
-                            PDF erstellen
-                        </button>
-                    </div>
-
-                    <div class = "col mar" align = "center">
-                        <h5>ECTS:</h5>
-                    </div>
-
-                    <div class = "col mar" align = "center">
-                        <h5 id="master_ects">0</h5>
-                    </div>
-                </div>
-            </div>
-                <!-- Container um Katalogliste, Regeln, Semester -->
-            <div class = "container-fluid">
-                <div class = "row rounded">
-                        <!-- container-fluid Katalogliste -->
-                    <div class = "col-3 container-fluid">
-                        <div id = "div_kataloge" class = "col scrollbar rounded-scrollbar-left">
-                            <div class = "row">
-                                <span class = "col" align = "left">
-                                    <h4>
-                                        Modulkataloge
-                                    </h4>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                        <!--  container-fluid um Regeln, Semester -->
-                    <div class = "col container-fluid">
-                            <!--  container-fluid Regeln -->
-                        <div class = "container-fluid" id = "regeln">
-                            @* <div class = "row"> *@
-                            @* <div class = "col warnungen"> *@
-                            @* <p>Regel 1</p> *@
-                            @* </div> *@
-                            @* </div> *@
-                        </div>
-                            <!--  container-fluid Semester -->
-                        <div id = "div_semester">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </body>
-
-    <script src="@routes.Assets.versioned("Desktop/Listener.js")" type="text/javascript"></script>
-
-    <script>
-
-
-
-            var ausgewaehlt_semester = "";
-
-            var ausgewaehlt_modul = "";
-
-            var global_mod_id, global_sem_id;
-
-
-            var open_catalog = "";
-
-
-            var startSem = "winter";
-
-            var all_catalogs_closed = 0;
-
-            var moving = 0;
-
-
-            var count = 0;
-
-
-            var blocked = true;
-
-
-            var content = new Array();
-
-
-            var katalogListe = new Array();
-
-            var modulListe = new Array();
-
-
-            var modulString = "";
-
-
-
-
-            function main() {
-
-
-                console.log("$(window).on('load', function ()");
-
-
-                @for(katal <- katalogListe){
-
-                katalogListe.push("@{katal(0)},@{katal(1)},@{katal(2)}");
-
-                }
-
-
-
-                @for(mod <- modulListe){
-
-
-                if ("@{mod(11)}" == "WPP") {
-
-                    modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-
-                }
-
-                else {
-
-                    modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-
-                }
-
-
-                if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP")) {
-
-                    modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-
-                }
-
-
-                }
-
-
-                showCatalogs();
-
-
-                // loadJS('yourcode.js', yourCodeToBeCalled, document.body);
-
-
-            }
-
-
-            window.onload = main;
-
-
-            $(document).ready(function () {
-
-
-                $("#button_new_plan").addClass("red_border");
-
-                $('#button_planLaden').addClass("red_border");
-
-
-                //$("*").on("click", click_selector);
-
-
-            });
-
-
-
-    </script>
+  <head>
+
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("Desktop/desktop.css")">
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  </head>
+  @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
+  <script src="@routes.Assets.versioned("Desktop/Functions/add_catalog.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/add_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/append_free_module.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/append_module.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/availability_mask_modules.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/availability_mask_semesters.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/blink.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/click_selector.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/counter_minus.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/counter_plus.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/create_pdf.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/debug.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/delete_last_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/delete_module_from_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/file_input_on_change.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/fill_data.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/getElementByIndex.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/getLast.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/hex.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/include.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/insert_module_in_catalog.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/insert_module_in_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/load.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/loading.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/loadJS.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/move_module_to_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/new_plan.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/ok_button_new_plan.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/openFile.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/save.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/saveAlt.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/select_module.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/select_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/show_catalogs_modules.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/update_master_ects.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/update_semester_ects.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/updateModuleString.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/updateRules.js")" type="text/javascript"></script>
+  @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
+  <script src="@routes.Assets.versioned("Desktop/Listener/button_laden.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Listener/catalog_label_mouseover.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Listener/click_katalog.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Listener/katalog_label_mouseout.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Listener/modal_freitext_abbrechen.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Listener/modal_freitext_ok.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Listener/modal_m07_abbrechen.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Listener/modal_m07_ok.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Listener/modal_popup_abbrechen.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Listener/module_p_mouseover.js")" type="text/javascript"></script>
+  @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
+  <body>
+	<div class = "container-fluid">
+	  <div class = "row">
+		<span class = "col" align = "center">
+		  <br>
+		  <h1>
+			Planungsunterstützungstool Master Technische Informatik
+		  </h1>
+		</span>
+	  </div>
+		<!-- PopUp Neuer Plan -->
+	  <div id = "myModal-new_plan" class = "modal fade" role = "dialog">
+		<div class = "modal-dialog">
+			<!-- PopUp Inhalt-->
+		  <div class = "modal-content">
+			  <!-- PopUp Kopfzeile -->
+			<div class = "modal-header">
+			  <h4 class = "modal-title">Neuen Plan erstellen</h4>
+			</div>
+			  <!-- PopUp Körper -->
+			<div class = "modal-body">
+			  <div class = "container">
+				<div class = "row">
+				  <div class = "col">
+					<h5>Semesteranzahl:</h5>
+					<input type = "text" class = "form-control" id = "input-semesteranzahl"
+					placeholder = "Semesteranzahl">
+					<p id = "fehlermeldung"></p>
+				  </div>
+				  <div class = "col">
+					<h5>Studienstart:</h5>
+					<div class = "radio">
+					  <label><input type = "radio" name = "optradio" checked = "checked" id = "radio-winter"
+					  value = "winter">
+						Winter
+					  </label>
+					</div>
+					<div class = "radio">
+					  <label><input type = "radio" name = "optradio" id = "radio-sommer"
+					  value = "sommer">
+						Sommer
+					  </label>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			  <!-- PopUp Fußzeile -->
+			<div class = "modal-footer">
+			  <button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-abbrechen">
+				Abbrechen
+			  </button>
+			  <button type = "button" class = "btn btn-default" id = "popup-new-ok"
+			  onclick = "ok_button_new_plan()">OK
+			  </button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+		<!-- PopUp Freitextmodul -->
+	  <div id = "myModal-freitext" class = "modal fade" role = "dialog">
+		<div class = "modal-dialog">
+			<!-- PopUp Inhalt-->
+		  <div class = "modal-content">
+			  <!-- PopUp Kopfzeile -->
+			<div class = "modal-header">
+			  <h4 class = "modal-title">Daten ergänzen</h4>
+			</div>
+			  <!-- PopUp Körper -->
+			<div class = "modal-body">
+			  <div class = "container">
+				<div class = "row datenergaenzen">
+				  <input type = "text" class = "form-control" id = "input-name" placeholder = "Name">
+				</div>
+				<div class = "row datenergaenzen">
+				  <div class = "col">
+					<input type = "text" class = "form-control" id = "input-v" placeholder = "V">
+				  </div>
+				  <div class = "col">
+					<input type = "text" class = "form-control" id = "input-u" placeholder = "Ü">
+				  </div>
+				  <div class = "col">
+					<input type = "text" class = "form-control" id = "input-p" placeholder = "P">
+				  </div>
+				  <div class = "col">
+					<input type = "text" class = "form-control" id = "input-pr" placeholder = "Pr">
+				  </div>
+				</div>
+				<div class = "row datenergaenzen">
+				  <input type = "text" class = "form-control" id = "input-dozent" placeholder = "Dozent">
+				</div>
+				<div class = "row datenergaenzen">
+				  <input type = "text" class = "form-control" id = "input-ects" placeholder = "ECTS">
+				</div>
+			  </div>
+			</div>
+			  <!-- PopUp Fußzeile -->
+			<div class = "modal-footer">
+			  <button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-freitext-abbrechen">
+				Abbrechen
+			  </button>
+			  <button type = "button" class = "btn btn-default" id = "popup-freitext-ok">
+				OK
+			  </button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+		<!-- PopUp M07 -->
+	  <div id = "myModal-m07" class = "modal fade" role = "dialog">
+		<div class = "modal-dialog">
+			<!-- PopUp Inhalt-->
+		  <div class = "modal-content">
+			  <!-- PopUp Kopfzeile -->
+			<div class = "modal-header">
+			  <h4 class = "modal-title">Daten ergänzen</h4>
+			</div>
+			  <!-- PopUp Körper -->
+			<div class = "modal-body">
+			  <div class = "container">
+				<div class = "row datenergaenzen">
+				  <input type = "text" class = "form-control" id = "input-name-m07" placeholder = "Name">
+				</div>
+				<div class = "row datenergaenzen">
+				  <input type = "text" class = "form-control" id = "input-dozent-m07" placeholder = "Dozent">
+				</div>
+			  </div>
+			</div>
+			  <!-- PopUp Fußzeile -->
+			<div class = "modal-footer">
+			  <button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-m07-abbrechen">
+				Abbrechen
+			  </button>
+			  <button type = "button" class = "btn btn-default" id = "popup-m07-ok">
+				OK
+			  </button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+		<!-- Container Menüleiste -->
+	  <div class = "container-fluid">
+		<div class = "row rounded" align = "center">
+
+		  <div class = "col" align = "center">
+			<button id ="button_new_plan" type = "button" class = "btn btn-primary" content-toggle = "modal" onclick="new_plan()">
+			  Neuer Plan
+			</button>
+		  </div>
+
+		  <div class = "col mar" align = "center">
+			<h5>Semesteranzahl</h5>
+		  </div>
+
+		  <div class = "col" align = "center">
+			<button type = "button" disabled id = "button_minus" onclick = "counter_minus()" class = "btn btn-primary">
+			  -
+			</button>
+		  </div>
+
+		  <div class = "col mar" align = "center">
+			<h5 id = "count">0</h5>
+		  </div>
+
+		  <div class = "col" align = "center">
+			<button disabled type = "button" id = "button_plus" onclick = "counter_plus()" class = "btn btn-primary">
+			  +
+			</button>
+		  </div>
+
+		  <div class = "col" align = "center"> <button id = "button_planLaden" class = "btn btn-primary">Plan laden</button>
+
+			<input id = "file-input" type = "file" name = "name" style = "display: none; "/>
+			@*<input id = "file-input" type = "file" accept='text/*' style = "display: none; " onchange='loading(event)'><br>*@
+
+		  </div>
+
+		  <div class = "col" align = "center">
+			<button disabled type = "button" class = "btn btn-primary" id="button_speichern" onclick = "save()">
+			  @*<button type = "button" class = "btn btn-primary" content-toggle = "modal" content-target = "#myModal-freitext">*@
+			  Plan speichern
+			</button>
+		  </div>
+
+		  <div class = "col" align = "center">
+			<button disabled type = "button" id="button_pdf" class = "btn btn-primary" style = "width: auto">
+			  PDF erstellen
+			</button>
+		  </div>
+
+		  <div class = "col mar" align = "center">
+			<h5>ECTS:</h5>
+		  </div>
+
+		  <div class = "col mar" align = "center">
+			<h5 id="master_ects">0</h5>
+		  </div>
+		</div>
+	  </div>
+		<!-- Container um Katalogliste, Regeln, Semester -->
+	  <div class = "container-fluid">
+		<div class = "row rounded">
+			<!-- container-fluid Katalogliste -->
+		  <div class = "col-3 container-fluid">
+			<div id = "div_kataloge" class = "col scrollbar rounded-scrollbar-left">
+			  <div class = "row">
+				<span class = "col" align = "left">
+				  <h4>
+					Modulkataloge
+				  </h4>
+				</span>
+			  </div>
+			</div>
+		  </div>
+
+			<!--  container-fluid um Regeln, Semester -->
+		  <div class = "col container-fluid">
+			  <!--  container-fluid Regeln -->
+			<div class = "container-fluid" id = "regeln">
+			  @* <div class = "row"> *@
+			  @* <div class = "col warnungen"> *@
+			  @* <p>Regel 1</p> *@
+			  @* </div> *@
+			  @* </div> *@
+			</div>
+			  <!--  container-fluid Semester -->
+			<div id = "div_semester">
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+  </body>
+
+  <script src="@routes.Assets.versioned("Desktop/Listener.js")" type="text/javascript"></script>
+
+  <script>
+
+		  var ausgewaehlt_semester = "";
+		  var ausgewaehlt_modul = "";
+		  var global_mod_id, global_sem_id;
+
+		  var open_catalog = "";
+
+		  var startSem = "winter";
+		  var all_catalogs_closed = 0;
+		  var moving = 0;
+
+		  var count = 0;
+
+		  var blocked = true;
+
+		  var content = new Array();
+
+		  var katalogListe = new Array();
+		  var modulListe = new Array();
+
+		  var modulString = "";
+
+		  function main()
+		  {
+
+		    console.log("$(window).on('load', function ()");
+
+		    @for(katal <- katalogListe){
+		    katalogListe.push("@{katal(0)},@{katal(1)},@{katal(2)}");
+		    }
+
+		    @for(mod <- modulListe){
+
+		    if ("@{mod(11)}" == "WPP")
+		    {
+			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+		    }
+		    else
+		    {
+			  modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+		    }
+
+		    if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
+		    {
+			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+		    }
+
+		    }
+
+		    showCatalogs();
+
+		    // loadJS('yourcode.js', yourCodeToBeCalled, document.body);
+
+		  }
+
+		  window.onload = main;
+
+
+		  $(document).ready(function ()
+		  {
+
+		    //  ###############################################################################################################
+
+		    $('#button_planLaden').on('click', button_laden);
+		    $('#button_pdf').on('click', create_pdf);
+		    $('#myModal-freitext').on('click', '#popup-freitext-abbrechen', modal_freitext_abbrechen);
+		    $('#myModal-m07').on('click', '#popup-m07-abbrechen', modal_m07_abbrechen);
+		    $('#myModal-freitext').on('click', '#popup-freitext-ok', modal_freitext_ok);
+		    $('#myModal-m07').on('click', '#popup-m07-ok', modal_m07_ok);
+		    $('#div_kataloge').on('click', '.class_click_katalog', click_katalog);
+		    $('#div_kataloge').on('mouseover', '.class_click_katalog_label', catalog_label_mouseover);
+		    $('#div_kataloge').on('mouseout', '.class_click_katalog_label', catalog_label_mouseout);
+		    $('#myModal-new_plan').on('click', '#popup-abbrechen', modal_popup_abbrechen);
+		    $('#div_kataloge').on('mouseover', '.class_click_module_p', module_p_mouseover);
+		    $('#div_semester').on('click', '.class_click_semester', click_semester);
+
+		    //  ###############################################################################################################
+
+		    $("#button_new_plan").addClass("red_border");
+		    $('#button_planLaden').addClass("red_border");
+
+		    $("*").on("click", click_selector);
+
+		  });
+
+  </script>
