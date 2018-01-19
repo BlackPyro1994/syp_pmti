@@ -1,7 +1,7 @@
 function remove_module_from_content(module_id)
 {
     
-    console.log(content);
+    //console.log(content);
     console.log("-------------------------------------------------------------------");
     
     var BreakException = {};
@@ -15,7 +15,7 @@ function remove_module_from_content(module_id)
             {
                 var string = (content[sem][mod]);
                 
-                string = string.substr(1, string.length);
+               // string = string.substr(1, string.length);
                 string = string.split(",");
                 
                 // console.log(string);
@@ -24,7 +24,7 @@ function remove_module_from_content(module_id)
                 
                 // console.log(string[0] + " == " + module_id + " ?");
                 
-                if (string[0] == module_id)
+                if (string[1] == module_id)
                 {
                     console.log("Modul " + module_id + " wird entfernt !");
                     // content[sem] = content[sem].splice(mod,1);
@@ -33,17 +33,24 @@ function remove_module_from_content(module_id)
                     
                     for (i = 0; i < content[sem].length; i++)
                     {
-                        if (content[i] != mod)
+                        console.log(content[sem][i]);
+                       // if (content[sem][i] != mod)
+                        if (i!=mod)
+
                         {
-                            newArray.push(content[i]);
-                            content[sem] = newArray;
+                            newArray.push(content[sem][i]);
+
                             
                             console.log("-------------------------------------------------------------------");
-                            console.log(content);
+                            //console.log(newArray);
+                            //console.log(content);
                             
-                            throw BreakException;
+                          //  throw BreakException;
                         }
+
                     }
+                    content[sem] = newArray;
+                    console.log(content);
                     
                     
                 }
