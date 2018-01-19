@@ -5,13 +5,13 @@ function add_modules_in_popup(catalog_id)
     
     var mod_id;
     
-    
-    
     modulListe.forEach(function (entry)
     {
         if (entry.split(",")[11] == catalog_id)
         {
             mod_id = entry.split(",")[0];
+    
+            console.log(mod_id + " : " + entry.split(",")[11]);
             
             $("#catalog_list").append('<div id="' + mod_id + '" class="row modules_border class_click_modules"><button id="' + mod_id + '" class="btn btn-block"><div id="' + mod_id + '" class="row text-left"><div id="' + mod_id + '" class="col fett"><p id="' + mod_id + '">'
                 + entry.split(",")[0] + '</p></div><div id="' + mod_id + '" class="col text-right"><p id="' + mod_id + '">ECTS: '

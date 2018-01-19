@@ -50,17 +50,17 @@ function update_semester_ects(mod_id, wert)
         
         updateModuleString(id);
         
-        modulString = modulString.split(",");
+        search_result = search_result.split(",");
         
         if (wert == 1)
         {
             
-            semester_ects = semester_ects + modulString[7];
+            semester_ects = semester_ects + search_result[7];
         }
         else if (wert == 0)
         {
             
-            semester_ects = semester_ects - modulString[7];
+            semester_ects = semester_ects - search_result[7];
         }
     }
     //console.log($.each($("#div_semester").children()));

@@ -16,7 +16,7 @@ $('#div_semester').on('click', '.class_click_semester', function (click)
         show_semester_content(global_sem_id);
         
         $("#button_minus").hide();
-        $("#button_plus").text("Module");
+        $("#button_plus").text("Modul hinzufügen");
         $("#button_plus").attr("onclick", "show_catalogs()");
         $("#brand").text("Semester: " + global_sem_id);
         //$("#ects_text").text("Semester ECTS: ");
@@ -46,8 +46,10 @@ $('#myModal-catalogs').on('click', '#popup-catalogs-back', function (click)
 {
     console.log("Zurück");
     open = 1;
-    $("#cat_footer").hide();
+    $("#popup_title").text("Modul-Kataloge :");
+    $("#popup-catalogs-back").css('visibility', 'hidden');
     show_catalogs();
+    
 });
 
 // mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
@@ -80,8 +82,16 @@ $('#catalog_list').on('click', '.class_click_catalog', function (click)
     console.log("Click on Katalog ID: " + (click.target).id);
     global_catalog_id = (click.target).id;
     
-    $("#cat_footer").show();
+    store_catalog_name_by_id(global_catalog_id);
+    
+    console.log(search_result);
+    
+    $("#popup_title").text(search_result);
+    
+    $("#popup-catalogs-back").css('visibility', 'visible');
+    
     add_modules_in_popup(global_catalog_id);
+    
 });
 
 // mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm

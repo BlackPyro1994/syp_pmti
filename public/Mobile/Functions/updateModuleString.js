@@ -17,7 +17,7 @@ function updateModuleString(param)
             {
                 console.log(entry);
                 
-                modulString = entry;
+                search_result = entry;
                 
                 throw BreakException;
             }

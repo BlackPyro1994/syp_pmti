@@ -24,3 +24,48 @@ function updateModuleString(mod_id)
     }
 
 }
+
+//###########################################################################
+
+/*
+
+function get_catalog_name_by_id(cat_id)
+{
+    var BreakException = {};
+    
+    index = 0;
+    
+    check = false;
+    
+    try
+    {
+        katalogListe.forEach(function (entry)
+        {
+            index++;
+            
+            console.log(index);
+            
+            if (!check)
+            {
+                
+                if (entry.split(',')[0] == cat_id)
+                {
+                    console.log("Katalog Name der ID : " + cat_id + " gefunden : " + entry.split(',')[1]);
+                    check=true;
+                    return entry.split(',')[1];
+                    
+                }
+            }
+            else
+            {
+                throw BreakException;
+            }
+        });
+    } catch (e)
+    {
+        if (e !== BreakException) throw e;
+    }
+    
+}
+
+*/

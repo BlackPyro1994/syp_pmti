@@ -15,9 +15,9 @@ function append_module_in_semester(mod_id)
 {
     updateModuleString(mod_id);
     
-    modulString = modulString.split(",");
+    search_result = search_result.split(",");
     
-    console.log(modulString);
+    console.log(search_result);
     
     console.log("append_module_in_semester(" + mod_id + ")");
     
@@ -25,13 +25,13 @@ function append_module_in_semester(mod_id)
         '<button id="' + mod_id + '" class="btn btn-block"><div id="' + mod_id + '" class="row text-left">' +
         
         '<div id="' + mod_id + '" class="col fett">' +
-        '<p>' + modulString[0] + '</p></div>' +
+        '<p>' + search_result[0] + '</p></div>' +
         
         '<div id="' + mod_id + '" class="col text-right">' +
-        '<p id="' + mod_id + '">ECTS: ' + modulString[9] + '</p></div>' + '</div>' +
+        '<p id="' + mod_id + '">ECTS: ' + search_result[9] + '</p></div>' + '</div>' +
         
         '<div id="' + mod_id + '" class="row normal text-left">' +
         '<div id="' + mod_id + '" class="col">' +
         
-        '<p id="' + mod_id + '">Dozent: ' + modulString[8] + '</p></div></div></button></div>');
+        '<p id="' + mod_id + '">Dozent: ' + search_result[8] + '</p></div></div></button></div>');
 }

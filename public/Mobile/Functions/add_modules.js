@@ -27,13 +27,13 @@ function add_modules(id)
     
     //$("#cat_footer").append('<button type = "button" class = "btn btn-default" id = "popup-catalogs-back">Zurück</button>');
     
-    modulString = modulString.split(",");
+    search_result = search_result.split(",");
     
-    mod_id = modulString[0];
+    mod_id = search_result[0];
     
     $("#catalog_list").append('<div id="' + mod_id + '" class="row modules_border class_click_modules"><button id="' + mod_id + '" class="btn btn-block"><div id="' + mod_id + '" class="row text-left"><div id="' + mod_id + '" class="col fett"><p id="'
-        + mod_id + '">' + modulString[0] + '</p></div><div id="' + mod_id + '" class="col text-right"><p id="' + mod_id + '">'
-        + 'ECTS: '      + modulString[9] + '</p></div></div><div id="' + mod_id + '" class="row normal text-left"><div id="' + mod_id + '" class="col"><p id="' + mod_id + '">'
-        + 'Dozent: '    + modulString[8] + '</p></div></div></button></div>');
+        + mod_id + '">' + search_result[0] + '</p></div><div id="' + mod_id + '" class="col text-right"><p id="' + mod_id + '">'
+        + 'ECTS: '      + search_result[9] + '</p></div></div><div id="' + mod_id + '" class="row normal text-left"><div id="' + mod_id + '" class="col"><p id="' + mod_id + '">'
+        + 'Dozent: '    + search_result[8] + '</p></div></div></button></div>');
 
 }

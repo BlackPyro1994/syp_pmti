@@ -32,6 +32,7 @@
   <script src="@routes.Assets.versioned("Mobile/Functions/save_semester_content.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/show_catalogs.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/show_semester_content.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/store_catalog_name_by_id.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/update_master_ects.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/update_semester_ects.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/update_semester_ects_extra.js")" type="text/javascript"></script>
@@ -136,7 +137,11 @@
 		<div class = "modal-content">
 			<!-- PopUp Kopfzeile -->
 		  <div class="modal-header">
-			<h4 class="modal-title">Modulkataloge</h4>
+			<h4 id="popup_title" class="modal-title">Modul-Kataloge :</h4>
+		    <button class="btn border" type="button" style="visibility:hidden" id = "popup-catalogs-back">
+			  <i class="fa fa-outdent fa-2x"></i>
+		    </button>
+
 		  </div>
 			<!-- PopUp Körper -->
 		  <div class="modal-body">
@@ -144,10 +149,6 @@
 			  <div id="catalog_list">
                             </div>
 			</div>
-		  </div>
-			<!-- PopUp Fußzeile -->
-		  <div class = "modal-footer" id="cat_footer">
-			<button type = "button" class = "btn btn-default" id = "popup-catalogs-back">Zurück</button>
 		  </div>
 		</div>
 	  </div>
@@ -288,6 +289,8 @@
 		  var global_mod_id;
 		  var global_catalog_id;
 
+		  var query_result;
+
 		  var content = [];
 		  var catalog_array = [];
 		  var module_array = [];
@@ -306,7 +309,7 @@
 		  var katalogListe = new Array();
 		  var modulListe = new Array();
 
-		  var modulString = "";
+		  var search_result = "";
 
 
 		  $(window).on('load', function ()
