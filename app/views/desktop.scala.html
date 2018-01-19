@@ -42,6 +42,8 @@
   <script src="@routes.Assets.versioned("Desktop/Functions/new_plan.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/ok_button_new_plan.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/openFile.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/readBlob.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/remove_module_from_content.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/save.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/saveAlt.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/select_module.js")" type="text/javascript"></script>
@@ -299,8 +301,6 @@
 
   </body>
 
-  <script src="@routes.Assets.versioned("Desktop/Listener.js")" type="text/javascript"></script>
-
   <script>
 
 		  var ausgewaehlt_semester = "";
@@ -322,7 +322,7 @@
 		  var katalogListe = new Array();
 		  var modulListe = new Array();
 
-		  var modulString = "";
+		  var search_result = "";
 
 		  function main()
 		  {
@@ -383,7 +383,7 @@
 		    $("#button_new_plan").addClass("red_border");
 		    $('#button_planLaden').addClass("red_border");
 
-		    $("*").on("click", click_selector);
+		    // $("*").on("click", click_selector);
 
 		  });
 
