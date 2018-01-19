@@ -1,3 +1,5 @@
+/*
+
  function availability_mask_semesters(module_id)
 {
     if (module_id)
@@ -57,3 +59,5 @@
         
     }
 }
+
+*/

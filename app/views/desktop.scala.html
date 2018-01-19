@@ -5,7 +5,6 @@
 
   <head>
 
-
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("Desktop/desktop.css")">
 
 	<meta charset="utf-8">
@@ -13,9 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   </head>
-
   @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
   <script src="@routes.Assets.versioned("Desktop/Functions/add_catalog.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/add_semester.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/append_free_module.js")" type="text/javascript"></script>
@@ -29,6 +26,7 @@
   <script src="@routes.Assets.versioned("Desktop/Functions/debug.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/delete_last_semester.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/delete_module_from_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/file_input_on_change.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/fill_data.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/getElementByIndex.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/getLast.js")" type="text/javascript"></script>
@@ -223,18 +221,17 @@
 			</button>
 		  </div>
 
-		  <div class = "col" align = "center">
-			<button id = "button_planLaden" class = "btn btn-primary">
-			  Plan laden</button>
-			@*<button id = "button_planLaden" class = "btn btn-primary">Plan laden</button>*@
+		  <div class = "col" align = "center"> <button id = "button_planLaden" class = "btn btn-primary">Plan laden</button>
+
 			<input id = "file-input" type = "file" name = "name" style = "display: none; "/>
-			@*<input id = "file-input" type = "file" accept='text/*' onchange='openFile(event)'><br>*@
+			@*<input id = "file-input" type = "file" accept='text/*' style = "display: none; " onchange='loading(event)'><br>*@
+
 		  </div>
 
 		  <div class = "col" align = "center">
 			<button disabled type = "button" class = "btn btn-primary" id="button_speichern" onclick = "save()">
 			  @*<button type = "button" class = "btn btn-primary" content-toggle = "modal" content-target = "#myModal-freitext">*@
-				Plan speichern
+			  Plan speichern
 			</button>
 		  </div>
 
@@ -316,42 +313,42 @@
 
 		  $(window).on('load', function ()
 		  {
-			console.log("$(window).on('load', function ()");
+		    console.log("$(window).on('load', function ()");
 
-			@for(katal <- katalogListe){
-			katalogListe.push("@{katal(0)},@{katal(1)},@{katal(2)}");
-			}
+		    @for(katal <- katalogListe){
+		    katalogListe.push("@{katal(0)},@{katal(1)},@{katal(2)}");
+		    }
 
-			@for(mod <- modulListe){
+		    @for(mod <- modulListe){
 
-			if ("@{mod(11)}" == "WPP")
-			{
+		    if ("@{mod(11)}" == "WPP")
+		    {
 			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-			}
-			else
-			{
+		    }
+		    else
+		    {
 			  modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-			}
+		    }
 
-			if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
-			{
+		    if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
+		    {
 			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-			}
+		    }
 
-			}
+		    }
 
-			// loadJS('yourcode.js', yourCodeToBeCalled, document.body);
+		    // loadJS('yourcode.js', yourCodeToBeCalled, document.body);
 
 		  });
 
 		  $(document).ready(function ()
 		  {
-			showCatalogs();
+		    showCatalogs();
 
-			$("#button_new_plan").addClass("red_border");
-			$('#button_planLaden').addClass("red_border");
+		    $("#button_new_plan").addClass("red_border");
+		    $('#button_planLaden').addClass("red_border");
 
-			/*  $("*").on("click", function (){
+		    /*  $("*").on("click", function (){
 			  var selector = $(this)
 					  .parents()
 					  .map(function ()
