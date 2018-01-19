@@ -4,7 +4,7 @@ function update_master_ects(mod_id, wert)
     // wert = auswahl ob addieren oder subtrahieren
     // 1 == adieren 0 == subtrahieren
     
-    updateModuleString(id);
+    updateModuleString(mod_id);
     
     modulString = modulString.split(",");
     
@@ -16,7 +16,7 @@ function update_master_ects(mod_id, wert)
         }
         else
         {
-            ects = ects + modulString[9];
+            ects = Number.parseInt(ects) + Number.parseInt(modulString[9]);
             document.getElementById("master_ects").textContent = ects;
         }
     }
@@ -28,7 +28,7 @@ function update_master_ects(mod_id, wert)
         }
         else
         {
-            ects = ects - modulString[9];
+            ects = Number.parseInt(ects) - Number.parseInt(modulString[9]);
             document.getElementById("master_ects").textContent = ects;
         }
     }

@@ -62,10 +62,6 @@
   <script src="@routes.Assets.versioned("Desktop/Functions/select_module.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/select_semester.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/show_catalogs_modules.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("Desktop/Functions/test_1.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("Desktop/Functions/test_2.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("Desktop/Functions/test_3.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("Desktop/Functions/test_4.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/update_master_ects.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/update_semester_ects.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/updateModuleString.js")" type="text/javascript"></script>
@@ -370,6 +366,34 @@
 			$("#button_new_plan").addClass("red_border");
 			$('#button_planLaden').addClass("red_border");
 
+			/*  $("*").on("click", function (){
+			  var selector = $(this)
+					  .parents()
+					  .map(function ()
+					  {
+						return this.tagName;
+					  })
+					  .get()
+					  .reverse()
+					  .concat([this.nodeName])
+					  .join(">");
+
+			  var id = $(this).attr("id");
+			  if (id)
+			  {
+				selector += "#" + id;
+			  }
+
+			  var classNames = $(this).attr("class");
+			  if (classNames)
+			  {
+				selector += "." + $.trim(classNames).replace(/\s/gi, ".");
+			  }
+
+			  // alert(selector);
+			  console.log(selector);
+			  return false;
+			}); */
 
 		  });
 
