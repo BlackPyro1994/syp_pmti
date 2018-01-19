@@ -12,6 +12,7 @@ function delete_module_from_semester(mod_id) {
         //update_semester_ects(global_mod_id,0);
     }
     $("#" + mod_id).remove();
+    update_rules();
     blocked.splice(mod_id,1);
     catalog_array.splice(global_catalog_id,1);
 }

@@ -35,5 +35,7 @@ function click_semester(click)
         //$("#ects_punkte").text(semester_ects);
         move = 0;
     }
+
+    update_rules();
     
 }

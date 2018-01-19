@@ -26,8 +26,10 @@ function show_catalogs() {
  */
 function show_catalogs() {
     console.log("show_catalogs()");
+    $("#popup_title").text("Modul-Kataloge :");
 
     safe_modules = $("#div_semester").children();
+    close = 1;
     emptyModal();
     $("#cat_footer").hide();
     
@@ -39,6 +41,7 @@ function show_catalogs() {
     
     if (!open)
     {
+        $("#popup-icon").addClass("fa-window-close");
         $('#myModal-catalogs').modal('show');
     } else
     {

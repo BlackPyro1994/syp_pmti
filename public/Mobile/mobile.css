@@ -72,7 +72,7 @@
 }
 
 .container_body {
-    height: calc(100vh - 90px);
+    height: calc(100vh - 88px);
     overflow: auto;
 }
 
@@ -92,4 +92,14 @@
     color: #ffffff;
     background-color: #8c8c8c;
     border-radius: 3px;
+}
+.blocked_wpp {
+    color: #ffffff;
+    background-color: #8c8c8c;
+    border-radius: 3px;
+}
+.rules {
+    margin-top: 0.3%;
+    border: 2px solid #dc3545;
+    border-radius: 5px;
 }

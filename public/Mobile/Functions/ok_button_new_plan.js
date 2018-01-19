@@ -30,13 +30,6 @@ function ok_button_new_plan()
         document.getElementById("fehlermeldung").textContent = "";
         $('#myModal-new_plan').modal('hide');
     }
-    
-    /*
-    document.getElementById("button_minus").disabled = false;
-    document.getElementById("button_plus").disabled = false;
-    document.getElementById("button_speichern").disabled = false;
-    document.getElementById("button_pdf").disabled = false;
 
-    blocked = false;
-    */
+    update_rules();
 }
