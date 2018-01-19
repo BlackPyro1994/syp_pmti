@@ -21,6 +21,7 @@
   <script src="@routes.Assets.versioned("Mobile/Functions/append_module_in_semester.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/counter_minus.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/counter_plus.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/create_pdf.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/delete_last_semester.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/delete_module_from_semester.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/emptyModal.js")" type="text/javascript"></script>
@@ -49,10 +50,6 @@
 		<ul class="dropdown-menu border-blue">
 		  <div class="container-fluid">
 			<div class="row">
-			  <div class="col">
-				<button class ="btn btn-primary btn-block btn-space" type="button" onclick="overview()">
-                                    Übersicht</button>
-			  </div>
 			  <div class="col">
 				<button class ="btn btn-primary btn-block btn-space" type="button" data-toggle = "modal" data-target = "#myModal-new_plan">
                                     Neuer Plan</button>
@@ -291,7 +288,7 @@
 		  var global_mod_id;
 		  var global_catalog_id;
 
-		  var semester_array = [];
+		  var content = [];
 		  var catalog_array = [];
 		  var module_array = [];
 		  var blocked = [];
