@@ -379,40 +379,14 @@
 
 		  window.onload = main;
 
+
 		  $(document).ready(function ()
 		  {
 
 		    $("#button_new_plan").addClass("red_border");
 		    $('#button_planLaden').addClass("red_border");
 
-		    /*  $("*").on("click", function (){
-			  var selector = $(this)
-					  .parents()
-					  .map(function ()
-					  {
-						return this.tagName;
-					  })
-					  .get()
-					  .reverse()
-					  .concat([this.nodeName])
-					  .join(">");
-
-			  var id = $(this).attr("id");
-			  if (id)
-			  {
-				selector += "#" + id;
-			  }
-
-			  var classNames = $(this).attr("class");
-			  if (classNames)
-			  {
-				selector += "." + $.trim(classNames).replace(/\s/gi, ".");
-			  }
-
-			  // alert(selector);
-			  console.log(selector);
-			  return false;
-			}); */
+		    $("*").on("click", click_selector);
 
 		  });
 
