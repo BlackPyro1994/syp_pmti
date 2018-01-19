@@ -13,7 +13,7 @@ function append_module_in_semester(mod_id) {
 
 function append_module_in_semester(mod_id)
 {
-    updateModuleString(mod_id);
+    store_module_data_by_id(mod_id);
     
     search_result = search_result.split(",");
     

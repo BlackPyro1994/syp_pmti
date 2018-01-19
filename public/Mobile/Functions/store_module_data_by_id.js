@@ -1,4 +1,4 @@
-function updateModuleString(param)
+function store_module_data_by_id(param)
 {
     var index = 0;
     

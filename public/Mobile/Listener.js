@@ -7,7 +7,7 @@ $('#div_semester').on('click', '.class_click_semester', function (click)
     flip = 1;
     
     $("body > nav > div.dropdown > button > svg").toggleClass("fa-bars fa-arrow-left");
-    $("body > nav > div.dropdown > button").attr('onClick',"overview()");
+    $("body > nav > div.dropdown > button").attr('onClick', "overview()");
     
     if (!move)
     {
@@ -41,13 +41,56 @@ $('#div_semester').on('click', '.class_click_semester', function (click)
 
 // mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
+//Klick auf Modul in Semesteransicht
+$('#div_semester').on('click', '.class_click_modules_in_semester', function (click)
+{
+    global_mod_id = (click.currentTarget).id;
+    console.log("Click on Modul ID: " + global_mod_id);
+    
+    
+    $('#myModal-modules').modal('show');
+});
+
+// mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+//Klick auf Katalog im Popup
+$('#catalog_list').on('click', '.class_click_catalog', function (click)
+{
+    console.log("Click on Katalog ID: " + (click.target).id);
+    global_catalog_id = (click.target).id;
+    
+    store_catalog_name_by_id(global_catalog_id);
+    
+    console.log(search_result);
+    
+    $("#popup_title").text(search_result);
+    
+    // $("#popup-catalogs-back").css('visibility', 'visible');
+    
+    $("#popup-catalogs-back").removeClass("fa-window-close");
+    $("#popup-catalogs-back").addClass("fa-outdent");
+    
+    console.log($("#popup-catalogs-back").attr("class"));
+    
+    add_modules_in_popup(global_catalog_id);
+    
+});
+
+// mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
 //Klick auf zurück-Button in Modulansicht im Popup "Modul"
 $('#myModal-catalogs').on('click', '#popup-catalogs-back', function (click)
 {
     console.log("Zurück");
     open = 1;
     $("#popup_title").text("Modul-Kataloge :");
-    $("#popup-catalogs-back").css('visibility', 'hidden');
+    // $("#popup-catalogs-back").css('visibility', 'hidden');
+    
+    $("#popup-catalogs-back").addClass("fa-window-close");
+    $("#popup-catalogs-back").removeClass("fa-outdent");
+    
+    console.log($("#popup-catalogs-back").attr("class"));
+    
     show_catalogs();
     
 });
@@ -76,26 +119,6 @@ $('#myModal-modules').on('click', '#popup-module-delete', function (click)
 
 // mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
-//Klick auf Katalog im Popup
-$('#catalog_list').on('click', '.class_click_catalog', function (click)
-{
-    console.log("Click on Katalog ID: " + (click.target).id);
-    global_catalog_id = (click.target).id;
-    
-    store_catalog_name_by_id(global_catalog_id);
-    
-    console.log(search_result);
-    
-    $("#popup_title").text(search_result);
-    
-    $("#popup-catalogs-back").css('visibility', 'visible');
-    
-    add_modules_in_popup(global_catalog_id);
-    
-});
-
-// mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-
 //Klick auf Modul im Popup(nach klick auf Katalog)
 $('#catalog_list').on('click', '.class_click_modules', function (click)
 {
@@ -115,18 +138,6 @@ $('#catalog_list').on('click', '.class_click_modules', function (click)
     }
     blocked.push(global_mod_id);
     catalog_array.push(global_catalog_id);
-});
-
-// mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-
-//Klick auf Modul in Semesteransicht
-$('#div_semester').on('click', '.class_click_modules_in_semester', function (click)
-{
-    global_mod_id = (click.currentTarget).id;
-    console.log("Click on Modul ID: " + global_mod_id);
-    
-    
-    $('#myModal-modules').modal('show');
 });
 
 // mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm

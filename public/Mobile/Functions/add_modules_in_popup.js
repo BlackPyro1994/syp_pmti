@@ -7,7 +7,7 @@ function add_modules_in_popup(catalog_id)
     
     modulListe.forEach(function (entry)
     {
-        if (entry.split(",")[11] == catalog_id)
+        if (entry.split(",")[11] == catalog_id )
         {
             mod_id = entry.split(",")[0];
     

@@ -7,6 +7,8 @@ function loading(progressEvent)
     
     var temp;
     
+    console.log(progressEvent);
+    
     var lines = this.result.split('\n');
     
     temp = lines[0].split(',');

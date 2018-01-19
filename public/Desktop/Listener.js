@@ -1,18 +1,26 @@
 $('#button_planLaden').on('click', function ()
 {
+    console.log("Trigger Lade Dialog");
+    
     $('#file-input').trigger('click');
 });
 
 //##########################################################################################################
 
-$('#file-input').onchange = function ()
+/*$('#file-input').onchange = function ()
 {
+    console.log("AUFRUF LADEN");
+    
+    console.log(this.result);
+    
     var file = this.files[0];
     
     var reader = new FileReader();
     
     reader.onload = function (progressEvent)
     {
+        console.log("Reader.onLoad");
+        
         var temp;
         
         var lines = this.result.split('\n');
@@ -65,7 +73,7 @@ $('#file-input').onchange = function ()
     
     reader.readAsText(file);
     
-}
+}*/
 
 //##########################################################################################################
 

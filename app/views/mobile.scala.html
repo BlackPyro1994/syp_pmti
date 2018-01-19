@@ -14,7 +14,6 @@
   </head>
 
   <script src="@routes.Assets.versioned("Mobile/Functions/add_catalogs.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("Mobile/Functions/add_modules.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/add_modules_in_popup.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/add_semester.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/append_free_module.js")" type="text/javascript"></script>
@@ -33,10 +32,10 @@
   <script src="@routes.Assets.versioned("Mobile/Functions/show_catalogs.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/show_semester_content.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/store_catalog_name_by_id.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/store_module_data_by_id.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/update_master_ects.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/update_semester_ects.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/update_semester_ects_extra.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("Mobile/Functions/updateModuleString.js")" type="text/javascript"></script>
 
   <body>
 
@@ -138,8 +137,9 @@
 			<!-- PopUp Kopfzeile -->
 		  <div class="modal-header">
 			<h4 id="popup_title" class="modal-title">Modul-Kataloge :</h4>
-		    <button class="btn border" type="button" style="visibility:hidden" id = "popup-catalogs-back">
-			  <i class="fa fa-outdent fa-2x"></i>
+		    <button class="btn border" type="button" style="visibility:visible" id = "popup-catalogs-back">
+			  @*<i class="fa fa-outdent fa-2x"></i>*@
+			  <i class="fa fa-window-close fa-2x"></i>
 		    </button>
 
 		  </div>
