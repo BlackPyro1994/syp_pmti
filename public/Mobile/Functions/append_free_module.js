@@ -1,3 +1,14 @@
+/**
+ * Erstellt ein Freitext(Auflagen)modul mit den zuvor eingetragenen Werten
+ *
+ * @param name Name des Moduls
+ * @param v Vorlesungsstunden in der Woche (SWS)
+ * @param u Übungsstunden in der WOche (SWS)
+ * @param p Praktikumsstunden in der WOche (SWS)
+ * @param pr Projektstunden in der WOche (SWS)
+ * @param dozent Name des Dozenten
+ * @param ects Anzahl der ECTS Punkte für das Modul
+ */
 function append_free_module(name, v, u, p, pr, dozent, ects) {
     console.log("append_free_module(" + name + "," + v + "," + u + "," + p + "," + pr + "," + dozent + "," + ects + ")");
     

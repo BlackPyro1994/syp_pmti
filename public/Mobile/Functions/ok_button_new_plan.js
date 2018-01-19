@@ -1,3 +1,7 @@
+/**
+ * Übernimmt das ausgewählte Startsemester(startSem), die Anzahl an Semestern(wert) und erstellt diese.
+ *
+ */
 function ok_button_new_plan() {
     console.log("ok_button_new_plan()");
     count = 0;

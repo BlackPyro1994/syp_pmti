@@ -10,7 +10,11 @@ function append_module_in_semester(mod_id) {
 }
 
 */
-
+/**
+ * Erstellt das zuvor ausgewählte Modul in der Semesteransicht
+ *
+ * @param mod_id Die Modul ID
+ */
 function append_module_in_semester(mod_id)
 {
     store_module_data_by_id(mod_id);

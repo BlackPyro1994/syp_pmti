@@ -34,7 +34,12 @@ function update_semester_ects(mod_id, wert) {
 }
 
 */
-
+/**
+ * Aktualisiert die Semester-ECTS Punkte mit den Werten des gewählten Moduls
+ *
+ * @param mod_id Die Modul ID des hinzugefügten Moduls
+ * @param wert Differenzierungsfaktor um zu addieren oder zu subtrahieren
+ */
 function update_semester_ects(mod_id, wert)
 {
     console.log("update_semester_ects(" + mod_id + "," + wert + ")");

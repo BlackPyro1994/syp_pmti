@@ -1,3 +1,7 @@
+/**
+ * Reduziert die Anzahl der Semester (count)
+ *
+ */
 function counter_minus() {
     console.log("counter_minus()");
     if (count > 0) {

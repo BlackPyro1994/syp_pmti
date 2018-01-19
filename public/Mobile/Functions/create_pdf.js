@@ -1,4 +1,8 @@
-﻿function create_pdf()
+﻿/**
+ * Erstellt ein PDF Dokument mit dem Inhalt der zuvor gespeicherten Daten in dem Array (content[])
+ *
+ */
+function create_pdf()
 {
     var doc = new jsPDF('landscape');
     var x = 11;
