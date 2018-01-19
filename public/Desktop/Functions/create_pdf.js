@@ -7,9 +7,9 @@
     var id, name, v, u, p, pr, dozent, ects;
     var sem_zahl, sem_ects, str;
     var master_ects = 0;
-    var restplatz = 249;
+    var restplatz = 150;
     
-    var horizontal_values = [20, 110, 4, 4, 4, 5, 39];
+    var horizontal_values = [27, 160, 5, 5, 5, 6, 284];
     
      doc.setFont("times");
     
@@ -23,22 +23,22 @@
     var title = "PMTI - Individualisierter Studienverlaufsplan" ;
     var currentdate = new Date();
 
-//doc.text(200, 100, 'This is right aligned text', null, null, 'right');
+
     doc.setFontSize(20);
     doc.text(80, y, title);
     doc.setFontSize(15);
-    doc.text(250,y,"(" + currentdate.getDate() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getFullYear() + ")", null, null, 'right');
-    y += 13;
+    doc.text(285,y,"(" + currentdate.getDate() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getFullYear() + ")", null, null, 'right');
+    y += 17;
 
 //ab hier 1 hart geschriebener Wert zu tauschen:
     
     master_ects = $("#master_ects").innerText;
     
-    str = "Master-ECTS insgesamt: " + master_ects;
+    strMasterECTS = "Master-ECTS insgesamt: " + master_ects;
     
     doc.setFontSize(10);
-    doc.text(155, y, str);
-    y += 7;
+    doc.text(285, y, strMasterECTS, null, null, 'right');
+    y += 10;
     
     var anz_Sem = Number(document.getElementById("count").textContent);
     console.log("Anzahl Semester:" + anz_Sem);
@@ -54,8 +54,8 @@
         if (((anz_Module * 5) + 16) > restplatz)
         {
             doc.addPage();
-            var restplatz = 249;
-            y = 35;
+            var restplatz = 150;
+            y = 47;
         }
         restplatz -= ((anz_Module * 5) + 12);
         
@@ -93,9 +93,9 @@
             x += horizontal_values[5];
             
             doc.text(x, y, "DozentIn");
-            x += horizontal_values[6];
-            
-            doc.text(x, y, "ECTS");
+            x = horizontal_values[6];
+
+            doc.text(x, y, "ECTS", null, null, 'right');
             
             y += 4;
             restplatz -= 4;
@@ -147,9 +147,9 @@
                 x += horizontal_values[5];
                 
                 doc.text(x, y, dozent);
-                x += horizontal_values[6];
+                x = horizontal_values[6];
                 
-                doc.text(x, y, ects);
+                doc.text(x, y, ects, null, null,'right');
                 
                 // doc.setFont("times");
                 

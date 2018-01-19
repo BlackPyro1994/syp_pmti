@@ -35,7 +35,7 @@ function update_rules()
                 if ((modul.split(",")[10] == "true") && (modul.split(",")[11] == katID))
                 {
                     pm += " ";
-                    pm += modulString[0];
+                    pm += modul.split(",")[0];
                 }
             })
             

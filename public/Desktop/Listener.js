@@ -146,7 +146,7 @@ $('#myModal-m07').on('click', '#popup-m07-ok', function (click)
         dozent = "Dozent";
     }
     append_free_module(global_mod_id, global_sem_id, name, v, u, p, pr, dozent, ects);
-    $("#" + global_mod_id).parent().parent().addClass('blocked');
+    $("#" + global_mod_id).parent().parent().addClass('blocked_wpp');
     
     $('#myModal-m07').modal('hide');
     
