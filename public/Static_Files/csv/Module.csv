@@ -1,4 +1,4 @@
-﻿Info Aufbau Datensätze: LV-ID;LV-Name;[SWS:]V;Ü;P;Pr;WiSe(1:ja/0:nein);SoSe(1:ja/0:nein);DozentIn;Pflichtseminar;Kat-ID
+﻿Info Aufbau Datensätze: LV-ID;LV-Name;[SWS:]V;Ü;P;Pr;WiSe(1:ja/0:nein);SoSe(1:ja/0:nein);DozentIn;ECTS;Pflichtseminar;Kat-ID
 THI;Theoretische Informatik;2;1;1;0;0;1;Randerath;5;true;PM
 FP;Forschungsprojekt;0;0;0;1;1;1;[NN];10;true;PM
 MAA;Masterarbeit;0;0;0;0;1;1;[NN];27;true;PM
@@ -22,25 +22,6 @@ DC;Digital Communications;2;1;0;1;1;0;Dettmar;5;false;WPK
 AVC;Audio-/Video Coding;2;1;0;0;0;1;Pörschmann/Silverberg;5;false;WPK
 RFSD;RF System Design;2;1;1;0;0;1;Kronberger;5;false;WPK
 ACC;Advanced Channel Coding;2;1;0;0;1;0;Dettmar;5;false;WPK
-KRY_WPP;Kryptographie;2;1;1;0;0;1;Knospe;5;false;WPP
-KOGA_WPP;Kombinatorische Optimierung und Graphenalgorithmen;2;2;0;0;1;0;Randerath;5;false;WPP
-WR_WPP;Wissenschaftliches Rechnen;2;1;1;0;0;1;Rhein;5;false;WPP
-HIM_WPP;Höhere Ingenieurmathematik;3;1;0;0;1;1;Knospe oder Schellong;5;false;WPP
-NGN_WPP;Next Generation Networks;2;1;1;0;0;1;Grebe;5;false;WPP
-ARP_WPP;Alternative Rechnerarchitekturen und Programmiersprachen;2;1;1;0;1;0;Hartung;5;false;WPP
-CI_WPP;Computational Intelligence;2;1;1;0;0;1;Bartz;5;false;WPP
-DBW_WPP;Datenbanken und Wissensrepräsentation;2;1;1;0;0;1;Büchel;5;false;WPP
-ITS_WPP;IT-Sicherheit;2;1;1;0;1;0;Knospe;5;false;WPP
-VKS_WPP;Verifikation komplexer SW-Systeme;2;1;1;0;0;1;[NN];5;false;WPP
-SEKM_WPP;Entwurf komplexer Softwaresysteme mit Komponenten und Mustern;2;1;1;0;1;0;Kreiser;5;false;WPP
-AMC_WPP;Advanced Multimedia Communications;2;1;1;0;1;0;Grebe;5;false;WPP
-AMS_WPP;Spezielle Aspekte autonomer mobiler Systeme;2;1;1;0;1;0;Yuan;5;false;WPP
-DMC_WPP;Digital Motion Control;2;1;1;0;0;1;[NN];5;false;WPP
-DSP_WPP;Digital Signal Processing;2;1;1;0;0;1;Elders-Boll;5;false;WPP
-DC_WPP;Digital Communications;2;1;0;1;1;0;Dettmar;5;false;WPP
-AVC_WPP;Audio-/Video Coding;2;1;0;0;0;1;Pörschmann/Silverberg;5;false;WPP
-RFSD_WPP;RF System Design;2;1;1;0;0;1;Kronberger;5;false;WPP
-ACC_WPP;Advanced Channel Coding;2;1;0;0;1;0;Dettmar;5;false;WPP
-PL_WPP;Projektleitung;0;0;0;3;1;0;[NN];5;false;WPP
-M07_WPP;Wahl(beliebig aus MaSG der F07);2;1;1;0;1;1;[NN];5;false;WPP
+PL;Projektleitung;0;0;0;3;1;0;[NN];5;false;WPP
+M07;Wahl(beliebig aus MaSG der F07);2;1;1;0;1;1;[NN];5;false;WPP
 ALM;Auflagenmodul;1;1;1;1;1;1;[NN];1;false;AMse;WPP

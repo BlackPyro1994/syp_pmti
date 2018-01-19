@@ -35,6 +35,7 @@
   <script src="@routes.Assets.versioned("Desktop/Functions/append_free_module.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/append_module.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/availability_mask_modules.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/availability_mask_semesters.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/blink.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/counter_minus.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/counter_plus.js")" type="text/javascript"></script>
@@ -46,20 +47,29 @@
   <script src="@routes.Assets.versioned("Desktop/Functions/getElementByIndex.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/getLast.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/hex.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/include.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/insert_module_in_catalog.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/insert_module_in_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/load.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/loading.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/loadJS.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/move_module_to_semester.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/new_plan.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/ok_button_new_plan.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/openFile.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/save.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/saveAlt.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/select_module.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/select_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/show_catalogs_modules.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/test_1.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/test_2.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/test_3.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/test_4.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/update_master_ects.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/update_semester_ects.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/updateModuleString.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Functions/updateRules.js")" type="text/javascript"></script>
 
   <body>
 
@@ -323,418 +333,43 @@
 
 		  var modulString = "";
 
-		  var loadJS = function (url, implementationCode, location)
-		  {
-			var scriptTag = document.createElement('script');
-			scriptTag.src = url;
-			location.appendChild(scriptTag);
-
-		  };
-
-		  function update_rules()
-		  {
-
-			$("#regeln").children().remove();
-
-			@for(kat<-katalogListe){
-
-			var katID = "@{kat(0)}";
-			var belegAnz = @kat(2);
-			var countBlocked = $("#" + katID).children().filter(".blocked").length;
-			var countWPPblocked = $("#" + katID).children().filter(".blocked_wpp").length;
-
-			if (katID == "WPP")
-			{
-			  countBlocked = countWPPblocked;
-			}
-
-			if ((belegAnz > 0) && (countBlocked < belegAnz))
-			{
-
-			  var pm = "Verpflichtend zu wählen:";
-
-			  @for(mod<-modulListe){
-
-			  if (("@{mod(10)}" == "true") && ("@{mod(11)}" == katID))
-			  {
-				pm += " ";
-				pm += "@{mod(0)}";
-			  }
-			  }
-
-			  if (pm != "Verpflichtend zu wählen:")
-			  {
-				$("#regeln").append('<div class ="row">' + '<div class ="col warnungen">' + '<p>' + 'Aus dem Katalog ' + '"@{kat(1)}"' + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + ' (' + pm + ')' + '</p>');
-			  }
-			  else
-			  {
-				$("#regeln").append('<div class ="row">' + '<div class ="col warnungen">' + '<p>' + 'Aus dem Katalog ' + '"@{kat(1)}"' + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + '</p>');
-			  }
-
-			}
-			}
-
-		  }
-
-		  function availability_mask_semesters(module_id)
-		  {
-			if (module_id)
-			{
-
-			  @for(mod<-modulListe){
-			  if ("@{mod(0)}" == module_id)
-			  {
-
-				// Sommer und nicht Winter
-
-				if (@{mod(6)} &&
-				!(@{mod(7)})
-			  )
-				{
-
-				  ("SOMMER");
-
-				  // ###                                 $("#div_semester").children().filter(":even").addClass('include');
-				  // ###                                 $("#div_semester").children().filter(":odd").removeClass('include');
-
-				  // $("#div_semester").children().children().not('.class_click_semester_row').hide(200);
-
-				  // ###                                 $("#div_semester").children().children().not('.class_click_semester_row').css('display', 'none');
-
-				}
-
-				// Winter und nicht Sommer
-
-			  else
-				if ((!@{mod(6)}) && @{mod(7)})
-				{
-
-				  ("WINTER");
-
-				  // ### $("#div_semester").children().filter(":odd").addClass('include');
-				  // ### $("#div_semester").children().filter(":even").removeClass('include');
-				  // ### $("#div_semester").children().children().not('.class_click_semester_row').hide(200);
-
-				  // $("#div_semester").children().children().not('.class_click_semester_row').css('display', 'block');
-
-				}
-
-				return;
-
-			  }
-			  }
-			}
-			else
-			{
-
-			  ("ELSE");
-
-			  // $("#div_semester").children().removeClass('include');
-
-			  // $("#div_semester").children().children().not('.class_click_semester_row').show(200);
-
-			}
-		  }
-
-		  function update_semester_ects(mod_id, sem_id, wert)
-		  {
-			var id = "sem_ects_anz" + sem_id;
-			(id);
-			var ects = Number(document.getElementById("" + id).textContent);
-
-			// wert = auswahl ob addieren oder subtrahieren
-			// 1 == adieren 0 == subtrahieren
-			if (wert == 1)
-			{
-			  @for(mod<-modulListe){
-			  if ("@{mod(0)}" == mod_id)
-			  {
-				if (mod_id == "ALM")
-				{
-				  document.getElementById("" + id).textContent = ects;
-				}
-				else
-				{
-				  ects = ects + @{mod(9)};
-				  document.getElementById("" + id).textContent = ects;
-				}
-			  }
-			  }
-			}
-			else if (wert == 0)
-			{
-			  @for(mod<-modulListe){
-			  if ("@{mod(0)}" == mod_id)
-			  {
-				if (mod_id == "ALM")
-				{
-				  document.getElementById("" + id).textContent = ects;
-				}
-				else
-				{
-				  ects = ects - @{mod(9)};
-				  document.getElementById("" + id).textContent = ects;
-				}
-			  }
-			  }
-			}
-		  }
-
-		  function update_master_ects(mod_id, wert)
-		  {
-
-			var ects = Number(document.getElementById("master_ects").textContent);
-
-			// wert = auswahl ob addieren oder subtrahieren
-			// 1 == adieren 0 == subtrahieren
-			if (wert == 1)
-			{
-			  @for(mod<-modulListe){
-			  if ("@{mod(0)}" == mod_id)
-			  {
-				if (mod_id == "ALM")
-				{
-				  document.getElementById("master_ects").textContent = ects;
-				}
-				else
-				{
-				  ects = ects + @{mod(9)};
-				  document.getElementById("master_ects").textContent = ects;
-				}
-			  }
-			  }
-			}
-			else if (wert == 0)
-			{
-			  @for(mod<-modulListe){
-			  if ("@{mod(0)}" == mod_id)
-			  {
-				if (mod_id == "ALM")
-				{
-				  document.getElementById("master_ects").textContent = ects;
-				}
-				else
-				{
-				  ects = ects - @{mod(9)};
-				  document.getElementById("master_ects").textContent = ects;
-				}
-			  }
-			  }
-			}
-		  }
-
-		  /*
-
-		  window.onload = function ()
-		  {
-			// include('javascripts/drag.js');
-			console.log("TEST");
-		  }
-
-		  function include(file)
-		  {
-			var script = document.createElement('script');
-			var type = document.createAttribute('type');
-			type.nodeValue = 'text/javascript';
-			script.setAttributeNode(type);
-			var source = document.createAttribute('src');
-			source.nodeValue = file;
-			script.setAttributeNode(source);
-			var head = document.getElementsByTagName('head')[0];
-			head.appendChild(script);
-		  }
-*/
-
-		  @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		  document.getElementById('file-input').onchange = function ()
-		  {
-			var file = this.files[0];
-
-			var reader = new FileReader();
-
-			reader.onload = function (progressEvent)
-			{
-			  var temp;
-
-			  var lines = this.result.split('\n');
-
-			  temp = lines[0].split(',');
-
-			  ok_button_new_plan({"count": temp[1], "semStart": temp[0]});
-
-			  for (var line = 1; line < lines.length; line++)
-			  {
-				temp = lines[line];
-
-				if (temp.split(',')[1] === "M07" || temp.split(',')[1] === "ALM")
-				{
-
-				  // temp = temp.substring(1);
-				  temp = temp.split(',');
-
-				  insert_module_in_semester(temp[1], temp[0], {
-					"mod_id": temp[1],
-					"sem_id": temp[0],
-					"name": temp[2],
-					"v": temp[3],
-					"u": temp[4],
-					"p": temp[5],
-					"pr": temp[6],
-					"dozent": temp[7],
-					"ects": temp[8]
-				  });
-
-				}
-				else
-				{
-
-				  temp = temp.split(',');
-
-				  insert_module_in_semester(temp[1], temp[0]);
-
-//				  for (var pos = 1; pos < temp.length; pos++)
-//				  {
-// 				     insert_module_in_semester(temp[pos], temp[0]);
-//				  }
-
-				}
-			  }
-
-			  document.getElementById('file-input').value = "";
-
-			};
-
-			reader.readAsText(file);
-
-		  }
-
-		  @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
-		  var openFile = function (event)
-		  {
-			var input = event.target;
-
-			var reader = new FileReader();
-			reader.onload = function ()
-			{
-			  // var dataURL = reader.result;
-
-			  loading(reader.result);
-
-			  // var output = document.getElementById('output');
-			  // output.src = dataURL;
-			};
-			reader.readAsDataURL(input.files[0]);
-		  };
-
-		  function loading(progressEvent)
-		  {
-
-			// $("#master_ects").innerText = 0;
-
-			// document.getElementById("count").textContent = 99;
-
-			var temp;
-
-			var lines = this.result.split('\n');
-
-			temp = lines[0].split(',');
-
-			ok_button_new_plan({"count": temp[1], "semStart": temp[0]});
-
-			for (var line = 1; line < lines.length; line++)
-			{
-			  temp = lines[line];
-
-			  if (temp.split(',')[1] === "M07" || temp.split(',')[1] === "ALM")
-			  {
-
-				// temp = temp.substring(1);
-				temp = temp.split(',');
-
-				insert_module_in_semester(temp[1], temp[0], {
-				  "mod_id": temp[1],
-				  "sem_id": temp[0],
-				  "name": temp[2],
-				  "v": temp[3],
-				  "u": temp[4],
-				  "p": temp[5],
-				  "pr": temp[6],
-				  "dozent": temp[7],
-				  "ects": temp[8]
-				});
-
-			  }
-			  else
-			  {
-
-				temp = temp.split(',');
-
-				insert_module_in_semester(temp[1], temp[0]);
-
-//				  for (var pos = 1; pos < temp.length; pos++)
-//				  {
-// 				     insert_module_in_semester(temp[pos], temp[0]);
-//				  }
-
-			  }
-			}
-
-			document.getElementById('file-input').value = "";
-
-		  };
-
-		  @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
-
 		  $(window).on('load', function ()
 		  {
 			console.log("$(window).on('load', function ()");
 
-			@for(katal <- katalogListe) {
-
-			add_catalog("@{katal(0)}", "@{katal(1)}");
-			katalogListe.push("@{katal(1)},@{katal(0)}");
-
+			@for(katal <- katalogListe){
+			katalogListe.push("@{katal(0)},@{katal(1)}");
 			}
 
-			@for(mod <- modulListe) {
+			@for(mod <- modulListe){
 
 			if ("@{mod(11)}" == "WPP")
 			{
-			  insert_module_in_catalog("@{mod(11)}", "@{mod(0)}_WPP", "@{mod(1)}");
-			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(8)},@{mod(9)}");
-			} else
+			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+			}
+			else
 			{
-			  insert_module_in_catalog("@{mod(11)}", "@{mod(0)}", "@{mod(1)}");
-			  modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(8)},@{mod(9)}");
+			  modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
 			}
 
 			if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
 			{
-			  insert_module_in_catalog("WPP", "@{mod(0)}_WPP", "@{mod(1)}");
-			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(8)},@{mod(9)}");
+			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
 			}
 
 			}
+
 			// loadJS('yourcode.js', yourCodeToBeCalled, document.body);
 
 		  });
 
 		  $(document).ready(function ()
 		  {
-			console.log("$(document).ready(function ()");
+			showCatalogs();
 
 			$("#button_new_plan").addClass("red_border");
 			$('#button_planLaden').addClass("red_border");
 
-			// test_1();
-			// test_2();
-
-			$(document).ready(function ()
-			{
-			  // test_3();
-			});
 
 		  });
 

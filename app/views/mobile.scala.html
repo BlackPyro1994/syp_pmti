@@ -40,6 +40,7 @@
   <script src="@routes.Assets.versioned("Mobile/Functions/update_master_ects.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/update_semester_ects.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/update_semester_ects_extra.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/updateModuleString.js")" type="text/javascript"></script>
 
   <body>
 	  <!-- Navbar -->
@@ -276,7 +277,7 @@
 		<div id="ects_text" class="col">
                     Master ECTS:
 		</div>
-		<div id="ects_punkte" class="col">
+		<div id="master_ects_punkte" class="col">
                 </div>
 	  </div>
 	</div>
@@ -307,10 +308,51 @@
 		  var master_ects = 0;
 		  var semester_ects = 0;
 
+		  var katalogListe = new Array();
+		  var modulListe = new Array();
+
+		  var modulString = "";
+
+
+		  $(window).on('load', function ()
+		  {
+		    console.log("$(window).on('load', function ()");
+
+		    @for(katal <- katalogListe){
+
+		    katalogListe.push("@{katal(0)},@{katal(1)}");
+
+		    }
+
+		    @for(mod <- modulListe){
+
+		    if ("@{mod(11)}" == "WPP")
+		    {
+			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+		    }
+		    else
+		    {
+			  modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+		    }
+
+		    if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
+		    {
+			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+		    }
+
+		    }
+
+		    // loadJS('yourcode.js', yourCodeToBeCalled, document.body);
+
+		  });
+
 		  $(document).ready(function ()
 		  {
+		    console.log("$(document).ready(function ()");
+
 		    $("#ects_text").text("Master ECTS: ");
-		    $("#ects_punkte").text(master_ects);
+		    $("#master_ects_punkte").text(master_ects);
+
 		  });
 
   </script>
