@@ -1,6 +1,6 @@
 function click_catalog(click)
 {
-    if (!blocked)
+    if (!$(click).hasClass("disabled-catalog"))
     {
         if (all_catalogs_closed == 0)
         {

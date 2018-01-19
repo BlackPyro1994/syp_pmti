@@ -44,9 +44,14 @@ function ok_button_new_plan(options)
     document.getElementById("fehlermeldung").textContent = "";
     
     $('#myModal-new_plan').modal('hide');
+    
     $(".class_p").removeClass('ausgewaehlt');
-    $(".class_p").parent().removeClass('blocked');
-    $(".class_p").parent().removeClass('blocked_wpp');
+    
+    
+    $(".disabled-catalog").removeClass('disabled-catalog');
+    
+    $(".btn-block.btn-light.rounded-semester").siblings().removeClass('blocked');
+    $(".btn-block.btn-light.rounded-semester").siblings().removeClass('blocked_wpp');
     
     document.getElementById("button_minus").disabled = false;
     document.getElementById("button_plus").disabled = false;

@@ -1,8 +1,7 @@
-﻿function select_module(caller)
+﻿function click_module(caller)
 {
-
-    ("mmmmmmmmmmmmmmmmmmmmmmmm");
-
+    console.log("TEST");
+    
     if (!$(caller).parent().parent().attr('class').includes("blocked"))
     {
 
@@ -31,7 +30,7 @@
 
             ausgewaehlt_modul = $(caller).attr('id');
 
-            // FEHLT NOCH !!!!!!!!!!!!!!!!!1
+            // FEHLT NOCH !!!!!!!!!!!!!!!!!
             // availability_mask_semesters(ausgewaehlt_modul);
 
         }

@@ -2,6 +2,12 @@ $(document).ready(function ()
 {
     document.getElementById('file-input').onchange = function ()
     {
+        
+        $(".disabled-catalog").removeClass('disabled-catalog');
+        
+        $(".btn-block.btn-light.rounded-semester").siblings().removeClass('blocked');
+        $(".btn-block.btn-light.rounded-semester").siblings().removeClass('blocked_wpp');
+        
         var file = this.files[0];
         var reader = new FileReader();
         
