@@ -1,15 +1,24 @@
 function update_rules()
 {
+    console.log("");
+    
     $("#regeln").children().remove();
     
-    katalogListe.forEach(function (t)
+    katalogListe.forEach(function (katalog)
     {
-        var katID = t.split(",")[0];
+        var katID = katalog.split(",")[0];
         
-        var belegAnz = t.split(",")[2];
+        var belegAnz = katalog.split(",")[2];
+        
+        console.log("Katalog Eintrag : " + katalog);
         
         var countBlocked = $("#" + katID).children().filter(".blocked").length;
+        
+        console.log("Anzahl Blocked : " + countBlocked);
+        
         var countWPPblocked = $("#" + katID).children().filter(".blocked_wpp").length;
+        
+        console.log("Anzahl Blocked WPP : " + countWPPblocked);
         
         if (katID == "WPP")
         {
@@ -20,24 +29,25 @@ function update_rules()
         {
             
             var pm = "Verpflichtend zu wählen:";
-            updateModuleString(id);
-            modulString = modulString.split(",");
             
-            if ((modulString[10] == "true") && (modulString[11] == katID))
+            modulListe.forEach(function (modul)
             {
-                pm += " ";
-                pm += modulString[0];
-            }
+                if ((modul.split(",")[10] == "true") && (modul.split(",")[11] == katID))
+                {
+                    pm += " ";
+                    pm += modulString[0];
+                }
+            })
             
             if (pm != "Verpflichtend zu wählen:")
             {
                 $("#regeln").append('<div class ="row">' + '<div class ="col warnungen">' + '<p>' + 'Aus dem Katalog '
-                    + t.split(",")[1] + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + ' (' + pm + ')' + '</p>');
+                    + katalog.split(",")[1] + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + ' (' + pm + ')' + '</p>');
             }
             else
             {
                 $("#regeln").append('<div class ="row">' + '<div class ="col warnungen">' + '<p>' + 'Aus dem Katalog '
-                    + t.split(",")[1] + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + '</p>');
+                    + katalog.split(",")[1] + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + '</p>');
             }
             
         }
