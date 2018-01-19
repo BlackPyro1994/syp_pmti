@@ -42,7 +42,12 @@ function update_master_ects(mod_id, wert)
 }
 
 */
-
+/**
+ * Aktualisiert die Master-ECTS Punkte mit den Werten des gewählten Moduls
+ *
+ * @param mod_id Die Modul ID des hinzugefügten Moduls
+ * @param wert Differenzierungsfaktor um zu addieren oder zu subtrahieren
+ */
 function update_master_ects(mod_id, wert)
 {
     var ects = Number(document.getElementById("master_ects_punkte").textContent);

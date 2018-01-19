@@ -1,3 +1,8 @@
+/**
+ * Löscht das ausgewählte Modul im Semester
+ *
+ * @param mod_id Die Modul ID
+ */
 function delete_module_from_semester(mod_id) {
     console.log("delete_module_from_semester(" + mod_id + ")");
     if (global_mod_id == "ALM") {

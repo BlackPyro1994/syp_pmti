@@ -1,3 +1,8 @@
+/**
+ *
+ *
+ * @param cat_id
+ */
 function store_catalog_name_by_id(cat_id)
 {
     var BreakException = {};

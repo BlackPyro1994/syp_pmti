@@ -1,3 +1,8 @@
+/**
+ * Setzt die Werte für die Überschrift, ECTS-Beschreibung und ECTS-Punkte.
+ * Löscht den aktuellen Inhalt der Seite und lädt die Semester.
+ *
+ */
 function overview() {
     
     console.log("overview()");

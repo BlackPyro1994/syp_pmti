@@ -21,12 +21,13 @@ function show_catalogs() {
 }
 
 */
-
-function show_catalogs()
-{
-    safe_modules = $("#div_semester").children();
-    
+/**
+ *
+ */
+function show_catalogs() {
     console.log("show_catalogs()");
+
+    safe_modules = $("#div_semester").children();
     emptyModal();
     $("#cat_footer").hide();
     

@@ -16,7 +16,7 @@ $('#div_semester').on('click', '.class_click_semester', function (click)
         show_semester_content(global_sem_id);
         
         $("#button_minus").hide();
-        $("#button_plus").text("Modul hinzufügen");
+        $("#button_plus").text("Add Modul");
         $("#button_plus").attr("onclick", "show_catalogs()");
         $("#brand").text("Semester: " + global_sem_id);
         //$("#ects_text").text("Semester ECTS: ");

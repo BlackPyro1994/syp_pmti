@@ -1,3 +1,7 @@
+/**
+ * Öffnet ein Modal beim hinzufügen von ALM oder M07
+ *
+ */
 function popup_extra_module() {
     console.log("popup_extra_module()");
     

@@ -1,4 +1,9 @@
-function store_module_data_by_id(param)
+/**
+ * Schreibt den Inhalt des Arrays in eine Variable
+ *
+ * @param id
+ */
+function store_module_data_by_id(id)
 {
     var index = 0;
     
@@ -11,9 +16,9 @@ function store_module_data_by_id(param)
             
             index++;
             
-            console.log(param + " == " + entry.split(',')[0] + " ? " );
+            console.log(id + " == " + entry.split(',')[0] + " ? " );
             
-            if (param == entry.split(',')[0])
+            if (id == entry.split(',')[0])
             {
                 console.log(entry);
                 
