@@ -1,11 +1,16 @@
 // Klick auf Semester in Übersicht
-$('#div_semester').on('click', '.class_click_semester', function (click) {
+$('#div_semester').on('click', '.class_click_semester', function (click)
+{
     var id = (click.target).id;
     console.log("Click div_semester ID: " + id);
     global_sem_id = (click.target).id.replace("sem", "");
     flip = 1;
     
-    if (!move) {
+    $("body > nav > div.dropdown > button > svg").toggleClass("fa-bars fa-arrow-left");
+    $("body > nav > div.dropdown > button").attr('onClick',"overview()");
+    
+    if (!move)
+    {
         safe_semester = $("#div_semester").children();
         $("#div_semester").children().remove();
         show_semester_content(global_sem_id);
@@ -16,7 +21,8 @@ $('#div_semester').on('click', '.class_click_semester', function (click) {
         $("#brand").text("Semester: " + global_sem_id);
         //$("#ects_text").text("Semester ECTS: ");
         //$("#ects_punkte").text(semester_ects);
-    } else {
+    } else
+    {
         safe_semester = $("#div_semester").children();
         $("#div_semester").children().remove();
         show_semester_content(global_sem_id);
@@ -36,7 +42,8 @@ $('#div_semester').on('click', '.class_click_semester', function (click) {
 // mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
 //Klick auf zurück-Button in Modulansicht im Popup "Modul"
-$('#myModal-catalogs').on('click', '#popup-catalogs-back', function (click) {
+$('#myModal-catalogs').on('click', '#popup-catalogs-back', function (click)
+{
     console.log("Zurück");
     open = 1;
     $("#cat_footer").hide();
@@ -46,7 +53,8 @@ $('#myModal-catalogs').on('click', '#popup-catalogs-back', function (click) {
 // mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
 //Klick auf move-Button (nach klick auf Modul im Semester)
-$('#myModal-modules').on('click', '#popup-module-move', function (click) {
+$('#myModal-modules').on('click', '#popup-module-move', function (click)
+{
     console.log("Move-Button Module: " + global_mod_id);
     $("#" + global_mod_id).remove();
     move = 1;
@@ -57,7 +65,8 @@ $('#myModal-modules').on('click', '#popup-module-move', function (click) {
 // mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
 //Klick auf delete-Button (nach klick auf Modul im Semester)
-$('#myModal-modules').on('click', '#popup-module-delete', function (click) {
+$('#myModal-modules').on('click', '#popup-module-delete', function (click)
+{
     console.log("Delete-Button Module: " + global_mod_id);
     $('#myModal-modules').modal('hide');
     delete_module_from_semester(global_mod_id);
@@ -66,7 +75,8 @@ $('#myModal-modules').on('click', '#popup-module-delete', function (click) {
 // mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
 //Klick auf Katalog im Popup
-$('#catalog_list').on('click', '.class_click_catalog', function (click) {
+$('#catalog_list').on('click', '.class_click_catalog', function (click)
+{
     console.log("Click on Katalog ID: " + (click.target).id);
     global_catalog_id = (click.target).id;
     
@@ -77,15 +87,18 @@ $('#catalog_list').on('click', '.class_click_catalog', function (click) {
 // mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
 //Klick auf Modul im Popup(nach klick auf Katalog)
-$('#catalog_list').on('click', '.class_click_modules', function (click) {
+$('#catalog_list').on('click', '.class_click_modules', function (click)
+{
     global_mod_id = (click.currentTarget).id;
     console.log("Add Modul ID: " + global_mod_id);
     
     $('#myModal-catalogs').modal('hide');
     emptyModal();
-    if (global_mod_id == "ALM" || global_mod_id == "M07") {
+    if (global_mod_id == "ALM" || global_mod_id == "M07")
+    {
         popup_extra_module();
-    } else {
+    } else
+    {
         append_module_in_semester(global_mod_id);
         update_master_ects(global_mod_id, 1);
         //update_semester_ects(global_mod_id,1);
@@ -97,7 +110,8 @@ $('#catalog_list').on('click', '.class_click_modules', function (click) {
 // mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
 //Klick auf Modul in Semesteransicht
-$('#div_semester').on('click', '.class_click_modules_in_semester', function (click) {
+$('#div_semester').on('click', '.class_click_modules_in_semester', function (click)
+{
     global_mod_id = (click.currentTarget).id;
     console.log("Click on Modul ID: " + global_mod_id);
     
@@ -168,6 +182,5 @@ $('#myModal-freitext').on('click', '#popup-freitext-ok', function (click)
     //update_semester_ects_extra(1, ects);
     
 });
-
 
 
