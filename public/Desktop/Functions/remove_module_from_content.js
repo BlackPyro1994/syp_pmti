@@ -14,7 +14,7 @@ function remove_module_from_content(module_id)
         {
             for (mod = 0; mod < content[sem].length; mod++)
             {
-                if ((content[sem][mod].split(","))[0] == module_id)
+                if (content[sem][mod][0] == module_id)
                 {
                     position_x = sem;
                     position_y = mod;

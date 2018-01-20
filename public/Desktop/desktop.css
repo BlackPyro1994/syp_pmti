@@ -42,37 +42,45 @@ body {
     overflow-y: scroll;
 }
 
+.rounded-menu {
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 0.5%;
+    vertical-align: middle;
+    margin-top: 0.5%;
+}
+
 .rounded {
     border: 2px solid #000;
-    border-radius: 10px;
+    border-radius: 5px;
     /*padding: 0.5%;*/
-    /*margin-top: 0.5%;*/
+    margin-top: 0.5%;
 }
 
 .rounded-semester {
     border: 2px solid #000;
-    border-radius: 10px;
+    border-radius: 5px;
     /*padding-top: 3px;*/
     /*margin-left: 0.3%;*/
 }
 
 .rounded-catalog {
     border: 2px solid #000;
-    border-radius: 10px;
+    border-radius: 5px;
     /*padding-top: 3px;*/
     /*margin-left: 0.3%;*/
 }
 
 .rounded-scrollbar-left {
     border: 2px solid #000;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px;
     overflow-x: hidden;
 }
 
 .katalog {
     border: 1px solid #000;
-    border-radius: 10px;
+    border-radius: 5px;
     /*margin-bottom: 8px;*/
     /*padding: 5px;*/
     background: #eee;
@@ -80,7 +88,7 @@ body {
 
 .semester-border {
     border: 2px solid #000;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px;
 }
 
@@ -106,13 +114,13 @@ p {
 .blocked{
     color: #aaa;
     background-color: #8c8c8c;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .blocked_wpp {
     color: #aaa;
     background-color: #8c8c8c;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .include {
@@ -132,26 +140,26 @@ html, body {
 .rules {
     margin-top: 0.3%;
     border: 2px solid #dc3545;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .semester-gesamt {
     margin-top: 0.5%;
     border: 2px solid #000;
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
 }
 
 .semester {
     border: 2px solid #000;
-    border-radius: 10px;
+    border-radius: 5px;
     margin: 0.3%;
     overflow: hidden;
 }
 
 .modul {
     border: 2px solid #000;
-    border-radius: 10px;
+    border-radius: 5px;
     margin: 0.3%;
     display: none;
     overflow: hidden;
@@ -185,7 +193,7 @@ html, body {
 
 ul li ul li {
     border: 1px solid #000;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 ul .abstand li {
@@ -215,7 +223,7 @@ ul .abstand li {
     color: #fff;
     text-align: center;
     padding: 5px 0;
-    border-radius: 6px;
+    border-radius: 5px;
 
     /* Position the tooltip text - see examples below! */
     position: absolute;

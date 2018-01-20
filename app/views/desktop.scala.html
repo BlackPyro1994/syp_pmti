@@ -198,7 +198,7 @@
 	  </div>
 		<!-- Container Menüleiste -->
 	  <div class = "container-fluid">
-		<div class = "row rounded" align = "center">
+		<div class = "row rounded-menu" align = "center">
 
 		  <div class = "col" align = "center">
 			<button id ="button_new_plan" type = "button" class = "btn btn-primary" content-toggle = "modal" onclick="new_plan()">
@@ -373,28 +373,34 @@
 
 		    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
-		    $('#div_semester').on('click', '.button_delete', function (event)
-		    {
-			  event.stopPropagation();
-			  console.log("LÖSCHEN");
-		      console.log($(event.target).closest("div"));
-		      // var modul_id = $(event.target).previousSibling().attr("id");
-		      var modul_id = $(event.target).siblings ("div").attr("id");
-		      console.log(modul_id);
-		      delete_module_from_semester(modul_id,sem_id);
+			  $('#div_semester').on('click', '.button_delete', function (event)
+			  {
+				  event.stopPropagation();
+				  console.log("LÖSCHEN");
+				  console.log($(event.target).closest("div"));
+				  // var modul_id = $(event.target).previousSibling().attr("id");
+				  var modul_id = $(event.target).siblings ("div").attr("id");
 
-		    });
+				  var semester_id = $(event.target).parent().parent().attr("id").replace("semester_","")
+				  modul_id = modul_id.replace("mod_","");
+				  console.log(semester_id);
+				  console.log(modul_id);
+				  delete_module_from_semester(modul_id,semester_id);
+
+			  });
 
 		    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
-		    $('#div_semester').on('click', '.button_move', function (event)
-		    {
-			  event.stopPropagation();
-			  console.log($(event.target).closest("div"));
-		      var modul_id = $(event.target).siblings("div").attr("id");
-		      console.log(modul_id);
-			  console.log("VERSCHIEBEN");
-		    });
+			  $('#div_semester').on('click', '.button_move', function (event)
+			  {
+				  event.stopPropagation();
+				  console.log($(event.target).closest("div"));
+				  var modul_id = $(event.target).siblings("div").attr("id");
+				  var semester_id = $(event.target).parent().parent().attr("id").replace("semester_","")
+				  console.log("Semester : " + semester_id);
+				  console.log("Modul : " + modul_id);
+				  console.log("VERSCHIEBEN");
+			  });
 
 		    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
@@ -403,12 +409,12 @@
 		    $('#button_planLaden').addClass("red_border");
 
 
-		    // add_semester(startSem);
-		    // add_semester(startSem);
+		    add_semester(startSem);
+		    //add_semester(startSem);
 		    // add_semester(startSem);
 
-		    // append_module("THI",1)
-		    // append_module("KRY",1)
+		    append_module("THI",1)
+		    append_module("KRY",1)
 		    // append_module("KOLL",1)
 
 		    // $("*").on("click", click_selector);

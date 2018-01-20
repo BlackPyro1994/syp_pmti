@@ -6,24 +6,24 @@ function select_semester(caller)
 
     // caller.currentTarget;
     // console.log(caller);
-    
-    console.log($(caller.target).closest("button").attr("id"));
+
+    var id = $(caller.target).closest("button").attr("id");
+    //console.log("SEMESTER::: "+$(caller.target).closest("button").attr("id"));
     
     // $(caller).toggleClass('ausgewaehlt');
     // $(caller.currentTarget).toggleClass('ausgewaehlt');
     // $(caller.target).toggleClass('ausgewaehlt');
-    
-    return;
-    
-    if ($(caller).attr('class').includes("ausgewaehlt"))
+
+    //console.log("CLASS: "+$(caller.target).closest("button").attr('class'));
+    if ($(caller.target).closest("button").hasClass("ausgewaehlt"))
     {
 
-        $(caller).toggleClass('ausgewaehlt');
+        $("#"+id).toggleClass('ausgewaehlt');
     }
     else
     {
         $('#div_semester').children().removeClass('ausgewaehlt');
-        $(caller).toggleClass('ausgewaehlt');
+        $("#"+id).toggleClass('ausgewaehlt');
 
     }
 
@@ -52,7 +52,7 @@ function select_semester(caller)
     else
     {
         // ausgewaehlt_semester = $(caller).children().children().html().replace("Semester ", "");
-        ausgewaehlt_semester = $(caller).children().children().html().substring(0, 1);
+        ausgewaehlt_semester = id;
     }
 
 }

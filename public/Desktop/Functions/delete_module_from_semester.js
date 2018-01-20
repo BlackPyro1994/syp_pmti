@@ -7,7 +7,8 @@ function delete_module_from_semester(id,sem_id)
     var mod_id = "mod_" + id;
     
     console.log("Lösche Modul ("+mod_id+") aus Semester ("+sem_id+")");
-    
+
+    $("#" + mod_id).siblings().remove();
     $("#" + mod_id).remove();
     $("#" + id).parent().parent().removeClass('blocked');
     $("#" + id).parent().parent().removeClass('blocked_wpp');
