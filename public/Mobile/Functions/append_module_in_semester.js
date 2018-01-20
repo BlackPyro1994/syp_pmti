@@ -35,5 +35,4 @@ function append_module_in_semester(mod_id) {
 
         '<p id="' + mod_id + '">Dozent: ' + search_result[8] + '</p></div></div></button></div>');
 
-    update_rules();
 }

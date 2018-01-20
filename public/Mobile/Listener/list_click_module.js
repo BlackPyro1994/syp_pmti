@@ -13,7 +13,14 @@ function list_click_module(click) {
         //update_semester_ects(global_mod_id,1);
     }
     if(global_mod_id != "ALM") {
+        //wenn mod_id includes _WPP dann cat_id == WPP
         blocked.push(global_mod_id);
-        catalog_array.push(global_catalog_id);
+
+        if(global_mod_id.includes("_WPP")) {
+            catalog_array.push("WPP");
+        } else {
+            catalog_array.push(global_catalog_id);
+        }
+        update_rules();
     }
 }

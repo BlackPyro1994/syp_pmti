@@ -8,18 +8,19 @@ function update_rules() {
 
     katalogListe.forEach(function (katalog) {
         var katID = katalog.split(",")[0];
-
         var belegAnz = katalog.split(",")[2];
+        var countBlocked = 0;
 
-        var countBlocked = $("#" + katID).children().filter(".blocked").length;
-
-        var countWPPblocked = $("#" + katID).children().filter(".blocked_wpp").length;
-
-        if (katID == "WPP") {
-            countBlocked = countWPPblocked;
+        for(i=0;i<catalog_array.length;i++) {
+            if(katID == catalog_array[i]) {
+                countBlocked++;
+                console.log("BLOCKED ++: "+countBlocked);
+            }
         }
 
         if ((belegAnz > 0) && (countBlocked < belegAnz)) {
+            console.log("INHALT: "+catalog_array);
+            console.log("BLOCKED: "+countBlocked);
 
             var pm = "Verpflichtend zu wählen:";
 
@@ -41,5 +42,4 @@ function update_rules() {
 
         }
     });
-
 }

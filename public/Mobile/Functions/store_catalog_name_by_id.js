@@ -13,7 +13,8 @@ function store_catalog_name_by_id(cat_id)
         {
             if (entry.split(',')[0] == cat_id)
             {
-                search_result = entry.split(',')[1];
+                //search_result = entry.split(',')[1];
+                search_result = entry.split(',');
                 throw BreakException;
             }
             
