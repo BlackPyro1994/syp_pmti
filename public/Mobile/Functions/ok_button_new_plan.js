@@ -4,6 +4,9 @@
  */
 function ok_button_new_plan()
 {
+
+    console.log("function ok_button_new_plan()");
+
     content = [];
     
     console.log("ok_button_new_plan()");

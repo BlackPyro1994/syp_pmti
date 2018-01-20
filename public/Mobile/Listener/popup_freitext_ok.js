@@ -6,7 +6,9 @@
  */
 function popup_freitext_ok(click) {
 
-    console.log("Klick auf OK-Button ALM");
+    console.log("function popup_freitext_ok(click) {");
+
+    // console.log("Klick auf OK-Button ALM");
 
     var name;
     var v, u, p, pr;

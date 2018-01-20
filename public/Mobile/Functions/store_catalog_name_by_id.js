@@ -5,6 +5,8 @@
  */
 function store_catalog_name_by_id(cat_id)
 {
+    console.log("function store_catalog_name_by_id(cat_id)");
+
     var BreakException = {};
     
     try

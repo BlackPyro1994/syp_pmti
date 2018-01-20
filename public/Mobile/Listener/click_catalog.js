@@ -5,7 +5,10 @@
  * @param click
  */
 function click_catalog(click) {
-    console.log("click_catalog ID: " + (click.target).id);
+
+    console.log("function click_catalog(click)");
+
+    // console.log("click_catalog ID: " + (click.target).id);
     global_catalog_id = (click.target).id;
     close = 0;
 

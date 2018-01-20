@@ -3,6 +3,6 @@
  *
  */
 function emptyModal() {
-    console.log("emptyModal()");
+    console.log("function emptyModal()");
     $("#catalog_list").children().remove();
 }

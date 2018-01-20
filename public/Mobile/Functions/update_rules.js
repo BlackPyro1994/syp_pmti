@@ -5,7 +5,9 @@
  *
  */
 function update_rules() {
-    console.log("update_rules()");
+
+    console.log("function update_rules()");
+
 
     $("#regeln").children().remove();
 
@@ -17,13 +19,13 @@ function update_rules() {
         for(i=0;i<catalog_array.length;i++) {
             if(katID == catalog_array[i]) {
                 countBlocked++;
-                console.log("BLOCKED ++: "+countBlocked);
+                // console.log("BLOCKED ++: "+countBlocked);
             }
         }
 
         if ((belegAnz > 0) && (countBlocked < belegAnz)) {
-            console.log("INHALT: "+catalog_array);
-            console.log("BLOCKED: "+countBlocked);
+            // console.log("INHALT: "+catalog_array);
+            // console.log("BLOCKED: "+countBlocked);
 
             var pm = "Verpflichtend zu wählen:";
 

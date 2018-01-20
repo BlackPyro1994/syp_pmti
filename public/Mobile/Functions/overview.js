@@ -4,7 +4,9 @@
  *
  */
 function overview() {
-    
+
+    console.log("function overview()");
+
     console.log("overview()");
     $("#brand").text("Übersicht");
     $("#ects_text").text("Master ECTS: ");

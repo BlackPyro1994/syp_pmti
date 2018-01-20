@@ -5,7 +5,7 @@
  * @param ects Übergebene Anzahl der ECTS-Punkte
  */
 function update_semester_ects_extra(wert, ects) {
-    console.log("update_semester_ects_extra(" + wert + "," + ects + ")");
+    console.log("function update_semester_ects_extra(" + wert + "," + ects + ")");
     
     // wert = auswahl ob addieren(1) oder subtrahieren(0)
     if (wert == 1) {

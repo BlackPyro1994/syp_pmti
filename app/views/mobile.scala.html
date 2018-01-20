@@ -71,7 +71,7 @@
                                 <button class ="btn btn-primary btn-block btn-space" type="button">Plan laden</button>
                             </div>
                             <div class="col">
-                                <button class ="btn btn-primary btn-block" type="button">PDF erstellen</button>
+                                <button class ="btn btn-primary btn-block" type="button" id="button_pdf">PDF erstellen</button>
                             </div>
                         </div>
                     </div>
@@ -351,6 +351,7 @@
 
                 //  ###################################################################################
 
+                $('#button_pdf').on('click', create_pdf);
                 $('#div_semester').on('click', '.class_click_semester', click_semester);
                 $('#div_semester').on('click', '.class_click_modules_in_semester', click_modules_in_semester);
                 $('#catalog_list').on('click', '.class_click_catalog', click_catalog);

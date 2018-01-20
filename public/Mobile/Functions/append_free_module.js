@@ -10,7 +10,7 @@
  * @param ects Anzahl der ECTS Punkte für das Modul
  */
 function append_free_module(name, v, u, p, pr, dozent, ects) {
-    console.log("append_free_module(" + name + "," + v + "," + u + "," + p + "," + pr + "," + dozent + "," + ects + ")");
+    console.log("function append_free_module(" + name + "," + v + "," + u + "," + p + "," + pr + "," + dozent + "," + ects + ")");
     
     if (global_mod_id == "ALM" && name == "")
         name = "Name";

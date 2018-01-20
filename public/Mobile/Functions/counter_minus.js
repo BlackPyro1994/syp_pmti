@@ -4,7 +4,7 @@
  */
 function counter_minus()
 {
-    console.log("counter_minus()");
+    console.log("function counter_minus()");
     if (count > 0)
     {
         count--;

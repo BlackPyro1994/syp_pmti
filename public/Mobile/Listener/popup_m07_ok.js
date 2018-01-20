@@ -5,7 +5,9 @@
  * @param click Auf das geklickte Element.
  */
 function popup_m07_ok(click) {
-    console.log("Klick auf OK-Button M07_WPP");
+
+    console.log("function popup_m07_ok(click) {");
+    // console.log("Klick auf OK-Button M07_WPP");
 
     var name;
     var v, u, p, pr;
