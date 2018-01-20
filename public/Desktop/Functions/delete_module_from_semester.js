@@ -1,8 +1,8 @@
-function delete_module_from_semester(caller)
+function delete_module_from_semester(id,sem_id)
 {
-    var id = $(caller).parent().parent().children().first().text().replace("ID: ", "");
+    // var id = $(caller).parent().parent().children().first().text().replace("ID: ", "");
     
-    var sem_id = $(caller).parent().parent().parent().children().children().first().text();
+    // var sem_id = $(caller).parent().parent().parent().children().children().first().text();
     
     var mod_id = "mod_" + id;
     

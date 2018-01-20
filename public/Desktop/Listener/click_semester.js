@@ -1,8 +1,13 @@
 function click_semester(click)
 {
+    console.log(click);
+    select_semester(click);
+    
+    /*
     
     click.preventDefault();
     click = click.target;
+    
     
     if ($(click).attr('class').includes("class_click_delete"))
     {
@@ -32,5 +37,7 @@ function click_semester(click)
         var new_click = $(click).parent();
         select_semester(new_click);
     }
+    */
+    
     
 }

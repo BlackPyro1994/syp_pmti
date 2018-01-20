@@ -4,6 +4,17 @@ function select_semester(caller)
     // ###                     $("#div_semester").children().removeClass('include');
     // ###                     $("#div_semester").children().filter(":odd").children().first().siblings().show();
 
+    // caller.currentTarget;
+    // console.log(caller);
+    
+    console.log($(caller.target).closest("button").attr("id"));
+    
+    // $(caller).toggleClass('ausgewaehlt');
+    // $(caller.currentTarget).toggleClass('ausgewaehlt');
+    // $(caller.target).toggleClass('ausgewaehlt');
+    
+    return;
+    
     if ($(caller).attr('class').includes("ausgewaehlt"))
     {
 
@@ -11,7 +22,6 @@ function select_semester(caller)
     }
     else
     {
-
         $('#div_semester').children().removeClass('ausgewaehlt');
         $(caller).toggleClass('ausgewaehlt');
 
