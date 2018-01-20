@@ -1,7 +1,7 @@
 /**
+ * Sucht in der Katalogliste einen Wert anhand der Katalog ID
  *
- *
- * @param cat_id
+ * @param cat_id Die Katalog ID
  */
 function store_catalog_name_by_id(cat_id)
 {

@@ -1,5 +1,5 @@
 /**
- * Löscht das ausgewählte Modul im Semester
+ * Löscht das ausgewählte Modul im Semester und gibt dieses wieder in dem blocked und catalog_array array frei
  *
  * @param mod_id Die Modul ID
  */

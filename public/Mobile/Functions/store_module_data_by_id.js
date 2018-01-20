@@ -1,7 +1,7 @@
 /**
- * Schreibt den Inhalt des Arrays in eine Variable
+ * Sucht in der Modulliste einen Wert anhand der Modul ID
  *
- * @param id
+ * @param id Die Modul ID
  */
 function store_module_data_by_id(id) {
     console.log("store_module_data_by_id("+id+")");

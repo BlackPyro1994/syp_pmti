@@ -22,6 +22,7 @@ function show_catalogs() {
 
 */
 /**
+ * Speichert den aktuellen Inhalt des Semesters, setzt den Titel des Modals und dessen Icon zum Abbrechen
  *
  */
 function show_catalogs() {
@@ -31,7 +32,7 @@ function show_catalogs() {
     safe_modules = $("#div_semester").children();
     close = 1;
     emptyModal();
-    $("#cat_footer").hide();
+    //$("#cat_footer").hide();
     
     katalogListe.forEach(function (t)
     {

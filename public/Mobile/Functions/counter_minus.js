@@ -9,8 +9,9 @@ function counter_minus()
     {
         count--;
     }
-    
     $("#div_semester").children().last().remove();
+    //blocked Modules löschen
+    //catalog_array daten löschen
     
     //update_rules();
 }

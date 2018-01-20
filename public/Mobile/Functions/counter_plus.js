@@ -1,5 +1,5 @@
 /**
- * Fügt ein neues Semester an der untersten Stelle der Gesamtübersicht hinzu und zählt die Anzahl der Semester hoch
+ * Erhöht die Anzahl der Semester (count)
  *
  */
 function counter_plus() {

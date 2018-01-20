@@ -1,12 +1,17 @@
-function popup_m07_ok(click)
-{
-    console.log("Klick auf OK-Button M07");
-    
+/**
+ * Führt die Aktion beim klicken auf den ok-Button des M07_WPP Moduls aus.
+ * Übernimmt die dort eingetragenen Werte, speichert diese und schließt das Modal.
+ *
+ * @param click Auf das geklickte Element.
+ */
+function popup_m07_ok(click) {
+    console.log("Klick auf OK-Button M07_WPP");
+
     var name;
     var v, u, p, pr;
     var dozent;
     var ects;
-    
+
     name = $("#input-name-m07").val();
     v = 2;
     u = 1;
@@ -14,16 +19,14 @@ function popup_m07_ok(click)
     pr = 0;
     dozent = $("#input-dozent-m07").val();
     ects = 5;
-    
-    if (global_mod_id == "M07" && name == "")
-    {
+
+    if (global_mod_id == "M07_WPP" && name == "") {
         name = "Name";
     }
-    if (global_mod_id == "M07" && dozent == "")
-    {
+    if (global_mod_id == "M07_WPP" && dozent == "") {
         dozent = "Dozent";
     }
-    
+
     append_free_module(name, v, u, p, pr, dozent, ects);
     $('#myModal-m07').modal('hide');
     update_master_ects(global_mod_id, 1);

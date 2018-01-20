@@ -1,7 +1,8 @@
 /**
+ * Führt die Aktion beim klicken auf den zurück-Button in der Modulansicht oder der Katalogansicht aus.
  *
  *
- * @param click
+ * @param click Auf das geklickte Element
  */
 function popup_catalog_back(click) {
     console.log("Zurück");
