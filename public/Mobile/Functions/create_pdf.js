@@ -4,7 +4,7 @@
  */
 function create_pdf() {
 
-    console.log("function create_pdf() {");
+    console.log("function create_pdf()");
 
     var doc = new jsPDF('landscape');
     var x = 11;
@@ -14,6 +14,7 @@ function create_pdf() {
     var sem_zahl, sem_ects, str;
     var master_ects = 0;
     var restplatz = 150;
+    var liste;
 
     var horizontal_values = [27, 160, 5, 5, 5, 8, 277];
 
@@ -56,7 +57,7 @@ function create_pdf() {
 
 
         var anz_Module = catalog_array.length;
-        console.log(anz_Module);
+        console.log("Anzahl Module: "+anz_Module);
 
         if (((anz_Module * 5) + 16) > restplatz) {
             doc.addPage();
@@ -111,25 +112,40 @@ function create_pdf() {
             // Semester i beginnt mit 1
 
             // content[i-1].forEach(function (entry)
+            //console.log("Content: " + content);
+            //console.log("Content i-1 : " + content[i - 1]);
+//j < content[i-1].length
 
-            console.log("Content i-1 : " + content[i - 1]);
-
-            for (j = 0; j < content[i - 1].length; j++) {
+            for (j = 0; j<content[i-1].length; j++) {
+                console.log("i: "+i);
+                console.log("Content i-1 : " + content[i - 1]);
+                console.log("content[i-1].length " +content[i-1].length);
                 console.log("FOR : " + "(" + j + ")");
-                console.log("Semester : (" + j + ") Modul : (" + (content[i - 1])[j] + ")");
+               // console.log("Semester : (" + j + ") Modul : (" + (content[i - 1])[j] + ")");
+                //console.log("content[i - 1])[j].length: " + content.length);
+                console.log("content[i-1].length: " + content[i-1].length);
+                console.log(content[i - 1][j]);
+                liste = (content[i - 1][j]) ;
 
-                var liste = (content[i - 1])[j];
-
-                console.log("Liste : " + liste);
+               // console.log("Liste : " + liste);
+                console.log(liste);
 
                 id = liste[0];
+                console.log("id: "+id);
                 name = liste[1];
+                console.log("name: "+name);
                 v = liste[2];
+                console.log("v: "+v);
                 u = liste[3];
+                console.log("u: "+u);
                 p = liste[4];
+                console.log("p: "+p);
                 pr = liste[5];
+                console.log("pr: "+pr);
                 dozent = liste[8];
+                console.log("dozent: "+dozent);
                 ects = liste[9];
+                console.log("ects: "+ects);
 
                 doc.setFont("courier");
                 doc.setFontSize(10);

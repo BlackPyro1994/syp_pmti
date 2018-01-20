@@ -24,8 +24,10 @@ function append_module_in_semester(mod_id) {
         '<p id="' + mod_id + '">Dozent: ' + search_result[8] + '</p></div></div></button></div>');
 
     console.log("search_result: "+ search_result);
-    content[global_sem_id - 1].push(search_result);
-    // console.log("conetnt von global_sem_id-1: "+ content[global_sem_id -1]);
+    content[global_sem_id -1].push(search_result);
+    //content[global_sem_id].push(search_result);
+
+    console.log("content: "+ content);
 
 
 }
