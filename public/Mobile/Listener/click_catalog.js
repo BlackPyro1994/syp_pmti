@@ -1,3 +1,9 @@
+/**
+ * Führt die Aktion beim klicken auf einen Katalog im Modal aus.
+ * Die Überschrift und das Icon des Modals werden angepasst.
+ *
+ * @param click
+ */
 function click_catalog(click) {
     console.log("click_catalog ID: " + (click.target).id);
     global_catalog_id = (click.target).id;

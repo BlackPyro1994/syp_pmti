@@ -1,3 +1,9 @@
+/**
+ * Führt die Aktion beim klicken auf ein Module im Modal aus.
+ * Schließt das Modal, fügt die Modul ID dem blocked und dessen Katalog ID dem catalog_array array hinzu.
+ *
+ * @param click Auf das geklickte Element
+ */
 function list_click_module(click) {
     global_mod_id = (click.currentTarget).id;
     console.log("Add Modul ID: " + global_mod_id);
