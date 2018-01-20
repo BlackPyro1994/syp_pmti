@@ -379,9 +379,9 @@
 			  console.log("LÖSCHEN");
 		      console.log($(event.target).closest("div"));
 		      // var modul_id = $(event.target).previousSibling().attr("id");
-		      var modul_id = $(event.target).siblings("div").attr("id");
+		      var modul_id = $(event.target).siblings ("div").attr("id");
 		      console.log(modul_id);
-		      delete_module_from_semester(id,sem_id);
+		      delete_module_from_semester(modul_id,sem_id);
 
 		    });
 
