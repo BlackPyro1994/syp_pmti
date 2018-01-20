@@ -377,7 +377,10 @@
 		    {
 			  event.stopPropagation();
 			  console.log("LÖSCHEN");
-		      var modul_id = $(caller.target).previousSibling().attr("id");
+		      console.log($(event.target).closest("div"));
+		      // var modul_id = $(event.target).previousSibling().attr("id");
+		      var modul_id = $(event.target).siblings("div").attr("id");
+		      console.log(modul_id);
 		      delete_module_from_semester(id,sem_id);
 
 		    });
@@ -387,7 +390,9 @@
 		    $('#div_semester').on('click', '.button_move', function (event)
 		    {
 			  event.stopPropagation();
-		      var modul_id = $(caller).closest("div").attr("id");
+			  console.log($(event.target).closest("div"));
+		      var modul_id = $(event.target).siblings("div").attr("id");
+		      console.log(modul_id);
 			  console.log("VERSCHIEBEN");
 		    });
 
