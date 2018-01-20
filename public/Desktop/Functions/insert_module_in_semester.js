@@ -1,5 +1,6 @@
 ﻿function insert_module_in_semester(mod_id, sem_id, optional)
 {
+    console.log("("+open_catalog+")");
     $("#" + open_catalog).siblings().toggle(200);
     
     get_element_by_index(content, sem_id).push(new Array());

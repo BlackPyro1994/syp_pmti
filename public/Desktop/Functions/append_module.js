@@ -4,8 +4,9 @@
     
     search_result = search_result.split(",");
     
-    
-    $("#div_semester").children().filter(":nth-child(" + sem_id + ")").append(
+    console.log($("#div_semester"));
+    console.log("sem_id: "+sem_id);
+    $("#div_semester").children().filter(":nth-child(#" + sem_id + ")").append(
         
         '<div class = "row" > ' +
             '<div '+'id="mod_' + mod_id + '"' + 'class = "col-10">' +
