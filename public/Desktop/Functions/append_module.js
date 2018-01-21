@@ -6,6 +6,7 @@
 
     if (!moving) {
         update_master_ects(mod_id, 1);
+        
     }
 
     var filter_string = ":nth-child(" + sem_id + ")";
