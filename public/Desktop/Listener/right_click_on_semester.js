@@ -1,4 +1,4 @@
-function right_click_on_semester(click)
+function right_click_on_semester(caller)
 {
     console.log($(caller.target));
     
