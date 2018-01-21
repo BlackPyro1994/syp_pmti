@@ -14,6 +14,7 @@ function click_semester(click) {
     global_sem_id = (click.target).id.replace("sem", "");
     flip = 1;
 
+    //$("body > nav > div.dropdown > button").prop("onclick",null);
     $("body > nav > div.dropdown > button > svg").toggleClass("fa-bars fa-arrow-left");
     $("body > nav > div.dropdown > button").attr('onClick', "overview()");
 

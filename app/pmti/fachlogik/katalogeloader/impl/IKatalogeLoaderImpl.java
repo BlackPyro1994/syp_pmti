@@ -16,7 +16,10 @@ public class IKatalogeLoaderImpl implements IKatalogeLoader {
         kataloge = new IRKatalogImpl();
     }
 
-
+    /**
+     *
+     * @return
+     */
     @Override
     public List<KatalogGrenz> getKataloge() {
         ArrayList<KatalogGrenz> rueckgabe = new ArrayList<>();

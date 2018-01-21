@@ -16,6 +16,10 @@ public class IModuleLoaderImpl implements IModuleLoader {
         module = new IRModulImpl();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<ModulGrenz> getModule() {
         ArrayList<ModulGrenz> rueckgabe = new ArrayList<>();

@@ -30,8 +30,7 @@ function create_pdf() {
     doc.text(285, y, "(" + currentdate.getDate() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getFullYear() + ")", null, null, 'right');
     y += 17;
 
-
-    master_ects = $("#master_ects").text();
+    master_ects = document.getElementById("master_ects_punkte").textContent;
 
     strMasterECTS = "Master-ECTS insgesamt: " + master_ects;
 
@@ -45,9 +44,7 @@ function create_pdf() {
 
     for (i = 1; i <= count; i++) {
 
-
-        var anz_Module = catalog_array.length;
-        console.log("Anzahl Module: "+anz_Module);
+        var anz_Module = content[i-1].length;
 
         if (((anz_Module * 5) + 16) > restplatz) {
             doc.addPage();
