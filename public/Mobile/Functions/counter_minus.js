@@ -54,7 +54,7 @@ function counter_minus() {
             content[sem_id - 1] = newArray;
         }
         */
-
+        remove_module_from_content(mod_id);
         update_master_ects(mod_id);
 
         //FEHLER

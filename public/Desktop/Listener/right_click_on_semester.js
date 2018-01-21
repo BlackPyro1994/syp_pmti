@@ -34,12 +34,11 @@ function right_click_on_semester(caller)
         
         if (moving == 1)
         {
-            // var target = $(caller.target).attr("id").replace("semester_", "");
-            // var id = "mod_" + ausgewaehlt_modul;
-            // $("#" + "semester_" + id).remove();
-            // console.log(target);
-            // insert_module_in_semester(ausgewaehlt_modul, target);
-            // moving = 0;
+            //var target = $(caller.target).attr("id").replace("semester_", "");
+            //var id = "mod_" + ausgewaehlt_modul;
+            //$("#" + "semester_" + id).remove();
+            insert_module_in_semester(ausgewaehlt_modul, id);
+            moving = 0;
             
         }
         else
