@@ -88,7 +88,29 @@
             </div>
 
         </nav>
-
+            <!-- PopUp Start -->
+        <div id = "myModal-start" class = "modal fade" role = "dialog">
+            <div class = "modal-dialog">
+                    <!-- PopUp Inhalt-->
+                <div class = "modal-content modal-margin">
+                        <!-- PopUp Kopfzeile -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Was möchten Sie tun ?</h4>
+                    </div>
+                        <!-- PopUp Körper -->
+                    <div class="container-fluid modul_popup_buttons">
+                        <div class="row">
+                            <div class="col">
+                                <button type = "button" onclick="load()" class = "btn btn-primary" id = "popup-start-load">Plan laden</button>
+                            </div>
+                            <div class="col">
+                                <button type = "button" data-toggle = "modal" data-target = "#myModal-new_plan" data-dismiss = "modal" class = "btn btn-primary" id = "popup-start-new">Neuer Plan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
             <!-- PopUp Neuer Plan -->
         <div id = "myModal-new_plan" class = "modal fade" role = "dialog">
             <div class = "modal-dialog">
@@ -151,7 +173,6 @@
                         <button class="btn border" type="button" id = "popup-catalogs-back">
                             <i id="popup-icon" class="fa fa-2x"></i>
                         </button>
-
                     </div>
                         <!-- PopUp Körper -->
                     <div class="modal-body">
@@ -352,6 +373,8 @@
             $(document).ready(function () {
 
                 //  ###################################################################################
+
+                $('#myModal-start').modal('toggle');
 
                 $('#button_pdf').on('click', create_pdf);
                 $('#div_semester').on('click', '.class_click_semester', click_semester);

@@ -19,7 +19,7 @@ function add_catalog(kat_id, title)
         
         // + '<Button class = "Btn rounded-semester Btn-Info class_click_catalog_label katalog_label">' + title + '</Button>'
         
-        + '<Button id="' + kat_id + '"class = "btn-block rounded-catalog disabled-catalog" onclick="click_catalog(this)">' + title + '</Button>'
+        + '<Button id="' + kat_id + '"class = "btn-block rounded-catalog disabled-catalog" onclick="left_click_on_catalog(this)">' + title + '</Button>'
     
         // + '<Button class = "katalog_label rounded-semester">' + title + '</Button>'
         

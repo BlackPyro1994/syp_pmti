@@ -36,7 +36,6 @@
   <script src="@routes.Assets.versioned("Desktop/Functions/ok_button_new_plan.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/remove_module_from_content.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/save.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("Desktop/Functions/select_semester.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/show_catalogs_modules.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/update_master_ects.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/update_semester_ects.js")" type="text/javascript"></script>
@@ -45,8 +44,8 @@
   @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
   <script src="@routes.Assets.versioned("Desktop/Listener/button_laden.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Listener/catalog_label_mouseover.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("Desktop/Listener/left_click_catalog.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("Desktop/Listener/left_click_module.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Listener/left_click_on_catalog.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Listener/left_click_on_module.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Listener/right_click_on_semester.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Listener/katalog_label_mouseout.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Listener/modal_freitext_abbrechen.js")" type="text/javascript"></script>
@@ -55,6 +54,7 @@
   <script src="@routes.Assets.versioned("Desktop/Listener/modal_m07_ok.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Listener/modal_popup_abbrechen.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Listener/module_p_mouseover.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Listener/right_click_on_semester.js")" type="text/javascript"></script>
   @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
   <body>
 	<div class = "container-fluid">
@@ -367,7 +367,7 @@
 			$('#div_semester').on('click', '.button_semester', function (event)
 			{
 			  event.stopPropagation();
-			  click_semester(event);
+			  right_click_on_semester(event);
 			});
 
 			//mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
@@ -379,7 +379,6 @@
 			  event.stopPropagation();
 
 			  console.log($(event.target).closest("div"));
-
 			  var clicked_modul_id = $(event.target).parent().prev().attr("id").replace("mod_", "");
 			  var clicked_semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "")
 
@@ -392,13 +391,16 @@
 			$('#div_semester').on('click', '.button_move', function (event)
 			{
 			  console.log("VERSCHIEBEN");
-
 			  event.stopPropagation();
 
 			  var modul_id = $(event.target).parent().prev().attr("id");
 			  var semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "")
 			  console.log("Semester : " + semester_id);
 			  console.log("Modul : " + modul_id);
+
+			  moving = 1;
+			  ausgewaehlt_modul = modul_id;
+
 			});
 
 			//mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
@@ -408,11 +410,11 @@
 			$('#button_planLaden').addClass("red_border");
 
 			// add_semester(startSem);
-			//add_semester(startSem);
+			// add_semester(startSem);
 			// add_semester(startSem);
 
 			// append_module("THI", 1)
-			//append_module("KRY", 1)
+			// append_module("KRY", 1)
 			// append_module("KOLL",1)
 
 			// $("*").on("click", click_selector);

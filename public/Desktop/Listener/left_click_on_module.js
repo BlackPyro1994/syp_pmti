@@ -1,4 +1,4 @@
-﻿function click_module(caller)
+﻿function left_click_on_module(caller)
 {
     if ($(caller).hasClass("blocked") == false)
     {
@@ -6,7 +6,8 @@
         
         if (ausgewaehlt_semester != "")
         {
-            console.log("ausgewaehlt_semester: "+ausgewaehlt_semester);
+            console.log("ausgewaehlt_semester : " + ausgewaehlt_semester);
+            
             insert_module_in_semester($(caller).attr('id'), ausgewaehlt_semester);
             return;
         }
@@ -26,7 +27,6 @@
             
             // FEHLT NOCH !!!!!!!!!!!!!!!!!
             // availability_mask_semesters(ausgewaehlt_modul);
-            
         }
         
         // ################################################################################################
@@ -35,6 +35,7 @@
         
         else if ($(caller).attr('id') == ausgewaehlt_modul)
         {
+
             
             ("Module Nochmal Angeklickt");
             
