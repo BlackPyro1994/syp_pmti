@@ -45,9 +45,7 @@ function create_pdf() {
 
     for (i = 1; i <= count; i++) {
 
-
-        var anz_Module = catalog_array.length;
-        console.log("Anzahl Module: "+anz_Module);
+        var anz_Module = content[i-1].length;
 
         if (((anz_Module * 5) + 16) > restplatz) {
             doc.addPage();
