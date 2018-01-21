@@ -1,22 +1,25 @@
 function left_click_on_catalog(click) {
 
-    $(click).parent().toggleClass("cat-border");
-    $(click).toggleClass("cat-background");
-
     if (!$(click).hasClass("disabled-catalog")) {
 
         if (all_catalogs_closed == 0) {
 
+
             if (($(click).siblings().is(':hidden')) && open_catalog == "") {
+
                 $(click).siblings().toggle(200);
+                $(click).parent().toggleClass("cat-border");
+                $(click).toggleClass("cat-background");
 
                 open_catalog = $(click).attr("id");
                 console.log("Click Event : Katalog ID : " + open_catalog);
             }
 
             else if ($(click).attr("id") == open_catalog) {
-                ;
+
                 $(click).siblings().toggle(200);
+                $(click).parent().toggleClass("cat-border");
+                $(click).toggleClass("cat-background");
 
                 open_catalog = "";
 
@@ -29,6 +32,8 @@ function left_click_on_catalog(click) {
                 $("#" + open_catalog).siblings().parent().children().removeClass("cat-background");
 
                 $(click).siblings().toggle(200);
+                $(click).parent().toggleClass("cat-border");
+                $(click).toggleClass("cat-background");
 
                 open_catalog = $(click).attr("id");
                 console.log("Click Event : Katalog ID : " + open_catalog);

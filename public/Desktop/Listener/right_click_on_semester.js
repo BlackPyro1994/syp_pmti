@@ -1,9 +1,6 @@
 function right_click_on_semester(caller) {
 
-    if(open_catalog != "") {
-        $("#" + open_catalog).parent().removeClass("cat-border");
-        $("#" + open_catalog).removeClass("cat-background");
-    }
+
 
     // ###                     $("#div_semester").children().removeClass('include');
     // ###                     $("#div_semester").children().filter(":odd").children().first().siblings().show();

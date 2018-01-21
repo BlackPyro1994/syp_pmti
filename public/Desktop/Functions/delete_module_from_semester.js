@@ -10,12 +10,15 @@ function delete_module_from_semester(id,sem_id)
 
     $("#" + mod_id).siblings().remove();
     $("#" + mod_id).remove();
-    $("#" + id).parent().parent().removeClass('blocked');
-    $("#" + id).parent().parent().removeClass('blocked_wpp');
-    $("#" + id + "_WPP").parent().parent().removeClass('blocked');
-    $("#" + id + "_WPP").parent().parent().removeClass('blocked_wpp');
-    $("#" + (id).toString().replace("_WPP", "")).parent().parent().removeClass('blocked');
-    $("#" + (id).toString().replace("_WPP", "")).parent().parent().removeClass('blocked_wpp');
+
+    $("#" + id).removeClass('blocked');
+    $("#" + id).removeClass('blocked_wpp');
+
+    $("#" + id + "_WPP").removeClass('blocked');
+    $("#" + id + "_WPP").removeClass('blocked_wpp');
+
+    $("#" + (id).toString().replace("_WPP", "")).removeClass('blocked');
+    $("#" + (id).toString().replace("_WPP", "")).removeClass('blocked_wpp');
     
     remove_module_from_content(id);
     
