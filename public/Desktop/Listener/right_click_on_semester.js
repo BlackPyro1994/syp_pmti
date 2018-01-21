@@ -26,6 +26,7 @@ function right_click_on_semester(caller) {
         if(moving) {
             $("#mod_"+ausgewaehlt_modul).siblings().remove();
             $("#mod_"+ausgewaehlt_modul).remove();
+            remove_module_from_content(id);
         }
         insert_module_in_semester(ausgewaehlt_modul, id);
 
