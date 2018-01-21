@@ -41,5 +41,6 @@ function delete_module_from_semester(mod_id) {
         }
     });
 
+    remove_module_from_content(mod_id);
     update_rules();
 }

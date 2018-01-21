@@ -30,8 +30,7 @@ function create_pdf() {
     doc.text(285, y, "(" + currentdate.getDate() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getFullYear() + ")", null, null, 'right');
     y += 17;
 
-
-    master_ects = $("#master_ects").text();
+    master_ects = document.getElementById("master_ects_punkte").textContent;
 
     strMasterECTS = "Master-ECTS insgesamt: " + master_ects;
 
