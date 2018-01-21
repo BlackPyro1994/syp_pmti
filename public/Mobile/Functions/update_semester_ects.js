@@ -18,8 +18,9 @@ function update_semester_ects(mod_id, wert)
         id = $(obj[i]).attr("id");
         
         store_module_data_by_id(id);
-        
-        search_result = search_result.split(",");
+        if(!moving) {
+            search_result = search_result.split(",");
+        }
         
         if (wert == 1)
         {

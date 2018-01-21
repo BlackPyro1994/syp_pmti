@@ -6,8 +6,6 @@
         
         if (ausgewaehlt_semester != "")
         {
-            console.log("ausgewaehlt_semester : " + ausgewaehlt_semester);
-            
             insert_module_in_semester($(caller).attr('id'), ausgewaehlt_semester);
             return;
         }
@@ -18,14 +16,14 @@
         
         if ((!$(caller).attr('class').includes("ausgewaehlt")) && ausgewaehlt_modul == "")
         {
-            
-            ("Modul Ausgewählt");
-            
             $(caller).toggleClass('ausgewaehlt');
             
             ausgewaehlt_modul = $(caller).attr('id');
+
+            console.log("Click Event : Katalog : " + open_catalog + " : Modul : " + ausgewaehlt_modul);
             
             // FEHLT NOCH !!!!!!!!!!!!!!!!!
+
             // availability_mask_semesters(ausgewaehlt_modul);
         }
         
@@ -35,15 +33,11 @@
         
         else if ($(caller).attr('id') == ausgewaehlt_modul)
         {
-
-            
-            ("Module Nochmal Angeklickt");
-            
             $(caller).toggleClass('ausgewaehlt');
             
             ausgewaehlt_modul = "";
             
-            availability_mask_semesters(0);
+            // availability_mask_semesters(0);
             
         }
         

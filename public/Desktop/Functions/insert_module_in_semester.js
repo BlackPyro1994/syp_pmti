@@ -40,8 +40,6 @@
 
     // -->
     open_catalog = "";
-    moving = 0;
     update_semester_ects(mod_id, sem_id, 1);
-    update_master_ects(mod_id, 1);
     update_rules();
 }

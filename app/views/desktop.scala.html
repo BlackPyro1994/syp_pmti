@@ -393,13 +393,13 @@
 			  console.log("VERSCHIEBEN");
 			  event.stopPropagation();
 
-			  var modul_id = $(event.target).parent().prev().attr("id");
+			  var modul_id = $(event.target).parent().prev().attr("id").replace("mod_","");
 			  var semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "")
 			  console.log("Semester : " + semester_id);
 			  console.log("Modul : " + modul_id);
 
-			  moving = 1;
 			  ausgewaehlt_modul = modul_id;
+			  moving = 1;
 
 			});
 
