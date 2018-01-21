@@ -8,18 +8,14 @@ function right_click_on_semester(caller)
     // caller.currentTarget;
     // console.log(caller);
     
+    console.log($(caller.target).closest("button"));
+    
     var id = $(caller.target).closest("button").attr("id").replace("semester_", "");
     
-    //console.log("SEMESTER::: "+$(caller.target).closest("button").attr("id"));
+    console.log("ID des Semesters : " + id);
     
-    // $(caller).toggleClass('ausgewaehlt');
-    // $(caller.currentTarget).toggleClass('ausgewaehlt');
-    // $(caller.target).toggleClass('ausgewaehlt');
-    
-    //console.log("CLASS: "+$(caller.target).closest("button").attr('class'));
-    
-    console.log($(caller.target).closest("button"));
-    console.log($(caller.target).closest("button").attr("class"));
+    // console.log($(caller.target).closest("button"));
+    // console.log($(caller.target).closest("button").attr("class"));
     
     if ($(caller.target).closest("button").hasClass("ausgewaehlt"))
     {
@@ -38,18 +34,17 @@ function right_click_on_semester(caller)
         
         if (moving == 1)
         {
-            var target = $(caller.target).attr("id").replace("semester_", "");
-            
-            var id = "mod_" + ausgewaehlt_modul;
-            $("#" + "semester_" + id).remove();
-            console.log(target);
-            insert_module_in_semester(ausgewaehlt_modul, target);
-            moving = 0;
+            // var target = $(caller.target).attr("id").replace("semester_", "");
+            // var id = "mod_" + ausgewaehlt_modul;
+            // $("#" + "semester_" + id).remove();
+            // console.log(target);
+            // insert_module_in_semester(ausgewaehlt_modul, target);
+            // moving = 0;
             
         }
         else
         {
-            console.log(target);
+            // console.log(caller.target);
             insert_module_in_semester(ausgewaehlt_modul, $(caller.target).attr("id").replace("semester_", ""));
             
         }
@@ -58,7 +53,10 @@ function right_click_on_semester(caller)
     else
     {
         // ausgewaehlt_semester = $(caller).children().children().html().replace("Semester ", "");
+        
         ausgewaehlt_semester = id;
+        console.log("NOCH KEIN MODUL GEWÄHLT !");
+        console.log("ausgewaehlt_semester : " + ausgewaehlt_semester);
     }
     
 }

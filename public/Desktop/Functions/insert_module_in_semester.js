@@ -1,5 +1,8 @@
 ﻿function insert_module_in_semester(mod_id, sem_id, optional)
 {
+    
+    console.log("insert_module_in_semester("+mod_id+", "+sem_id+", "+optional+")");
+    
     console.log("("+open_catalog+")");
     $("#" + open_catalog).siblings().toggle(200);
     

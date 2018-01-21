@@ -6,9 +6,9 @@
  */
 function click_catalog(click) {
 
-    console.log("function click_catalog(click)");
+    console.log("function left_click_on_catalog(click)");
 
-    // console.log("click_catalog ID: " + (click.target).id);
+    // console.log("left_click_on_catalog ID: " + (click.target).id);
     global_catalog_id = (click.target).id;
     close = 0;
 

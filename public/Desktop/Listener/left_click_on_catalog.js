@@ -1,4 +1,4 @@
-function click_catalog(click)
+function left_click_on_catalog(click)
 {
     if (!$(click).hasClass("disabled-catalog"))
     {

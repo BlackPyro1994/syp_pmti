@@ -9,7 +9,7 @@ function insert_module_in_catalog(katalog_id, module_id, module_title)
         '</div>');
     */
     
-    $("#" + katalog_id).parent().append('<Button id = ' + module_id + ' onClick="click_module(this)" class = "katalog_label rounded-semester">' + module_title + '</Button>');
+    $("#" + katalog_id).parent().append('<Button id = ' + module_id + ' onClick="left_click_on_module(this)" class = "katalog_label rounded-semester">' + module_title + '</Button>');
     $("#" + module_id).hide();
     
     
