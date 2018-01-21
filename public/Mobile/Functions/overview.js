@@ -15,7 +15,7 @@ function overview() {
         
         $("body > nav > div.dropdown > button > svg").toggleClass("fa-bars fa-arrow-left");
         $("body > nav > div.dropdown > button").dropdown('toggle');
-        $("body > nav > div.dropdown > button").prop("onclick",null);
+        $("body > nav > div.dropdown > button").removeAttr('onclick');
         
         save_semester_content(global_sem_id);
         flip = !flip;

@@ -16,10 +16,8 @@ function delete_module_from_semester(mod_id) {
     $("#" + mod_id).remove();
 
     //entferne Modul ID aus blocked array
-    index = blocked.indexOf(mod_id);
-    if (index != -1) {
-        blocked.splice(index, 1);
-    }
+
+
     //blocked.splice(mod_id,1);
 
     //Entferne Katalog ID aus catalog_array
