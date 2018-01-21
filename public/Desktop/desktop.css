@@ -253,3 +253,12 @@ ul .abstand li {
 .disabled-catalog {
     opacity: 0.2;
 }
+
+.cat-border {
+    border: 4px solid #28a745;
+    border-radius: 5px;
+}
+
+.cat-background {
+    background: beige;
+}
