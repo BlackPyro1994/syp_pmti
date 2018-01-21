@@ -41,6 +41,10 @@
     
     ausgewaehlt_modul = "";
     ausgewaehlt_semester = "";
+
+
+    // -->
+    open_catalog = "";
     
     update_semester_ects(mod_id, sem_id, 1);
     update_master_ects(mod_id, 1);

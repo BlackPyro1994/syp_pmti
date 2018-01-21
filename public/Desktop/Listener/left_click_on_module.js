@@ -27,7 +27,6 @@
             
             // FEHLT NOCH !!!!!!!!!!!!!!!!!
             // availability_mask_semesters(ausgewaehlt_modul);
-            
         }
         
         // ################################################################################################
@@ -36,6 +35,7 @@
         
         else if ($(caller).attr('id') == ausgewaehlt_modul)
         {
+
             
             ("Module Nochmal Angeklickt");
             
