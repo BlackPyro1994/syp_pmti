@@ -8,7 +8,7 @@ function add_semester(startSem)
     
     $("#div_semester").append(
         
-        '<button id="semester_'+ wert +'"class = "button_semester container-fluid semester-gesamt class_click_semester">' +
+        '<button id="semester_'+ wert +'"class = "button_semester container-fluid semester-gesamt class_click_semester" style="visibility: hidden">' +
                 '<div  class = "row">' +
                         '<h6 id="' + 'sem' + wert + '"class="col">' + wert + '</h6>' +
                         '<h6 class="col label"></h6>' +
@@ -37,4 +37,6 @@ function add_semester(startSem)
         $(".label").last().text("Winter-Semester");
         $(".sem_ects").last().text("0");
     }
+    
+    $("#semester_"+ wert).toggle(400);77
 }

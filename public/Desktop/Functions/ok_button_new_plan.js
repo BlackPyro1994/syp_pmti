@@ -61,4 +61,7 @@ function ok_button_new_plan(options)
     blocked = false;
     
     update_rules();
+    
+    $("#button_new_plan").removeClass("red_border");
+    $('#button_planLaden').removeClass("red_border");
 }

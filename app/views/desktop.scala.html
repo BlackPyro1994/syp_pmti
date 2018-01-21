@@ -45,9 +45,9 @@
   @*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*@
   <script src="@routes.Assets.versioned("Desktop/Listener/button_laden.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Listener/catalog_label_mouseover.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("Desktop/Listener/click_catalog.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("Desktop/Listener/click_module.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("Desktop/Listener/click_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("../../public/Desktop/Listener/left_click_catalog.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("../../public/Desktop/Listener/left_click_module.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("../../public/Desktop/Listener/right_click_on_semester.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Listener/katalog_label_mouseout.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Listener/modal_freitext_abbrechen.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Listener/modal_freitext_ok.js")" type="text/javascript"></script>
@@ -236,7 +236,7 @@
 		  <div class = "col" align = "center">
 			<button disabled type = "button" class = "btn btn-primary" id="button_speichern" onclick = "save()">
 			  @*<button type = "button" class = "btn btn-primary" content-toggle = "modal" content-target = "#myModal-freitext">*@
-			  Plan speichern
+				Plan speichern
 			</button>
 		  </div>
 
@@ -311,29 +311,29 @@
 
 		  function main()
 		  {
-		    @for(katal <- katalogListe){
-		    katalogListe.push("@{katal(0)},@{katal(1)},@{katal(2)}");
-		    }
+			@for(katal <- katalogListe){
+			katalogListe.push("@{katal(0)},@{katal(1)},@{katal(2)}");
+			}
 
-		    @for(mod <- modulListe){
+			@for(mod <- modulListe){
 
-		    if ("@{mod(11)}" == "WPP")
-		    {
+			if ("@{mod(11)}" == "WPP")
+			{
 			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-		    }
-		    else
-		    {
+			}
+			else
+			{
 			  modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-		    }
+			}
 
-		    if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
-		    {
+			if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
+			{
 			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-		    }
+			}
 
-		    }
+			}
 
-		    showCatalogs();
+			showCatalogs();
 
 		  }
 
@@ -342,82 +342,80 @@
 		  $(document).ready(function ()
 		  {
 
-		    //  ###############################################################################################################
+			//  ###############################################################################################################
 
-		    $('#button_planLaden').on('click', button_laden);
-		    $('#button_pdf').on('click', create_pdf);
+			$('#button_planLaden').on('click', button_laden);
+			$('#button_pdf').on('click', create_pdf);
 
-		    $('#myModal-new_plan').on('click', '#popup-abbrechen', modal_popup_abbrechen);
+			$('#myModal-new_plan').on('click', '#popup-abbrechen', modal_popup_abbrechen);
 
-		    $('#myModal-freitext').on('click', '#popup-freitext-ok', modal_freitext_ok);
-		    $('#myModal-freitext').on('click', '#popup-freitext-abbrechen', modal_freitext_abbrechen);
+			$('#myModal-freitext').on('click', '#popup-freitext-ok', modal_freitext_ok);
+			$('#myModal-freitext').on('click', '#popup-freitext-abbrechen', modal_freitext_abbrechen);
 
-		    $('#myModal-m07').on('click', '#popup-m07-abbrechen', modal_m07_abbrechen);
-		    $('#myModal-m07').on('click', '#popup-m07-ok', modal_m07_ok);
+			$('#myModal-m07').on('click', '#popup-m07-abbrechen', modal_m07_abbrechen);
+			$('#myModal-m07').on('click', '#popup-m07-ok', modal_m07_ok);
 
 //		    $('#div_kataloge').on('click', '.class_click_catalog', click_katalog);
 //		    $('#div_kataloge').on('mouseover', '.class_click_catalog_label', catalog_label_mouseover);
 //		    $('#div_kataloge').on('mouseover', '.class_click_module_p', module_p_mouseover);
 //		    $('#div_kataloge').on('mouseout', '.class_click_catalog_label', catalog_label_mouseout);
 
-		    // $('#div_semester').on('click', '.class_click_semester', click_semester);
+			// $('#div_semester').on('click', '.class_click_semester', click_semester);
 
-		    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+			//mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
-		    $('#div_semester').on('click', '.button_semester', function (event)
-		    {
+			$('#div_semester').on('click', '.button_semester', function (event)
+			{
 			  event.stopPropagation();
-			  console.log("SEMESTER");
-		      select_semester(event);
-		    });
+			  select_semester(event);
+			});
 
-		    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+			//mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
-			  $('#div_semester').on('click', '.button_delete', function (event)
-			  {
-				  event.stopPropagation();
-				  console.log("LÖSCHEN");
-				  console.log($(event.target).closest("div"));
-				  // var modul_id = $(event.target).previousSibling().attr("id");
-				  var modul_id = $(event.target).siblings ("div").attr("id");
+			$('#div_semester').on('click', '.button_delete', function (event)
+			{
+			  console.log("LÖSCHEN");
 
-				  var semester_id = $(event.target).parent().parent().attr("id").replace("semester_","")
-				  modul_id = modul_id.replace("mod_","");
-				  console.log(semester_id);
-				  console.log(modul_id);
-				  delete_module_from_semester(modul_id,semester_id);
+			  event.stopPropagation();
 
-			  });
+			  console.log($(event.target).closest("div"));
 
-		    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+			  var clicked_modul_id = $(event.target).parent().prev().attr("id").replace("mod_", "");
+			  var clicked_semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "")
 
-			  $('#div_semester').on('click', '.button_move', function (event)
-			  {
-				  event.stopPropagation();
-				  console.log($(event.target).closest("div"));
-				  var modul_id = $(event.target).siblings("div").attr("id");
-				  var semester_id = $(event.target).parent().parent().attr("id").replace("semester_","")
-				  console.log("Semester : " + semester_id);
-				  console.log("Modul : " + modul_id);
-				  console.log("VERSCHIEBEN");
-			  });
+			  delete_module_from_semester(clicked_modul_id, clicked_semester_id);
 
-		    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+			});
 
+			//mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
-		    $("#button_new_plan").addClass("red_border");
-		    $('#button_planLaden').addClass("red_border");
+			$('#div_semester').on('click', '.button_move', function (event)
+			{
+			  console.log("VERSCHIEBEN");
+
+			  event.stopPropagation();
+
+			  var modul_id = $(event.target).parent().prev().attr("id");
+			  var semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "")
+			  console.log("Semester : " + semester_id);
+			  console.log("Modul : " + modul_id);
+			});
+
+			//mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
 
-		    add_semester(startSem);
-		    //add_semester(startSem);
-		    // add_semester(startSem);
+			$("#button_new_plan").addClass("red_border");
+			$('#button_planLaden').addClass("red_border");
 
-		    append_module("THI",1)
-		    append_module("KRY",1)
-		    // append_module("KOLL",1)
+			// add_semester(startSem);
+			//add_semester(startSem);
+			// add_semester(startSem);
 
-		    // $("*").on("click", click_selector);
+			// append_module("THI", 1)
+			//append_module("KRY", 1)
+			// append_module("KOLL",1)
+
+			// $("*").on("click", click_selector);
 
 		  });
 

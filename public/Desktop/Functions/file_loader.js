@@ -47,6 +47,9 @@ $(document).ready(function ()
                 }
             }
             document.getElementById('file-input').value = "";
+    
+            $("#button_new_plan").removeClass("red_border");
+            $('#button_planLaden').removeClass("red_border");
         };
         reader.readAsText(file);
     }
