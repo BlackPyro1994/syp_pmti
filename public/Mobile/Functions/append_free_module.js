@@ -9,7 +9,7 @@
  * @param dozent Name des Dozenten
  * @param ects Anzahl der ECTS Punkte für das Modul
  */
-function append_free_module(name, v, u, p, pr, dozent, ects) {
+function append_free_module(name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id) {
     console.log("function append_free_module(" + name + "," + v + "," + u + "," + p + "," + pr + "," + dozent + "," + ects + ")");
     
     if (global_mod_id == "ALM" && name == "")
@@ -32,9 +32,9 @@ function append_free_module(name, v, u, p, pr, dozent, ects) {
     
     if (global_mod_id == "ALM" && pr == "")
         pr = 0;
-    
-    $("#div_semester").append('<div id="' + global_mod_id + '" class="row modules_border class_click_modules_in_semester margin-top"><button id="' + global_mod_id + '" class="btn btn-block"><div id="' + global_mod_id + '" class="row text-left"><div id="' + global_mod_id + '" class="col fett"><p>' + global_mod_id + '</p></div><div id="' + global_mod_id + '" class="col text-right"><p id="' + global_mod_id + '">ECTS: ' + ects + '</p></div></div><div id="' + global_mod_id + '" class="row normal text-left"><div id="' + global_mod_id + '" class="col"><p id="' + global_mod_id + '">Dozent: ' + dozent + '</p></div></div></button></div>');
-    //content[global_sem_id - 1].push("," + global_mod_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + dozent + "," + ects);
 
-    update_rules()
+    $("#div_semester").append('<div id="' + global_mod_id + '" class="row modules_border class_click_modules_in_semester margin-top"><button id="' + global_mod_id + '" class="btn btn-block"><div id="' + global_mod_id + '" class="row text-left"><div id="' + global_mod_id + '" class="col fett"><p>' + global_mod_id + '</p></div><div id="' + global_mod_id + '" class="col text-right"><p id="' + global_mod_id + '">ECTS: ' + ects + '</p></div></div><div id="' + global_mod_id + '" class="row normal text-left"><div id="' + global_mod_id + '" class="col"><p id="' + global_mod_id + '">Dozent: ' + dozent + '</p></div></div></button></div>');
+    content[global_sem_id - 1].push(global_mod_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + ws + "," + sose + "," + dozent + "," + ects + "," + istPflicht + "," + kat_id);
+
+    update_rules();
 }

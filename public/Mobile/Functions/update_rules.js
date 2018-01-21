@@ -16,16 +16,13 @@ function update_rules() {
         var belegAnz = katalog.split(",")[2];
         var countBlocked = 0;
 
-        for(i=0;i<catalog_array.length;i++) {
-            if(katID == catalog_array[i]) {
+        for (i = 0; i < catalog_array.length; i++) {
+            if (katID == catalog_array[i]) {
                 countBlocked++;
-                // console.log("BLOCKED ++: "+countBlocked);
             }
         }
 
         if ((belegAnz > 0) && (countBlocked < belegAnz)) {
-            // console.log("INHALT: "+catalog_array);
-            // console.log("BLOCKED: "+countBlocked);
 
             var pm = "Verpflichtend zu wählen:";
 
@@ -46,5 +43,78 @@ function update_rules() {
             }
 
         }
+
+
     });
+    console.log("blocked:"+ blocked);
+    for(j=0;j<blocked.length;j++){
+        if(blocked[j] == "MAA"){
+            var countMects=0;
+            var semNum=0;
+            for(k=0;k<content.length;k++){
+                console.log("content.length: "+content.length);
+                for(l=0;l<content[k].length;l++) {
+                    console.log("hier: content[k][l][0]: "+content[k][l][0]);
+                    if (content[k][l][0] == "MAA") {
+                        semNum = k;
+
+                        console.log("semNum: "+semNum);
+                    }
+
+                }
+
+             }
+            for(k=0;k<semNum;k++){
+                for(l=0;l<content[k].length;l++){
+/*
+                    if((content[k][l][0]=="ALM") ||(content[k][l][0] =="M07")){
+                        countMects+=content[k][l][9];
+                        console.log("countMects= "+countMects);
+
+                    } else {}
+                    */
+                    countMects += (Number.parseInt(content[k][l][9]));
+                    console.log("countMects= "+countMects);
+
+
+                    console.log("content[k][l]: "+content[k][l]);
+                    console.log("content[k][l][9]: "+content[k][l][9]);
+                }
+
+            }
+            console.log("countMects: " + countMects);
+            console.log("content: "+content);
+
+        }
+    }
+    /*
+    for (j = 0; j<content[i-1].length; j++) {
+
+                liste = (content[i - 1][j]) ;
+     */
+    /*
+               content.forEach(function (entry) {
+                entry.forEach(function (inner_entry){
+                    if (inner_entry.split(",")[0] == "MAA")
+                });
+                if (entry.split(",")[0]) {
+
+                }
+            });
+     */
+    /*
+    content.forEach(function (entry)
+    {
+        entry.forEach(function (inner_entry)
+        {
+
+            text += (content.indexOf(entry) + 1) + "," ;
+            text += inner_entry;
+            text += "\n";
+        });
+
+
+    });
+
+     */
 }
