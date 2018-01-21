@@ -45,7 +45,8 @@ function right_click_on_semester(caller)
         else
         {
             // console.log(caller.target);
-            insert_module_in_semester(ausgewaehlt_modul, $(caller.target).attr("id").replace("semester_", ""));
+            
+            insert_module_in_semester(ausgewaehlt_modul, id);
             
         }
         
