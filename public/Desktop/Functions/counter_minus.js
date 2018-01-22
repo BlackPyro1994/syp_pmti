@@ -36,7 +36,7 @@ function counter_minus()
     content.pop();
     
     $("#div_semester").children().last().remove();
-    remove_module_from_content(id);
+    update_semester_ects(mod_id);
 
     update_rules();
 }
