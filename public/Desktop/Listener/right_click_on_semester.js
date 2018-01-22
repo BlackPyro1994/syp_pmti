@@ -4,8 +4,6 @@ function right_click_on_semester(caller)
     
     if (!$(caller.target).closest("button").hasClass("not_available"))
     {
-        console.log("HAT NICHT NOT_AVAIALBALBAE");
-        
         //########################################################################
         
         if (ausgewaehlt_modul != "")
@@ -14,7 +12,7 @@ function right_click_on_semester(caller)
             {
                 $("#mod_" + ausgewaehlt_modul).siblings().remove();
                 $("#mod_" + ausgewaehlt_modul).remove();
-                remove_module_from_content(semester_id);
+                remove_module_from_content(ausgewaehlt_modul);
             }
             else
             {
@@ -68,5 +66,4 @@ function right_click_on_semester(caller)
             console.log("Click Event : ausgewaehltes semester: " + ausgewaehlt_semester);
         }
     }
-    
 }

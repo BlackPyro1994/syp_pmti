@@ -8,6 +8,7 @@
     var sem_zahl, sem_ects, str;
     var master_ects = 0;
     var restplatz = 150;
+    var liste;
     
     var horizontal_values = [27, 160, 5, 5, 5, 8, 277];
     
@@ -92,12 +93,13 @@
             y += 4;
             restplatz -= 4;
             x = 11;
-            
-            
-            content[i - 1].forEach(function (entry)
-            {
-                var liste = entry.split(',');
-                
+
+
+            for (j = 0; j<content[i-1].length; j++) {
+
+                liste = (content[i - 1][j]) ;
+
+
                 id = liste[0];
                 name = liste[1];
                 v = liste[2];
@@ -106,41 +108,45 @@
                 pr = liste[5];
                 dozent = liste[8];
                 ects = liste[9];
-                
+
                 doc.setFont("courier");
                 doc.setFontSize(10);
 
                 doc.rect(xq, (y - 3), 275, 4);
-                
+
                 doc.text(x, y, id);
                 x += horizontal_values[0];
-                
+
                 doc.text(x, y, name);
                 x += horizontal_values[1];
-                
+
                 doc.text(x, y, v);
                 x += horizontal_values[2];
-                
+
                 doc.text(x, y, u);
                 x += horizontal_values[3];
-                
+
                 doc.text(x, y, p);
                 x += horizontal_values[4];
-                
+
                 doc.text(x, y, pr);
                 x += horizontal_values[5];
-                
+
                 doc.text(x, y, dozent);
                 x = horizontal_values[6];
-                
+
                 doc.text(x, y, ects);
-                
-                 doc.setFont("times");
-                
+
+                doc.setFont("times");
+
                 y += 5;
                 x = 11;
-                
-            });
+
+            }
+
+
+
+
             
         }
         
