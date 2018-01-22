@@ -1,6 +1,6 @@
 ﻿function left_click_on_module(caller)
 {
-    if ($(caller).hasClass("blocked") == false && $(caller).hasClass("blocked_wpp") == false)
+    if ($(caller).hasClass("blocked") == false && $(caller).hasClass("blocked_wpp") == false && $(caller).hasClass("not_available") == false)
     {
         // $(caller).parent().removeClass("cat-border");
         // $(caller).removeClass("cat-background");
