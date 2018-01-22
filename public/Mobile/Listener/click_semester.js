@@ -7,10 +7,10 @@
  */
 function click_semester(click) {
 
-    console.log("function click_semester(click)");
+    //console.log("function click_semester(click)");
 
     var id = (click.target).id;
-    //console.log("Click div_semester ID: " + id);
+    ////console.log("Click div_semester ID: " + id);
     global_sem_id = (click.target).id.replace("sem", "");
     flip = 1;
 

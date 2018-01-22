@@ -5,7 +5,7 @@
  *
  */
 function update_rules() {
-    console.log("function update_rules()");
+    //console.log("function update_rules()");
 
     var maa = false;
     var koll = false;
@@ -50,20 +50,20 @@ function update_rules() {
     });
 
     for (k = 0; k < content.length; k++) {
-        console.log("content.length: " + content.length);
+        //console.log("content.length: " + content.length);
         for (l = 0; l < content[k].length; l++) {
 
             if (content[k][l][0] == "MAA") {
                 semMAA = k;
                 maa = true;
 
-                console.log("semMAA: " + semMAA);
+                //console.log("semMAA: " + semMAA);
             }
             if (content[k][l][0] == "KOLL") {
                 semKOLL = k;
                 koll = true;
 
-                console.log("semKOLL: " + semKOLL);
+                //console.log("semKOLL: " + semKOLL);
             }
         }
     }
@@ -73,15 +73,15 @@ function update_rules() {
             if(content[k][l][0]!="ALM") {
                 countMects += (Number.parseInt(content[k][l][9]));
 
-                console.log("countMects= " + countMects);
-                console.log("content[k][l]: " + content[k][l]);
-                console.log("content[k][l][9]: " + content[k][l][9]);
+                //console.log("countMects= " + countMects);
+                //console.log("content[k][l]: " + content[k][l]);
+                //console.log("content[k][l][9]: " + content[k][l][9]);
             }
         }
     }
 
-    console.log("countMects: " + countMects);
-    console.log("content: " + content);
+    //console.log("countMects: " + countMects);
+    //console.log("content: " + content);
 
     if (maa == true && countMects < 45) {
         $("#regeln").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Achtung: Zulassung zur Masterarbeit erst bei erreichten 45 Master-ECTS.' + '</p>');

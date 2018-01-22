@@ -4,7 +4,7 @@
  */
 function popup_extra_module() {
 
-    console.log("function popup_extra_module() { ");
+    //console.log("function popup_extra_module() { ");
     
     if (global_mod_id == "M07_WPP") {
         $('#myModal-m07').modal('show');

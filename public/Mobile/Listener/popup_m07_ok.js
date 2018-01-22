@@ -6,8 +6,8 @@
  */
 function popup_m07_ok(click) {
 
-    console.log("function popup_m07_ok(click) {");
-    // console.log("Klick auf OK-Button M07_WPP");
+    //console.log("function popup_m07_ok(click) {");
+    // //console.log("Klick auf OK-Button M07_WPP");
 
     var mod_id;
     var name;

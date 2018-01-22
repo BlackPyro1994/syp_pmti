@@ -1,6 +1,6 @@
 function show_catalogs() {
 
-    console.log("function show_catalogs()");
+    //console.log("function show_catalogs()");
 
     $("#popup_title").text("Modul-Kataloge :");
 

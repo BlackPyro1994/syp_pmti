@@ -6,7 +6,7 @@
  */
 function add_catalogs(catalog_id, catalog_name) {
 
-    console.log("function  add_catalogs(" + catalog_id + "," + catalog_name + ")");
+    // console.log("function  add_catalogs(" + catalog_id + "," + catalog_name + ")");
 
     $("#catalog_list").append('<div id="'
         + catalog_id + '" class="row catalog_border class_click_catalog"><button id="'

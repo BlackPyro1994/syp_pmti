@@ -5,11 +5,11 @@
 function ok_button_new_plan()
 {
 
-    console.log("function ok_button_new_plan()");
+    //console.log("function ok_button_new_plan()");
 
     content = [];
     
-    console.log("ok_button_new_plan()");
+    //console.log("ok_button_new_plan()");
     count = 0;
     var meldung = "Bitte eine Anzahl angeben";
     var myRadio = $('input[name="optradio"]');

@@ -6,9 +6,9 @@
  */
 function popup_catalog_back(click) {
 
-    console.log("function popup_catalog_back(click) {");
+    //console.log("function popup_catalog_back(click) {");
 
-    console.log("Zurück");
+    //console.log("Zurück");
     open = 1;
 
     // == 0

@@ -4,7 +4,7 @@
  * @param mod_id Die Modul ID
  */
 function delete_module_from_semester(mod_id) {
-    console.log("function delete_module_from_semester(" + mod_id + ")");
+    //console.log("function delete_module_from_semester(" + mod_id + ")");
 
     var cat_id;
     var index;
@@ -35,11 +35,11 @@ function delete_module_from_semester(mod_id) {
             }
             index = catalog_array.indexOf(cat_id);
 
-            console.log("MOD ID: "+mod_id+" LÖSCHE: "+cat_id);
+            //console.log("MOD ID: "+mod_id+" LÖSCHE: "+cat_id);
             if (index != -1) {
                 catalog_array.splice(index, 1);
             }
-            console.log(catalog_array);
+            //console.log(catalog_array);
         }
     });
     content_html.splice(global_sem_id,1);

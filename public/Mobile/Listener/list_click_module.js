@@ -6,10 +6,10 @@
  */
 function list_click_module(click) {
 
-    console.log("function list_click_module(click) {");
+    //console.log("function list_click_module(click) {");
 
     global_mod_id = (click.currentTarget).id;
-    console.log("Add Modul ID: " + global_mod_id);
+    //console.log("Add Modul ID: " + global_mod_id);
     close = 0;
     
     $('#myModal-catalogs').modal('hide');

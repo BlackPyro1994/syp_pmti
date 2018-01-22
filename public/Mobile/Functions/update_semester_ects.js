@@ -6,7 +6,7 @@
  */
 function update_semester_ects(mod_id, wert)
 {
-    console.log("function update_semester_ects(" + mod_id + "," + wert + ")");
+    //console.log("function update_semester_ects(" + mod_id + "," + wert + ")");
     
     // wert = auswahl ob addieren(1) oder subtrahieren(0)
     var obj = document.getElementById("div_semester").querySelectorAll(".class_click_modules_in_semester");
@@ -33,7 +33,7 @@ function update_semester_ects(mod_id, wert)
             semester_ects = semester_ects - search_result[7];
         }
     }
-    //console.log($.each($("#div_semester").children()));
+    ////console.log($.each($("#div_semester").children()));
     //$("#div_semester").append(semester_array[global_sem_id]);
     //show_semester_content(global_sem_id);
 }
