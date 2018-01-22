@@ -26,7 +26,7 @@ function append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent,
     search_result = search_result.split(",");
     content[sem_id - 1].push(search_result);
 
-    update_semester_ects(mod_id);
+    update_semester_ects(sem_id);
 
 
     var filter_string = ":nth-child(" + sem_id + ")";
