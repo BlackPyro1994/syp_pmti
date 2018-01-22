@@ -18,6 +18,18 @@ function left_click_on_catalog(click)
                 
                 open_catalog = $(click).attr("id");
                 console.log("Click Event : Katalog ID : " + open_catalog);
+    
+                if (($(click).parent().children().first().siblings().not('.blocked').length - 1) == 0)
+                {
+                    $("#" + ausgewaehlt_modul).parent().toggleClass("cat-border");
+        
+                    $("#" + open_catalog).removeClass("cat-background");
+        
+                    $("#" + ausgewaehlt_modul).parent().children().first().siblings().toggle(200);
+        
+                    open_catalog = "";
+                }
+                
             }
             
             else if ($(click).attr("id") == open_catalog)

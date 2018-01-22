@@ -31,19 +31,6 @@ function right_click_on_semester(caller)
             console.log($("#" + ausgewaehlt_modul).parent().children().first().siblings());
             
             console.log($("#" + ausgewaehlt_modul).parent().children().first().siblings().not('.blocked'));
-            
-            if (($("#" + ausgewaehlt_modul).parent().children().first().siblings().not('.blocked').length - 1) == 0)
-            {
-                console.log("KATALOG SCHLIEßEN");
-                
-                $("#" + ausgewaehlt_modul).parent().toggleClass("cat-border");
-                
-                $("#" + open_catalog).removeClass("cat-background");
-                
-                $("#" + ausgewaehlt_modul).parent().children().first().siblings().toggle(200);
-    
-                open_catalog = "";
-            }
         }
         
         insert_module_in_semester(ausgewaehlt_modul, semester_id);
