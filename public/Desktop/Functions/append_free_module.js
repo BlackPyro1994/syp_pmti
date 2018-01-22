@@ -36,7 +36,7 @@
 
         '<div class = "row" > ' +
         '<div ' + 'id="mod_' + mod_id + '"' + 'class = "col-10">' +
-        '<div class="row semester">' +
+        '<div class="row semester bg-light">' +
         '<div class = "col-2 tags">' + '<p >ID: ' + mod_id + '</p>' + '</div>' +
 
         '<div class = "col-3 tags">' + '<p >' + name + '</p>' + '</div>' +

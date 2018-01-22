@@ -20,6 +20,7 @@
         if ((!$(caller).attr('class').includes("ausgewaehlt")) && ausgewaehlt_modul == "")
         {
             $(caller).removeClass("mouseOver");
+            $(event.target).removeClass("red_border");
             
             $(caller).toggleClass('ausgewaehlt');
             
