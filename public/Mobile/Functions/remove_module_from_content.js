@@ -3,31 +3,23 @@ var position_y;
 
 function remove_module_from_content(module_id)
 {
-    console.log("Remove from Array : " + module_id);
-    
     var BreakException = {};
-    var e = {};
-    var newArray = [];
-    
     
     for (sem = 0; sem < content.length; sem++)
     {
-        console.log("outer : " + sem);
         
-        for (mod = 0; mod < content[sem].length; mod++)
+        for (i = 0; i < content[sem].length; i++)
         {
-            console.log("inner : " + mod);
             
-            if (content[sem][mod][0] == module_id)
+            if (content[sem][i][0] == module_id)
             {
                 console.log("gelöscht : " + module_id);
                 
                 position_x = sem;
-                position_y = mod;
+                position_y = i;
+    
+                throw BreakException;
                 
-                // throw BreakException;
-                
-                throw e;
             }
         }
     }
