@@ -5,6 +5,7 @@
  */
 function delete_module_from_semester(mod_id) {
     console.log("function delete_module_from_semester(" + mod_id + ")");
+
     var cat_id;
     var index;
     if (global_mod_id == "ALM") {
@@ -16,7 +17,10 @@ function delete_module_from_semester(mod_id) {
     $("#" + mod_id).remove();
 
     //entferne Modul ID aus blocked array
-
+    index = blocked.indexOf(mod_id);
+    if (index != -1) {
+        blocked.splice(index, 1);
+    }
 
     //blocked.splice(mod_id,1);
 
@@ -38,7 +42,7 @@ function delete_module_from_semester(mod_id) {
             console.log(catalog_array);
         }
     });
-
+    content_html.splice(global_sem_id,1);
     remove_module_from_content(mod_id);
     update_rules();
 }
