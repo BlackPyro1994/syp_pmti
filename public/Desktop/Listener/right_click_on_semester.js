@@ -2,21 +2,11 @@ function right_click_on_semester(caller)
 {
     var semester_id = $(caller.target).closest("button").attr("id").replace("semester_", "");
     
-    console.log("Click Event : Semester ID : " + semester_id);
-    
     if (!$(caller.target).closest("button").hasClass("not_available"))
     {
-        if ($(caller.target).closest("button").hasClass("ausgewaehlt"))
-        {
-            $("#" + "semester_" + semester_id).toggleClass('ausgewaehlt');
-        }
-        else
-        {
-            $('#div_semester').children().removeClass('ausgewaehlt');
-            $("#" + "semester_" + semester_id).toggleClass('ausgewaehlt');
-        }
+        console.log("HAT NICHT NOT_AVAIALBALBAE");
         
-        console.log("Click Event on Semester : " + semester_id);
+        //########################################################################
         
         if (ausgewaehlt_modul != "")
         {
@@ -56,7 +46,24 @@ function right_click_on_semester(caller)
         }
         else
         {
-            availability_mask_modules(semester_id);
+            if ($(caller.target).closest("button").hasClass("ausgewaehlt"))
+            {
+                console.log("IST BEREITS AUSGEWAEHLT");
+                
+                $("#" + "semester_" + semester_id).toggleClass('ausgewaehlt');
+                console.log($("#div_katalog").children().children());
+                $("#div_kataloge").children().children().removeClass("not_available");
+            }
+            else
+            {
+                console.log("IS NO NIT AUSJEWAEHLT");
+                
+                $('#div_semester').children().removeClass('ausgewaehlt');
+                $("#" + "semester_" + semester_id).toggleClass('ausgewaehlt');
+                availability_mask_modules(semester_id);
+                // $("#div_kataloge").children().children().removeClass("not_available");
+            }
+            //availability_mask_modules(semester_id);
             ausgewaehlt_semester = semester_id;
             console.log("Click Event : ausgewaehltes semester: " + ausgewaehlt_semester);
         }
