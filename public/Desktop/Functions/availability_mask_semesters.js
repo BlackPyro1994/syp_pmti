@@ -1,8 +1,8 @@
 function availability_mask_semesters(module_id)
 {
-    $("#div_semester").children().removeClass("not_available");
+    console.log("availability_mask_semesters("+module_id+")");Click,237,428,left
     
-    console.log("WURDE AUFGERUFEN");
+    $("#div_semester").children().removeClass("not_available");
     
     if (module_id)
     {
@@ -11,14 +11,7 @@ function availability_mask_semesters(module_id)
         
         search_result = search_result.split(",");
         
-        console.log(search_result[6]);
-        console.log(search_result[7]);
-        
-        console.log(startSem);
-        
-        console.log("Eindeutig :: " + (search_result[6] & (~search_result[7])));
-        
-        if (search_result[6] & (~search_result[7]))
+        if (search_result[6] == "1" && search_result[7] == "0")
         {
             if (startSem == "sommer")
             {
@@ -36,7 +29,7 @@ function availability_mask_semesters(module_id)
             }
         }
         // Winter und nicht Sommer
-        else if ((~search_result[6]) && search_result[7])
+        else if (search_result[6] == "0" && search_result[7] == "1")
         {
             // ### $("#div_semester").children().filter(":odd").addClass('include');
             // ### $("#div_semester").children().filter(":even").removeClass('include');
