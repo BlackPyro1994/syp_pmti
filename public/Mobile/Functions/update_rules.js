@@ -5,9 +5,13 @@
  *
  */
 function update_rules() {
-
     console.log("function update_rules()");
 
+    var maa = false;
+    var koll = false;
+    var semMAA = 0;
+    var semKOLL = 0;
+    var countMects = 0;
 
     $("#regeln").children().remove();
 
@@ -15,6 +19,7 @@ function update_rules() {
         var katID = katalog.split(",")[0];
         var belegAnz = katalog.split(",")[2];
         var countBlocked = 0;
+
 
         for (i = 0; i < catalog_array.length; i++) {
             if (katID == catalog_array[i]) {
@@ -41,80 +46,49 @@ function update_rules() {
                 $("#regeln").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Aus dem Katalog '
                     + katalog.split(",")[1] + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + '</p>');
             }
-
         }
-
-
     });
-    console.log("blocked:"+ blocked);
-    for(j=0;j<blocked.length;j++){
-        if(blocked[j] == "MAA"){
-            var countMects=0;
-            var semNum=0;
-            for(k=0;k<content.length;k++){
-                console.log("content.length: "+content.length);
-                for(l=0;l<content[k].length;l++) {
-                    console.log("hier: content[k][l][0]: "+content[k][l][0]);
-                    if (content[k][l][0] == "MAA") {
-                        semNum = k;
 
-                        console.log("semNum: "+semNum);
-                    }
+    for (k = 0; k < content.length; k++) {
+        console.log("content.length: " + content.length);
+        for (l = 0; l < content[k].length; l++) {
 
-                }
+            if (content[k][l][0] == "MAA") {
+                semMAA = k;
+                maa = true;
 
-             }
-            for(k=0;k<semNum;k++){
-                for(l=0;l<content[k].length;l++){
-/*
-                    if((content[k][l][0]=="ALM") ||(content[k][l][0] =="M07")){
-                        countMects+=content[k][l][9];
-                        console.log("countMects= "+countMects);
-
-                    } else {}
-                    */
-                    countMects += (Number.parseInt(content[k][l][9]));
-                    console.log("countMects= "+countMects);
-
-
-                    console.log("content[k][l]: "+content[k][l]);
-                    console.log("content[k][l][9]: "+content[k][l][9]);
-                }
-
+                console.log("semMAA: " + semMAA);
             }
-            console.log("countMects: " + countMects);
-            console.log("content: "+content);
+            if (content[k][l][0] == "KOLL") {
+                semKOLL = k;
+                koll = true;
 
+                console.log("semKOLL: " + semKOLL);
+            }
         }
     }
-    /*
-    for (j = 0; j<content[i-1].length; j++) {
 
-                liste = (content[i - 1][j]) ;
-     */
-    /*
-               content.forEach(function (entry) {
-                entry.forEach(function (inner_entry){
-                    if (inner_entry.split(",")[0] == "MAA")
-                });
-                if (entry.split(",")[0]) {
+    for (k = 0; k < semMAA; k++) {
+        for (l = 0; l < content[k].length; l++) {
+            if(content[k][l][0]!="ALM") {
+                countMects += (Number.parseInt(content[k][l][9]));
 
-                }
-            });
-     */
-    /*
-    content.forEach(function (entry)
-    {
-        entry.forEach(function (inner_entry)
-        {
+                console.log("countMects= " + countMects);
+                console.log("content[k][l]: " + content[k][l]);
+                console.log("content[k][l][9]: " + content[k][l][9]);
+            }
+        }
+    }
 
-            text += (content.indexOf(entry) + 1) + "," ;
-            text += inner_entry;
-            text += "\n";
-        });
+    console.log("countMects: " + countMects);
+    console.log("content: " + content);
 
+    if (maa == true && countMects < 45) {
+        $("#regeln").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Achtung: Zulassung zur Masterarbeit erst bei erreichten 45 Master-ECTS.' + '</p>');
+    }
 
-    });
+    if ((koll == true && maa == false) || (koll == true && maa == true && semMAA > semKOLL)) {
+        $("#regeln").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Achtung: Das Kolloquium ist erst nach Abgabe der Masterarbeit möglich.' + '</p>');
+    }
 
-     */
 }
