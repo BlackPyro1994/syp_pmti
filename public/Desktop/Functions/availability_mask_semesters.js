@@ -58,16 +58,5 @@ function availability_mask_semesters(module_id)
             }
             
         }
-        return;
-    }
-    
-    else
-    {
-        ("ELSE");
-        
-        // $("#div_semester").children().removeClass('include');
-        
-        // $("#div_semester").children().children().not('.class_click_semester_row').show(200);
-        
     }
 }
