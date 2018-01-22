@@ -6,7 +6,7 @@ function update_master_ects(mod_id, wert)
     
     updateModuleString(mod_id);
 
-    console.log("UPDATE ######: "+search_result);
+    console.log("update_master_ects("+mod_id+","+wert+")");
     if(!moving) {
         search_result = search_result.split(",");
     }

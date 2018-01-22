@@ -17,18 +17,16 @@ function update_rules() {
 
     katalogListe.forEach(function (katalog) {
         var katID = katalog.split(",")[0];
-        console.log("");
-        console.log("katID: "+katID);
 
 
         var belegAnz = katalog.split(",")[2];
-        console.log("belegAnz: "+belegAnz);
+
 
         var countBlocked = $("#" + katID).siblings().filter(".blocked").length;
-        console.log("countBlocked: "+countBlocked);
+
 
         var countWPPblocked = $("#" + katID).siblings().filter(".blocked_wpp").length;
-        console.log("countWPPblocked: "+countWPPblocked);
+
 
         if (katID == "WPP") {
             countBlocked = countWPPblocked;
@@ -57,20 +55,20 @@ function update_rules() {
     });
 
     for (k = 0; k < content.length; k++) {
-        console.log("content.length: " + content.length);
+
         for (l = 0; l < content[k].length; l++) {
 
             if (content[k][l][0] == "MAA") {
                 semMAA = k;
                 maa = true;
 
-                console.log("semMAA: " + semMAA);
+
             }
             if (content[k][l][0] == "KOLL") {
                 semKOLL = k;
                 koll = true;
 
-                console.log("semKOLL: " + semKOLL);
+
             }
         }
     }
@@ -80,15 +78,10 @@ function update_rules() {
             if(content[k][l][0]!="ALM") {
                 countMects += (Number.parseInt(content[k][l][9]));
 
-                console.log("countMects= " + countMects);
-                console.log("content[k][l]: " + content[k][l]);
-                console.log("content[k][l][9]: " + content[k][l][9]);
             }
         }
     }
 
-    console.log("countMects: " + countMects);
-    console.log("content: " + content);
 
     if (maa == true && countMects < 45) {
         $("#regeln").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Achtung: Zulassung zur Masterarbeit erst bei erreichten 45 Master-ECTS.' + '</p>');

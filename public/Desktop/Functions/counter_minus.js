@@ -22,8 +22,9 @@ function counter_minus() {
         $("#" + id + "_WPP").parent().parent().children().children().removeClass('blocked_wpp');
         $("#" + (id).toString().replace("_WPP", "")).parent().parent().children().children().removeClass('blocked');
         $("#" + (id).toString().replace("_WPP", "")).parent().parent().children().children().removeClass('blocked_wpp');
-        remove_module_from_content(mod_id);
-        update_master_ects(mod_id,0);
+
+        remove_module_from_content(id);
+        update_master_ects(id,0);
     }
 
     content.pop();
