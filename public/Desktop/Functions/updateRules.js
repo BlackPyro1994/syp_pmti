@@ -78,16 +78,11 @@ function update_rules() {
     for (k = 0; k < semMAA; k++) {
         for (l = 0; l < content[k].length; l++) {
             if(content[k][l][0]!="ALM") {
-                console.log("");
-                console.log("Fall: !=ALM");
                 countMects += (Number.parseInt(content[k][l][9]));
 
                 console.log("countMects= " + countMects);
                 console.log("content[k][l]: " + content[k][l]);
                 console.log("content[k][l][9]: " + content[k][l][9]);
-            } else{
-                console.log("");
-                console.log("Fall: ==ALM");
             }
         }
     }

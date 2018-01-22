@@ -13,6 +13,7 @@
         }
         else {
             append_module(mod_id, sem_id);
+            update_semester_ects(mod_id);
 
             if (!(mod_id).toString().includes("_WPP")) {
                 $("#" + mod_id).addClass('blocked');
@@ -37,6 +38,6 @@
 
     // -->
     //open_catalog = "";
-    update_semester_ects(mod_id, sem_id, 1);
+
     update_rules();
 }

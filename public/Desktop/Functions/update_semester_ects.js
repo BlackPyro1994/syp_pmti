@@ -1,30 +1,30 @@
-function update_semester_ects(mod_id, wert)
-{
-    // wert = auswahl ob addieren(1) oder subtrahieren(0)
-    var obj = document.getElementById("div_semester").querySelectorAll(".class_click_modules_in_semester");
-    var length = obj.length;
-    var id;
-    
-    for (i = 0; i < length; i++)
-    {
-        id = $(obj[i]).attr("id");
-        
-        updateModuleString(id);
-        
-        search_result = search_result.split(",");
-        
-        if (wert == 1)
-        {
-            
-            semester_ects = semester_ects + search_result[9];
+function update_semester_ects(mod_id) {
+
+    var searchedSem = -1;
+    var countSemECTS = 0;
+
+
+    for (k = 0; k < content.length; k++) {
+        console.log("content.length: " + content.length);
+        for (l = 0; l < content[k].length; l++) {
+            if (content[k][l][0] == mod_id) {
+                if(searchedSem != k){
+                    countSemECTS=0;
+                    searchedSem = k;
+                    for (i = 0; i < content[searchedSem].length; i++) {
+                        countSemECTS += (Number.parseInt(content[searchedSem][i][9]));
+
+                        console.log("countSemECTS= " + countSemECTS);
+                    }
+                    countSemECTS = Number.parseInt(countSemECTS);
+                    var idString = "sem_ects_anz"+(searchedSem+1);
+                    console.log("idString: "+idString);
+                    document.getElementById(idString).textContent = countSemECTS;
+                }
+
+            }
         }
-        else if (wert == 0)
-        {
-            
-            semester_ects = semester_ects - search_result[9];
-        }
+
     }
-    //console.log($.each($("#div_semester").children()));
-    //$("#div_semester").append(semester_array[global_sem_id]);
-    //show_semester_content(global_sem_id);
+
 }
