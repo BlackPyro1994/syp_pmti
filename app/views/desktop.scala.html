@@ -403,7 +403,10 @@
 
 			  event.stopPropagation();
 
+			  $("#div_semester").children().removeClass("not_available");
+
 			  $('#div_semester').children().removeClass('ausgewaehlt');
+
 
 			  console.log($(event.target).closest("div"));
 			  var clicked_modul_id = $(event.target).parent().prev().attr("id").replace("mod_", "");
@@ -421,6 +424,8 @@
 			  console.log("VERSCHIEBEN");
 			  event.stopPropagation();
 
+			  $("#div_semester").children().removeClass("not_available");
+
 			  $('#div_semester').children().removeClass('ausgewaehlt');
 
 			  var modul_id = $(event.target).parent().prev().attr("id").replace("mod_", "");
@@ -430,6 +435,8 @@
 
 			  ausgewaehlt_modul = modul_id;
 			  moving = 1;
+
+			  availability_mask_semesters(ausgewaehlt_modul);
 
 			});
 
