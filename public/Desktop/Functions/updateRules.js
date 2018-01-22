@@ -17,12 +17,18 @@ function update_rules() {
 
     katalogListe.forEach(function (katalog) {
         var katID = katalog.split(",")[0];
+        console.log("");
+        console.log("katID: "+katID);
+
 
         var belegAnz = katalog.split(",")[2];
+        console.log("belegAnz: "+belegAnz);
 
-        var countBlocked = $("#" + katID).children().filter(".blocked").length;
+        var countBlocked = $("#" + katID).siblings().filter(".blocked").length;
+        console.log("countBlocked: "+countBlocked);
 
-        var countWPPblocked = $("#" + katID).children().filter(".blocked_wpp").length;
+        var countWPPblocked = $("#" + katID).siblings().filter(".blocked_wpp").length;
+        console.log("countWPPblocked: "+countWPPblocked);
 
         if (katID == "WPP") {
             countBlocked = countWPPblocked;
@@ -72,11 +78,16 @@ function update_rules() {
     for (k = 0; k < semMAA; k++) {
         for (l = 0; l < content[k].length; l++) {
             if(content[k][l][0]!="ALM") {
+                console.log("");
+                console.log("Fall: !=ALM");
                 countMects += (Number.parseInt(content[k][l][9]));
 
                 console.log("countMects= " + countMects);
                 console.log("content[k][l]: " + content[k][l]);
                 console.log("content[k][l][9]: " + content[k][l][9]);
+            } else{
+                console.log("");
+                console.log("Fall: ==ALM");
             }
         }
     }
