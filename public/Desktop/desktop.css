@@ -269,3 +269,8 @@ ul .abstand li {
     font-weight: bold
 
 }
+
+.not_available
+{
+    background: red;
+}

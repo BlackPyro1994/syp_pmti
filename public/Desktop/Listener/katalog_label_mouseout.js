@@ -1,7 +1,5 @@
 function catalog_label_mouseover(event)
 {
-    console.log($(event.target).parent().children().first().siblings().not('.blocked').length);
-    
     if (!blocked)
     {
         if ($(event.target).hasClass("rounded-catalog-module"))
