@@ -25,8 +25,8 @@
             $(caller).toggleClass('ausgewaehlt');
             
             ausgewaehlt_modul = $(caller).attr('id');
-
-            console.log("Click Event : Katalog : " + open_catalog + " : Modul : " + ausgewaehlt_modul);
+    
+            console.log("ausgewaetles Modul : " + ausgewaehlt_modul);
             
             // FEHLT NOCH !!!!!!!!!!!!!!!!!
 
@@ -42,6 +42,7 @@
             $(caller).toggleClass('ausgewaehlt');
             
             ausgewaehlt_modul = "";
+            console.log("ausgewaetles Modul : " + "Keines !");
             
             // availability_mask_semesters(0);
             
@@ -61,6 +62,8 @@
             $(caller).addClass('ausgewaehlt');
             
             ausgewaehlt_modul = $(caller).attr('id');
+            
+            console.log("ausgewaetles Modul : " + ausgewaehlt_modul);
             
             // FEHLT NOCH !!!!!!!!!!!!!!!!!1
             //  availability_mask_semesters(ausgewaehlt_modul);

@@ -379,7 +379,6 @@
 			$('#myModal-m07').on('click', '#popup-m07-ok', modal_m07_ok);
 
 			$('#div_kataloge').on('mouseover', '.class_click_catalog', catalog_label_mouseover);
-
 			$('#div_kataloge').on('mouseout', '.class_click_catalog', catalog_label_mouseout);
 
 			// $('#div_kataloge').on('mouseover', '.class_click_module_p', module_p_mouseover);
@@ -398,13 +397,18 @@
 
 			$('#div_semester').on('click', '.button_delete', function (event)
 			{
+
+
 			  console.log("LÖSCHEN");
 
 			  event.stopPropagation();
 
+			  $('#div_semester').children().removeClass('ausgewaehlt');
+
 			  console.log($(event.target).closest("div"));
 			  var clicked_modul_id = $(event.target).parent().prev().attr("id").replace("mod_", "");
 			  var clicked_semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "")
+
 
 			  delete_module_from_semester(clicked_modul_id, clicked_semester_id);
 
@@ -416,6 +420,8 @@
 			{
 			  console.log("VERSCHIEBEN");
 			  event.stopPropagation();
+
+			  $('#div_semester').children().removeClass('ausgewaehlt');
 
 			  var modul_id = $(event.target).parent().prev().attr("id").replace("mod_", "");
 			  var semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "")
