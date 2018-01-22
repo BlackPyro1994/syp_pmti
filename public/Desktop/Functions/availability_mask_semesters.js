@@ -1,7 +1,6 @@
 function availability_mask_semesters(module_id)
 {
     console.log("availability_mask_semesters(" + module_id + ")");
-    Click, 237, 428, left
     
     $("#div_semester").children().removeClass("not_available");
     
