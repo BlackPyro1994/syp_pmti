@@ -17,7 +17,8 @@ function click_catalog(click) {
     $("#popup_title").text(search_result);
     $("#popup-icon").removeClass("fa-window-close");
     $("#popup-icon").addClass("fa-reply");
-
+    
     add_modules_in_popup(global_catalog_id);
+    availability_mask_modules();
     
 }

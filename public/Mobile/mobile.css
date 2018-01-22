@@ -103,3 +103,7 @@
     border: 2px solid #dc3545;
     border-radius: 5px;
 }
+
+.not_available {
+    background: red;
+}

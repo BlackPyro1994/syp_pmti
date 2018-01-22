@@ -48,14 +48,11 @@ function counter_minus() {
             if (index != -1) {
                 catalog_array.splice(index, 1);
             }
-
-            console.log("CONTENT: ");
-            console.log(index = content[sem_id - 1][i].indexOf(mod_id));
-            console.log("CONTENT: ");
+            
             index = content[sem_id - 1][i].indexOf(mod_id);
             if (index != -1) {
-                remove_module_from_content(mod_id);
-                //content[sem_id - 1][i].splice(index, 12);
+                //remove_module_from_content(mod_id);
+                content = content[sem_id - 1][i].splice(index, 12);
                 //content[sem_id - 1] = newArray;
             }
 
