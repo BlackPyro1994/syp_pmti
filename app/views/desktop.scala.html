@@ -399,7 +399,7 @@
 			{
 
 
-			  console.log("LÖSCHEN");
+
 
 			  event.stopPropagation();
 
@@ -408,7 +408,7 @@
 			  $('#div_semester').children().removeClass('ausgewaehlt');
 
 
-			  console.log($(event.target).closest("div"));
+
 			  var clicked_modul_id = $(event.target).parent().prev().attr("id").replace("mod_", "");
 			  var clicked_semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "")
 
@@ -421,7 +421,7 @@
 
 			$('#div_semester').on('click', '.button_move', function (event)
 			{
-			  console.log("VERSCHIEBEN");
+
 			  event.stopPropagation();
 
 			  $("#div_semester").children().removeClass("not_available");
@@ -430,8 +430,8 @@
 
 			  var modul_id = $(event.target).parent().prev().attr("id").replace("mod_", "");
 			  var semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "")
-			  console.log("Semester : " + semester_id);
-			  console.log("Modul : " + modul_id);
+
+
 
 			  ausgewaehlt_modul = modul_id;
 			  moving = 1;

@@ -3,9 +3,7 @@ var position_y;
 
 function remove_module_from_content(module_id)
 {
-
-    console.log("AFFEN TANZEN");
-    console.log(module_id);
+    
     var BreakException = {};
     
     var newArray = [];

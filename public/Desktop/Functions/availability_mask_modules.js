@@ -16,7 +16,7 @@ function availability_mask_modules(semester_id)
             
             modulListe.forEach(function (t)
             {
-                //console.log("Sommer : " + t.split(",")[6] + " Winter : " + t.split(",")[7]);
+                
                 //winter / sommer
                 if (t.split(",")[6] == "1" && t.split(",")[7] == "0")
                 {
@@ -32,7 +32,7 @@ function availability_mask_modules(semester_id)
                 //gewählt winter
                 modulListe.forEach(function (t)
                 {
-                    //console.log("Sommer : " + t.split(",")[6] + " Winter : " + t.split(",")[7]);
+                    
                     //winter / sommer
                     if (t.split(",")[6] == "0" && t.split(",")[7] == "1")
                     {
@@ -53,7 +53,7 @@ function availability_mask_modules(semester_id)
         
             modulListe.forEach(function (t)
             {
-                //console.log("Sommer : " + t.split(",")[6] + " Winter : " + t.split(",")[7]);
+                
                 //winter / sommer
                 if (t.split(",")[6] == "0" && t.split(",")[7] == "1")
                 {
@@ -69,7 +69,7 @@ function availability_mask_modules(semester_id)
                 //gewählt sommer
                 modulListe.forEach(function (t)
                 {
-                    //console.log("Sommer : " + t.split(",")[6] + " Winter : " + t.split(",")[7]);
+                    
                     //winter / sommer
                     if (t.split(",")[6] == "1" && t.split(",")[7] == "0")
                     {
@@ -89,7 +89,7 @@ function availability_mask_modules(semester_id)
 /*
 modulListe.forEach(function (t)
 {
-    console.log("Sommer : " + t.split(",")[6] + " Winter : " + t.split(",")[7]);
+    
 
     //1 und 0
     if (t.split(",")[6] & (~t.split(",")[7]))

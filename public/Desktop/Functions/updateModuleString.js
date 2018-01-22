@@ -1,7 +1,5 @@
 function updateModuleString(mod_id)
 {
-    console.log("########################################");
-    
     var BreakException = {};
     
     try

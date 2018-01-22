@@ -40,7 +40,7 @@ function catalog_label_mouseout(event)
 {
     if (!blocked)
     {
-        // console.log($(event.target));
+        
         // $(event.target).css("font-weight:normal");
         
         $(event.target).removeClass("mouseOver");

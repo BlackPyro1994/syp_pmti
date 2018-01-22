@@ -27,8 +27,7 @@
             $(caller).toggleClass('ausgewaehlt');
             
             ausgewaehlt_modul = $(caller).attr('id');
-    
-            console.log("ausgewaetles Modul : " + ausgewaehlt_modul);
+            
             
             // FEHLT NOCH !!!!!!!!!!!!!!!!!
 
@@ -46,7 +45,6 @@
             $(caller).toggleClass('ausgewaehlt');
             
             ausgewaehlt_modul = "";
-            console.log("ausgewaetles Modul : " + "Keines !");
             
             // availability_mask_semesters(0);
             
@@ -69,7 +67,6 @@
             
             ausgewaehlt_modul = $(caller).attr('id');
             
-            console.log("ausgewaetles Modul : " + ausgewaehlt_modul);
             
             // FEHLT NOCH !!!!!!!!!!!!!!!!!1
             availability_mask_semesters(ausgewaehlt_modul);

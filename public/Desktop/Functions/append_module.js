@@ -9,9 +9,7 @@
     }
 
     var filter_string = ":nth-child(" + sem_id + ")";
-
-    console.log("asdadas : "  + search_result);
-
+    
     $("#div_semester").children().filter(filter_string).append(
         '<div class = "row" > ' +
         '<div ' + 'id="mod_' + mod_id + '"' + 'class = "col-10">' +

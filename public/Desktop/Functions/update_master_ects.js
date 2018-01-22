@@ -5,8 +5,7 @@ function update_master_ects(mod_id, wert)
     // 1 == adieren 0 == subtrahieren
     
     updateModuleString(mod_id);
-
-    console.log("update_master_ects("+mod_id+","+wert+")");
+    
     if(!moving) {
         search_result = search_result.split(",");
     }

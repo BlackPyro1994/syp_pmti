@@ -1,9 +1,5 @@
 ﻿function insert_module_in_semester(mod_id, sem_id, optional) {
-
-    console.log("insert_module_in_semester(" + mod_id + ", " + sem_id + ", " + optional + ")");
-
-    console.log("(" + open_catalog + ")");
-
+    
     get_element_by_index(content, sem_id).push(new Array());
 
     if (optional == null) {

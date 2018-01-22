@@ -24,6 +24,5 @@ function click_selector()
     }
     
     // alert(selector);
-    console.log(selector);
     return false;
 }

@@ -17,7 +17,6 @@ function left_click_on_catalog(click)
                 $(click).removeClass("mouseOver");
                 
                 open_catalog = $(click).attr("id");
-                console.log("Click Event : Katalog ID : " + open_catalog);
     
                 if (($(click).parent().children().first().siblings().not('.blocked').length - 1) == 0)
                 {
@@ -34,16 +33,15 @@ function left_click_on_catalog(click)
             
             else if ($(click).attr("id") == open_catalog)
             {
-                
+    
                 $(click).siblings().toggle(200);
-                
+    
                 $(click).parent().toggleClass("cat-border");
                 $(click).toggleClass("cat-background");
                 $(click).addClass("mouseOver");
-                
+    
                 open_catalog = "";
-                
-                console.log("Click Event : Katalog Closed");
+    
             }
             
             else if (( $("#" + open_catalog).siblings().is(':visible')) && open_catalog != $(click).attr("id"))
@@ -59,7 +57,6 @@ function left_click_on_catalog(click)
                 $(click).removeClass("mouseOver");
                 
                 open_catalog = $(click).attr("id");
-                console.log("Click Event : Katalog ID : " + open_catalog);
                 
             }
         }
