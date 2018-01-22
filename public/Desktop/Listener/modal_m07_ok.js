@@ -19,17 +19,18 @@ function modal_m07_ok(click)
     istPflicht = false;
     kat_id = "WPP";
     
-    if (global_mod_id == "M07" && name == "")
+    if (global_mod_id == "M07_WPP" && name == "")
     {
         name = "Name";
     }
-    if (global_mod_id == "M07" && dozent == "")
+    if (global_mod_id == "M07_WPP" && dozent == "")
     {
         dozent = "Dozent";
     }
     append_free_module(global_mod_id, global_sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id);
     //append_free_module(global_mod_id, global_sem_id, name, v, u, p, pr, dozent, ects);
-    $("#" + global_mod_id).parent().parent().addClass('blocked_wpp');
+    $("#" + global_mod_id).addClass('blocked_wpp');
+
     
     $('#myModal-m07').modal('hide');
     

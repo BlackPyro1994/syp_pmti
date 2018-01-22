@@ -24,7 +24,7 @@ $(document).ready(function ()
             for (var line = 1; line < lines.length; line++)
             {
                 temp = lines[line];
-                if (temp.split(',')[1] === "M07" || temp.split(',')[1] === "ALM")
+                if (temp.split(',')[1] === "M07_WPP" || temp.split(',')[1] === "ALM")
                 {
                     // temp = temp.substring(1);
                     temp = temp.split(',');
