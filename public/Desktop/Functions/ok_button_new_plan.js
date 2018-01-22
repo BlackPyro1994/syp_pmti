@@ -1,10 +1,6 @@
 function ok_button_new_plan(options)
 {
     
-    // $("#master_ects").innerText = 0;
-    // $("#count").innerText = 0;
-    // $("#count").textContent = 0;
-    
     if (options)
     {
         var wert = options['count'];

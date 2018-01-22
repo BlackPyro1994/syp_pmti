@@ -19,8 +19,8 @@
                 $("#" + mod_id + "_WPP").addClass('blocked');
 
             } else {
-                $("#" + mod_id).parent().parent().addClass('blocked_wpp');
-                $("#" + (mod_id).toString().replace("_WPP", "")).parent().parent().addClass('blocked_wpp');
+                $("#" + mod_id).addClass('blocked_wpp');
+                $("#" + (mod_id).toString().replace("_WPP", "")).addClass('blocked_wpp');
             }
 
             $("#" + mod_id).removeClass('ausgewaehlt');

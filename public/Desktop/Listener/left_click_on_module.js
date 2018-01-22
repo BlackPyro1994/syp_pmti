@@ -2,6 +2,9 @@
 {
     if ($(caller).hasClass("blocked") == false)
     {
+        // $(caller).parent().removeClass("cat-border");
+        // $(caller).removeClass("cat-background");
+        
         // Semester bereits ausgewählt
         
         if (ausgewaehlt_semester != "")
@@ -16,6 +19,8 @@
         
         if ((!$(caller).attr('class').includes("ausgewaehlt")) && ausgewaehlt_modul == "")
         {
+            $(caller).removeClass("mouseOver");
+            
             $(caller).toggleClass('ausgewaehlt');
             
             ausgewaehlt_modul = $(caller).attr('id');
