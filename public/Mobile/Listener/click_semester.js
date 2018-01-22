@@ -44,6 +44,9 @@ function click_semester(click) {
         move = 0;
     }
 
+    $("#ects_text").last().text("Semester ECTS (inkl. Bachelor-ECTS von ALM):");
+    $("#master_ects_punkte").last().text(semester_ects);
+
     update_rules();
 
 }

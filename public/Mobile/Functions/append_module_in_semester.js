@@ -25,6 +25,7 @@ function append_module_in_semester(mod_id) {
 
     //console.log("search_result: "+ search_result);
     content[global_sem_id -1].push(search_result);
+    update_semester_ects(global_sem_id);
 
 
 }

@@ -1,39 +1,17 @@
 /**
- * Aktualisiert die Semester-ECTS Punkte mit den Werten des gewählten Moduls
+ * Aktualisiert die Semester-ECTS für ein Semester
  *
- * @param mod_id Die Modul ID des hinzugefügten Moduls
- * @param wert Differenzierungsfaktor um zu addieren oder zu subtrahieren
+ * @param sem_id Die Semester-ID des zu aktualisierenden Semesters
+ *
  */
-function update_semester_ects(mod_id, wert)
-{
-    //console.log("function update_semester_ects(" + mod_id + "," + wert + ")");
-    
-    // wert = auswahl ob addieren(1) oder subtrahieren(0)
-    var obj = document.getElementById("div_semester").querySelectorAll(".class_click_modules_in_semester");
-    var length = obj.length;
-    var id;
-    
-    for (i = 0; i < length; i++)
-    {
-        id = $(obj[i]).attr("id");
-        
-        store_module_data_by_id(id);
-        if(!moving) {
-            search_result = search_result.split(",");
-        }
-        
-        if (wert == 1)
-        {
-            
-            semester_ects = semester_ects + search_result[7];
-        }
-        else if (wert == 0)
-        {
-            
-            semester_ects = semester_ects - search_result[7];
-        }
+function update_semester_ects(sem_id) {
+
+    var countSemECTS = 0;
+
+    for (i = 0; i < content[sem_id - 1].length; i++) {
+        countSemECTS += (Number.parseInt(content[sem_id - 1][i][9]));
     }
-    ////console.log($.each($("#div_semester").children()));
-    //$("#div_semester").append(semester_array[global_sem_id]);
-    //show_semester_content(global_sem_id);
+
+    var idString = "sem_ects_anz" + (sem_id);
+    semester_ects = countSemECTS;
 }
