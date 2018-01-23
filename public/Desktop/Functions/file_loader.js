@@ -34,23 +34,27 @@ $(document).ready(function ()
             search_result = "";
             
             content = eval("(" + (lines[1]) + ")");
-            
+
             for (x = 0; x < content.length; x++)
             {
                 for (y = 0; y < content[x].length; y++)
                 {
-                    if (content[x][y][1] === "M07_WPP" || content[x][y][1] === "ALM")
+                    if (content[x][y][0] == "M07_WPP" || content[x][y][0] == "ALM")
                     {
                         insert_module_in_semester(content[x][y][0], (x + 1), {
-                            "mod_id": content[x][y][1],
-                            "sem_id": content[x][y][0],
-                            "name": content[x][y][2],
-                            "v": content[x][y][3],
-                            "u": content[x][y][4],
-                            "p": content[x][y][5],
-                            "pr": content[x][y][6],
-                            "dozent": content[x][y][7],
-                            "ects": content[x][y][8]
+                            "mod_id": content[x][y][0],
+                            "sem_id": (x+1),
+                            "name": content[x][y][1],
+                            "v": content[x][y][2],
+                            "u": content[x][y][3],
+                            "p": content[x][y][4],
+                            "pr": content[x][y][5],
+                            "ws": content[x][y][6],
+                            "sose": content[x][y][7],
+                            "dozent": content[x][y][8],
+                            "ects": content[x][y][9],
+                            "istPflicht": content[x][y][10],
+                            "kat_id": content[x][y][11],
                         }, true);
                     }
                     else

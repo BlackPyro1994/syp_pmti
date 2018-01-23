@@ -38,4 +38,6 @@ function modal_m07_ok(click)
     $("#" + global_mod_id).removeClass('ausgewaehlt');
     
     update_rules();
+    update_semester_ects(global_sem_id);
+    update_master_ects(global_mod_id,1);
 }

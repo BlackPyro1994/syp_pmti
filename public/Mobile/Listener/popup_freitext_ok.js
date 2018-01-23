@@ -31,7 +31,7 @@ function popup_freitext_ok(click) {
     istPflicht = false;
     kat_id = "AM";
 
-    append_free_module(mod_id, global_sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id);
+    append_free_module(mod_id, global_sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id, false);
 
     $('#myModal-freitext').modal('hide');
     update_semester_ects(global_sem_id);

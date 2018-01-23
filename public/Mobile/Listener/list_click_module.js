@@ -19,7 +19,7 @@ function list_click_module(click) {
     } else {
         append_module_in_semester(global_mod_id, global_sem_id);
         update_master_ects(global_mod_id, 1);
-        //update_semester_ects(global_mod_id,1);
+        update_semester_ects(global_sem_id);
     }
     if(global_mod_id != "ALM") {
         //wenn mod_id includes _WPP dann cat_id == WPP
