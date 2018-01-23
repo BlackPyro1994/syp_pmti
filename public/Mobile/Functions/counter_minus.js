@@ -19,7 +19,6 @@ function counter_minus()
                     safe_semester = $("#div_semester").children();
                     
                     index = blocked.indexOf(mod_id);
-                    console.log("Modul in Blocked : " + index);
                     
                     if (index != -1)
                     {

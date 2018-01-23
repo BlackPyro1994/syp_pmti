@@ -16,14 +16,8 @@ function update_rules() {
 
     katalogListe.forEach(function (katalog) {
         var katID = katalog.split(",")[0];
-
-
         var belegAnz = katalog.split(",")[2];
-
-
         var countBlocked = $("#" + katID).siblings().filter(".blocked").length;
-
-
         var countWPPblocked = $("#" + katID).siblings().filter(".blocked_wpp").length;
 
 

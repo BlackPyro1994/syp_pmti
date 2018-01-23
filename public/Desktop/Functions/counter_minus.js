@@ -10,11 +10,14 @@ function counter_minus() {
     document.getElementById("count").textContent = wert;
     modules_in_sem = $("#div_semester").children().last().children().length - 1;
 
+    console.log("MODS: "+modules_in_sem);
     for (i = 0; i < modules_in_sem; i++) {
         var mod_id = $("#div_semester").children().last().children().last().children().attr('id');
+        console.log("MOD ID: "+mod_id);
         var id = mod_id.replace("mod_","");
+        console.log("ID: "+id);
 
-        $("#" + mod_id).remove();
+        $("#" + mod_id).parent().remove();
 
         $("#" + id).parent().parent().children().children().removeClass('blocked');
         $("#" + id).parent().parent().children().children().removeClass('blocked_wpp');
@@ -23,10 +26,8 @@ function counter_minus() {
         $("#" + (id).toString().replace("_WPP", "")).parent().parent().children().children().removeClass('blocked');
         $("#" + (id).toString().replace("_WPP", "")).parent().parent().children().children().removeClass('blocked_wpp');
 
-        remove_module_from_content(id);
         update_master_ects(id,0);
     }
-
     content.pop();
     $("#div_semester").children().last().remove();
     update_rules();
