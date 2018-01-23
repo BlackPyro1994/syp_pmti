@@ -1,5 +1,8 @@
 function ok_button_new_plan(options)
 {
+    $("#div_kataloge").empty();
+    show_catalogs();
+    
     if (options)
     {
         var wert = options['count'];
@@ -8,7 +11,6 @@ function ok_button_new_plan(options)
     }
     else
     {
-        //content neu ?!
         var meldung = "Bitte eine Anzahl angeben";
         var myRadio = $('input[name="optradio"]');
         

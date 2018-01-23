@@ -1,4 +1,7 @@
 function new_plan() {
+    
+    $(".disabled-catalog").removeClass('disabled-catalog');
+    
     $('#myModal-new_plan').modal('toggle');
 
     $('#myModal-new_plan').on('shown.bs.modal', function () {
