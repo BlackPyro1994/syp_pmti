@@ -33,7 +33,7 @@ function click_semester(click) {
         safe_semester = $("#div_semester").children();
         $("#div_semester").children().remove();
         show_semester_content(global_sem_id);
-        append_module_in_semester(global_mod_id);
+        append_module_in_semester(global_mod_id, global_sem_id);
 
         $("#button_minus").hide();
         $("#button_plus").text("Module");

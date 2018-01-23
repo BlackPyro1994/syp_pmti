@@ -9,7 +9,7 @@
  * @param dozent Name des Dozenten
  * @param ects Anzahl der ECTS Punkte für das Modul
  */
-function append_free_module(name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id) {
+function append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id) {
     //console.log("function append_free_module(" + name + "," + v + "," + u + "," + p + "," + pr + "," + dozent + "," + ects + ")");
     
     if (global_mod_id == "ALM" && name == "")
@@ -33,10 +33,11 @@ function append_free_module(name, v, u, p, pr, ws, sose, dozent, ects, istPflich
     if (global_mod_id == "ALM" && pr == "")
         pr = 0;
 
-    search_result = (global_mod_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + ws + "," + sose + "," + dozent + "," + ects + "," + istPflicht + "," + kat_id);
+    search_result = (mod_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + ws + "," + sose + "," + dozent + "," + ects + "," + istPflicht + "," + kat_id);
     search_result = search_result.split(",");
-    $("#div_semester").append('<div id="' + global_mod_id + '" class="row modules_border class_click_modules_in_semester margin-top"><button id="' + global_mod_id + '" class="btn btn-block"><div id="' + global_mod_id + '" class="row text-left"><div id="' + global_mod_id + '" class="col fett"><p>' + global_mod_id + '</p></div><div id="' + global_mod_id + '" class="col text-right"><p id="' + global_mod_id + '">ECTS: ' + ects + '</p></div></div><div id="' + global_mod_id + '" class="row normal text-left"><div id="' + global_mod_id + '" class="col"><p id="' + global_mod_id + '">Dozent: ' + dozent + '</p></div></div></button></div>');
-    content[global_sem_id - 1].push(search_result);
-    update_semester_ects(global_sem_id);
+    content[sem_id - 1].push(search_result);
+
+    $("#div_semester").append('<div id="' + mod_id + '" class="row modules_border class_click_modules_in_semester margin-top"><button id="' + mod_id + '" class="btn btn-block"><div id="' + mod_id + '" class="row text-left"><div id="' + mod_id + '" class="col fett"><p>' + mod_id + '</p></div><div id="' + mod_id + '" class="col text-right"><p id="' + mod_id + '">ECTS: ' + ects + '</p></div></div><div id="' + mod_id + '" class="row normal text-left"><div id="' + mod_id + '" class="col"><p id="' + mod_id + '">Dozent: ' + dozent + '</p></div></div></button></div>');
+
     update_rules();
 }

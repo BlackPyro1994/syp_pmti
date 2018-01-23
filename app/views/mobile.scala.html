@@ -39,6 +39,7 @@
   <script src="@routes.Assets.versioned("Mobile/Functions/update_semester_ects.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/update_semester_ects_extra.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/availability_mask_modules.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.versioned("Mobile/Functions/file_loader.js")" type="text/javascript"></script>
 
 	<script src="@routes.Assets.versioned("Mobile/Listener/button_laden.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Listener/click_catalog.js")" type="text/javascript"></script>
@@ -68,6 +69,7 @@
 			  </div>
 			  <div class="col">
 				<button class ="btn btn-primary btn-block btn-space" type="button">Plan speichern</button>
+				  <input id = "file-input" type = "file" name = "name" style = "display: none; "/>
 			  </div>
 			  <div class="col">
 				<button id="button_planLaden" class ="btn btn-primary btn-block btn-space" type="button">Plan laden</button>
@@ -331,6 +333,7 @@
             var close = 0;
             var move = 0;
             var flip = 0;
+            var load = 0;
 
             var safe_semester;
             var safe_modules;

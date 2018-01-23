@@ -2,29 +2,32 @@
  * Übernimmt das ausgewählte Startsemester(startSem), die Anzahl an Semestern(wert) und erstellt diese.
  *
  */
-function ok_button_new_plan()
+function ok_button_new_plan(options)
 {
+    if (options)
+    {
+        var wert = options['count'];
+        startSem = options['semStart'];
 
-    //console.log("function ok_button_new_plan()");
+    } else {
+        //console.log("function ok_button_new_plan()");
+        content = [];
 
-    content = [];
-    
-    //console.log("ok_button_new_plan()");
-    count = 0;
-    var meldung = "Bitte eine Anzahl angeben";
-    var myRadio = $('input[name="optradio"]');
-    startSem = myRadio.filter(':checked').val();
-    wert = $("#input-semesteranzahl").val();
-    
+        count = 0;
+        var meldung = "Bitte eine Anzahl angeben";
+        var myRadio = $('input[name="optradio"]');
+        startSem = myRadio.filter(':checked').val();
+        wert = $("#input-semesteranzahl").val();
+    }
     if (wert == "")
     {
         document.getElementById("fehlermeldung").textContent = meldung;
     }
-    
+
     else if (wert != "")
     {
         $("#div_semester").children().remove();
-        
+
         for (i = 0; i < wert; i++)
         {
             count++;
@@ -33,6 +36,6 @@ function ok_button_new_plan()
         document.getElementById("fehlermeldung").textContent = "";
         $('#myModal-new_plan').modal('hide');
     }
-
+    load = 0;
     update_rules();
 }

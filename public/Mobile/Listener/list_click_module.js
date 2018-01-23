@@ -17,7 +17,7 @@ function list_click_module(click) {
     if (global_mod_id == "ALM" || global_mod_id == "M07_WPP") {
         popup_extra_module();
     } else {
-        append_module_in_semester(global_mod_id);
+        append_module_in_semester(global_mod_id, global_sem_id);
         update_master_ects(global_mod_id, 1);
         //update_semester_ects(global_mod_id,1);
     }

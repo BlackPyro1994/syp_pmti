@@ -21,7 +21,6 @@ function update_rules() {
         var belegAnz = katalog.split(",")[2];
         var countBlocked = 0;
 
-
         for (i = 0; i < catalog_array.length; i++) {
             if (katID == catalog_array[i]) {
                 countBlocked++;

@@ -37,7 +37,7 @@ function popup_m07_ok(click) {
         dozent = "Dozent";
     }
 
-    append_free_module(name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id);
+    append_free_module(mod_id, global_sem_id,name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id);
     $('#myModal-m07').modal('hide');
     update_master_ects(global_mod_id, 1);
     //update_semester_ects(global_mod_id,1);
