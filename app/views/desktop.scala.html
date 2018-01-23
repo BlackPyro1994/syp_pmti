@@ -368,6 +368,26 @@
 		    $('#div_semester').on('mouseover', '.class_click_semester', semester_mouseover);
 		    $('#div_semester').on('mouseout', '.class_click_semester', semester_mouseout);
 
+			  $('#myModal-freitext').keypress(function (e) {
+				  if (e.which == 13) {
+					  // $('#popup-new-ok').trigger('click');
+					  modal_freitext_ok();
+				  }
+			  });
+			  $('#myModal-freitext').on('shown.bs.modal', function () {
+				  $('#input-name').focus();
+			  });
+
+			  $('#myModal-m07').keypress(function (e) {
+				  if (e.which == 13) {
+					  // $('#popup-new-ok').trigger('click');
+					  modal_m07_ok();
+				  }
+			  });
+			  $('#myModal-m07').on('shown.bs.modal', function () {
+				  $('#input-name-m07').focus();
+			  });
+
 		    // $('#div_kataloge').on('mouseover', '.class_click_module_p', module_p_mouseover);
 
 		    // $('#div_semester').on('click', '.class_click_semester', click_semester);
