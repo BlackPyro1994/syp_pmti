@@ -4,6 +4,7 @@
  * und bereits gewählten Modulen(Katalog ID in catalog_array) die Regeln.
  *
  */
+
 function update_rules() {
     //console.log("function update_rules()");
 

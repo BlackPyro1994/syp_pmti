@@ -19,7 +19,6 @@ function remove_module_from_content(module_id)
                 position_y = i;
     
                 throw BreakException;
-                
             }
         }
     }
