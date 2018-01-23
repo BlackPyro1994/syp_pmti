@@ -25,6 +25,4 @@ function append_module_in_semester(mod_id, sem_id) {
 
     //console.log("search_result: "+ search_result);
     content[sem_id -1].push(search_result);
-
-
 }

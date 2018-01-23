@@ -1,62 +1,28 @@
-$(document).ready(function ()
-{
-    document.getElementById('file-input').onchange = function ()
-    {
-        
+$(document).ready(function () {
+    document.getElementById('file-input').onchange = function () {
+
         //$(".disabled-catalog").removeClass('disabled-catalog');
-        
+
         //$(".btn-block.btn-light.rounded-semester").siblings().removeClass('blocked');
         //$(".btn-block.btn-light.rounded-semester").siblings().removeClass('blocked_wpp');
-        
+
         var file = this.files[0];
         var reader = new FileReader();
-        
-        reader.onload = function (progressEvent)
-        {
+
+        reader.onload = function (progressEvent) {
             content = [];
-            
-            var lines = this.result.split('\n');
-    
+            var temp;
+            // var str = Base64Encode(this.result);
+            var str = this.result;
+            var lines = str.split('\n');
+            temp = lines[0].split(',');
+            ok_button_new_plan({"count": temp[1], "semStart": temp[0]});
+
             content = eval("(" + (lines[1]) + ")");
-            
-            for (var line = 1; line < lines.length; line++)
-            {
-                temp = lines[line];
-                if (temp.split(',')[1] === "M07_WPP" || temp.split(',')[1] === "ALM")
-                {
-                    temp = temp.split(',');
-                    if (temp[1].includes("_WPP"))
-                    {
-                        catalog_array.push("WPP");
-                    }
-                    if (temp[1] !== "ALM")
-                    {
-                        blocked.push(temp[1]);
-                    }
-                    
-                    append_free_module(temp[1], temp[0], temp[2], temp[3], temp[4], temp[5], temp[6], temp[7], temp[8], temp[9], temp[10], temp[11], temp[12]);
-                    save_semester_content(temp[0]);
-                }
-                else
-                {
-                    temp = temp.split(',');
-                    if (temp[1].includes("_WPP"))
-                    {
-                        catalog_array.push("WPP");
-                    } else
-                    {
-                        catalog_array.push(temp[12]);
-                    }
-                    append_module_in_semester(temp[1], temp[0]);
-                    save_semester_content(temp[0]);
-                }
-            }
-            
-            load = 1;
-            ok_button_new_plan({"count": temp2[1], "semStart": temp2[0]});
-            
-            //document.getElementById('file-input').value = "";
-            
+            generate_semester_content();
+
+            document.getElementById('file-input').value = "";
+
             //$("#button_new_plan").removeClass("red_border");
             //$('#button_planLaden').removeClass("red_border");
         };
@@ -65,20 +31,51 @@ $(document).ready(function ()
 })
 
 
-//FOR schleife der länge an semestern temp[1]
-//FOR der kompletten Datei
-//wenn temp[0](Semester ID) == i(schleife der länge der semester anzahl) // 1 == 1, 1 == 2 etc
-//dann if m07 || alm append
-//oder normales modul append
-//dann save inhalt
-//dann alle removen
-//dann nächster FOR durchlauf
+function generate_semester_content() {
+    var length = content.length;
+    var sem_content = "";
+    var inner_content = "";
 
-/*
-append_free_module(temp[1], temp[0], temp[2], temp[3], temp[4], temp[5], temp[6], temp[7], temp[8], temp[9], temp[10], temp[11], temp[12]);
-append_module_in_semester(temp[1], temp[0]);
-laod = 1;
-ok_button_new_plan({"count": temp[1], "semStart": temp[0]});
-*/
+    for (i = 0; i < length; i++) {
+        var sem_id = i + 1;
+        var inner_length = content[i].length;
+        sem_content = "";
+        inner_content = "";
 
+            for (j = 0; j < inner_length; j++) {
+                var mod_id = content[i][j][0];
 
+                if (mod_id == "M07_WPP" || mod_id == "ALM") {
+                    var string = ('<div id="' + mod_id + '" class="row modules_border class_click_modules_in_semester margin-top"><button id="' + mod_id + '" class="btn btn-block"><div id="' + mod_id + '" class="row text-left"><div id="' + mod_id + '" class="col fett"><p>' + mod_id + '</p></div><div id="' + mod_id + '" class="col text-right"><p id="' + mod_id + '">ECTS: ' + content[i][j][9] + '</p></div></div><div id="' + mod_id + '" class="row normal text-left"><div id="' + mod_id + '" class="col"><p id="' + mod_id + '">Dozent: ' + content[i][j][8] + '</p></div></div></button></div>');
+                    inner_content = inner_content + string;
+                    if(mod_id == "M07_WPP") {
+                        update_master_ects(mod_id,1);
+                        blocked.push(mod_id);
+                        catalog_array.push(content[i][j][11]);
+                    }
+
+                } else {
+                    var string = '<div id="' + mod_id + '" class="row modules_border class_click_modules_in_semester margin-top">' +
+                        '<button id="' + mod_id + '" class="btn btn-block"><div id="' + mod_id + '" class="row text-left">' +
+
+                        '<div id="' + mod_id + '" class="col fett">' +
+                        '<p>' + mod_id + '</p></div>' +
+
+                        '<div id="' + mod_id + '" class="col text-right">' +
+                        '<p id="' + mod_id + '">ECTS: ' + content[i][j][9] + '</p></div>' + '</div>' +
+
+                        '<div id="' + mod_id + '" class="row normal text-left">' +
+                        '<div id="' + mod_id + '" class="col">' +
+
+                        '<p id="' + mod_id + '">Dozent: ' + content[i][j][8] + '</p></div></div></button></div>';
+
+                    inner_content = inner_content + string;
+                    blocked.push(mod_id);
+                    catalog_array.push(content[i][j][11]);
+                    update_master_ects(mod_id,1);
+                }
+            }
+        sem_content = inner_content;
+        content_html[sem_id] = sem_content;
+    }
+}
