@@ -12,7 +12,6 @@ function create_pdf() {
     var y = 20;
     var id, name, v, u, p, pr, dozent, ects;
     var sem_zahl, sem_ects, str;
-    var master_ects = 0;
     var restplatz = 150;
     var liste;
 
@@ -29,9 +28,7 @@ function create_pdf() {
     doc.setFontSize(15);
     doc.text(285, y, "(" + currentdate.getDate() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getFullYear() + ")", null, null, 'right');
     y += 17;
-
-    master_ects = document.getElementById("master_ects_punkte").textContent;
-
+    
     strMasterECTS = "Master-ECTS insgesamt: " + master_ects;
 
     doc.setFontSize(10);
