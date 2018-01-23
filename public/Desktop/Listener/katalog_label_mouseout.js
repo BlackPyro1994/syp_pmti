@@ -13,7 +13,9 @@ function catalog_label_mouseover(event)
         }
         else if(($(event.target).parent().children().first().siblings().not('.blocked').length - 1) == 0)
         {
-            $("#" + ausgewaehlt_modul).parent().children().first().addClass("mouseOver");
+            if(!$(event.target).attr("id") == "ALM") {
+                $("#" + ausgewaehlt_modul).parent().children().first().addClass("mouseOver");
+            }
         }
         
         if (ausgewaehlt_modul == $(event.target).attr("id"))
