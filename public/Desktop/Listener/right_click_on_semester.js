@@ -19,7 +19,6 @@ function right_click_on_semester(caller)
             }
             else
             {
-                
                 if (($("#" + ausgewaehlt_modul).parent().children().first().siblings().not('.blocked').length - 1) == 0)
                 {
                     $("#" + ausgewaehlt_modul).parent().toggleClass("cat-border");
@@ -30,8 +29,6 @@ function right_click_on_semester(caller)
                     
                     open_catalog = "";
                 }
-                
-                
             }
             
             insert_module_in_semester(ausgewaehlt_modul, semester_id, null, false);

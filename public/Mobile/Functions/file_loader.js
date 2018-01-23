@@ -10,6 +10,9 @@ $(document).ready(function () {
         var reader = new FileReader();
 
         reader.onload = function (progressEvent) {
+            
+            count = 0;
+            
             content = [];
             var temp;
             // var str = Base64Encode(this.result);

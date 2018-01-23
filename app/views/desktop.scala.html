@@ -41,7 +41,7 @@
   <script src="@routes.Assets.versioned("Desktop/Functions/update_semester_ects.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/updateModuleString.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Functions/updateRules.js")" type="text/javascript"></script>
-  
+
 
   <script src="@routes.Assets.versioned("Desktop/Listener/button_laden.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Listener/katalog_label_mouseout.js")" type="text/javascript"></script>
@@ -55,6 +55,7 @@
   <script src="@routes.Assets.versioned("Desktop/Listener/modal_popup_abbrechen.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Listener/module_p_mouseover.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Desktop/Listener/right_click_on_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Desktop/Listener/semester_mouse.js")" type="text/javascript"></script>
 
   <body>
 
@@ -70,9 +71,7 @@
 			</h1>
 		  </span>
 		</div>
-
 		@*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
-
 		  <!-- PopUp Neuer Plan -->
 		<div id = "myModal-new_plan" class = "modal fade" role = "dialog">
 		  <div class = "modal-dialog">
@@ -122,9 +121,7 @@
 			</div>
 		  </div>
 		</div>
-
 		@*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
-
 		  <!-- PopUp Freitextmodul -->
 		<div id = "myModal-freitext" class = "modal fade" role = "dialog">
 		  <div class = "modal-dialog">
@@ -174,9 +171,7 @@
 			</div>
 		  </div>
 		</div>
-
 		@*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
-
 		  <!-- PopUp M07 -->
 		<div id = "myModal-m07" class = "modal fade" role = "dialog">
 		  <div class = "modal-dialog">
@@ -209,9 +204,7 @@
 			</div>
 		  </div>
 		</div>
-
 		@*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
-
 		  <!-- Container Menüleiste -->
 		<div class = "container-fluid" style="padding-bottom: 1%">
 
@@ -253,7 +246,7 @@
 			<div class = "col" align = "center">
 			  <button disabled type = "button" class = "btn btn-primary" id="button_speichern" onclick = "save()">
 				@*<button type = "button" class = "btn btn-primary" content-toggle = "modal" content-target = "#myModal-freitext">*@
-				  Plan speichern
+				Plan speichern
 			  </button>
 			</div>
 
@@ -272,9 +265,7 @@
 			</div>
 		  </div>
 		</div>
-
 		@*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
-
 		  <!-- Container um Katalogliste, Regeln, Semester -->
 		<div class = "container-fluid">
 		  <div class = "row rounded">
@@ -291,17 +282,13 @@
 				</div>
 			  </div>
 			</div>
-
 			@*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
-
 			  <!--  container-fluid um Regeln, Semester -->
 			<div class = "col container-fluid">
 				<!--  container-fluid Regeln -->
 			  <div class = "container-fluid" id = "regeln">
 			  </div>
-
 			  @*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
-
 				<!--  container-fluid Semester -->
 			  <div id = "div_semester">
 			  </div>
@@ -338,29 +325,29 @@
 
 		  function main()
 		  {
-			@for(katal <- katalogListe){
-			katalogListe.push("@{katal(0)},@{katal(1)},@{katal(2)}");
-			}
+		    @for(katal <- katalogListe){
+		    katalogListe.push("@{katal(0)},@{katal(1)},@{katal(2)}");
+		    }
 
-			@for(mod <- modulListe){
+		    @for(mod <- modulListe){
 
-			if ("@{mod(11)}" == "WPP")
-			{
+		    if ("@{mod(11)}" == "WPP")
+		    {
 			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-			}
-			else
-			{
+		    }
+		    else
+		    {
 			  modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-			}
+		    }
 
-			if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
-			{
+		    if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
+		    {
 			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-			}
+		    }
 
-			}
+		    }
 
-			show_catalogs();
+		    show_catalogs();
 
 		  }
 
@@ -369,60 +356,55 @@
 		  $(document).ready(function ()
 		  {
 
-			$('#button_planLaden').on('click', button_laden);
-			$('#button_pdf').on('click', create_pdf);
+		    $('#button_planLaden').on('click', button_laden);
+		    $('#button_pdf').on('click', create_pdf);
 
-			$('#myModal-new_plan').on('click', '#popup-abbrechen', modal_popup_abbrechen);
+		    $('#myModal-new_plan').on('click', '#popup-abbrechen', modal_popup_abbrechen);
 
-			$('#myModal-freitext').on('click', '#popup-freitext-ok', modal_freitext_ok);
-			$('#myModal-freitext').on('click', '#popup-freitext-abbrechen', modal_freitext_abbrechen);
+		    $('#myModal-freitext').on('click', '#popup-freitext-ok', modal_freitext_ok);
+		    $('#myModal-freitext').on('click', '#popup-freitext-abbrechen', modal_freitext_abbrechen);
 
-			$('#myModal-m07').on('click', '#popup-m07-abbrechen', modal_m07_abbrechen);
-			$('#myModal-m07').on('click', '#popup-m07-ok', modal_m07_ok);
+		    $('#myModal-m07').on('click', '#popup-m07-abbrechen', modal_m07_abbrechen);
+		    $('#myModal-m07').on('click', '#popup-m07-ok', modal_m07_ok);
 
-			$('#div_kataloge').on('mouseover', '.class_click_catalog', catalog_label_mouseover);
-			$('#div_kataloge').on('mouseout', '.class_click_catalog', catalog_label_mouseout);
+		    $('#div_kataloge').on('mouseover', '.class_click_catalog', catalog_label_mouseover);
+		    $('#div_kataloge').on('mouseout', '.class_click_catalog', catalog_label_mouseout);
 
-			// $('#div_kataloge').on('mouseover', '.class_click_module_p', module_p_mouseover);
+		    $('#div_semester').on('mouseover', '.class_click_semester', semester_mouseover);
+		    $('#div_semester').on('mouseout', '.class_click_semester', semester_mouseout);
 
-			// $('#div_semester').on('click', '.class_click_semester', click_semester);
+		    // $('#div_kataloge').on('mouseover', '.class_click_module_p', module_p_mouseover);
 
-			//mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+		    // $('#div_semester').on('click', '.class_click_semester', click_semester);
 
-			$('#div_semester').on('click', '.button_semester', function (event)
-			{
+		    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+		    $('#div_semester').on('click', '.button_semester', function (event)
+		    {
 			  event.stopPropagation();
 			  right_click_on_semester(event);
-			});
+		    });
 
-			//mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+		    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
-			$('#div_semester').on('click', '.button_delete', function (event)
-			{
-
-
-
-
+		    $('#div_semester').on('click', '.button_delete', function (event)
+		    {
 			  event.stopPropagation();
 
 			  $("#div_semester").children().removeClass("not_available");
-
 			  $('#div_semester').children().removeClass('ausgewaehlt');
-
-
 
 			  var clicked_modul_id = $(event.target).parent().prev().attr("id").replace("mod_", "");
 			  var clicked_semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "")
 
-
 			  delete_module_from_semester(clicked_modul_id, clicked_semester_id);
 
-			});
+		    });
 
-			//mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+		    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
-			$('#div_semester').on('click', '.button_move', function (event)
-			{
+		    $('#div_semester').on('click', '.button_move', function (event)
+		    {
 
 			  event.stopPropagation();
 
@@ -434,52 +416,51 @@
 			  var semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "")
 
 
-
 			  ausgewaehlt_modul = modul_id;
 			  moving = 1;
 
 			  availability_mask_semesters(ausgewaehlt_modul);
 			  old_sem_id = semester_id;
 
-			});
+		    });
 
-			//mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+		    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
 
-			$("#button_new_plan").addClass("red_border");
-			$('#button_planLaden').addClass("red_border");
+		    $("#button_new_plan").addClass("mouse_over_border");
+		    $('#button_planLaden').addClass("mouse_over_border");
 
-			// testing();
+		    // testing();
 
-			// $("*").on("click", click_selector);
+		    // $("*").on("click", click_selector);
 
 		  });
 
 		  function testing()
 		  {
 
-			var wert = 3;
-			startSem = "winter";
+		    var wert = 3;
+		    startSem = "winter";
 
-			for (i = 0; i < wert; i++)
-			{
+		    for (i = 0; i < wert; i++)
+		    {
 			  document.getElementById("count").textContent++;
 			  add_semester(startSem);
-			}
+		    }
 
-			$(".disabled-catalog").removeClass('disabled-catalog');
+		    $(".disabled-catalog").removeClass('disabled-catalog');
 
-			document.getElementById("button_minus").disabled = false;
-			document.getElementById("button_plus").disabled = false;
-			document.getElementById("button_speichern").disabled = false;
-			document.getElementById("button_pdf").disabled = false;
+		    document.getElementById("button_minus").disabled = false;
+		    document.getElementById("button_plus").disabled = false;
+		    document.getElementById("button_speichern").disabled = false;
+		    document.getElementById("button_pdf").disabled = false;
 
-			blocked = false;
+		    blocked = false;
 
-			update_rules();
+		    update_rules();
 
-			$("#button_new_plan").removeClass("red_border");
-			$('#button_planLaden').removeClass("red_border");
+		    $("#button_new_plan").removeClass("mouse_over_border");
+		    $('#button_planLaden').removeClass("mouse_over_border");
 
 		  }
 

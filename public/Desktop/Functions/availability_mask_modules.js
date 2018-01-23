@@ -1,8 +1,6 @@
 function availability_mask_modules(semester_id)
 {
     $("#div_kataloge").children().children().removeClass("not_available");
-
-    console.log(ausgewaehlt_semester);
     
     if (ausgewaehlt_semester % 2 == 0)
     {
@@ -23,35 +21,27 @@ function availability_mask_modules(semester_id)
                 {
                     $("#" + t.split(",")[0]).addClass("not_available");
                 }
-                else
-                {
-                    // $("#div_kataloge").children().children().addClass("not_available");
-                    $("#" + t.split(",")[0]).removeClass("not_available");
-                }
             });
-            if(startSem == "sommer") {
+            if (startSem == "sommer")
+            {
                 //gewählt winter
                 modulListe.forEach(function (t)
                 {
-                    
                     //winter / sommer
                     if (t.split(",")[6] == "0" && t.split(",")[7] == "1")
                     {
                         $("#" + t.split(",")[0]).addClass("not_available");
                     }
-                    else
-                    {
-                        // $("#div_kataloge").children().addClass("not_available");
-                        $("#" + t.split(",")[0]).removeClass("not_available");
-                    }
+                    
                 });
             }
         }
-    } else {
+    } else
+    {
         if (startSem == "winter")
         {
             //gewählte = winter
-        
+            
             modulListe.forEach(function (t)
             {
                 
@@ -60,13 +50,10 @@ function availability_mask_modules(semester_id)
                 {
                     $("#" + t.split(",")[0]).addClass("not_available");
                 }
-                else
-                {
-                    // $("#div_katalog").children().addClass("not_available");
-                    $("#" + t.split(",")[0]).removeClass("not_available");
-                }
+                
             });
-            if(startSem == "sommer") {
+            if (startSem == "sommer")
+            {
                 //gewählt sommer
                 modulListe.forEach(function (t)
                 {
@@ -76,50 +63,8 @@ function availability_mask_modules(semester_id)
                     {
                         $("#" + t.split(",")[0]).addClass("not_available");
                     }
-                    else
-                    {
-                        // $("#div_katalog").children().addClass("not_available");
-                        $("#" + t.split(",")[0]).removeClass("not_available");
-                    }
                 });
             }
         }
     }
 }
-
-/*
-modulListe.forEach(function (t)
-{
-    
-
-    //1 und 0
-    if (t.split(",")[6] & (~t.split(",")[7]))
-    {
-        if (startSem == "winter")
-        {
-            modulListe.forEach(function (t2) {
-                if (~t.split(",")[6])
-                {
-                
-                }
-            });
-            
-            $("#" + t.split(",")[0]).addClass("not_available");
-        }
-        else
-        {
-            $("#div_katalog").children().addClass("not_available");
-            $("#" + t.split(",")[0]).removeClass("not_available");
-        }
-    }
-    else if (~t.split(",")[6] & (t.split(",")[7]))
-    {
-        if(startSem == "sommer") {
-        
-        }
-        
-    }
-
-});
-
-*/

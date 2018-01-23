@@ -4,7 +4,7 @@ function catalog_label_mouseover(event)
     {
         if ($(event.target).hasClass("rounded-catalog-module"))
         {
-            $(event.target).addClass("red_border");
+            $(event.target).addClass("mouse_over_border");
         }
         
         if (!$(event.target).hasClass("cat-background"))
@@ -19,17 +19,17 @@ function catalog_label_mouseover(event)
         if (ausgewaehlt_modul == $(event.target).attr("id"))
         {
             $(event.target).removeClass("mouseOver");
-            $(event.target).removeClass("red_border");
+            $(event.target).removeClass("mouse_over_border");
         }
         else if($(event.target).hasClass("ausgewaehlt"))
         {
             $(event.target).removeClass("mouseOver");
-            $(event.target).removeClass("red_border");
+            $(event.target).removeClass("mouse_over_border");
         }
         else if($(event.target).hasClass("blocked") || $(event.target).hasClass("blocked_wpp"))
         {
             $(event.target).removeClass("mouseOver");
-            $(event.target).removeClass("red_border");
+            $(event.target).removeClass("mouse_over_border");
         }
         
     }
@@ -44,6 +44,6 @@ function catalog_label_mouseout(event)
         // $(event.target).css("font-weight:normal");
         
         $(event.target).removeClass("mouseOver");
-        $(event.target).removeClass("red_border");
+        $(event.target).removeClass("mouse_over_border");
     }
 }

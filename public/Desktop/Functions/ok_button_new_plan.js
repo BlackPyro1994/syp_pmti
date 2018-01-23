@@ -60,6 +60,6 @@ function ok_button_new_plan(options)
     
     update_rules();
     
-    $("#button_new_plan").removeClass("red_border");
-    $('#button_planLaden').removeClass("red_border");
+    $("#button_new_plan").removeClass("mouse_over_border");
+    $('#button_planLaden').removeClass("mouse_over_border");
 }

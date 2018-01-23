@@ -22,7 +22,7 @@
             $("#div_semester").children().removeClass("not_available");
             
             $(caller).removeClass("mouseOver");
-            $(caller).removeClass("red_border");
+            $(caller).removeClass("mouse_over_border");
             
             $(caller).toggleClass('ausgewaehlt');
             
