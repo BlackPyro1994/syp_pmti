@@ -15,17 +15,9 @@ $(document).ready(function ()
         {
             content = [];
             
-            var temp, temp2;
             var lines = this.result.split('\n');
-            temp2 = lines[0].split(',');
-            temp = lines[0].split(',');
-            
-            //ok_button_new_plan({"count": temp[1], "semStart": temp[0]});
-            
-            for (i = 0; i < temp[1]; i++)
-            {
-                content.push(new Array());
-            }
+    
+            content = eval("(" + (lines[1]) + ")");
             
             for (var line = 1; line < lines.length; line++)
             {

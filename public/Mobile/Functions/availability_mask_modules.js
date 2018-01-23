@@ -1,6 +1,3 @@
-/**
- *
- */
 function availability_mask_modules()
 {
     

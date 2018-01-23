@@ -35,7 +35,11 @@ function append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent,
 
     search_result = (mod_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + ws + "," + sose + "," + dozent + "," + ects + "," + istPflicht + "," + kat_id);
     search_result = search_result.split(",");
-    content[sem_id - 1].push(search_result);
+    
+    if(!load)
+    {
+        content[sem_id - 1].push(search_result);
+    }
 
     $("#div_semester").append('<div id="' + mod_id + '" class="row modules_border class_click_modules_in_semester margin-top"><button id="' + mod_id + '" class="btn btn-block"><div id="' + mod_id + '" class="row text-left"><div id="' + mod_id + '" class="col fett"><p>' + mod_id + '</p></div><div id="' + mod_id + '" class="col text-right"><p id="' + mod_id + '">ECTS: ' + ects + '</p></div></div><div id="' + mod_id + '" class="row normal text-left"><div id="' + mod_id + '" class="col"><p id="' + mod_id + '">Dozent: ' + dozent + '</p></div></div></button></div>');
 
