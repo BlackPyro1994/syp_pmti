@@ -317,6 +317,7 @@
 		  var ausgewaehlt_semester = "";
 		  var ausgewaehlt_modul = "";
 		  var global_mod_id, global_sem_id;
+		  var old_sem_id;
 
 		  var open_catalog = "";
 
@@ -438,6 +439,7 @@
 			  moving = 1;
 
 			  availability_mask_semesters(ausgewaehlt_modul);
+			  old_sem_id = semester_id;
 
 			});
 

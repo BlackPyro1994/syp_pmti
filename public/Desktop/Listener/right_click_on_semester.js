@@ -13,6 +13,7 @@ function right_click_on_semester(caller)
                 $("#mod_" + ausgewaehlt_modul).siblings().remove();
                 $("#mod_" + ausgewaehlt_modul).remove();
                 remove_module_from_content(ausgewaehlt_modul);
+                update_semester_ects(old_sem_id);
             }
             else
             {
