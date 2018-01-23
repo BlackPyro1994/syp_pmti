@@ -11,20 +11,8 @@ function save()
     
     text += document.getElementById("count").textContent + "\n";
     
-    debug(content);
-    
-    content.forEach(function (entry)
-    {
-        entry.forEach(function (inner_entry)
-        {
-            
-            text += (content.indexOf(entry) + 1) + "," ;
-            text += inner_entry;
-            text += "\n";
-        });
-        
-        
-    });
+    // text += Base64Decode(array2json(content));
+    text += array2json(content);
     
     var element = document.createElement('a');
     
@@ -40,4 +28,45 @@ function save()
     
     document.body.removeChild(element);
     
+}
+
+function array2json(arr)
+{
+    var parts = [];
+    var is_list = (Object.prototype.toString.apply(arr) === '[object Array]');
+    
+    for (var key in arr)
+    {
+        var value = arr[key];
+        if (typeof value == "object")
+        { //Custom handling for arrays
+            if (is_list) parts.push(array2json(value)); /* :RECURSION: */
+            else parts.push('"' + key + '":' + array2json(value));
+            /* :RECURSION: */
+            //else parts[key] = array2json(value); /* :RECURSION: */
+            
+        } else
+        {
+            var str = "";
+            if (!is_list) str = '"' + key + '":';
+            
+            //Custom handling for multiple data types
+            if (typeof value == "number") str += value; //Numbers
+            else if (value === false) str += 'false'; //The booleans
+            else if (value === true) str += 'true';
+            else str += '"' + value + '"'; //All other things
+            // :TODO: Is there any more datatype we should be in the lookout for? (Functions?)
+            
+            parts.push(str);
+        }
+    }
+    var json = parts.join(",");
+    
+    if (is_list) return '[' + json + ']';//Return numerical JSON
+    return '{' + json + '}';//Return associative JSON
+}
+
+function Base64Decode(str) {
+    var bytes = base64js.toByteArray(str);
+    return new (TextDecoder || TextDecoderLite)('utf-8').decode(bytes);
 }

@@ -16,11 +16,17 @@ $(document).ready(function ()
             content = [];
             
             var temp;
-            var lines = this.result.split('\n');
+    
+            // var str = Base64Encode(this.result);
+            var str = this.result;
+            
+            var lines = str.split('\n');
+            
             temp = lines[0].split(',');
             
             ok_button_new_plan({"count": temp[1], "semStart": temp[0]});
             
+            /*
             for (var line = 1; line < lines.length; line++)
             {
                 temp = lines[line];
@@ -46,11 +52,21 @@ $(document).ready(function ()
                     insert_module_in_semester(temp[1], temp[0]);
                 }
             }
+            */
+            
+            content = eval("(" + (lines[1]) + ")");
+            
             document.getElementById('file-input').value = "";
-    
+            
             $("#button_new_plan").removeClass("red_border");
             $('#button_planLaden').removeClass("red_border");
         };
         reader.readAsText(file);
     }
 })
+
+function Base64Encode(str)
+{
+    var bytes = new (TextEncoder || TextEncoderLite)('utf-8').encode(str);
+    return base64js.fromByteArray(bytes);
+}
