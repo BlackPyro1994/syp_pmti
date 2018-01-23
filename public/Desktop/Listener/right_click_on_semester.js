@@ -39,6 +39,8 @@ function right_click_on_semester(caller)
         {
             if ($(caller.target).closest("button").hasClass("ausgewaehlt"))
             {
+                $("#div_semester").children().removeClass("mouse_over_border");
+                
                 $("#" + "semester_" + semester_id).toggleClass('ausgewaehlt');
                 $("#div_kataloge").children().children().removeClass("not_available");
                 ausgewaehlt_semester = "";
