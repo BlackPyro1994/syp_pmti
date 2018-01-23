@@ -22,13 +22,12 @@ function click_semester(click) {
         safe_semester = $("#div_semester").children();
         $("#div_semester").children().remove();
         show_semester_content(global_sem_id);
-
+        update_semester_ects(global_sem_id);
         $("#button_minus").hide();
         $("#button_plus").text("Add Modul");
         $("#button_plus").attr("onclick", "show_catalogs()");
         $("#brand").text("Semester: " + global_sem_id);
-        //$("#ects_text").text("Semester ECTS: ");
-        //$("#ects_punkte").text(semester_ects);
+
     } else {
         safe_semester = $("#div_semester").children();
         $("#div_semester").children().remove();
@@ -44,8 +43,8 @@ function click_semester(click) {
         move = 0;
     }
 
-    $("#ects_text").last().text("Semester ECTS (inkl. Bachelor-ECTS von ALM):");
-    $("#master_ects_punkte").last().text(semester_ects);
+    $("#ects_text").last().text("Semester ECTS: ");
+    $("#ects_punkte").last().text(semester_ects);
 
     update_rules();
 

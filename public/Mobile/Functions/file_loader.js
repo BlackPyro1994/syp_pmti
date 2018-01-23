@@ -81,4 +81,6 @@ function generate_semester_content() {
         sem_content = inner_content;
         content_html[sem_id] = sem_content;
     }
+    $("#ects_text").text("Master ECTS: ");
+    $("#ects_punkte").text(master_ects);
 }

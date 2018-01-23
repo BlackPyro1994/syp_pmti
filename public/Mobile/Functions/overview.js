@@ -7,9 +7,11 @@ function overview() {
 
     //console.log("function overview()");
 
+    console.log("MASTER ECTS: "+master_ects);
     $("#brand").text("Übersicht");
     $("#ects_text").text("Master ECTS: ");
     $("#ects_punkte").text(master_ects);
+
     
     if (flip) {
         

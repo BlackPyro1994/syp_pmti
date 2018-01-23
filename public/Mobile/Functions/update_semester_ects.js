@@ -14,4 +14,5 @@ function update_semester_ects(sem_id) {
 
     var idString = "sem_ects_anz" + (sem_id);
     semester_ects = countSemECTS;
+    $("#ects_punkte").last().text(semester_ects);
 }

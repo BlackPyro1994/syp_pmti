@@ -8,14 +8,7 @@ function delete_module_from_semester(mod_id) {
 
     var cat_id;
     var index;
-    if (global_mod_id == "ALM") {
-        //update_semester_ects_extra();
-    } else {
-        update_master_ects(global_mod_id, 0);
-        //update_semester_ects(global_mod_id,0);
-    }
     $("#" + mod_id).remove();
-
     //entferne Modul ID aus blocked array
     index = blocked.indexOf(mod_id);
     if (index != -1) {
@@ -44,5 +37,11 @@ function delete_module_from_semester(mod_id) {
     });
     content_html.splice(global_sem_id,1);
     remove_module_from_content(mod_id);
+    if (global_mod_id == "ALM") {
+        update_semester_ects("ALM");
+    } else {
+        update_master_ects(global_mod_id, 0);
+        update_semester_ects(global_sem_id);
+    }
     update_rules();
 }
