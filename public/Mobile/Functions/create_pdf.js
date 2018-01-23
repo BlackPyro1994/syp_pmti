@@ -28,7 +28,7 @@ function create_pdf() {
     doc.setFontSize(15);
     doc.text(285, y, "(" + currentdate.getDate() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getFullYear() + ")", null, null, 'right');
     y += 17;
-    
+
     strMasterECTS = "Master-ECTS insgesamt: " + master_ects;
 
     doc.setFontSize(10);

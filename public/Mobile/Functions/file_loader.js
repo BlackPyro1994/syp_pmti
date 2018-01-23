@@ -1,11 +1,6 @@
 $(document).ready(function () {
     document.getElementById('file-input').onchange = function () {
 
-        //$(".disabled-catalog").removeClass('disabled-catalog');
-
-        //$(".btn-block.btn-light.rounded-semester").siblings().removeClass('blocked');
-        //$(".btn-block.btn-light.rounded-semester").siblings().removeClass('blocked_wpp');
-
         var file = this.files[0];
         var reader = new FileReader();
 
@@ -25,9 +20,6 @@ $(document).ready(function () {
             generate_semester_content();
 
             document.getElementById('file-input').value = "";
-
-            //$("#button_new_plan").removeClass("red_border");
-            //$('#button_planLaden').removeClass("red_border");
         };
         reader.readAsText(file);
     }
