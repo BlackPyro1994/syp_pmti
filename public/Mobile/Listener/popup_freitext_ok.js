@@ -34,7 +34,5 @@ function popup_freitext_ok(click) {
     append_free_module(mod_id, global_sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id);
 
     $('#myModal-freitext').modal('hide');
-    update_master_ects(global_mod_id, 1);
-    //update_semester_ects_extra(1, ects);
-
+    update_semester_ects(global_sem_id);
 }
