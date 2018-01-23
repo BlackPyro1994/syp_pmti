@@ -69,9 +69,3 @@ $(document).ready(function ()
         reader.readAsText(file);
     }
 })
-
-function Base64Encode(str)
-{
-    var bytes = new (TextEncoder || TextEncoderLite)('utf-8').encode(str);
-    return base64js.fromByteArray(bytes);
-}

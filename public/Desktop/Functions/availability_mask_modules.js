@@ -1,7 +1,8 @@
 function availability_mask_modules(semester_id)
 {
-    
     $("#div_kataloge").children().children().removeClass("not_available");
+
+    console.log(ausgewaehlt_semester);
     
     if (ausgewaehlt_semester % 2 == 0)
     {
@@ -24,7 +25,7 @@ function availability_mask_modules(semester_id)
                 }
                 else
                 {
-                    $("#div_kataloge").children().addClass("not_available");
+                    // $("#div_kataloge").children().children().addClass("not_available");
                     $("#" + t.split(",")[0]).removeClass("not_available");
                 }
             });
@@ -40,7 +41,7 @@ function availability_mask_modules(semester_id)
                     }
                     else
                     {
-                        $("#div_kataloge").children().addClass("not_available");
+                        // $("#div_kataloge").children().addClass("not_available");
                         $("#" + t.split(",")[0]).removeClass("not_available");
                     }
                 });
@@ -61,7 +62,7 @@ function availability_mask_modules(semester_id)
                 }
                 else
                 {
-                    $("#div_katalog").children().addClass("not_available");
+                    // $("#div_katalog").children().addClass("not_available");
                     $("#" + t.split(",")[0]).removeClass("not_available");
                 }
             });
@@ -77,7 +78,7 @@ function availability_mask_modules(semester_id)
                     }
                     else
                     {
-                        $("#div_katalog").children().addClass("not_available");
+                        // $("#div_katalog").children().addClass("not_available");
                         $("#" + t.split(",")[0]).removeClass("not_available");
                     }
                 });
