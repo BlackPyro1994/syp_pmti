@@ -27,8 +27,8 @@ function modal_m07_ok(click)
     {
         dozent = "Dozent";
     }
-    append_free_module(global_mod_id, global_sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id);
-    //append_free_module(global_mod_id, global_sem_id, name, v, u, p, pr, dozent, ects);
+    append_free_module(global_mod_id, global_sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id,false);
+    
     $("#" + global_mod_id).addClass('blocked_wpp');
 
     

@@ -16,8 +16,9 @@ $(document).ready(function ()
             content = [];
             
             var temp;
-    
+            
             // var str = Base64Encode(this.result);
+            
             var str = this.result;
             
             var lines = str.split('\n');
@@ -26,35 +27,34 @@ $(document).ready(function ()
             
             ok_button_new_plan({"count": temp[1], "semStart": temp[0]});
             
-            /*
-            for (var line = 1; line < lines.length; line++)
-            {
-                temp = lines[line];
-                if (temp.split(',')[1] === "M07_WPP" || temp.split(',')[1] === "ALM")
-                {
-                    // temp = temp.substring(1);
-                    temp = temp.split(',');
-                    insert_module_in_semester(temp[1], temp[0], {
-                        "mod_id": temp[1],
-                        "sem_id": temp[0],
-                        "name": temp[2],
-                        "v": temp[3],
-                        "u": temp[4],
-                        "p": temp[5],
-                        "pr": temp[6],
-                        "dozent": temp[7],
-                        "ects": temp[8]
-                    });
-                }
-                else
-                {
-                    temp = temp.split(',');
-                    insert_module_in_semester(temp[1], temp[0]);
-                }
-            }
-            */
-            
             content = eval("(" + (lines[1]) + ")");
+            
+            for (x = 0; x < content.length; x++)
+            {
+                for (y = 0; y < content[x].length; y++)
+                {
+                    if (content[x][y][1] === "M07_WPP" || content[x][y][1] === "ALM")
+                    {
+                        
+                        insert_module_in_semester(content[x][y][0], (x+1), {
+                            "mod_id": content[x][y][1],
+                            "sem_id": content[x][y][0],
+                            "name": content[x][y][2],
+                            "v": content[x][y][3],
+                            "u": content[x][y][4],
+                            "p": content[x][y][5],
+                            "pr": content[x][y][6],
+                            "dozent": content[x][y][7],
+                            "ects": content[x][y][8]
+                        },true);
+                    }
+                    else
+                    {
+                        insert_module_in_semester(content[x][y][0],(x+1),null,true);
+                    }
+                }
+                
+            }
             
             document.getElementById('file-input').value = "";
             

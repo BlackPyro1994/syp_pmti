@@ -1,6 +1,6 @@
 function fill_data(mod_id, sem_id)
 {
-    //($("#"+sem_id).textContent);
+    // ($("#"+sem_id).textContent);
 
     if (mod_id == "M07_WPP")
     {

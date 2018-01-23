@@ -8,6 +8,7 @@ function updateModuleString(mod_id)
         {
             if (mod_id == entry.split(',')[0])
             {
+                console.log(entry);
                 search_result = entry;
                 
                 throw BreakException;
@@ -15,7 +16,6 @@ function updateModuleString(mod_id)
         });
     } catch (e)
     {
-        
         if (e !== BreakException) throw e;
     }
     

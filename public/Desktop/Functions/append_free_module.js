@@ -1,5 +1,5 @@
 ﻿//function append_free_module(mod_id, sem_id, name, v, u, p, pr, dozent, ects)
-function append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id)
+function append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id,load)
 {
     if (global_mod_id == "ALM" && name == "")
         name = "Name";
@@ -23,13 +23,15 @@ function append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent,
         pr = 0;
 
     search_result = (mod_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + ws + "," + sose + "," + dozent + "," + ects + "," + istPflicht + "," + kat_id);
+    
     search_result = search_result.split(",");
+    
     content[sem_id - 1].push(search_result);
 
     update_semester_ects(sem_id);
-
-
+    
     var filter_string = ":nth-child(" + sem_id + ")";
+    
     $("#div_semester").children().filter(filter_string).append(
 
         '<div class = "row" > ' +

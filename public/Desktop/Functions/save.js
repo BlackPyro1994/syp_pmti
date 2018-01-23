@@ -27,7 +27,6 @@ function save()
     element.click();
     
     document.body.removeChild(element);
-    
 }
 
 function array2json(arr)
@@ -64,9 +63,4 @@ function array2json(arr)
     
     if (is_list) return '[' + json + ']';//Return numerical JSON
     return '{' + json + '}';//Return associative JSON
-}
-
-function Base64Decode(str) {
-    var bytes = base64js.toByteArray(str);
-    return new (TextDecoder || TextDecoderLite)('utf-8').decode(bytes);
 }
