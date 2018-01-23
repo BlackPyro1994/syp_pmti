@@ -21,5 +21,4 @@ function click_catalog(click) {
     add_modules_in_popup(global_catalog_id);
     
     availability_mask_modules();
-    
 }
