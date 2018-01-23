@@ -9,7 +9,7 @@
         
         if (ausgewaehlt_semester != "")
         {
-            insert_module_in_semester($(caller).attr('id'), ausgewaehlt_semester);
+            insert_module_in_semester($(caller).attr('id'), ausgewaehlt_semester,null,false);
             return;
         }
         

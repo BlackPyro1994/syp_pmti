@@ -18,7 +18,6 @@ function right_click_on_semester(caller)
             else
             {
                 
-                
                 if (($("#" + ausgewaehlt_modul).parent().children().first().siblings().not('.blocked').length - 1) == 0)
                 {
                     
@@ -35,7 +34,7 @@ function right_click_on_semester(caller)
                 
             }
             
-            insert_module_in_semester(ausgewaehlt_modul, semester_id);
+            insert_module_in_semester(ausgewaehlt_modul, semester_id,null,false);
             
             $("#div_semester").children().removeClass("not_available");
         }

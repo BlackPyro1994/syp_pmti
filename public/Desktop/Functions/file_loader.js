@@ -2,7 +2,6 @@ $(document).ready(function ()
 {
     document.getElementById('file-input').onchange = function ()
     {
-        
         $(".disabled-catalog").removeClass('disabled-catalog');
         
         $(".btn-block.btn-light.rounded-semester").siblings().removeClass('blocked');
@@ -26,6 +25,13 @@ $(document).ready(function ()
             temp = lines[0].split(',');
             
             ok_button_new_plan({"count": temp[1], "semStart": temp[0]});
+    
+            ausgewaehlt_semester = "";
+            ausgewaehlt_modul = "";
+            open_catalog = "";
+            all_catalogs_closed = 0;
+            moving = 0;
+            search_result = "";
             
             content = eval("(" + (lines[1]) + ")");
             
@@ -35,8 +41,7 @@ $(document).ready(function ()
                 {
                     if (content[x][y][1] === "M07_WPP" || content[x][y][1] === "ALM")
                     {
-                        
-                        insert_module_in_semester(content[x][y][0], (x+1), {
+                        insert_module_in_semester(content[x][y][0], (x + 1), {
                             "mod_id": content[x][y][1],
                             "sem_id": content[x][y][0],
                             "name": content[x][y][2],
@@ -46,11 +51,11 @@ $(document).ready(function ()
                             "pr": content[x][y][6],
                             "dozent": content[x][y][7],
                             "ects": content[x][y][8]
-                        },true);
+                        }, true);
                     }
                     else
                     {
-                        insert_module_in_semester(content[x][y][0],(x+1),null,true);
+                        insert_module_in_semester(content[x][y][0], (x + 1), null, true);
                     }
                 }
                 
