@@ -23,6 +23,8 @@ function right_click_on_semester(caller)
                 {
                     $("#" + ausgewaehlt_modul).parent().toggleClass("cat-border");
                     
+                    
+                    
                     $("#" + open_catalog).removeClass("cat-background");
                     
                     $("#" + ausgewaehlt_modul).parent().children().first().siblings().toggle(200);
@@ -42,7 +44,9 @@ function right_click_on_semester(caller)
                 $("#div_semester").children().removeClass("mouse_over_border");
                 
                 $("#" + "semester_" + semester_id).toggleClass('ausgewaehlt');
+                
                 $("#div_kataloge").children().children().removeClass("not_available");
+                
                 ausgewaehlt_semester = "";
             }
             else

@@ -11,23 +11,28 @@ function availability_mask_modules(semester_id)
         
         if (startSem == "winter")
         {
-            //gewählte = Sommer
+            // gewählte = Sommer
             
             modulListe.forEach(function (t)
             {
+                // winter / sommer
                 
-                //winter / sommer
                 if (t.split(",")[6] == "1" && t.split(",")[7] == "0")
                 {
-                    $("#" + t.split(",")[0]).addClass("not_available");
+                    if (!$("#" + t.split(",")[0]).hasClass("blocked"))
+                    {
+                        $("#" + t.split(",")[0]).addClass("not_available");
+                    }
                 }
             });
             if (startSem == "sommer")
             {
-                //gewählt winter
+                // gewählt winter
+                
                 modulListe.forEach(function (t)
                 {
-                    //winter / sommer
+                    // winter / sommer
+                    
                     if (t.split(",")[6] == "0" && t.split(",")[7] == "1")
                     {
                         $("#" + t.split(",")[0]).addClass("not_available");
@@ -48,7 +53,10 @@ function availability_mask_modules(semester_id)
                 //winter / sommer
                 if (t.split(",")[6] == "0" && t.split(",")[7] == "1")
                 {
-                    $("#" + t.split(",")[0]).addClass("not_available");
+                    if (!$("#" + t.split(",")[0]).hasClass("blocked"))
+                    {
+                        $("#" + t.split(",")[0]).addClass("not_available");
+                    }
                 }
                 
             });
@@ -61,7 +69,10 @@ function availability_mask_modules(semester_id)
                     //winter / sommer
                     if (t.split(",")[6] == "1" && t.split(",")[7] == "0")
                     {
-                        $("#" + t.split(",")[0]).addClass("not_available");
+                        if (!$("#" + t.split(",")[0]).hasClass("blocked"))
+                        {
+                            $("#" + t.split(",")[0]).addClass("not_available");
+                        }
                     }
                 });
             }
