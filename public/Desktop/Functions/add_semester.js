@@ -1,4 +1,5 @@
 function add_semester(startSem) {
+    console.log("function add_semester("+startSem+")");
     content.push(new Array());
 
     var wert = Number(document.getElementById("count").textContent);
