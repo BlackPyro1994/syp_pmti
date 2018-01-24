@@ -1,7 +1,7 @@
 /**
  * Löscht das ausgewählte Modul im Semester und gibt dieses wieder in dem blocked und catalog_array array frei
  *
- * @param mod_id Die Modul ID
+ * @param mod_id Die Modul ID des zu löschenden Moduls
  */
 function delete_module_from_semester(mod_id) {
     console.log("function delete_module_from_semester(" + mod_id + ")");

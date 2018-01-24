@@ -11,7 +11,7 @@ public class IRKatalogImpl implements IRKatalog {
     /**
      * Methode zum Übergeben der Liste aller Modulkataloge an die Fachlogik
      *
-     * @return List mit Modulkatalog-Objekten zu allen Modulen
+     * @return List mit Modulkatalog-Objekten zu allen Modulkatalogen
      */
     @Override
     public List<Modulkatalog> getAlleKataloge() {

@@ -1,7 +1,8 @@
 /**
  * Erstellt das zuvor ausgewählte Modul in der Semesteransicht
  *
- * @param mod_id Die Modul ID
+ * @param mod_id Die Modul ID des zu erstellenden Moduls
+ * @param sem_id Die Semester ID in welchem sich das Modul befinden wird
  */
 function append_module_in_semester(mod_id, sem_id) {
     console.log("function append_module_in_semester(" + mod_id + ")");

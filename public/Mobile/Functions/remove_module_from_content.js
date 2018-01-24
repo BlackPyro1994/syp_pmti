@@ -1,6 +1,11 @@
 var position_x;
 var position_y;
 
+/**
+ * Entfernt das ausgewählte Modul aus dem Zwischenspeicher (content)
+ *
+ * @param module_id
+ */
 function remove_module_from_content(module_id) {
 
     var BreakException = {};

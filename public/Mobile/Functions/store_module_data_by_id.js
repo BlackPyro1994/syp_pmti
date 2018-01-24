@@ -1,7 +1,7 @@
 /**
  * Sucht in der Modulliste einen Wert anhand der Modul ID
  *
- * @param id Die Modul ID
+ * @param id Die Modul ID nach der gesucht wird
  */
 function store_module_data_by_id(id) {
     console.log("function store_module_data_by_id(" + id + ")");

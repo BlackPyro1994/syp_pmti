@@ -69,6 +69,11 @@ public class AlleModule {
         return einzigesExemplar;
     }
 
+    /**
+     * Methode zum Übergeben eines einzigen Exemplars der Liste aller Module
+     *
+     * @return List mit Modul-Objekten zu allen Modulen
+     */
     public List<Modul> moduleRueckgabe(){
 
         return module;

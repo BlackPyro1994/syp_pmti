@@ -25,7 +25,11 @@ $(document).ready(function () {
     }
 })
 
-
+/**
+ * Erstellt den Inhalt der Semester und speichert diese Daten
+ * (in blocked, catalog_array, content_html)
+ *
+ */
 function generate_semester_content() {
     var length = content.length;
     var sem_id;

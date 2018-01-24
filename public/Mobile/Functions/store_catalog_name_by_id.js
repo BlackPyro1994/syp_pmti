@@ -1,7 +1,7 @@
 /**
  * Sucht in der Katalogliste einen Wert anhand der Katalog ID
  *
- * @param cat_id Die Katalog ID
+ * @param cat_id Die Katalog ID nach der gesucht werden soll
  */
 function store_catalog_name_by_id(cat_id) {
     console.log("function store_catalog_name_by_id(cat_id)");

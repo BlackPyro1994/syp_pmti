@@ -1,8 +1,8 @@
 /**
  * Erstellt die Kataloge und fügt diese dem Modal hinzu
  *
- * @param catalog_id
- * @param catalog_name
+ * @param catalog_id Die ID des Katalogs, welcher hinzugefügt wird
+ * @param catalog_name Der Name des Katalogs, welcher hinzugefügt wird
  */
 function add_catalogs(catalog_id, catalog_name) {
     console.log("function  add_catalogs(" + catalog_id + "," + catalog_name + ")");
