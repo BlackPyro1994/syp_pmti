@@ -5,10 +5,7 @@
  * @param click AUf das geklickte Element
  */
 function popup_freitext_ok(click) {
-
-    //console.log("function popup_freitext_ok(click) {");
-
-    // //console.log("Klick auf OK-Button ALM");
+    console.log("function popup_freitext_ok("+click+")");
 
     var mod_id;
     var name;
@@ -18,7 +15,9 @@ function popup_freitext_ok(click) {
     var istPflicht;
     var kat_id;
 
-    mod_id = "ALM";
+    anz_alm++;
+
+    mod_id = "ALM"+anz_alm;
     name = $("#input-name").val();
     v = $("#input-v").val();
     u = $("#input-u").val();

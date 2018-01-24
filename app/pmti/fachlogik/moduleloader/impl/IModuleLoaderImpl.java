@@ -17,8 +17,9 @@ public class IModuleLoaderImpl implements IModuleLoader {
     }
 
     /**
+     * Methode zum Übergeben der Liste aller Module an die WebGUI
      *
-     * @return
+     * @return ArrayList mit ModulGrenz-Objekten zu allen Modulen
      */
     @Override
     public List<ModulGrenz> getModule() {

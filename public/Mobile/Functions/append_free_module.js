@@ -9,32 +9,40 @@
  * @param dozent Name des Dozenten
  * @param ects Anzahl der ECTS Punkte für das Modul
  */
-function append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id, load) {
+function append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id) {
     console.log("function append_free_module(" + name + "," + v + "," + u + "," + p + "," + pr + "," + ws + "," + sose + "," + dozent + "," + ects + "," + istPflicht + "," + kat_id + ",)");
 
-    if (global_mod_id == "ALM" && name == "")
+    if (global_mod_id.includes("ALM") && name == "")
         name = "Name";
     
-    if (global_mod_id == "ALM" && dozent == "")
+    if (global_mod_id.includes("ALM") && dozent == "")
         dozent = "Dozent";
     
-    if (global_mod_id == "ALM" && ects == "")
+    if (global_mod_id.includes("ALM") && ects == "")
         ects = 0;
     
-    if (global_mod_id == "ALM" && v == "")
+    if (global_mod_id.includes("ALM") && v == "")
         v = 0;
     
-    if (global_mod_id == "ALM" && u == "")
+    if (global_mod_id.includes("ALM") && u == "")
         u = 0;
     
-    if (global_mod_id == "ALM" && p == "")
+    if (global_mod_id.includes("ALM") && p == "")
         p = 0;
     
-    if (global_mod_id == "ALM" && pr == "")
+    if (global_mod_id.includes("ALM") && pr == "")
         pr = 0;
 
     search_result = (mod_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + ws + "," + sose + "," + dozent + "," + ects + "," + istPflicht + "," + kat_id);
     search_result = search_result.split(",");
+
+    if(!move) {
+        alm_array.push([mod_id,name,v,u,p,pr,ws,sose,dozent,ects,istPflicht,kat_id]);
+        if(mod_id == "M07_WPP") {
+            m07_array.push([mod_id,name,v,u,p,pr,ws,sose,dozent,ects,istPflicht,kat_id]);
+        }
+    }
+
 
     content[sem_id - 1].push(search_result);
 

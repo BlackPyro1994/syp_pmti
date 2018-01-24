@@ -5,6 +5,7 @@
  *
  */
 function update_rules() {
+    console.log("function update_rules()");
 
     var maa = false;
     var koll = false;
@@ -24,9 +25,7 @@ function update_rules() {
         if (katID == "WPP") {
             countBlocked = countWPPblocked;
         }
-
         if ((belegAnz > 0) && (countBlocked < belegAnz)) {
-
             var pm = "Verpflichtend zu wählen:";
 
             modulListe.forEach(function (modul) {
@@ -34,7 +33,7 @@ function update_rules() {
                     pm += " ";
                     pm += modul.split(",")[0];
                 }
-            })
+            });
 
             if (pm != "Verpflichtend zu wählen:") {
                 $("#regeln").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Aus dem Katalog '
@@ -46,36 +45,25 @@ function update_rules() {
             }
         }
     });
-
     for (k = 0; k < content.length; k++) {
-
         for (l = 0; l < content[k].length; l++) {
-
             if (content[k][l][0] == "MAA") {
                 semMAA = k;
                 maa = true;
-
-
             }
             if (content[k][l][0] == "KOLL") {
                 semKOLL = k;
                 koll = true;
-
-
             }
         }
     }
-
     for (k = 0; k < semMAA; k++) {
         for (l = 0; l < content[k].length; l++) {
-            if(content[k][l][0]!="ALM") {
+            if (content[k][l][0] != "ALM") {
                 countMects += (Number.parseInt(content[k][l][9]));
-
             }
         }
     }
-
-
     if (maa == true && countMects < 45) {
         $("#regeln").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Achtung: Zulassung zur Masterarbeit erst bei erreichten 45 Master-ECTS.' + '</p>');
     }
@@ -83,5 +71,4 @@ function update_rules() {
     if ((koll == true && maa == false) || (koll == true && maa == true && semMAA > semKOLL)) {
         $("#regeln").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Achtung: Das Kolloquium ist erst nach Abgabe der Masterarbeit möglich.' + '</p>');
     }
-
 }

@@ -1,6 +1,7 @@
 function counter_minus() {
-    count = (count == 0 ? 0 : count++);
+    console.log("function counter_minus()");
 
+    count = (count == 0 ? 0 : count--);
     var wert = Number(document.getElementById("count").textContent);
 
     if (wert > 0) {
@@ -10,12 +11,9 @@ function counter_minus() {
     document.getElementById("count").textContent = wert;
     modules_in_sem = $("#div_semester").children().last().children().length - 1;
 
-    console.log("MODS: "+modules_in_sem);
     for (i = 0; i < modules_in_sem; i++) {
         var mod_id = $("#div_semester").children().last().children().last().children().attr('id');
-        console.log("MOD ID: "+mod_id);
         var id = mod_id.replace("mod_","");
-        console.log("ID: "+id);
 
         $("#" + mod_id).parent().remove();
 

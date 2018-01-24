@@ -6,15 +6,12 @@
  * @param click Auf das geklickte Element
  */
 function click_semester(click) {
-
-    //console.log("function click_semester(click)");
+    console.log("function click_semester("+click+")");
 
     var id = (click.target).id;
-    ////console.log("Click div_semester ID: " + id);
     global_sem_id = (click.target).id.replace("sem", "");
     flip = 1;
 
-    //$("body > nav > div.dropdown > button").prop("onclick",null);
     $("body > nav > div.dropdown > button > svg").toggleClass("fa-bars fa-arrow-left");
     $("body > nav > div.dropdown > button").attr('onClick', "overview()");
 
@@ -32,14 +29,48 @@ function click_semester(click) {
         safe_semester = $("#div_semester").children();
         $("#div_semester").children().remove();
         show_semester_content(global_sem_id);
-        append_module_in_semester(global_mod_id, global_sem_id);
+
+        if(global_mod_id == "M07_WPP") {
+            //var mod_id = Number.parseInt(global_mod_id.replace("ALM",""));
+            append_free_module(m07_array[0][0],
+                global_sem_id,
+                m07_array[0][1],
+                m07_array[0][2],
+                m07_array[0][3],
+                m07_array[0][4],
+                m07_array[0][5],
+                m07_array[0][6],
+                m07_array[0][7],
+                m07_array[0][8],
+                m07_array[0][9],
+                m07_array[0][10],
+                m07_array[0][11]);
+        }
+        if(global_mod_id.includes("ALM")) {
+            var mod_id = Number.parseInt(global_mod_id.replace("ALM",""));
+
+            append_free_module(alm_array[mod_id-1][0],
+                global_sem_id,
+                alm_array[mod_id-1][1],
+                alm_array[mod_id-1][2],
+                alm_array[mod_id-1][3],
+                alm_array[mod_id-1][4],
+                alm_array[mod_id-1][5],
+                alm_array[mod_id-1][6],
+                alm_array[mod_id-1][7],
+                alm_array[mod_id-1][8],
+                alm_array[mod_id-1][9],
+                alm_array[mod_id-1][10],
+                alm_array[mod_id-1][11]);
+
+        } else if(global_mod_id != "M07_WPP") {
+            append_module_in_semester(global_mod_id, global_sem_id);
+        }
 
         $("#button_minus").hide();
         $("#button_plus").text("Module");
         $("#button_plus").attr("onclick", "show_catalogs()");
         $("#brand").text("Semester: " + global_sem_id);
-        //$("#ects_text").text("Semester ECTS: ");
-        //$("#ects_punkte").text(semester_ects);
         move = 0;
     }
 
@@ -47,5 +78,4 @@ function click_semester(click) {
     $("#ects_punkte").last().text(semester_ects);
 
     update_rules();
-
 }
