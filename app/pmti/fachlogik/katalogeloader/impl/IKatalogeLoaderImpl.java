@@ -17,8 +17,9 @@ public class IKatalogeLoaderImpl implements IKatalogeLoader {
     }
 
     /**
+     * Methode zum Übergeben der Liste aller Modulkataloge an die WebGUI
      *
-     * @return
+     * @return ArrayList mit KatalogGrenz-Objekten zu allen Modulkatalogen
      */
     @Override
     public List<KatalogGrenz> getKataloge() {
