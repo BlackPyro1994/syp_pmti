@@ -32,6 +32,7 @@
     var anz_Sem = Number(document.getElementById("count").textContent);
     var semester = startSem == "winter" ? "Wintersemester" : "Sommersemester";
 
+
     for (i = 1; i <= anz_Sem; i++) {
 
         var anz_Module = $("#div_semester").children().filter(":nth-child(" + i + ")").children().length - 1;
@@ -43,8 +44,10 @@
         }
         restplatz -= ((anz_Module * 5) + 12);
 
-        //SEMESTER ECTS TAUSCHEN
-        sem_ects = "30";
+        sem_ects = sem_ects_array[i];
+        if (typeof(sem_ects)=="undefined") {
+            sem_ects = 0;
+        }
 
         str = i + ": " + semester + " (" + sem_ects + " ECTS)";
 

@@ -6,7 +6,7 @@
  */
 
 function update_rules() {
-    //console.log("function update_rules()");
+    console.log("function update_rules()");
 
     var maa = false;
     var koll = false;

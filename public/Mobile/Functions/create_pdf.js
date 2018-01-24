@@ -35,7 +35,6 @@ function create_pdf() {
     doc.text(285, y, strMasterECTS, null, null, 'right');
     y += 10;
 
-
     var semester = startSem == "winter" ? "Wintersemester" : "Sommersemester";
 
 
@@ -50,10 +49,10 @@ function create_pdf() {
         }
         restplatz -= ((anz_Module * 5) + 12);
 
- //ab hier 1 hart geschriebene Werte zu tauschen:
-
-        sem_ects = "30";
-
+        sem_ects = sem_ects_array[i];
+        if (typeof(sem_ects)=="undefined") {
+            sem_ects = 0;
+        }
 
         str = i + ": " + semester + " (" + sem_ects + " ECTS)";
 

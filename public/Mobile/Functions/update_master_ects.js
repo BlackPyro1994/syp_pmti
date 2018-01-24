@@ -6,12 +6,6 @@
  */
 function update_master_ects(mod_id, wert) {
 
-    console.log("function update_master_ects("+mod_id+","+wert+")");
-
-    console.log("VORHER MASTER ECTS: "+master_ects);
-    //master_ects = Number(document.getElementById("ects_punkte").textContent);
-    console.log("NACHER MASTER ECTS: "+master_ects);
-
     store_module_data_by_id(mod_id);
     search_result = search_result.split(",");
 

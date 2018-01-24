@@ -28,15 +28,17 @@ $(document).ready(function () {
 
 function generate_semester_content() {
     var length = content.length;
+    var sem_id;
+    var inner_length;
     var sem_content = "";
     var inner_content = "";
 
     for (i = 0; i < length; i++) {
-        var sem_id = i + 1;
-        var inner_length = content[i].length;
+        sem_id = i + 1;
+        inner_length = content[i].length;
         sem_content = "";
         inner_content = "";
-
+        update_semester_ects(sem_id);
             for (j = 0; j < inner_length; j++) {
                 var mod_id = content[i][j][0];
 
@@ -48,7 +50,6 @@ function generate_semester_content() {
                         blocked.push(mod_id);
                         catalog_array.push(content[i][j][11]);
                     }
-
                 } else {
                     var string = '<div id="' + mod_id + '" class="row modules_border class_click_modules_in_semester margin-top">' +
                         '<button id="' + mod_id + '" class="btn btn-block"><div id="' + mod_id + '" class="row text-left">' +
@@ -73,6 +74,7 @@ function generate_semester_content() {
         sem_content = inner_content;
         content_html[sem_id] = sem_content;
     }
+
     $("#ects_text").text("Master ECTS: ");
     $("#ects_punkte").text(master_ects);
 }
