@@ -12,14 +12,14 @@ function list_click_module(click) {
 
     $('#myModal-catalogs').modal('hide');
     emptyModal();
-    if (global_mod_id == "ALM" || global_mod_id == "M07_WPP") {
+    if (global_mod_id.includes("ALM") || global_mod_id == "M07_WPP") {
         popup_extra_module();
     } else {
         append_module_in_semester(global_mod_id, global_sem_id);
         update_master_ects(global_mod_id, 1);
         update_semester_ects(global_sem_id);
     }
-    if (global_mod_id != "ALM") {
+    if (!global_mod_id.includes("ALM")) {
         blocked.push(global_mod_id);
 
         if (global_mod_id.includes("_WPP")) {

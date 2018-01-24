@@ -42,7 +42,7 @@ function generate_semester_content() {
             for (j = 0; j < inner_length; j++) {
                 var mod_id = content[i][j][0];
 
-                if (mod_id == "M07_WPP" || mod_id == "ALM") {
+                if (mod_id == "M07_WPP" || mod_id.includes("ALM")) {
                     var string = ('<div id="' + mod_id + '" class="row modules_border class_click_modules_in_semester margin-top"><button id="' + mod_id + '" class="btn btn-block"><div id="' + mod_id + '" class="row text-left"><div id="' + mod_id + '" class="col fett"><p>' + mod_id + '</p></div><div id="' + mod_id + '" class="col text-right"><p id="' + mod_id + '">ECTS: ' + content[i][j][9] + '</p></div></div><div id="' + mod_id + '" class="row normal text-left"><div id="' + mod_id + '" class="col"><p id="' + mod_id + '">Dozent: ' + content[i][j][8] + '</p></div></div></button></div>');
                     inner_content = inner_content + string;
                     if(mod_id == "M07_WPP") {

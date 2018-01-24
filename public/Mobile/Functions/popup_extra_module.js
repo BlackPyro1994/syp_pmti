@@ -10,7 +10,7 @@ function popup_extra_module() {
         $("#input-name-m07").val("");
         $("#input-dozent-m07").val("");
     }
-    else if (global_mod_id == "ALM") {
+    else if (global_mod_id.includes("ALM")) {
         $('#myModal-freitext').modal('show');
         
         $("#input-name").val("");
