@@ -74,12 +74,8 @@
             append_free_module(mod_id,sem_id,name, v,u,p,pr,ws,sose,dozent,ects,istPflicht,kat_id,true);
         }
     }
-
     ausgewaehlt_modul = "";
     ausgewaehlt_semester = "";
-
-// -->
-//open_catalog = "";
 
     update_rules();
 }
