@@ -30,6 +30,10 @@ function right_click_on_semester(caller)
                     
                     insert_module_in_semester("ALM",semester_id,ALM_String,false);
                 }
+                else if(ausgewaehlt_modul == "M07_WPP")
+                {
+                    insert_module_in_semester(ausgewaehlt_modul,semester_id,M07_WPP_String,false);
+                }
                 else
                 {
                     insert_module_in_semester(ausgewaehlt_modul,semester_id,null,false);

@@ -1,6 +1,6 @@
-﻿﻿function insert_module_in_semester(mod_id, sem_id, optional, load)
+﻿function insert_module_in_semester(mod_id, sem_id, optional, load)
 {
-    console.log("function insert_module_in_semester(" + mod_id + ", " + sem_id + ", " + optional + ", " + load + ")");
+    console.log(optional);
     
     if (load == false)
     {
@@ -32,43 +32,13 @@
                 $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
             }
         }
-        else
+        else if(mod_id == "ALM")
         {
-            
-            //var name = optional["name"];
-            var name = optional[1];
-            
-            //var v = optional["v"];
-            var v = optional[2];
-            
-            //var u = optional["u"];
-            var u = optional[3];
-            
-            //var p = optional["p"];
-            var p = optional[4];
-            
-            //var pr = optional["pr"];
-            var pr = optional[5];
-            
-            // var ws = optional["ws"];
-            var ws = 1;
-            
-            //var sose = optional["sose"];
-            var sose = 1;
-            
-            //var dozent = optional["dozent"];
-            var dozent = optional[6];
-            
-            //var ects = optional["ects"];
-            var ects = optional[7];
-            
-            //var istPflicht = optional["istPflicht"];
-            var istPflicht = false;
-            
-            //var kat_id = optional["kat_id"];
-            var kat_id = "AM";
-            
-            append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id, true);
+            append_free_module(optional[0],sem_id,optional[1],optional[2],optional[3],optional[4],optional[5],1,1,optional[6],optional[7],false,"AM");
+        }
+        else if(mod_id == "M07_WPP")
+        {
+            append_free_module(optional[0],sem_id,optional[1],optional[2],optional[3],optional[4],optional[5],1,1,optional[6],optional[7],false,"WPP");
         }
     }
     else if (load == true)
@@ -112,8 +82,7 @@
     
     ausgewaehlt_modul = "";
     ausgewaehlt_semester = "";
-
-// -->
+    
 //open_catalog = "";
     
     update_rules();

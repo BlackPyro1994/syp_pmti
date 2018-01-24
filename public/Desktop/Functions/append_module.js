@@ -1,4 +1,4 @@
-﻿﻿function append_module(mod_id, sem_id,optional,load)
+﻿function append_module(mod_id, sem_id,optional,load)
 {
     console.log("append_module("+mod_id+", "+sem_id+","+load+","+optional+")");
     
