@@ -40,7 +40,6 @@ function append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent,
         pr = 0;
 
     search_result = (mod_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + ws + "," + sose + "," + dozent + "," + ects + "," + istPflicht + "," + kat_id);
-
     search_result = search_result.split(",");
 
     if (!load) {

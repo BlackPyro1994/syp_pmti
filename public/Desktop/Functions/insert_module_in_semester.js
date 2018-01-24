@@ -1,5 +1,6 @@
 ﻿function insert_module_in_semester(mod_id, sem_id, optional, load) {
     console.log("function insert_module_in_semester(" + mod_id + ", " + sem_id + ", " + optional + ", " + load + ")");
+
     if (load == false) {
         get_element_by_index(content, sem_id).push(new Array());
 
@@ -25,7 +26,19 @@
             }
         }
         else {
-            append_free_module(optional["mod_id"], optional["sem_id"], optional["name"], optional["v"], optional["u"], optional["p"], optional["pr"], optional["dozent"], optional["ects"], false);
+            var name = optional["name"];
+            var v = optional["v"];
+            var u = optional["u"];
+            var p = optional["p"];
+            var pr = optional["pr"];
+            var ws = optional["ws"];
+            var sose = optional["sose"];
+            var dozent = optional["dozent"];
+            var ects = optional["ects"];
+            var istPflicht = optional["istPflicht"];
+            var kat_id = optional["kat_id"];
+
+            append_free_module(mod_id,sem_id,name, v,u,p,pr,ws,sose,dozent,ects,istPflicht,kat_id,true);
         }
     }
     else if (load == true) {
@@ -46,27 +59,24 @@
             $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
         }
         else {
-                var name = optional["name"];
-                var v = optional["v"];
-                var u = optional["u"];
-                var p = optional["p"];
-                var pr = optional["pr"];
-                var ws = optional["ws"];
-                var sose = optional["sose"];
-                var dozent = optional["dozent"];
-                var ects = optional["ects"];
-                var istPflicht = optional["istPflicht"];
-                var kat_id = optional["kat_id"];
-            
-                append_free_module(mod_id,sem_id,name, v,u,p,pr,ws,sose,dozent,ects,istPflicht,kat_id,true);
+            var name = optional["name"];
+            var v = optional["v"];
+            var u = optional["u"];
+            var p = optional["p"];
+            var pr = optional["pr"];
+            var ws = optional["ws"];
+            var sose = optional["sose"];
+            var dozent = optional["dozent"];
+            var ects = optional["ects"];
+            var istPflicht = optional["istPflicht"];
+            var kat_id = optional["kat_id"];
 
+            append_free_module(mod_id,sem_id,name, v,u,p,pr,ws,sose,dozent,ects,istPflicht,kat_id,true);
         }
     }
 
-
     ausgewaehlt_modul = "";
     ausgewaehlt_semester = "";
-
 
 // -->
 //open_catalog = "";

@@ -4,11 +4,11 @@ function availability_mask_semesters(module_id)
     
     if (module_id)
     {
-        
-        updateModuleString(module_id);
-        
-        search_result = search_result.split(",");
-        
+        if(!module_id == "ALM") {
+            updateModuleString(module_id);
+            search_result = search_result.split(",");
+        }
+
         if (search_result[6] == "1" && search_result[7] == "0")
         {
             if (startSem == "sommer")
