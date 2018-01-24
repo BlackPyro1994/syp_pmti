@@ -4,7 +4,7 @@
  * @param mod_id Die Modul ID
  */
 function append_module_in_semester(mod_id, sem_id) {
-    //console.log("function append_module_in_semester(" + mod_id + ")");
+    console.log("function append_module_in_semester(" + mod_id + ")");
 
     store_module_data_by_id(mod_id);
     search_result = search_result.split(",");
@@ -23,6 +23,5 @@ function append_module_in_semester(mod_id, sem_id) {
 
         '<p id="' + mod_id + '">Dozent: ' + search_result[8] + '</p></div></div></button></div>');
 
-    //console.log("search_result: "+ search_result);
     content[sem_id -1].push(search_result);
 }

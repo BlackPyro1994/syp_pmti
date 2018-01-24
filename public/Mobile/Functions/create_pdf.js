@@ -3,8 +3,7 @@
  *
  */
 function create_pdf() {
-
-    //console.log("function create_pdf()");
+    console.log("function create_pdf()");
 
     var doc = new jsPDF('landscape');
     var x = 11;
@@ -36,7 +35,6 @@ function create_pdf() {
     y += 10;
 
     var semester = startSem == "winter" ? "Wintersemester" : "Sommersemester";
-
 
     for (i = 1; i <= count; i++) {
 
@@ -91,11 +89,9 @@ function create_pdf() {
             restplatz -= 4;
             x = 11;
 
-
             for (j = 0; j<content[i-1].length; j++) {
 
                 liste = (content[i - 1][j]) ;
-
 
                 id = liste[0];
                 name = liste[1];
@@ -138,18 +134,10 @@ function create_pdf() {
 
                 y += 5;
                 x = 11;
-
             }
-
         }
-
         y += 7;
-
     }
-
     var filename = "PMTI_" + "Studienverlaufsplan_" + currentdate.getDate() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getFullYear();
-
     doc.save(filename + '.pdf');
-
-
 }

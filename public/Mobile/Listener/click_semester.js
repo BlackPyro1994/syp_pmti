@@ -6,15 +6,12 @@
  * @param click Auf das geklickte Element
  */
 function click_semester(click) {
-
-    //console.log("function click_semester(click)");
+    console.log("function click_semester("+click+")");
 
     var id = (click.target).id;
-    ////console.log("Click div_semester ID: " + id);
     global_sem_id = (click.target).id.replace("sem", "");
     flip = 1;
 
-    //$("body > nav > div.dropdown > button").prop("onclick",null);
     $("body > nav > div.dropdown > button > svg").toggleClass("fa-bars fa-arrow-left");
     $("body > nav > div.dropdown > button").attr('onClick', "overview()");
 
@@ -38,8 +35,6 @@ function click_semester(click) {
         $("#button_plus").text("Module");
         $("#button_plus").attr("onclick", "show_catalogs()");
         $("#brand").text("Semester: " + global_sem_id);
-        //$("#ects_text").text("Semester ECTS: ");
-        //$("#ects_punkte").text(semester_ects);
         move = 0;
     }
 
@@ -47,5 +42,4 @@ function click_semester(click) {
     $("#ects_punkte").last().text(semester_ects);
 
     update_rules();
-
 }
