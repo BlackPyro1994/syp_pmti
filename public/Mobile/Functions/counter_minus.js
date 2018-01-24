@@ -1,11 +1,11 @@
 function counter_minus() {
     console.log("function counter_minus()");
+
     var cat_id, mod_id, index;
 
     if (count > 0) {
         count--;
 
-        //var anz = content[global_sem_id - 1].length;
         var length = content.length;
         var inner_length = content[length-1].length;
 
@@ -25,11 +25,9 @@ function counter_minus() {
 
             update_master_ects(mod_id, 0);
             content_html.splice(length, 1);
-
         }
         update_rules();
         $("#div_semester").children().last().remove();
         content.pop();
-        //content.push(new Array());
     }
 }

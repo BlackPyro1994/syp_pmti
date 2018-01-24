@@ -5,10 +5,8 @@
  * @param click
  */
 function popup_module_move(click) {
-
-    //console.log("function popup_module_move(click) {");
-
-    // //console.log("Move-Button Module: " + global_mod_id);
+    console.log("function popup_module_move("+click+")");
+    
     $("#" + global_mod_id).remove();
     move = 1;
     $('#myModal-modules').modal('hide');
