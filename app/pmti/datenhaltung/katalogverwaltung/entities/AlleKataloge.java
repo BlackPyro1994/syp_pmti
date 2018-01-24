@@ -53,6 +53,11 @@ public class AlleKataloge {
         return einzigesExemplar;
     }
 
+    /**
+     * Methode zum Übergeben eines einzigen Exemplars der Liste aller Modulkataloge
+     *
+     * @return List mit Modulkatalog-Objekten zu allen Modulkatalogen
+     */
     public List<Modulkatalog> katalogeRueckgabe(){
 
         return kataloge;
