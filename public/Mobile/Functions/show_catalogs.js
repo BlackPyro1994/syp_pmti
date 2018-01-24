@@ -1,3 +1,6 @@
+/**
+ * Setzt den Titel des Modals und öffnet dieses
+ */
 function show_catalogs() {
     console.log("function show_catalogs()");
 

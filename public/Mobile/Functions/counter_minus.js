@@ -1,3 +1,7 @@
+/**
+ * Senkt die Semesteranzahl (count) und löscht den Inhalt der zwischenspeicher
+ * (blocked, catalog_array,content,content_html)
+ */
 function counter_minus() {
     console.log("function counter_minus()");
 

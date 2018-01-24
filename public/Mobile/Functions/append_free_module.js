@@ -1,13 +1,19 @@
 /**
  * Erstellt ein Freitext(Auflagen)modul mit den zuvor eingetragenen Werten
  *
+ * @param mod_id
+ * @param sem_id
  * @param name Name des Moduls
- * @param v Vorlesungsstunden in der Woche (SWS)
- * @param u Übungsstunden in der WOche (SWS)
- * @param p Praktikumsstunden in der WOche (SWS)
- * @param pr Projektstunden in der WOche (SWS)
+ * @param v Vorlesungsstunden in der Woche (sws)
+ * @param u Übungsstunden in der Woche (sws)
+ * @param p Praktikumsstunden in der Woche (sws)
+ * @param pr Projektstunden in der Woche (sws)
+ * @param ws Angebot im Wintersemester = 1
+ * @param sose Angebot im Sommersemester = 1
  * @param dozent Name des Dozenten
- * @param ects Anzahl der ECTS Punkte für das Modul
+ * @param ects Anzahl der ECTS-Punkte für das Modul
+ * @param istPflicht Ob das Modul ein Pflichtmodul ist
+ * @param kat_id Die zugehörige Katalog ID
  */
 function append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id) {
     console.log("function append_free_module(" + name + "," + v + "," + u + "," + p + "," + pr + "," + ws + "," + sose + "," + dozent + "," + ects + "," + istPflicht + "," + kat_id + ",)");

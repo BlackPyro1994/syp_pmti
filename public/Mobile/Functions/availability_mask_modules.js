@@ -1,3 +1,7 @@
+/**
+ * Prüft die Verfügbarkeit(wann welches Modul gehört werden kann) der Module in den Semestern
+ *
+ */
 function availability_mask_modules() {
     console.log("function availability_mask_modules()");
 
