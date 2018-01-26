@@ -57,5 +57,4 @@ function delete_module_from_semester(mod_id) {
         update_master_ects(global_mod_id, 0);
         update_semester_ects(global_sem_id);
     }
-    update_rules();
 }

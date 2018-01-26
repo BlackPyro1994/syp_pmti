@@ -36,6 +36,6 @@ function ok_button_new_plan(options)
         document.getElementById("fehlermeldung").textContent = "";
         $('#myModal-new_plan').modal('hide');
     }
-    
-    update_rules();
+
+    $("#regeln").show();
 }

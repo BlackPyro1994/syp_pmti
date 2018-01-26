@@ -14,7 +14,7 @@ function update_rules() {
     var semKOLL = 0;
     var countMects = 0;
 
-    $("#regeln").children().remove();
+    $("#rules-body").children().remove();
 
     katalogListe.forEach(function (katalog) {
         var katID = katalog.split(",")[0];
@@ -38,11 +38,11 @@ function update_rules() {
             });
 
             if (pm != "Verpflichtend zu wählen:") {
-                $("#regeln").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Aus dem Katalog '
+                $("#rules-body").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Aus dem Katalog '
                     + katalog.split(",")[1] + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + ' (' + pm + ')' + '</p>');
             }
             else {
-                $("#regeln").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Aus dem Katalog '
+                $("#rules-body").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Aus dem Katalog '
                     + katalog.split(",")[1] + ' fehlen noch ' + (belegAnz - countBlocked) + ' Modul(e).' + '</p>');
             }
         }
@@ -68,10 +68,10 @@ function update_rules() {
         }
     }
     if (maa == true && countMects < 45) {
-        $("#regeln").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Achtung: Zulassung zur Masterarbeit erst bei erreichten 45 Master-ECTS.' + '</p>');
+        $("#rules-body").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Achtung: Zulassung zur Masterarbeit erst bei erreichten 45 Master-ECTS.' + '</p>');
     }
 
     if ((koll == true && maa == false) || (koll == true && maa == true && semMAA > semKOLL)) {
-        $("#regeln").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Achtung: Das Kolloquium ist erst nach Abgabe der Masterarbeit möglich.' + '</p>');
+        $("#rules-body").append('<div class ="row">' + '<div class ="col rules">' + '<p>' + 'Achtung: Das Kolloquium ist erst nach Abgabe der Masterarbeit möglich.' + '</p>');
     }
 }

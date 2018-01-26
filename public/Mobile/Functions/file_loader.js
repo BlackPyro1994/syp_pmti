@@ -88,4 +88,6 @@ function generate_semester_content() {
 
     $("#ects_text").text("Master ECTS: ");
     $("#ects_punkte").text(master_ects);
+
+    $("#regeln").show();
 }

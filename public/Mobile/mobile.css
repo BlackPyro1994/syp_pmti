@@ -104,13 +104,23 @@
 }
 
 .rules {
-    margin-top: 0.3%;
+    margin-top: 1%;
+    border: 2px solid #dc3545;
+    border-radius: 5px;
+}
+.rules-text {
+    color: #dc3545;
+}
+#regeln {
+    display: none;
+    height: 40px;
+    margin-top: 3%;
     border: 2px solid #dc3545;
     border-radius: 5px;
 }
 
 .not_available {
-    background: red;
+    background: #dc3545;
 }
 
 .modal-margin-new {

@@ -39,5 +39,4 @@ function modal_m07_ok(click)
 
     update_master_ects(global_mod_id,1);
     update_semester_ects(global_sem_id);
-    update_rules();
 }
