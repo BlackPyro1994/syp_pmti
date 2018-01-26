@@ -27,6 +27,5 @@ function list_click_module(click) {
         } else {
             catalog_array.push(global_catalog_id);
         }
-        update_rules();
     }
 }

@@ -76,6 +76,4 @@ function click_semester(click) {
 
     $("#ects_text").last().text("Semester ECTS: ");
     $("#ects_punkte").last().text(semester_ects);
-
-    update_rules();
 }
