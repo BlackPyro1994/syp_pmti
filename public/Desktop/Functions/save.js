@@ -11,6 +11,7 @@ function save() {
     // text += document.getElementById("count").textContent + "\n";
     
     // text += Base64Decode(array2json(content));
+    
     text += array2json(content);
 
     var element = document.createElement('a');
