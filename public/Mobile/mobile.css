@@ -72,14 +72,17 @@
 }
 
 .container_body {
-    height: calc(100vh - 88px);
-    overflow: auto;
+    height: calc(100vh - 20px);
+   overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .footer {
-    height: 30px;
+    height: 20px;
     bottom: 0;
-    position: absolute;
+    left: 0;
+    right: 0;
+    position: fixed;
 }
 
 .modul_popup_buttons {
@@ -112,4 +115,8 @@
 
 .modal-margin-new {
     margin-top: 10%;
+}
+body {
+    overflow-x: hidden;
+    overflow: hidden;
 }
