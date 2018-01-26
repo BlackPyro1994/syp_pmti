@@ -60,7 +60,6 @@ function right_click_on_semester(caller)
         }
         
         // EIN SEMESTER WURDE ANGETIPPT ... ES IST NOCH KEINE (MODUL) AUSWAHL VORHANDEN !!!
-        
         else
         {
             if ($(caller.target).closest("button").hasClass("ausgewaehlt"))
@@ -72,6 +71,7 @@ function right_click_on_semester(caller)
                 $("#div_kataloge").children().children().removeClass("not_available");
                 
                 ausgewaehlt_semester = "";
+                //availability_mask_modules(semester_id);
             }
             else
             {
