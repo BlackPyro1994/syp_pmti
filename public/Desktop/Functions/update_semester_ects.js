@@ -10,6 +10,8 @@ function update_semester_ects(sem_id) {
 
     var idString = "sem_ects_anz" + (sem_id);
     document.getElementById(idString).textContent = countSemECTS;
+
+    sem_ects_array[sem_id] = countSemECTS;
 }
 
 

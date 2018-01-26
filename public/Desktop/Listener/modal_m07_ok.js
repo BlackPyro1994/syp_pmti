@@ -8,15 +8,15 @@ function modal_m07_ok(click)
     var kat_id;
     
     name = $("#input-name-m07").val();
-    v = 2;
-    u = 1;
-    p = 1;
-    pr = 0;
-    ws = 1;
-    sose = 1;
+    v = "2";
+    u = "1";
+    p = "1";
+    pr = "0";
+    ws = "1";
+    sose = "1";
     dozent = $("#input-dozent-m07").val();
-    ects = 5;
-    istPflicht = false;
+    ects = "5";
+    istPflicht = "false";
     kat_id = "WPP";
     
     if (global_mod_id == "M07_WPP" && name == "")

@@ -12,11 +12,11 @@ function modal_freitext_ok(click)
     u = $("#input-u").val();
     p = $("#input-p").val();
     pr = $("#input-pr").val();
-    ws = 1;
-    sose = 1;
+    ws = "1";
+    sose = "1";
     dozent = $("#input-dozent").val();
     ects = $("#input-ects").val();
-    istPflicht = false;
+    istPflicht = "false";
     kat_id = "AM";
 
     append_free_module(global_mod_id, global_sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id,false);

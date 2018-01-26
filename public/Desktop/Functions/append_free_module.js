@@ -26,19 +26,19 @@ function append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent,
         dozent = "Dozent";
     
     if (global_mod_id == "ALM" && ects == "")
-        ects = 0;
+        ects = "0";
     
     if (global_mod_id == "ALM" && v == "")
-        v = 0;
+        v = "0";
     
     if (global_mod_id == "ALM" && u == "")
-        u = 0;
+        u = "0";
     
     if (global_mod_id == "ALM" && p == "")
-        p = 0;
+        p = "0";
     
     if (global_mod_id == "ALM" && pr == "")
-        pr = 0;
+        pr = "0";
     
     // search_result = (mod_id + "," + name + "," + v + "," + u + "," + p + "," + pr + "," + ws + "," + sose + "," + dozent + "," + ects + "," + istPflicht + "," + kat_id);
     // search_result = search_result.split(",");
