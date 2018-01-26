@@ -1,10 +1,15 @@
-function add_semester(startSem) {
-    content.push(new Array());
-
+function add_semester(startSem)
+{
+    
+    if (!load)
+    {
+        content.push(new Array());
+    }
+    
     var wert = Number(document.getElementById("count").textContent);
-
+    
     var anzahl = content.length;
-
+    
     $("#div_semester").append(
         '<button id="semester_' + wert + '"class = "button_semester container-fluid semester-gesamt class_click_semester">' +
         '<div  class = "row">' +
@@ -14,22 +19,26 @@ function add_semester(startSem) {
         '<h6 class="col-1 sem_ects text-left" id="' + 'sem_ects_anz' + wert + '"></h6>' +
         '</div>' +
         '</button>')
-
-    if (startSem == "winter" && wert % 2 == 1) {
+    
+    if (startSem == "winter" && wert % 2 == 1)
+    {
         $(".label").last().text("Winter-Semester");
         $(".sem_ects").last().text("0");
     }
-    else if (startSem == "winter" && wert % 2 == 0) {
+    else if (startSem == "winter" && wert % 2 == 0)
+    {
         $(".label").last().text("Sommer-Semester");
         $(".sem_ects").last().text("0");
     }
-    else if (startSem == "sommer" && wert % 2 == 1) {
+    else if (startSem == "sommer" && wert % 2 == 1)
+    {
         $(".label").last().text("Sommer-Semester");
         $(".sem_ects").last().text("0");
     }
-    else {
+    else
+    {
         $(".label").last().text("Winter-Semester");
         $(".sem_ects").last().text("0");
     }
-
+    
 }

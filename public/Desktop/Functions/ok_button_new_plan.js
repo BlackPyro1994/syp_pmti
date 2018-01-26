@@ -62,4 +62,6 @@ function ok_button_new_plan(options)
     
     $("#button_new_plan").removeClass("mouse_over_border");
     $('#button_planLaden').removeClass("mouse_over_border");
+    
+    load = 0;
 }

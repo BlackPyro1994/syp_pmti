@@ -5,10 +5,11 @@ function save() {
 
     var filename = "PMTI_" + currentdate.getDate() + "/" + (currentdate.getMonth() + 1) + "/" + currentdate.getFullYear() + " _ " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
 
-    text += startSem + ",";
+    // text += startSem + ",";
+    text += startSem + "\n";
 
-    text += document.getElementById("count").textContent + "\n";
-
+    // text += document.getElementById("count").textContent + "\n";
+    
     // text += Base64Decode(array2json(content));
     text += array2json(content);
 

@@ -22,9 +22,11 @@ $(document).ready(function ()
             
             var lines = str.split('\n');
             
-            temp = lines[0].split(',');
+            // temp = lines[0].split(',');
+    
+            // temp = lines[0];
             
-            ok_button_new_plan({"count": temp[1], "semStart": temp[0]});
+            // ok_button_new_plan({"count": temp[1], "semStart": temp[0]});
     
             ausgewaehlt_semester = "";
             ausgewaehlt_modul = "";
@@ -34,6 +36,12 @@ $(document).ready(function ()
             search_result = "";
             
             content = eval("(" + (lines[1]) + ")");
+    
+            load = 1;
+            
+            ok_button_new_plan({"count": content.length, "semStart": lines[0]});
+    
+            load = 0;
 
             for (x = 0; x < content.length; x++)
             {

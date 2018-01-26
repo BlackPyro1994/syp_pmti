@@ -8,8 +8,11 @@ function save() {
     var currentdate = new Date();
     var filename = "PMTI_" + currentdate.getDate() + "/" + (currentdate.getMonth() + 1) + "/" + currentdate.getFullYear() + " _ " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
 
-    text += startSem + ",";
-    text += count + "\n";
+    // text += startSem + ",";
+    text += startSem + "\n";
+    
+    // text += count + "\n";
+    
     text += array2json(content);
 
     var element = document.createElement('a');
