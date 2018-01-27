@@ -48,7 +48,7 @@ button:focus {
 }
 
 .scrollbar {
-    max-height: 600px;
+    max-height: 1000px;
     background: #fff;
     overflow-y: scroll;
 }
@@ -256,7 +256,7 @@ ul .abstand li {
 }
 
 .cat-border {
-    border: 4px solid #17a2b8;
+    border: 7px solid #17a2b8;
     border-radius: 10px;
 }
 

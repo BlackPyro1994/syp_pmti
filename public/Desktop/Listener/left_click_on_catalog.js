@@ -31,6 +31,11 @@ function left_click_on_catalog(click)
                         open_catalog = "";
                     }
                 }
+                
+                if(open_catalog=="WPP")
+                {
+                    $("#div_kataloge").children().last().siblings().hide(400);
+                }
             }
             
             else if ($(click).attr("id") == open_catalog)
@@ -43,6 +48,11 @@ function left_click_on_catalog(click)
                 $(click).addClass("mouseOver");
                 
                 open_catalog = "";
+    
+                if($(click).attr("id")=="WPP")
+                {
+                    $("#div_kataloge").children().last().siblings().show(400);
+                }
                 
             }
             
@@ -59,6 +69,11 @@ function left_click_on_catalog(click)
                 $(click).removeClass("mouseOver");
                 
                 open_catalog = $(click).attr("id");
+    
+                if(open_catalog=="WPP")
+                {
+                    $("#div_kataloge").children().last().siblings().hide(400);
+                }
                 
             }
         }
