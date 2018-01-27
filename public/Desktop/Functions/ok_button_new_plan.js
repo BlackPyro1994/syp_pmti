@@ -1,6 +1,7 @@
 function ok_button_new_plan(options)
 {
-    $("#div_kataloge").empty();
+    $("#div_kataloge").children().first().siblings().remove();
+    
     show_catalogs();
     
     if (options)

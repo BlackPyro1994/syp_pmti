@@ -4,7 +4,7 @@
 function show_catalogs() {
     console.log("function show_catalogs()");
 
-    $("#popup_title").text("Modul-Kataloge :");
+    $("#popup_title").text("Modulkataloge");
 
     safe_modules = $("#div_semester").children();
     close = 1;
