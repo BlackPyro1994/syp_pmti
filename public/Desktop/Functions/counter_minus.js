@@ -1,6 +1,6 @@
 function counter_minus()
 {
-    modules_in_sem = $("#div_semester").children().last().children().length - 1;
+    modules_in_sem = $("#div_semester").children().last().children().length- 1;
     
     console.log("MODS: " + modules_in_sem);
     
