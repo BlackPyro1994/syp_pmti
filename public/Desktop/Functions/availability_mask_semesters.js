@@ -4,10 +4,14 @@ function availability_mask_semesters(module_id)
     
     if (module_id)
     {
-        if(!module_id == "ALM") {
-            updateModuleString(module_id);
-            search_result = search_result.split(",");
-        }
+        console.log("availability_mask_semesters(" + module_id + ")");
+        
+        console.log("updateModuleString(" + module_id + ")");
+        
+        updateModuleString(module_id);
+        search_result = search_result.split(",");
+        console.log("search_result : " + search_result);
+        
         
         if (search_result[6] == "1" && search_result[7] == "0")
         {
@@ -21,7 +25,7 @@ function availability_mask_semesters(module_id)
             }
         }
         // Winter und nicht Sommer
-            else if (search_result[6] == "0" && search_result[7] == "1")
+        else if (search_result[6] == "0" && search_result[7] == "1")
         {
             if (startSem == "sommer")
             {
