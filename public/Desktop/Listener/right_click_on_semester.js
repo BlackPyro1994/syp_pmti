@@ -40,6 +40,8 @@ function right_click_on_semester(caller)
                 }
                 
                 $("#div_semester").children().removeClass("not_available");
+                
+                $(".mouse_over_border").removeClass("mouse_over_border");
             }
             else
             {
@@ -71,14 +73,21 @@ function right_click_on_semester(caller)
                 $("#div_kataloge").children().children().removeClass("not_available");
                 
                 ausgewaehlt_semester = "";
+                
                 //availability_mask_modules(semester_id);
+    
+                $(".mouse_over_border").toggleClass("mouse_over_border");
             }
             else
             {
                 $('#div_semester').children().removeClass('ausgewaehlt');
+                
                 $("#" + "semester_" + semester_id).toggleClass('ausgewaehlt');
+    
+                $(".mouse_over_border").toggleClass("mouse_over_border");
                 
                 ausgewaehlt_semester = semester_id;
+                
                 availability_mask_modules(semester_id);
                 
             }

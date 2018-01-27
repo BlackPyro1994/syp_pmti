@@ -22,7 +22,10 @@
             $("#div_semester").children().removeClass("not_available");
             
             $(caller).removeClass("mouseOver");
-            $(caller).removeClass("mouse_over_border");
+            
+            // $(caller).removeClass("mouse_over_border");
+            
+            $(".mouse_over_border").removeClass("mouse_over_border");
             
             $(caller).toggleClass('ausgewaehlt');
             
@@ -52,6 +55,8 @@
         
         else if ($("#" + ausgewaehlt_modul).attr('class').includes("ausgewaehlt") && ausgewaehlt_modul != $(caller).attr('id'))
         {
+            $(".mouse_over_border").removeClass("mouse_over_border");
+            
             $("#div_semester").children().removeClass("not_available");
             
             ("Anderes Modul Ausgewählt");

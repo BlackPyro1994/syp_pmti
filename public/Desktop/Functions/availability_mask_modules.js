@@ -37,7 +37,10 @@ function availability_mask_modules(semester_id)
                     
                     if (t.split(",")[6] == "0" && t.split(",")[7] == "1")
                     {
-                        $("#" + t.split(",")[0]).addClass("not_available");
+                        if (!$("#" + t.split(",")[0]).hasClass("blocked"))
+                        {
+                            $("#" + t.split(",")[0]).addClass("not_available");
+                        }
                     }
                     
                 });

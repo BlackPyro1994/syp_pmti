@@ -272,5 +272,6 @@ ul .abstand li {
 
 .not_available
 {
+    disabled : true;
     background: red;
 }
