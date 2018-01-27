@@ -1,5 +1,7 @@
 function availability_mask_modules(semester_id)
 {
+    console.log("availability_mask_modules("+semester_id+")");
+    
     $("#div_kataloge").children().children().removeClass("not_available");
     
     if (ausgewaehlt_semester % 2 == 0)

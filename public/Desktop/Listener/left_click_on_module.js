@@ -1,5 +1,7 @@
 ﻿function left_click_on_module(caller)
 {
+    console.log("left_click_on_module("+caller+")");
+    
     if ($(caller).hasClass("blocked") == false && $(caller).hasClass("blocked_wpp") == false && $(caller).hasClass("not_available") == false)
     {
         // $(caller).parent().removeClass("cat-border");
@@ -9,6 +11,7 @@
         
         if (ausgewaehlt_semester != "")
         {
+            $("#div_semester").children().removeClass("not_available");
             insert_module_in_semester($(caller).attr('id'), ausgewaehlt_semester, null, false);
             return;
         }
@@ -19,9 +22,6 @@
         
         if ((!$(caller).attr('class').includes("ausgewaehlt")) && ausgewaehlt_modul == "")
         {
-            
-            console.log("NEUES MODUL");
-            
             $("#div_semester").children().removeClass("not_available");
             
             $(caller).removeClass("mouseOver");
@@ -40,9 +40,6 @@
         
         else if ($(caller).attr('id') == ausgewaehlt_modul)
         {
-            
-            console.log("GLEICHES MODUL");
-            
             $("#div_semester").children().removeClass("not_available");
             
             $(caller).toggleClass('ausgewaehlt');
@@ -50,7 +47,6 @@
             ausgewaehlt_modul = "";
             
             // availability_mask_semesters(0);
-            
         }
         
         // ################################################################################################
@@ -59,8 +55,6 @@
         
         else if ($("#" + ausgewaehlt_modul).attr('class').includes("ausgewaehlt") && ausgewaehlt_modul != $(caller).attr('id'))
         {
-            console.log("WECHSEL MODUL");
-            
             $("#div_semester").children().removeClass("not_available");
             
             ("Anderes Modul Ausgewählt");

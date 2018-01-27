@@ -1,5 +1,7 @@
 function counter_plus()
 {
+    console.log("counter_plus()");
+    
     if(count==0)
     {
         $("#div_kataloge").empty();

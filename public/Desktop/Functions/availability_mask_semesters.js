@@ -1,14 +1,11 @@
 function availability_mask_semesters(module_id)
 {
-    $("#div_semester").children().removeClass("not_available");
-    
     console.log("availability_mask_semesters(" + module_id + ")");
     
-    console.log("updateModuleString(" + module_id + ")");
+    $("#div_semester").children().removeClass("not_available");
     
     updateModuleString(module_id);
     search_result = search_result.split(",");
-    console.log("search_result : " + search_result);
     
     if (search_result[6] == "1" && search_result[7] == "0")
     {

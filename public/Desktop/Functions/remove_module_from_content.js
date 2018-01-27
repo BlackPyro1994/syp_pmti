@@ -3,6 +3,7 @@ var position_y;
 
 function remove_module_from_content(module_id)
 {
+    console.log("remove_module_from_content("+module_id+")");
     
     var BreakException = {};
     

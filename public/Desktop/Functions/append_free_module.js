@@ -17,7 +17,7 @@
  */
 function append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id, load)
 {
-    console.log("function append_free_module(" + name + "," + v + "," + u + "," + p + "," + pr + "," + ws + "," + sose + "," + dozent + "," + ects + "," + istPflicht + "," + kat_id + ",)");
+    console.log("append_free_module(" + name + "," + v + "," + u + "," + p + "," + pr + "," + ws + "," + sose + "," + dozent + "," + ects + "," + istPflicht + "," + kat_id + ",)");
     
     if (global_mod_id == "ALM" && name == "")
         name = "Name";
@@ -49,8 +49,6 @@ function append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent,
     {
         content[sem_id - 1].push(search_result);
     }
-    
-    console.log(sem_id);
     
     update_semester_ects(sem_id);
     

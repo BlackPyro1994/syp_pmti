@@ -1,5 +1,7 @@
 function modal_m07_ok(click)
 {
+    console.log("modal_m07_ok("+click+")");
+    
     var name;
     var v, u, p, pr, ws, sose;
     var dozent;

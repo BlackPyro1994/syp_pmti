@@ -1,5 +1,7 @@
 ﻿function create_pdf()
 {
+    console.log("create_pdf()");
+    
     var doc = new jsPDF('landscape');
     var x = 11;
     var xq = 10;

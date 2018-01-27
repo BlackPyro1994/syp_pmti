@@ -1,15 +1,14 @@
 function counter_minus()
 {
-    modules_in_sem = $("#div_semester").children().last().children().length- 1;
+    console.log("counter_minus()");
     
-    console.log("MODS: " + modules_in_sem);
+    modules_in_sem = $("#div_semester").children().last().children().length - 1;
     
     for (i = 0; i < modules_in_sem; i++)
     {
         var mod_id = $("#div_semester").children().last().children().last().children().attr('id');
-        console.log("MOD ID: " + mod_id);
+        
         var id = mod_id.replace("mod_", "");
-        console.log("ID: " + id);
         
         $("#" + mod_id).parent().remove();
         
@@ -33,7 +32,6 @@ function counter_minus()
     }
     else
     {
-        console.log($("#regeln").children());
         
         $("#regeln").children().remove();
         

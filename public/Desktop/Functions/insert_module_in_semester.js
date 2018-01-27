@@ -1,6 +1,6 @@
 ﻿function insert_module_in_semester(mod_id, sem_id, optional, load)
 {
-    console.log(optional);
+    console.log("insert_module_in_semewster("+mod_id+","+sem_id+","+optional+","+load+")");
     
     if (load == false)
     {

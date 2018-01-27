@@ -1,5 +1,7 @@
 function add_catalog(kat_id, title)
 {
+    console.log("add_catalog(" + kat_id + "," + title + ")");
+    
     $("#div_kataloge").append(
         '<div class = "class_click_catalog katalog">'
         

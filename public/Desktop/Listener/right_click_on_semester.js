@@ -1,5 +1,7 @@
 function right_click_on_semester(caller)
 {
+    console.log("right_click_on_semester("+caller+")");
+    
     var semester_id = $(caller.target).closest("button").attr("id").replace("semester_", "");
     
     console.log("SEMESTER CLICK : " + semester_id);
@@ -25,24 +27,26 @@ function right_click_on_semester(caller)
                 {
                     // options = get_module_from_content(ausgewaehlt_modul);
                     // console.log(options);
-    
+                    
                     console.log(ALM_String);
                     
-                    insert_module_in_semester("ALM",semester_id,ALM_String,false);
+                    insert_module_in_semester("ALM", semester_id, ALM_String, false);
                 }
-                else if(ausgewaehlt_modul == "M07_WPP")
+                else if (ausgewaehlt_modul == "M07_WPP")
                 {
-                    insert_module_in_semester(ausgewaehlt_modul,semester_id,M07_WPP_String,false);
+                    insert_module_in_semester(ausgewaehlt_modul, semester_id, M07_WPP_String, false);
                 }
                 else
                 {
-                    insert_module_in_semester(ausgewaehlt_modul,semester_id,null,false);
+                    insert_module_in_semester(ausgewaehlt_modul, semester_id, null, false);
                 }
                 
                 $("#div_semester").children().removeClass("not_available");
             }
             else
             {
+                $("#div_semester").children().removeClass("not_available");
+                
                 if (($("#" + ausgewaehlt_modul).parent().children().first().siblings().not('.blocked').length - 1) == 0)
                 {
                     $("#" + ausgewaehlt_modul).parent().toggleClass("cat-border");
@@ -53,8 +57,6 @@ function right_click_on_semester(caller)
                 }
                 
                 insert_module_in_semester(ausgewaehlt_modul, semester_id, null, false);
-                
-                $("#div_semester").children().removeClass("not_available");
             }
             
         }

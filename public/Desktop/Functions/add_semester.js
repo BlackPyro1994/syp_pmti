@@ -1,5 +1,6 @@
 function add_semester(startSem)
 {
+    console.log("add_semester("+startSem+")");
     
     if (!load)
     {
