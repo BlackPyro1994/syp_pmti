@@ -41,7 +41,6 @@ function right_click_on_semester(caller)
                 
                 $("#div_semester").children().removeClass("not_available");
                 $('#div_kataloge').children().removeClass('ausgewaehlt');
-                $(".mouse_over_border").removeClass("mouse_over_border");
             }
             else
             {
@@ -58,6 +57,8 @@ function right_click_on_semester(caller)
                 
                 insert_module_in_semester(ausgewaehlt_modul, semester_id, null, false);
             }
+            
+            $(".mouse_over_border").removeClass("mouse_over_border");
             
         }
         

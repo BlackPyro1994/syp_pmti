@@ -9,6 +9,7 @@
         if (ausgewaehlt_semester != "")
         {
             $("#div_kataloge").children().children().removeClass("not_available");
+            $(".mouse_over_border").removeClass("mouse_over_border");
             insert_module_in_semester($(caller).attr('id'), ausgewaehlt_semester, null, false);
             return;
         }
