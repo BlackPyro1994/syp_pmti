@@ -1,29 +1,24 @@
-﻿function append_module(mod_id, sem_id,optional,load)
+﻿function append_module(mod_id, sem_id, optional, load)
 {
-    console.log("append_module("+mod_id+", "+sem_id+","+load+","+optional+")");
+    console.log("append_module(" + mod_id + ", " + sem_id + "," + load + "," + optional + ")");
     
     // console.log(Boolean(optional));
     
-    if (optional==null)
+    if (optional == null)
     {
         updateModuleString(mod_id);
         search_result = search_result.split(",");
-        console.log("OPTIONAL NULL");
     }
     else
     {
         // search_result = optional["mod_id"] +","+ optional["name"] +","+ optional["v"] +","+ optional["u"] +","+ optional["p"] +","+ optional["pr"] +","+ optional["dozent"] +","+ optional["ects"];
-        search_result = optional[0] +","+ optional[1] +","+ optional[2] +","+ optional[3] +","+ optional[4] +","+ optional[5] +","+ optional[6] +","+ optional[7];
-        console.log("+++++++++++++++++++++++++");
-        console.log(search_result);
-        console.log("+++++++++++++++++++++++++");
+        search_result = optional[0] + "," + optional[1] + "," + optional[2] + "," + optional[3] + "," + optional[4] + "," + optional[5] + "," + optional[6] + "," + optional[7];
     }
     
-    console.log(search_result);
     
     if (moving == false)
     {
-        console.log("mod_id : " + mod_id);
+        
         update_master_ects(mod_id, 1);
     }
     

@@ -1,10 +1,8 @@
 function right_click_on_semester(caller)
 {
-    console.log("right_click_on_semester("+caller+")");
+    console.log("right_click_on_semester(" + caller + ")");
     
     var semester_id = $(caller.target).closest("button").attr("id").replace("semester_", "");
-    
-    console.log("SEMESTER CLICK : " + semester_id);
     
     if (!$(caller.target).closest("button").hasClass("not_available"))
     {

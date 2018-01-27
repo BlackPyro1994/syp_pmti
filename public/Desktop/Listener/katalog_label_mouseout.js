@@ -1,6 +1,6 @@
 function catalog_label_mouseover(event)
 {
-    console.log("catalog_label_mouseover("+event+")");
+    // console.log("catalog_label_mouseover("+event+")");
     
     if (!blocked)
     {
@@ -42,7 +42,7 @@ function catalog_label_mouseover(event)
 
 function catalog_label_mouseout(event)
 {
-    console.log("catalog_label_mouseout("+event+")");
+    // console.log("catalog_label_mouseout("+event+")");
     
     if (!blocked)
     {

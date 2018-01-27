@@ -1,6 +1,6 @@
 function semester_mouseover(event)
 {
-    console.log("semester_mouseover("+event+")");
+    // console.log("semester_mouseover("+event+")");
     
     if (!blocked)
     {
@@ -30,7 +30,7 @@ function semester_mouseover(event)
 
 function semester_mouseout(event)
 {
-    console.log("semester_mouseout("+event+")");
+    // console.log("semester_mouseout("+event+")");
     
     if (!blocked)
     {

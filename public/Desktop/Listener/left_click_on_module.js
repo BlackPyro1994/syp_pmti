@@ -1,17 +1,14 @@
 ﻿function left_click_on_module(caller)
 {
-    console.log("left_click_on_module("+caller+")");
+    console.log("left_click_on_module(" + caller + ")");
     
     if ($(caller).hasClass("blocked") == false && $(caller).hasClass("blocked_wpp") == false && $(caller).hasClass("not_available") == false)
     {
-        // $(caller).parent().removeClass("cat-border");
-        // $(caller).removeClass("cat-background");
-        
         // Semester bereits ausgewählt
         
         if (ausgewaehlt_semester != "")
         {
-            $("#div_semester").children().removeClass("not_available");
+            $("#div_kataloge").children().children().removeClass("not_available");
             insert_module_in_semester($(caller).attr('id'), ausgewaehlt_semester, null, false);
             return;
         }

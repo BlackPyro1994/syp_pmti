@@ -1,13 +1,12 @@
 function left_click_on_catalog(click)
 {
-    console.log("left_click_on_catalog("+click+")");
+    console.log("left_click_on_catalog(" + click + ")");
     
     if (!$(click).hasClass("disabled-catalog"))
     {
         
         if (all_catalogs_closed == 0)
         {
-            
             
             if (($(click).siblings().is(':hidden')) && open_catalog == "")
             {
