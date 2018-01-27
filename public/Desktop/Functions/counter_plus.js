@@ -1,11 +1,9 @@
 function counter_plus()
 {
-    var wert = Number(document.getElementById("count").textContent);
-    wert++;
-    document.getElementById("count").textContent = wert;
-    add_semester(startSem);
-
+    document.getElementById("count").textContent++;
     count++;
-
+    
+    add_semester(startSem);
+    
     // update_rules();
 }

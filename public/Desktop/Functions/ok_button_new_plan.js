@@ -21,9 +21,7 @@ function ok_button_new_plan(options)
         {
             document.getElementById("fehlermeldung").textContent = meldung;
             return;
-            
         }
-        
     }
     
     $("#div_semester").children().remove();
@@ -34,17 +32,15 @@ function ok_button_new_plan(options)
     for (i = 0; i < wert; i++)
     {
         document.getElementById("count").textContent++;
+        count++;
         add_semester(startSem);
     }
-    
-    // $('#count').set(wert);
     
     document.getElementById("fehlermeldung").textContent = "";
     
     $('#myModal-new_plan').modal('hide');
     
     $(".class_p").removeClass('ausgewaehlt');
-    
     
     $(".disabled-catalog").removeClass('disabled-catalog');
     
