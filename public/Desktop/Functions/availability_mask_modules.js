@@ -21,7 +21,7 @@ function availability_mask_modules(semester_id)
                 
                 if (t.split(",")[6] == "1" && t.split(",")[7] == "0")
                 {
-                    if (!$("#" + t.split(",")[0]).hasClass("blocked"))
+                    if (!($("#" + t.split(",")[0]).is(".blocked,.blocked_wpp")))
                     {
                         $("#" + t.split(",")[0]).addClass("not_available");
                     }
@@ -37,7 +37,7 @@ function availability_mask_modules(semester_id)
                     
                     if (t.split(",")[6] == "0" && t.split(",")[7] == "1")
                     {
-                        if (!$("#" + t.split(",")[0]).hasClass("blocked"))
+                        if (!($("#" + t.split(",")[0]).is(".blocked,.blocked_wpp")))
                         {
                             $("#" + t.split(",")[0]).addClass("not_available");
                         }
@@ -58,7 +58,7 @@ function availability_mask_modules(semester_id)
                 //winter / sommer
                 if (t.split(",")[6] == "0" && t.split(",")[7] == "1")
                 {
-                    if (!$("#" + t.split(",")[0]).hasClass("blocked"))
+                    if (!($("#" + t.split(",")[0]).is(".blocked,.blocked_wpp")))
                     {
                         $("#" + t.split(",")[0]).addClass("not_available");
                     }
@@ -74,7 +74,7 @@ function availability_mask_modules(semester_id)
                     //winter / sommer
                     if (t.split(",")[6] == "1" && t.split(",")[7] == "0")
                     {
-                        if (!$("#" + t.split(",")[0]).hasClass("blocked"))
+                        if (!($("#" + t.split(",")[0]).is(".blocked,.blocked_wpp")))
                         {
                            $("#" + t.split(",")[0]).addClass("not_available");
                         }
