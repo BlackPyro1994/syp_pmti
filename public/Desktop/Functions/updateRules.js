@@ -11,7 +11,7 @@ function update_rules() {
     var semMAA = 0;
     var semKOLL = 0;
     var countMects = 0;
-
+    
     $("#regeln").children().remove();
 
     katalogListe.forEach(function (katalog) {

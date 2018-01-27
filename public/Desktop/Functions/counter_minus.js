@@ -1,17 +1,9 @@
 function counter_minus()
 {
-    var wert = Number(document.getElementById("count").textContent);
-    
-    if (wert > 0)
-    {
-        count--;
-        wert--;
-    }
-    
-    document.getElementById("count").textContent = wert;
     modules_in_sem = $("#div_semester").children().last().children().length - 1;
     
     console.log("MODS: " + modules_in_sem);
+    
     for (i = 0; i < modules_in_sem; i++)
     {
         var mod_id = $("#div_semester").children().last().children().last().children().attr('id');
@@ -33,4 +25,35 @@ function counter_minus()
     content.pop();
     $("#div_semester").children().last().remove();
     update_rules();
+    
+    if (count > 1)
+    {
+        count--;
+        document.getElementById("count").textContent--;
+    }
+    else
+    {
+        console.log($("#regeln").children());
+        
+        $("#regeln").children().remove();
+        
+        count--;
+        document.getElementById("count").textContent--;
+        
+        $("#div_kataloge").empty();
+        show_catalogs();
+        
+        document.getElementById("button_minus").disabled = true;
+        document.getElementById("button_speichern").disabled = true;
+        document.getElementById("button_pdf").disabled = true;
+        
+        blocked = true;
+        
+        $("#button_new_plan").addClass("mouse_over_border");
+        $('#button_planLaden').addClass("mouse_over_border");
+        $("#button_plus").addClass("mouse_over_border");
+        
+        return;
+        
+    }
 }
