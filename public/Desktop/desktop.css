@@ -48,7 +48,7 @@ button:focus {
 }
 
 .scrollbar {
-    max-height: 1000px;
+    max-height: 1500px;
     background: #fff;
     overflow-y: scroll;
 }
