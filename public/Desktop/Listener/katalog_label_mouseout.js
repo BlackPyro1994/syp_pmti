@@ -2,7 +2,12 @@ function catalog_label_mouseover(event)
 {
     // console.log("catalog_label_mouseover("+event+")");
     
-    update_tooltip_info_string($(caller).attr('id'));
+    if ($(event.target).hasClass("rounded-catalog-module"))
+    {
+        console.log($(event.target).attr('id'));
+        update_tooltip_info_string($(event.target).attr('id'));
+    }
+    
     
     if (!blocked)
     {

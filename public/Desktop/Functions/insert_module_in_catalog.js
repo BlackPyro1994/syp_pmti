@@ -7,9 +7,11 @@ function insert_module_in_catalog(katalog_id, module_id, module_title)
         'onClick="left_click_on_module(this)" ' +
         'class = "katalog_label rounded-catalog-module">' + module_title + '</button>');
     $("#" + module_id).hide();
-
+    
+    updateModuleString(module_id);
+    
     $('[data-toggle="tooltip"]').tooltip({
-        title: toolInfo,
+        title: search_result,
         animation:true,
         delay: {show: 800, hide: 0}
     });
