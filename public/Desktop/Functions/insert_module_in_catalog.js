@@ -8,7 +8,7 @@ function insert_module_in_catalog(katalog_id, module_id, module_title)
         'class = "katalog_label rounded-catalog-module">' + module_title + '</button>');
     $("#" + module_id).hide();
     
-    updateModuleString(module_id);
+    update_module_string(module_id);
     
     $('[data-toggle="tooltip"]').tooltip({
         title: search_result,
