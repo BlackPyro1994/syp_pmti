@@ -1,6 +1,6 @@
-function updateModuleString(mod_id)
+function update_module_string(mod_id)
 {
-    console.log("updateModuleString("+mod_id+")");
+    console.log("update_module_string("+mod_id+")");
     
     var BreakException = {};
     

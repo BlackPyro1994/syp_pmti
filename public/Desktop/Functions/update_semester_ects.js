@@ -12,6 +12,7 @@ function update_semester_ects(sem_id) {
     document.getElementById(idString).textContent = countSemECTS;
 
     sem_ects_array[sem_id] = countSemECTS;
+    update_rules();
 }
 
 

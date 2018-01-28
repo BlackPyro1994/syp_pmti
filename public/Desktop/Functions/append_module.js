@@ -6,7 +6,7 @@
     
     if (optional == null)
     {
-        updateModuleString(mod_id);
+        update_module_string(mod_id);
         search_result = search_result.split(",");
     }
     else

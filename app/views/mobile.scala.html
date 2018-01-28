@@ -23,7 +23,7 @@
   <script src="@routes.Assets.versioned("Mobile/Functions/create_pdf.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/delete_module_from_semester.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/emptyModal.js")" type="text/javascript"></script>
-  <script src="@routes.Assets.versioned("Mobile/Functions/getElementByIndex.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/get_element_by_index.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/ok_button_new_plan.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/overview.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/remove_module_from_content.js")" type="text/javascript"></script>
@@ -38,6 +38,7 @@
   <script src="@routes.Assets.versioned("Mobile/Functions/update_master_ects.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/update_semester_ects.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/availability_mask_modules.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.versioned("Mobile/Functions/availability_mask_semesters.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Functions/file_loader.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Listener/button_laden.js")" type="text/javascript"></script>
   <script src="@routes.Assets.versioned("Mobile/Listener/click_catalog.js")" type="text/javascript"></script>
@@ -194,7 +195,7 @@
 			  <div class = "modal-content">
 					  <!-- PopUp Kopfzeile -->
 				  <div class="modal-header">
-					  <h4 id="popup_title" class="modal-title">Regeln :</h4>
+					  <h4 id="popup_title" class="modal-title">Regeln</h4>
 				  </div>
 					  <!-- PopUp Körper -->
 				  <div class="modal-body">
@@ -316,7 +317,7 @@
 	<div id="body_div" class="container-fluid container_body">
 		<!--  container-fluid regeln -->
 	  <div class = "container-fluid text-center" id = "regeln">
-		<div class="margin-top rules-text">Regeln</div>
+		<div class="absolute_center rules-text">Regeln</div>
 	  </div>
 		<!--  container-fluid semester (wird dynamisch erstellt -->
 	  <div id = "div_semester">
@@ -428,9 +429,6 @@
 
               $("#ects_text").text("Master ECTS: ");
               $("#master_ects_punkte").text(master_ects);
-
             });
-
     </script>
-
 </html>

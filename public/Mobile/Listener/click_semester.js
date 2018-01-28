@@ -8,6 +8,9 @@
 function click_semester(click) {
     console.log("function click_semester("+click+")");
 
+    $("#div_semester").children().removeClass("not_available");
+    $("#div_semester").children().addClass("class_click_semester");
+
     var id = (click.target).id;
     global_sem_id = (click.target).id.replace("sem", "");
     flip = 1;

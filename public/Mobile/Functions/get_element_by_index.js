@@ -5,8 +5,8 @@
  * @param index An welcher Stelle im Array gesucht werden soll
  * @return das letzte Element des Arrays
  */
-function getElementByIndex(Object, index) {
-    console.log("function getElementByIndex(Object, index) {");
+function get_element_by_index(Object, index) {
+    console.log("function get_element_by_index(Object, index) {");
 
     return Object.slice(index, index + 1);
 }

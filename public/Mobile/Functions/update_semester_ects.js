@@ -16,6 +16,5 @@ function update_semester_ects(sem_id) {
     semester_ects = countSemECTS;
 
     $("#ects_punkte").last().text(semester_ects);
-
     sem_ects_array[sem_id] = semester_ects;
 }

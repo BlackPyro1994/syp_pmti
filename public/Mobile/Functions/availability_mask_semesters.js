@@ -4,7 +4,7 @@ function availability_mask_semesters(module_id)
     
     $("#div_semester").children().removeClass("not_available");
     
-    update_module_string(module_id);
+    store_module_data_by_id(module_id);
     search_result = search_result.split(",");
     
     if (search_result[6] == "1" && search_result[7] == "0")
@@ -12,10 +12,13 @@ function availability_mask_semesters(module_id)
         if (startSem == "sommer")
         {
             $("#div_semester").children().filter(":even").addClass("not_available");
+            $("#div_semester").children().filter(":even").removeClass("class_click_semester");
+
         }
         else if (startSem == "winter")
         {
             $("#div_semester").children().filter(":odd").addClass("not_available");
+            $("#div_semester").children().filter(":odd").removeClass("class_click_semester");
         }
     }
     // Winter und nicht Sommer
@@ -24,11 +27,13 @@ function availability_mask_semesters(module_id)
         if (startSem == "sommer")
         {
             $("#div_semester").children().filter(":odd").addClass("not_available");
+            $("#div_semester").children().filter(":odd").removeClass("class_click_semester");
             
         }
         else if (startSem == "winter")
         {
             $("#div_semester").children().filter(":even").addClass("not_available");
+            $("#div_semester").children().filter(":even").removeClass("class_click_semester");
         }
     }
 }

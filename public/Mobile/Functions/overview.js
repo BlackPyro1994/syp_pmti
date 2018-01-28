@@ -21,6 +21,9 @@ function overview() {
     }
     
     $("#div_semester").append(safe_semester);
+    if(move) {
+        availability_mask_semesters(global_mod_id);
+    }
     $("#button_minus").show();
     $("#button_plus").text("+");
     $("#button_plus").attr("onclick", "counter_plus()");
