@@ -86,4 +86,6 @@
 //open_catalog = "";
     
     update_rules();
+    
+    window.scrollTo(0, 0);
 }

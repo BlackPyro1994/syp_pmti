@@ -9,7 +9,7 @@ function insert_module_in_catalog(katalog_id, module_id, module_title)
     $("#" + module_id).hide();
 
     $('[data-toggle="tooltip"]').tooltip({
-        title: tooltip_content(),
+        title: toolInfo,
         animation:true,
         delay: {show: 800, hide: 0}
     });
