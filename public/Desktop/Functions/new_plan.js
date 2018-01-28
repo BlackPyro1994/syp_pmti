@@ -17,7 +17,6 @@ function new_plan()
     {
         if (e.which == 13)
         {
-            // $('#popup-new-ok').trigger('click');
             ok_button_new_plan();
         }
     });

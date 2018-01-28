@@ -32,9 +32,15 @@ function left_click_on_catalog(click)
                     }
                 }
                 
-                if(open_catalog=="WPP")
+                if (open_catalog == "WPP")
                 {
                     $("#div_kataloge").children().last().siblings().hide(400);
+                    
+                    setTimeout(function ()
+                    {
+                        window.scrollTo(0, document.body.scrollHeight);
+                    }, 40);
+                    
                 }
             }
             
@@ -48,8 +54,8 @@ function left_click_on_catalog(click)
                 $(click).addClass("mouseOver");
                 
                 open_catalog = "";
-    
-                if($(click).attr("id")=="WPP")
+                
+                if ($(click).attr("id") == "WPP")
                 {
                     $("#div_kataloge").children().last().siblings().show(400);
                 }
@@ -69,10 +75,16 @@ function left_click_on_catalog(click)
                 $(click).removeClass("mouseOver");
                 
                 open_catalog = $(click).attr("id");
-    
-                if(open_catalog=="WPP")
+                
+                if (open_catalog == "WPP")
                 {
                     $("#div_kataloge").children().last().siblings().hide(400);
+                    
+                    setTimeout(function ()
+                    {
+                        // window.scrollTo(0, document.body.scrollHeight);
+                        // window.scrollTo(0, document.body.scrollHeight-document.body.children[0].children[0].children[5].children[0].children[0].scrollHeight);
+                    }, 50);
                 }
                 
             }

@@ -6,6 +6,10 @@ function ok_button_new_plan(options)
     
     show_catalogs();
     
+    open_catalog ="";
+    ausgewaehlt_semester = "";
+    ausgewaehlt_modul="";
+    
     if (options)
     {
         var wert = options['count'];
