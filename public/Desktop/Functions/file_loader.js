@@ -80,4 +80,4 @@ $(document).ready(function ()
         };
         reader.readAsText(file);
     }
-})
+});

@@ -73,8 +73,7 @@
 
 .container_body {
     height: calc(100vh - 20px);
-   overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 
 .footer {
@@ -126,7 +125,6 @@
     margin-top: 10%;
 }
 body {
-    overflow-x: hidden;
     overflow: hidden;
 }
 
