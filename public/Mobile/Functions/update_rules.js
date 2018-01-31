@@ -2,7 +2,8 @@
  * Leert den Inhalt der Regelanzeige, liest den Inhalt der hinzugefügten Module anhand der Katalog ID aus
  * und erzeugt mit den Werten der Belegungsanzahl (belegAnz)
  * und bereits gewählten Modulen(Katalog ID in catalog_array) die Regeln.
- *
+ * Ueberprueft zudem fuer das Modul MAA, ob in vorigen Semestern mindestens 45 Master-ECTS-Punkte vorhanden
+ * und ob KOLL nicht in einem der Semester vor der Masterarbeit belegt wird
  */
 
 function update_rules() {

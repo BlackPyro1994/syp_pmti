@@ -1,3 +1,9 @@
+/**
+ * Aktualisiert die Semester-ECTS für ein Semester
+ *
+ * @param sem_id Die Semester-ID des zu aktualisierenden Semesters
+ *
+ */
 function update_semester_ects(sem_id) {
 
     console.log("update_semester_ects("+sem_id+")");
