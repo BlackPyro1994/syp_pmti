@@ -2,7 +2,7 @@ package pmti.datenhaltung.katalogverwaltung.entities;
 
 
 /**
- * Entitätsklasse Modulkatalog
+ * Entitaetsklasse Modulkatalog
  *
  * @author Michael Schott
  *

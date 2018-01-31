@@ -71,7 +71,7 @@ public class AlleKataloge {
     }
 
     /**
-     * Methode zum Übergeben eines einzigen Exemplars der Liste aller Modulkataloge
+     * Methode zum Uebergeben eines einzigen Exemplars der Liste aller Modulkataloge
      *
      * @return List mit Modulkatalog-Objekten zu allen Modulkatalogen
      */

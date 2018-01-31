@@ -87,7 +87,7 @@ public class AlleModule {
     }
 
     /**
-     * Methode zum Übergeben eines einzigen Exemplars der Liste aller Module
+     * Methode zum Uebergeben eines einzigen Exemplars der Liste aller Module
      *
      * @return List mit Modul-Objekten zu allen Modulen
      */

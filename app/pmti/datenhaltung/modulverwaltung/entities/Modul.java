@@ -1,7 +1,7 @@
 package pmti.datenhaltung.modulverwaltung.entities;
 
 /**
- * Entitätsklasse Modul
+ * Entitaetsklasse Modul
  *
  * @author Michael Schott
  *
