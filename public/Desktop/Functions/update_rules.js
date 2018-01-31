@@ -83,7 +83,7 @@ function update_rules()
     {
         for (l = 0; l < content[k].length; l++)
         {
-            if (content[k][l][0] != "ALM")
+            if (!(content[k][l][0].includes("ALM")))
             {
                 countMects += (Number.parseInt(content[k][l][9]));
                 
