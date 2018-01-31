@@ -6,12 +6,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Objektverwaltung AlleModule
+ *
+ * @author Michael Schott
+ *
+ */
 public class AlleModule {
 
     ArrayList<Modul> module = new ArrayList<>();
     private static AlleModule einzigesExemplar;
 
+
+    /**
+     * privater Konstruktor
+     * es existiert somit kein impliziter oeffentlicher Konstruktor
+     *
+     * einmaliges Einlesen aus der CSV-Datei
+     */
     private AlleModule(){
         FileReader fr;
         BufferedReader br;
@@ -62,6 +74,11 @@ public class AlleModule {
         }
     }
 
+    /**
+     * Methode mit Lazy initialization zum Erzeugen einer einzigen Instanz von AlleModule
+     *
+     * @return einzige Instanz von AlleModule
+     */
     public static AlleModule exemplar(){
         if(einzigesExemplar==null){
             einzigesExemplar=new AlleModule();

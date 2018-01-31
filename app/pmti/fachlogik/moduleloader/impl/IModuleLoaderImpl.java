@@ -9,6 +9,13 @@ import pmti.fachlogik.moduleloader.services.IModuleLoader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Steuerungsklasse IModuleLoaderImpl
+ * implementiert Interface IModuleLoader
+ *
+ * @author Michael Schott
+ *
+ */
 public class IModuleLoaderImpl implements IModuleLoader {
     private final IRModul module;
 

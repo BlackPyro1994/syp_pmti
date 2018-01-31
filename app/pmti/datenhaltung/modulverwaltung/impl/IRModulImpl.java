@@ -6,6 +6,13 @@ import pmti.datenhaltung.modulverwaltung.services.IRModul;
 
 import java.util.List;
 
+/**
+ * IRModulImpl
+ * implementiert Interface IRModul
+ *
+ * @author Michael Schott
+ *
+ */
 public class IRModulImpl implements IRModul {
 
     /**

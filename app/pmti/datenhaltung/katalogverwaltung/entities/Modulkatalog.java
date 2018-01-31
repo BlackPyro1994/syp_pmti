@@ -1,5 +1,12 @@
 package pmti.datenhaltung.katalogverwaltung.entities;
 
+
+/**
+ * Entitätsklasse Modulkatalog
+ *
+ * @author Michael Schott
+ *
+ */
 public class Modulkatalog {
     private String katalogid;
     private String katalogname;

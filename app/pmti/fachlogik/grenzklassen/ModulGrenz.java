@@ -1,5 +1,11 @@
 package pmti.fachlogik.grenzklassen;
 
+/**
+ * Grenzklasse ModulGrenz
+ *
+ * @author Michael Schott
+ *
+ */
 public class ModulGrenz {
     private String modulid;
     private String modulname;

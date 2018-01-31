@@ -9,6 +9,13 @@ import pmti.fachlogik.katalogeloader.services.IKatalogeLoader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Steuerungsklasse IKatalogeLoaderImpl
+ * implementiert Interface IKatalogeLoader
+ *
+ * @author Michael Schott
+ *
+ */
 public class IKatalogeLoaderImpl implements IKatalogeLoader {
     private final IRKatalog kataloge;
 

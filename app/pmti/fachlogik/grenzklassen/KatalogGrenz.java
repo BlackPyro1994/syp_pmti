@@ -1,5 +1,11 @@
 package pmti.fachlogik.grenzklassen;
 
+/**
+ * Grenzklasse KatalogGrenz
+ *
+ * @author Michael Schott
+ *
+ */
 public class KatalogGrenz {
     private String katalogid;
     private String katalogname;

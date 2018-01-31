@@ -1,5 +1,11 @@
 package pmti.datenhaltung.modulverwaltung.entities;
 
+/**
+ * Entitätsklasse Modul
+ *
+ * @author Michael Schott
+ *
+ */
 public class Modul {
     private String modulid;
     private String modulname;

@@ -6,12 +6,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Objektverwaltung AlleKataloge
+ *
+ * @author Michael Schott
+ *
+ */
 public class AlleKataloge {
 
     ArrayList<Modulkatalog> kataloge = new ArrayList<Modulkatalog>();
     private static AlleKataloge einzigesExemplar;
 
+
+    /**
+     * privater Konstruktor
+     * es existiert somit kein impliziter oeffentlicher Konstruktor
+     *
+     * einmaliges Einlesen aus der CSV-Datei
+     */
     private AlleKataloge(){
         FileReader fr;
         BufferedReader br;
@@ -46,6 +58,11 @@ public class AlleKataloge {
         }
     }
 
+    /**
+     * Methode mit Lazy initialization zum Erzeugen einer einzigen Instanz von AlleKataloge
+     *
+     * @return einzige Instanz von AlleKataloge
+     */
     public static AlleKataloge exemplar(){
         if(einzigesExemplar==null){
             einzigesExemplar=new AlleKataloge();

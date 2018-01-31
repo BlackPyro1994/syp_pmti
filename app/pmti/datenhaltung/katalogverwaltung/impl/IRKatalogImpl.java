@@ -6,6 +6,13 @@ import pmti.datenhaltung.katalogverwaltung.services.IRKatalog;
 
 import java.util.List;
 
+/**
+ * IRKatalogImpl
+ * implementiert Interface IRKatalog
+ *
+ * @author Michael Schott
+ *
+ */
 public class IRKatalogImpl implements IRKatalog {
 
     /**
