@@ -4,7 +4,6 @@
  * @param catalog_id Angeklickte Katalog ID
  */
 function add_modules_in_popup(catalog_id) {
-    console.log("function add_modules_in_popup(" + catalog_id + ")");
 
     emptyModal();
     var mod_id;

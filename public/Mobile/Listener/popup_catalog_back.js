@@ -5,7 +5,6 @@
  * @param click Auf das geklickte Element
  */
 function popup_catalog_back(click) {
-    console.log("function popup_catalog_back("+click+")");
 
     open = 1;
 

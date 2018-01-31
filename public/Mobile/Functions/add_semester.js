@@ -4,7 +4,6 @@
  * @param startSem Zu Beginn ausgewähltes Startsemester
  */
 function add_semester(startSem) {
-    console.log("function add_semester(" + startSem + ")");
 
     if(!load) {
         content.push(new Array());

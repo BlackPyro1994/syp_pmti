@@ -3,7 +3,6 @@
  *
  */
 function counter_plus() {
-    console.log("function counter_plus()");
     $("#regeln").show();
 
     count++;

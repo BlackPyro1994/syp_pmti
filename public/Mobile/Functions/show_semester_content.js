@@ -3,8 +3,8 @@
  *
  * @param global_sem_id Ausgewähltes Semester
  */
-function show_semester_content(global_sem_id) {
-    console.log("function show_semester_content(" + global_sem_id + ")");
-
+function show_semester_content(global_sem_id)
+{
+    
     $("#div_semester").append(content_html[global_sem_id]);
 }

@@ -3,7 +3,6 @@
  * (blocked, catalog_array,content,content_html)
  */
 function counter_minus() {
-    console.log("function counter_minus()");
 
     var cat_id, mod_id, index;
 

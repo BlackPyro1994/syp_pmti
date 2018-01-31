@@ -4,7 +4,6 @@
  */
 function ok_button_new_plan(options)
 {
-    console.log("function ok_button_new_plan(" + options + ")");
     
     if (options)
     {

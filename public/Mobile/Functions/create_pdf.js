@@ -3,7 +3,6 @@
  *
  */
 function create_pdf() {
-    console.log("function create_pdf()");
 
     var doc = new jsPDF('landscape');
     var x = 11;

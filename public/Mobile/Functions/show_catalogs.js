@@ -2,8 +2,6 @@
  * Setzt den Titel des Modals und öffnet dieses
  */
 function show_catalogs() {
-    console.log("function show_catalogs()");
-
     $("#popup_title").text("Modulkataloge");
 
     safe_modules = $("#div_semester").children();

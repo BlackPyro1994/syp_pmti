@@ -3,7 +3,6 @@
  *
  */
 function availability_mask_modules() {
-    console.log("function availability_mask_modules()");
 
     $("#catalog_list").children().children().removeClass("not_available");
 

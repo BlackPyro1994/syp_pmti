@@ -4,14 +4,13 @@
  *
  * @param click
  */
-function click_catalog(click) {
-    console.log("function left_click_on_catalog("+click+")");
-    
+function click_catalog(click)
+{
     global_catalog_id = (click.target).id;
     close = 0;
-
+    
     store_catalog_name_by_id(global_catalog_id);
-
+    
     $("#popup_title").text(search_result);
     $("#popup-icon").removeClass("fa-window-close");
     $("#popup-icon").addClass("fa-reply");

@@ -4,7 +4,6 @@
  * @param mod_id Die Modul ID des zu löschenden Moduls
  */
 function delete_module_from_semester(mod_id) {
-    console.log("function delete_module_from_semester(" + mod_id + ")");
 
     var cat_id;
     var index;

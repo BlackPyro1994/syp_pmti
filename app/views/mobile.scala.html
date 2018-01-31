@@ -3,443 +3,452 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
+  <head>
 
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Mobile/mobile.css")">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Mobile/mobile.css")">
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    </head>
+  </head>
 
-    <script src="@routes.Assets.versioned("Mobile/Functions/add_catalogs.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/add_modules_in_popup.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/add_semester.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/append_free_module.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/append_module_in_semester.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/counter_minus.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/counter_plus.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/create_pdf.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/delete_module_from_semester.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/emptyModal.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/get_element_by_index.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/ok_button_new_plan.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/overview.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/remove_module_from_content.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/save.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/popup_extra_module.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/save_semester_content.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/show_catalogs.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/show_semester_content.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/store_catalog_name_by_id.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/store_module_data_by_id.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/update_rules.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/update_master_ects.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/update_semester_ects.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/availability_mask_modules.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/availability_mask_semesters.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Functions/file_loader.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Listener/button_laden.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Listener/click_catalog.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Listener/click_modules_in_semester.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Listener/click_semester.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Listener/list_click_module.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Listener/popup_catalog_back.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Listener/popup_freitext_ok.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Listener/popup_m07_ok.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Listener/popup_module_delete.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Listener/popup_module_move.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("Mobile/Listener/popup_rules.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/add_catalogs.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/add_modules_in_popup.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/add_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/append_free_module.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/append_module_in_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/counter_minus.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/counter_plus.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/create_pdf.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/delete_module_from_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/emptyModal.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/get_element_by_index.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/load_module_from_content.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/ok_button_new_plan.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/overview.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/remove_module_from_content.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/save.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/popup_extra_module.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/save_semester_content.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/show_catalogs.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/show_semester_content.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/store_catalog_name_by_id.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/store_module_data_by_id.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/update_rules.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/update_master_ects.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/update_semester_ects.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/availability_mask_modules.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/availability_mask_semesters.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Functions/file_loader.js")" type="text/javascript"></script>
 
-    <body>
-            <!-- Navbar -->
-        <nav class="navbar navbar-expand-sm bg-primary">
-            <div class="dropdown">
-                <button class="btn btn-primary border" type="button" data-toggle="dropdown">
-                    <i class="fa fa-bars fa-lg"></i>
-                </button>
-                <a id="brand" class="navbar-brand mx-2">Übersicht</a>
-                <ul class="dropdown-menu border-blue">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col">
-                                <button class ="btn btn-primary btn-block btn-space" type="button" data-toggle = "modal" data-target = "#myModal-new_plan">
-                                    Neuer Plan</button>
-                            </div>
-                            <div class="col">
-                                <button onClick="save()" class ="btn btn-primary btn-block btn-space" type="button">
-                                    Plan speichern</button>
-                            </div>
-                            <div class="col">
-                                <button id="button_planLaden" class ="btn btn-primary btn-block btn-space" type="button">
-                                    Plan laden</button>
-                                <input id = "file-input" type = "file" name = "name" style = "display: none; "/>
-                            </div>
-                            <div class="col">
-                                <button class ="btn btn-primary btn-block" type="button" id="button_pdf">PDF erstellen</button>
-                            </div>
-                        </div>
-                    </div>
-                </ul>
-            </div>
-            <div class="ml-auto btn-space-right">
-                <button id="button_minus" class ="ml-auto btn btn-primary btn-block border btn-width" type="button" onclick = "counter_minus()">
-                    -</button>
-            </div>
-            <div class="ml-0">
-                <button id="button_plus" class ="ml-auto btn btn-primary btn-block border" type="button" onclick = "counter_plus()">
-                    +</button>
-            </div>
-
-        </nav>
-            <!-- PopUp Start -->
-        <div id = "myModal-start" class = "modal fade" role = "dialog">
-            <div class = "modal-dialog">
-                    <!-- PopUp Inhalt-->
-                <div class = "modal-content modal-margin">
-                        <!-- PopUp Kopfzeile -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Was möchten Sie tun ?</h4>
-                    </div>
-                        <!-- PopUp Körper -->
-                    <div class="container-fluid modul_popup_buttons">
-                        <div class="row">
-                            <div class="col">
-                                <button type = "button" class = "btn btn-primary" id = "popup-start-load">Plan laden</button>
-                            </div>
-                            <div class="col">
-                                <button type = "button" data-toggle = "modal" data-target = "#myModal-new_plan" data-dismiss = "modal" class = "btn btn-primary" id = "popup-start-new">
-                                    Neuer Plan</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <!-- PopUp Neuer Plan -->
-        <div id = "myModal-new_plan" class = "modal fade" role = "dialog">
-            <div class = "modal-dialog">
-                    <!-- PopUp Inhalt-->
-                <div class = "modal-content modal-margin-new">
-                        <!-- PopUp Kopfzeile -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Neuen Plan erstellen</h4>
-                    </div>
-                        <!-- PopUp Körper -->
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col">
-                                    <h5>Semesteranzahl:</h5>
-                                    <input type="text" class = "form-control" id = "input-semesteranzahl"
-                                    placeholder="Semesteranzahl">
-                                    <p id="fehlermeldung"></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <h5>Studienstart:</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class = "col radio">
-                                    <label><input type = "radio" name = "optradio" checked = "checked" id = "radio-winter"
-                                    value = "winter">
-                                        Winter
-                                    </label>
-                                </div>
-                                <div class = "col radio">
-                                    <label><input type = "radio" name = "optradio" id = "radio-sommer" value = "sommer">
-                                        Sommer</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        <!-- PopUp Fußzeile -->
-                    <div class = "modal-footer">
-                        <button type = "button" class = "btn btn-default" data-dismiss = "modal" id="popup-abbrechen">
-                            Abbrechen</button>
-                        <button type = "button" class = "btn btn-default" id = "popup-new-ok"
-                        onclick = "ok_button_new_plan()">OK
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-            <!-- PopUp Katalogliste -->
-        <div id = "myModal-catalogs" class = "modal fade" role = "dialog">
-            <div class = "modal-dialog">
-                    <!-- PopUp Inhalt-->
-                <div class = "modal-content">
-                        <!-- PopUp Kopfzeile -->
-                    <div class="modal-header">
-                        <h4 id="popup_title" class="modal-title">Modul-Kataloge :</h4>
-                        <button class="btn border" type="button" id = "popup-catalogs-back">
-                            <i id="popup-icon" class="fa fa-2x"></i>
-                        </button>
-                    </div>
-                        <!-- PopUp Körper -->
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <div id="catalog_list">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-            <!-- PopUp Regeln -->
-        <div id = "myModal-rules" class = "modal fade" role = "dialog">
-            <div class = "modal-dialog">
-                    <!-- PopUp Inhalt-->
-                <div class = "modal-content">
-                        <!-- PopUp Kopfzeile -->
-                    <div class="modal-header">
-                        <h4 id="popup_title" class="modal-title">Regeln</h4>
-                    </div>
-                        <!-- PopUp Körper -->
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <div id="rules-body">
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn border" data-dismiss="modal" type="button" id = "popup-rules-abbrechen">Zurück</button>
-                </div>
-            </div>
-        </div>
-
-            <!-- PopUp Verschieben/Löschen -->
-        <div id = "myModal-modules" class = "modal fade" role = "dialog">
-            <div class = "modal-dialog">
-                    <!-- PopUp Inhalt-->
-                <div class = "modal-content modal-margin">
-                        <!-- PopUp Kopfzeile -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Modul...</h4>
-                    </div>
-                        <!-- PopUp Körper -->
-                    <div class="container-fluid modul_popup_buttons">
-                        <div class="row">
-                            <div class="col">
-                                <button type = "button" class = "btn btn-warning" id = "popup-module-move">Verschieben</button>
-                            </div>
-                            <div class="col">
-                                <button type = "button" class = "btn btn-danger" id = "popup-module-delete">Löschen</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <!-- PopUp Freitextmodul -->
-        <div id = "myModal-freitext" class = "modal fade" role = "dialog">
-            <div class = "modal-dialog">
-                    <!-- PopUp Inhalt-->
-                <div class = "modal-content">
-                        <!-- PopUp Kopfzeile -->
-                    <div class = "modal-header">
-                        <h4 class = "modal-title">Daten ergänzen</h4>
-                    </div>
-                        <!-- PopUp Körper -->
-                    <div class = "modal-body">
-                        <div class = "container">
-                            <div class = "row datenergaenzen">
-                                <input type = "text" class = "form-control" id = "input-name" placeholder = "Name">
-                            </div>
-                            <div class = "row datenergaenzen">
-                                <div class = "col">
-                                    <input type = "text" class = "form-control" id = "input-v" placeholder = "V">
-                                </div>
-                                <div class = "col">
-                                    <input type = "text" class = "form-control" id = "input-u" placeholder = "Ü">
-                                </div>
-                                <div class = "col">
-                                    <input type = "text" class = "form-control" id = "input-p" placeholder = "P">
-                                </div>
-                                <div class = "col">
-                                    <input type = "text" class = "form-control" id = "input-pr" placeholder = "Pr">
-                                </div>
-                            </div>
-                            <div class = "row datenergaenzen">
-                                <input type = "text" class = "form-control" id = "input-dozent" placeholder = "Dozent">
-                            </div>
-                            <div class = "row datenergaenzen">
-                                <input type = "text" class = "form-control" id = "input-ects" placeholder = "ECTS">
-                            </div>
-                        </div>
-                    </div>
-                        <!-- PopUp Fußzeile -->
-                    <div class = "modal-footer">
-                        <button type = "button" class = "btn btn-default" content-dismiss = "modal" data-dismiss = "modal" id = "popup-freitext-abbrechen">
-                            Abbrechen
-                        </button>
-                        <button type = "button" class = "btn btn-default" id = "popup-freitext-ok">
-                            OK
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <!-- PopUp M07 -->
-        <div id = "myModal-m07" class = "modal fade" role = "dialog">
-            <div class = "modal-dialog">
-                    <!-- PopUp Inhalt-->
-                <div class = "modal-content">
-                        <!-- PopUp Kopfzeile -->
-                    <div class = "modal-header">
-                        <h4 class = "modal-title">Daten ergänzen</h4>
-                    </div>
-                        <!-- PopUp Körper -->
-                    <div class = "modal-body">
-                        <div class = "container">
-                            <div class = "row datenergaenzen">
-                                <input type = "text" class = "form-control" id = "input-name-m07" placeholder = "Name">
-                            </div>
-                            <div class = "row datenergaenzen">
-                                <input type = "text" class = "form-control" id = "input-dozent-m07" placeholder = "Dozent">
-                            </div>
-                        </div>
-                    </div>
-                        <!-- PopUp Fußzeile -->
-                    <div class = "modal-footer">
-                        <button type = "button" class = "btn btn-default" data-dismiss = "modal" content-dismiss = "modal" id = "popup-m07-abbrechen">
-                            Abbrechen
-                        </button>
-                        <button type = "button" class = "btn btn-default" id = "popup-m07-ok">
-                            OK
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <!-- container-fluid body -->
-        <div id="body_div" class="container-fluid container_body">
-                <!--  container-fluid regeln -->
-            <div class = "container-fluid text-center" id = "regeln">
-                <div class="absolute_center rules-text">Regeln</div>
-            </div>
-                <!--  container-fluid semester (wird dynamisch erstellt -->
-            <div id = "div_semester">
-            </div>
-        </div>
-            <!-- container-fluid bottom für Master ECTS -->
-        <div class="container-fluid footer bg-primary text-white bottom">
-            <div class="row absolute_center">
-                <div id="ects_text" class="col">
-                    Master ECTS:
-                </div>
-                <div id="ects_punkte" class="col">
-                    0
-                </div>
-            </div>
-        </div>
-    </body>
-
-    <script>
-
-            var count = 0;
-            var anz_alm = 0;
-            var startSem = "winter";
-            var global_sem_id;
-            var global_mod_id;
-            var global_catalog_id;
-
-            var query_result;
-
-            var content = [];
-            var content_html = [];
-            var catalog_array = [];
-            var module_array = [];
-            var blocked = [];
-
-            var alm_array = [];
-            var m07_array = [];
-
-            var open = 0;
-            var close = 0;
-            var move = 0;
-            var flip = 0;
-            var load = false ;
-
-            var safe_semester;
-            var safe_modules;
-
-            var master_ects = 0;
-            var semester_ects = 0;
-
-            var katalogListe = new Array();
-            var modulListe = new Array();
-            var sem_ects_array = new Array();
-
-            var search_result = "";
+  <script src="@routes.Assets.versioned("Mobile/Listener/button_laden.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Listener/click_catalog.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Listener/click_modules_in_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Listener/click_semester.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Listener/list_click_module.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Listener/popup_catalog_back.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Listener/popup_freitext_ok.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Listener/popup_m07_ok.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Listener/popup_module_delete.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Listener/popup_module_move.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("Mobile/Listener/popup_rules.js")" type="text/javascript"></script>
 
 
-            $(window).on('load', function () {
-                @for(katal <- katalogListe){
+  <body>
+	  <!-- Navbar -->
+	<nav class="navbar navbar-expand-sm bg-primary">
+	  <div class="dropdown">
+		<button class="btn btn-primary border" type="button" data-toggle="dropdown">
+		  <i class="fa fa-bars fa-lg"></i>
+		</button>
+		<a id="brand" class="navbar-brand mx-2">Übersicht</a>
+		<ul class="dropdown-menu border-blue">
+		  <div class="container-fluid">
+			<div class="row">
+			  <div class="col">
+				<button class ="btn btn-primary btn-block btn-space" type="button" data-toggle = "modal" data-target = "#myModal-new_plan">
+				  Neuer Plan</button>
+			  </div>
+			  <div class="col">
+				<button onClick="save()" class ="btn btn-primary btn-block btn-space" type="button">
+				  Plan speichern</button>
+			  </div>
+			  <div class="col">
+				<button id="button_planLaden" class ="btn btn-primary btn-block btn-space" type="button">
+				  Plan laden</button>
+				<input id = "file-input" type = "file" name = "name" style = "display: none; "/>
+			  </div>
+			  <div class="col">
+				<button class ="btn btn-primary btn-block" type="button" id="button_pdf">PDF erstellen</button>
+			  </div>
+			</div>
+		  </div>
+		</ul>
+	  </div>
+	  <div class="ml-auto btn-space-right">
+		<button id="button_minus" class ="ml-auto btn btn-primary btn-block border btn-width" type="button" onclick = "counter_minus()">
+		  -</button>
+	  </div>
+	  <div class="ml-0">
+		<button id="button_plus" class ="ml-auto btn btn-primary btn-block border" type="button" onclick = "counter_plus()">
+		  +</button>
+	  </div>
 
-                katalogListe.push("@{katal(0)},@{katal(1)},@{katal(2)}");
-                }
+	</nav>
+	  <!-- PopUp Start -->
+	<div id = "myModal-start" class = "modal fade" role = "dialog">
+	  <div class = "modal-dialog">
+		  <!-- PopUp Inhalt-->
+		<div class = "modal-content modal-margin">
+			<!-- PopUp Kopfzeile -->
+		  <div class="modal-header">
+			<h4 class="modal-title">Was möchten Sie tun ?</h4>
+		  </div>
+			<!-- PopUp Körper -->
+		  <div class="container-fluid modul_popup_buttons">
+			<div class="row">
+			  <div class="col">
+				<button type = "button" class = "btn btn-primary" id = "popup-start-load">Plan laden</button>
+			  </div>
+			  <div class="col">
+				<button type = "button" data-toggle = "modal" data-target = "#myModal-new_plan" data-dismiss = "modal" class = "btn btn-primary" id = "popup-start-new">
+				  Neuer Plan</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	  <!-- PopUp Neuer Plan -->
+	<div id = "myModal-new_plan" class = "modal fade" role = "dialog">
+	  <div class = "modal-dialog">
+		  <!-- PopUp Inhalt-->
+		<div class = "modal-content modal-margin-new">
+			<!-- PopUp Kopfzeile -->
+		  <div class="modal-header">
+			<h4 class="modal-title">Neuen Plan erstellen</h4>
+		  </div>
+			<!-- PopUp Körper -->
+		  <div class="modal-body">
+			<div class="container-fluid">
+			  <div class="row">
+				<div class="col">
+				  <h5>Semesteranzahl:</h5>
+				  <input type="text" class = "form-control" id = "input-semesteranzahl"
+				  placeholder="Semesteranzahl">
+				  <p id="fehlermeldung"></p>
+				</div>
+			  </div>
+			  <div class="row">
+				<div class="col">
+				  <h5>Studienstart:</h5>
+				</div>
+			  </div>
+			  <div class="row">
+				<div class = "col radio">
+				  <label><input type = "radio" name = "optradio" checked = "checked" id = "radio-winter"
+				  value = "winter">
+					Winter
+				  </label>
+				</div>
+				<div class = "col radio">
+				  <label><input type = "radio" name = "optradio" id = "radio-sommer" value = "sommer">
+					Sommer</label>
+				</div>
+			  </div>
+			</div>
+		  </div>
+			<!-- PopUp Fußzeile -->
+		  <div class = "modal-footer">
+			<button type = "button" class = "btn btn-default" data-dismiss = "modal" id="popup-abbrechen">
+			  Abbrechen</button>
+			<button type = "button" class = "btn btn-default" id = "popup-new-ok"
+			onclick = "ok_button_new_plan()">OK
+			</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
 
-                @for(mod <- modulListe){
+	  <!-- PopUp Katalogliste -->
+	<div id = "myModal-catalogs" class = "modal fade" role = "dialog">
+	  <div class = "modal-dialog">
+		  <!-- PopUp Inhalt-->
+		<div class = "modal-content">
+			<!-- PopUp Kopfzeile -->
+		  <div class="modal-header">
+			<h4 id="popup_title" class="modal-title">Modul-Kataloge :</h4>
+			<button class="btn border" type="button" id = "popup-catalogs-back">
+			  <i id="popup-icon" class="fa fa-2x"></i>
+			</button>
+		  </div>
+			<!-- PopUp Körper -->
+		  <div class="modal-body">
+			<div class="container-fluid">
+			  <div id="catalog_list">
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
 
-                if ("@{mod(11)}" == "WPP") {
-                    modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-                }
-                else {
-                    modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-                }
+	  <!-- PopUp Regeln -->
+	<div id = "myModal-rules" class = "modal fade" role = "dialog">
+	  <div class = "modal-dialog">
+		  <!-- PopUp Inhalt-->
+		<div class = "modal-content">
+			<!-- PopUp Kopfzeile -->
+		  <div class="modal-header">
+			<h4 id="popup_title" class="modal-title">Regeln</h4>
+		  </div>
+			<!-- PopUp Körper -->
+		  <div class="modal-body">
+			<div class="container-fluid">
+			  <div id="rules-body">
+			  </div>
+			</div>
+		  </div>
+		  <button class="btn border" data-dismiss="modal" type="button" id = "popup-rules-abbrechen">Zurück</button>
+		</div>
+	  </div>
+	</div>
 
-                if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP")) {
-                    modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-                }
+	  <!-- PopUp Verschieben/Löschen -->
+	<div id = "myModal-modules" class = "modal fade" role = "dialog">
+	  <div class = "modal-dialog">
+		  <!-- PopUp Inhalt-->
+		<div class = "modal-content modal-margin">
+			<!-- PopUp Kopfzeile -->
+		  <div class="modal-header">
+			<h4 class="modal-title">Modul...</h4>
+		  </div>
+			<!-- PopUp Körper -->
+		  <div class="container-fluid modul_popup_buttons">
+			<div class="row">
+			  <div class="col">
+				<button type = "button" class = "btn btn-warning" id = "popup-module-move">Verschieben</button>
+			  </div>
+			  <div class="col">
+				<button type = "button" class = "btn btn-danger" id = "popup-module-delete">Löschen</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	  <!-- PopUp Freitextmodul -->
+	<div id = "myModal-freitext" class = "modal fade" role = "dialog">
+	  <div class = "modal-dialog">
+		  <!-- PopUp Inhalt-->
+		<div class = "modal-content">
+			<!-- PopUp Kopfzeile -->
+		  <div class = "modal-header">
+			<h4 class = "modal-title">Daten ergänzen</h4>
+		  </div>
+			<!-- PopUp Körper -->
+		  <div class = "modal-body">
+			<div class = "container">
+			  <div class = "row datenergaenzen">
+				<input type = "text" class = "form-control" id = "input-name" placeholder = "Name">
+			  </div>
+			  <div class = "row datenergaenzen">
+				<div class = "col">
+				  <input type = "text" class = "form-control" id = "input-v" placeholder = "V">
+				</div>
+				<div class = "col">
+				  <input type = "text" class = "form-control" id = "input-u" placeholder = "Ü">
+				</div>
+				<div class = "col">
+				  <input type = "text" class = "form-control" id = "input-p" placeholder = "P">
+				</div>
+				<div class = "col">
+				  <input type = "text" class = "form-control" id = "input-pr" placeholder = "Pr">
+				</div>
+			  </div>
+			  <div class = "row datenergaenzen">
+				<input type = "text" class = "form-control" id = "input-dozent" placeholder = "Dozent">
+			  </div>
+			  <div class = "row datenergaenzen">
+				<input type = "text" class = "form-control" id = "input-ects" placeholder = "ECTS">
+			  </div>
+			</div>
+		  </div>
+			<!-- PopUp Fußzeile -->
+		  <div class = "modal-footer">
+			<button type = "button" class = "btn btn-default" content-dismiss = "modal" data-dismiss = "modal" id = "popup-freitext-abbrechen">
+			  Abbrechen
+			</button>
+			<button type = "button" class = "btn btn-default" id = "popup-freitext-ok">
+			  OK
+			</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	  <!-- PopUp M07 -->
+	<div id = "myModal-m07" class = "modal fade" role = "dialog">
+	  <div class = "modal-dialog">
+		  <!-- PopUp Inhalt-->
+		<div class = "modal-content">
+			<!-- PopUp Kopfzeile -->
+		  <div class = "modal-header">
+			<h4 class = "modal-title">Daten ergänzen</h4>
+		  </div>
+			<!-- PopUp Körper -->
+		  <div class = "modal-body">
+			<div class = "container">
+			  <div class = "row datenergaenzen">
+				<input type = "text" class = "form-control" id = "input-name-m07" placeholder = "Name">
+			  </div>
+			  <div class = "row datenergaenzen">
+				<input type = "text" class = "form-control" id = "input-dozent-m07" placeholder = "Dozent">
+			  </div>
+			</div>
+		  </div>
+			<!-- PopUp Fußzeile -->
+		  <div class = "modal-footer">
+			<button type = "button" class = "btn btn-default" data-dismiss = "modal" content-dismiss = "modal" id = "popup-m07-abbrechen">
+			  Abbrechen
+			</button>
+			<button type = "button" class = "btn btn-default" id = "popup-m07-ok">
+			  OK
+			</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	  <!-- container-fluid body -->
+	<div id="body_div" class="container-fluid container_body">
+		<!--  container-fluid regeln -->
+	  <div class = "container-fluid text-center" id = "regeln">
+		<div class="absolute_center rules-text">Regeln</div>
+	  </div>
+		<!--  container-fluid semester (wird dynamisch erstellt -->
+	  <div id = "div_semester">
+	  </div>
+	</div>
+	  <!-- container-fluid bottom für Master ECTS -->
+	<div class="container-fluid footer bg-primary text-white bottom">
+	  <div class="row absolute_center">
+		<div id="ects_text" class="col">
+		  Master ECTS:
+		</div>
+		<div id="ects_punkte" class="col">
+		  0
+		</div>
+	  </div>
+	</div>
+  </body>
 
-                }
+  <script>
 
-                // loadJS('yourcode.js', yourCodeToBeCalled, document.body);
+		  var count = 0;
+		  var anz_alm = 0;
+		  var startSem = "winter";
+		  var global_sem_id;
+		  var global_mod_id;
+		  var global_catalog_id;
 
-            });
+		  var query_result;
 
-            $(document).ready(function () {
-                //  ###################################################################################
+		  var content = [];
+		  var content_html = [];
+		  var catalog_array = [];
+		  var module_array = [];
+		  var blocked = [];
 
-                $('#myModal-start').modal('toggle');
+		  var alm_array = [];
+		  var m07_array = [];
 
-                $('#body_div').on('click', '#regeln', popup_rules);
+		  var open = 0;
+		  var close = 0;
+		  var move = 0;
+		  var flip = 0;
+		  var load = false ;
 
-                $('#button_planLaden').on('click', button_laden);
-                $('#myModal-start').on('click', '#popup-start-load', button_laden);
-                $('#button_pdf').on('click', create_pdf);
-                $('#div_semester').on('click', '.class_click_semester', click_semester);
-                $('#div_semester').on('click', '.class_click_modules_in_semester', click_modules_in_semester);
-                $('#catalog_list').on('click', '.class_click_catalog', click_catalog);
-                $('#myModal-catalogs').on('click', '#popup-catalogs-back', popup_catalog_back);
-                $('#myModal-modules').on('click', '#popup-module-move', popup_module_move);
-                $('#myModal-modules').on('click', '#popup-module-delete', popup_module_delete);
-                $('#catalog_list').on('click', '.class_click_modules', list_click_module);
-                $('#myModal-m07').on('click', '#popup-m07-ok', popup_m07_ok);
-                $('#myModal-freitext').on('click', '#popup-freitext-ok', popup_freitext_ok);
+		  var safe_semester;
+		  var safe_modules;
 
-                //  ###################################################################################
+		  var master_ects = 0;
+		  var semester_ects = 0;
 
-                $("#ects_text").text("Master ECTS: ");
-                $("#master_ects_punkte").text(master_ects);
+		  var katalogListe = new Array();
+		  var modulListe = new Array();
+		  var sem_ects_array = new Array();
 
-                // Set Focus on Inputfields
-                $('#myModal-freitext').on('shown.bs.modal', function () {
-                    $('#input-name').focus();
-                });
-                $('#myModal-m07').on('shown.bs.modal', function ()
-                {
-                    $('#input-name-m07').focus();
-                });
-                $('#myModal-new_plan').on('shown.bs.modal', function ()
-                {
-                    $('#input-semesteranzahl').focus();
-                });
-            });
-    </script>
+		  var search_result = "";
+
+
+		  $(window).on('load', function ()
+		  {
+			@for(katal <- katalogListe){
+
+			katalogListe.push("@{katal(0)},@{katal(1)},@{katal(2)}");
+			}
+
+			@for(mod <- modulListe){
+
+			if ("@{mod(11)}" == "WPP")
+			{
+			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+			}
+			else
+			{
+			  modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+			}
+
+			if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
+			{
+			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+			}
+
+			}
+
+			// loadJS('yourcode.js', yourCodeToBeCalled, document.body);
+
+		  });
+
+		  $(document).ready(function ()
+		  {
+			//  ###################################################################################
+
+			$('#myModal-start').modal('toggle');
+
+			$('#body_div').on('click', '#regeln', popup_rules);
+
+			$('#button_planLaden').on('click', button_laden);
+			$('#myModal-start').on('click', '#popup-start-load', button_laden);
+			$('#button_pdf').on('click', create_pdf);
+			$('#div_semester').on('click', '.class_click_semester', click_semester);
+			$('#div_semester').on('click', '.class_click_modules_in_semester', click_modules_in_semester);
+			$('#catalog_list').on('click', '.class_click_catalog', click_catalog);
+			$('#myModal-catalogs').on('click', '#popup-catalogs-back', popup_catalog_back);
+			$('#myModal-modules').on('click', '#popup-module-move', popup_module_move);
+			$('#myModal-modules').on('click', '#popup-module-delete', popup_module_delete);
+			$('#catalog_list').on('click', '.class_click_modules', list_click_module);
+			$('#myModal-m07').on('click', '#popup-m07-ok', popup_m07_ok);
+			$('#myModal-freitext').on('click', '#popup-freitext-ok', popup_freitext_ok);
+
+			//  ###################################################################################
+
+			$("#ects_text").text("Master ECTS: ");
+			$("#master_ects_punkte").text(master_ects);
+
+			// Set Focus on Inputfields
+			$('#myModal-freitext').on('shown.bs.modal', function ()
+			{
+			  $('#input-name').focus();
+			});
+			$('#myModal-m07').on('shown.bs.modal', function ()
+			{
+			  $('#input-name-m07').focus();
+			});
+			$('#myModal-new_plan').on('shown.bs.modal', function ()
+			{
+			  $('#input-semesteranzahl').focus();
+			});
+		  });
+  </script>
 </html>

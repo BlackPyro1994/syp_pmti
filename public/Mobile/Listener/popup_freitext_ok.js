@@ -5,7 +5,6 @@
  * @param click AUf das geklickte Element
  */
 function popup_freitext_ok(click) {
-    console.log("function popup_freitext_ok("+click+")");
 
     var mod_id;
     var name;

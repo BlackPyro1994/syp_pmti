@@ -5,7 +5,6 @@
  * @param click Auf das geklickte Element
  */
 function list_click_module(click) {
-    console.log("function list_click_module("+click+")");
 
     global_mod_id = (click.currentTarget).id;
     close = 0;
