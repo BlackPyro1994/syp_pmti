@@ -1,7 +1,7 @@
 /**
  * Fuehrt die Aktion beim Klicken auf den (Abbrechen)-Button des Popups zum Freitextmodul (ALM) aus
  *
- * @param click
+ * @param click Click auf abbrechen
  */
 function modal_freitext_abbrechen(click)
 {

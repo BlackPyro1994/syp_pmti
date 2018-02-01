@@ -1,6 +1,6 @@
 /**
  * Prueft die Verfügbarkeit(fuer welches Semester welches Modul angeboten wird) der Semester fuer die Module
- *
+ * @param module_id ID des Moduls
  */
 function availability_mask_semesters(module_id)
 {

@@ -2,7 +2,7 @@
  * Fuehrt die Aktion beim klicken auf den ok-Button des ALM Moduls aus.
  * Uebernimmt die dort eingetragenen Werte und speichert diese.
  *
- * @param click
+ * @param click Click auf OK
  */
 function modal_freitext_ok(click)
 {

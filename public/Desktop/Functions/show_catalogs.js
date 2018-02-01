@@ -1,5 +1,5 @@
 /**
- *
+ * Durch entsprechende Aufrufe werden die Kataloge angelegt und gefuellt
  */
 function show_catalogs()
 {

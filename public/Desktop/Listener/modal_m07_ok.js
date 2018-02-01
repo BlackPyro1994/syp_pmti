@@ -2,7 +2,7 @@
  * Fuehrt die Aktion beim klicken auf den ok-Button des Moduls M07 aus.
  * Uebernimmt die dort eingetragenen Werte und speichert diese.
  *
- * @param click
+ * @param click Click auf OK
  */
 function modal_m07_ok(click)
 {

@@ -1,6 +1,7 @@
 /**
+ * Animiert Label bei Mausuebergang
  *
- * @param event
+ * @param event Mausevent
  */
 function catalog_label_mouseover(event)
 {

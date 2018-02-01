@@ -1,3 +1,8 @@
+/**
+ * Animiert die Semester auf der rechten Seite
+ *
+ * @param event Maus-event
+ */
 function semester_mouseover(event)
 {
     

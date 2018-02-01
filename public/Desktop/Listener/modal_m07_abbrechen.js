@@ -1,7 +1,7 @@
 /**
  * Fuehrt die Aktion beim Klicken auf den (Abbrechen)-Button des Popups zum Modul M07 aus
  *
- * @param click
+ * @param click Click auf abbrechen
  */
 function modal_m07_abbrechen(click)
 {

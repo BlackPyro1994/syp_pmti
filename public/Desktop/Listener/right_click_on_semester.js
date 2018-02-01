@@ -1,3 +1,9 @@
+/**
+ * Auswaehlen eines Semesters
+ *
+ * @param caller Click auf das Semester
+ */
+
 function right_click_on_semester(caller)
 {
     
