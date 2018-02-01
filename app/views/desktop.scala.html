@@ -430,24 +430,20 @@
 	            var clicked_modul_id = $(event.target).parent().prev().attr("id").replace("mod_", "");
 	            var clicked_semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "");
 
-                if(clicked_modul_id!="ALM")
-                {
-                  // $("#mod_" + clicked_modul_id).parent().remove();
-                  delete_module_from_semester(clicked_modul_id, clicked_semester_id);
-                }
-                else
-                {
-                  var stelle = $("#semester_"+clicked_semester_id).children().index($("button").eq(html_index).parent().parent());
-                  console.log(stelle);
-
-                  console.log(clicked_semester_id);
-
-                  content[clicked_semester_id-1].splice(stelle-1,1);
-                  $("button").eq(html_index).parent().parent().remove();
-                  update_semester_ects(clicked_semester_id);
-                }
-
-
+	            if (clicked_modul_id != "ALM")
+	            {
+	              // $("#mod_" + clicked_modul_id).parent().remove();
+	              delete_module_from_semester(clicked_modul_id, clicked_semester_id);
+	            }
+	            else
+	            {
+	              var stelle = $("#semester_" + clicked_semester_id).children().index($("button").eq(html_index).parent().parent());
+	              console.log(stelle);
+	              console.log(clicked_semester_id);
+	              content[clicked_semester_id - 1].splice(stelle - 1, 1);
+	              $("button").eq(html_index).parent().parent().remove();
+	              update_semester_ects(clicked_semester_id);
+	            }
 
 
               });
@@ -495,6 +491,13 @@
 	              // availability_mask_semesters("ALM");
 
 	              old_sem_id = semester_id;
+
+	              var stelle = $("#semester_" + semester_id).children().index($("button").eq(html_index).parent().parent());
+	              console.log(stelle);
+	              console.log(semester_id);
+	              content[semester_id - 1].splice(stelle - 1, 1);
+	              $("button").eq(html_index).parent().parent().remove();
+	              update_semester_ects(semester_id);
 
 	            }
 	            else if (MODUL_String[0] == "M07_WPP")

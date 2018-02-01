@@ -15,9 +15,12 @@ function right_click_on_semester(caller)
             if (moving)
             {
                 // $("#mod_" + ausgewaehlt_modul).siblings().remove();
-                $("#mod_" + ausgewaehlt_modul).parent().remove();
                 
-                remove_module_from_content(ausgewaehlt_modul);
+                if(ausgewaehlt_modul!="ALM")
+                {
+                    $("#mod_" + ausgewaehlt_modul).parent().remove();
+                    remove_module_from_content(ausgewaehlt_modul);
+                }
                 update_semester_ects(old_sem_id);
                 
                 if (ausgewaehlt_modul == "ALM")
@@ -26,7 +29,6 @@ function right_click_on_semester(caller)
                     // console.log(options);
                     
                     console.log(ALM_String);
-                    
                     insert_module_in_semester("ALM", semester_id, ALM_String, false);
                 }
                 else if (ausgewaehlt_modul == "M07_WPP")
