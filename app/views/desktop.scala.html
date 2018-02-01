@@ -418,15 +418,30 @@
               {
 	            event.stopPropagation();
 
+	            var html_index = $("button").index(this);
+
+	            console.log(html_index);
+
+	            var semester_id = $("button").eq(html_index).parent().parent().parent().attr("id").replace("semester_", "");
+
 	            $("#div_semester").children().removeClass("not_available");
 	            $('#div_semester').children().removeClass('ausgewaehlt');
 
 	            var clicked_modul_id = $(event.target).parent().prev().attr("id").replace("mod_", "");
-	            var clicked_semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "")
+	            var clicked_semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "");
 
-                $("#mod_"+clicked_modul_id).parent().remove();
+                if(clicked_modul_id!="ALM")
+                {
+                  // $("#mod_" + clicked_modul_id).parent().remove();
+                  delete_module_from_semester(clicked_modul_id, clicked_semester_id);
+                }
+                else
+                {
+                  $("button").eq(html_index).parent().parent().remove();
+                }
 
-	            delete_module_from_semester(clicked_modul_id, clicked_semester_id);
+
+
 
               });
 
