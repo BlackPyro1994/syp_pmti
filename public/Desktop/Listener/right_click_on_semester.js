@@ -5,7 +5,7 @@ function right_click_on_semester(caller)
     
     if (!$(caller.target).closest("button").hasClass("not_available"))
     {
-        1
+        
         // HIER WURDE EIN SEMESTER ANGETIPPT NACHDEM :
         // ENTWEDER (1)     ein Modul im Katalog BEREITS gewhält ist  !!
         // ODER     (2)     ein MOVE stattfindet !!
@@ -16,10 +16,15 @@ function right_click_on_semester(caller)
             {
                 // $("#mod_" + ausgewaehlt_modul).siblings().remove();
                 
-                if(ausgewaehlt_modul!="ALM")
+                if (ausgewaehlt_modul != "ALM")
                 {
                     $("#mod_" + ausgewaehlt_modul).parent().remove();
                     remove_module_from_content(ausgewaehlt_modul);
+                }
+                else
+                {
+                    content[löschen[0] - 1].splice(löschen[1] - 1, 1);
+                    $("button").eq(löschen[2]).parent().parent().remove();
                 }
                 update_semester_ects(old_sem_id);
                 
@@ -77,7 +82,7 @@ function right_click_on_semester(caller)
                 ausgewaehlt_semester = "";
                 
                 //availability_mask_modules(semester_id);
-    
+                
                 $(".mouse_over_border").toggleClass("mouse_over_border");
             }
             else
@@ -85,7 +90,7 @@ function right_click_on_semester(caller)
                 $('#div_semester').children().removeClass('ausgewaehlt');
                 
                 $("#" + "semester_" + semester_id).toggleClass('ausgewaehlt');
-    
+                
                 $(".mouse_over_border").toggleClass("mouse_over_border");
                 
                 ausgewaehlt_semester = semester_id;

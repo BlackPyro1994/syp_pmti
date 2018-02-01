@@ -327,6 +327,8 @@
 
             var load = 0;
 
+            var löschen = [];
+
             function main()
             {
               @for(katal <- katalogListe){
@@ -493,11 +495,10 @@
 	              old_sem_id = semester_id;
 
 	              var stelle = $("#semester_" + semester_id).children().index($("button").eq(html_index).parent().parent());
-	              console.log(stelle);
-	              console.log(semester_id);
-	              content[semester_id - 1].splice(stelle - 1, 1);
-	              $("button").eq(html_index).parent().parent().remove();
-	              update_semester_ects(semester_id);
+
+	              löschen[0] = semester_id;
+	              löschen[1] = stelle;
+	              löschen[2] = html_index;
 
 	            }
 	            else if (MODUL_String[0] == "M07_WPP")
