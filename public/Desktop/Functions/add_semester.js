@@ -16,14 +16,16 @@ function add_semester(startSem)
     var anzahl = content.length;
     
     $("#div_semester").append(
-        '<button id="semester_' + wert + '"class = "button_semester container-fluid semester-gesamt class_click_semester">' +
-        '<div  class = "row">' +
-        '<h6 id="' + 'sem' + wert + '"class="col-1">' + wert + '</h6>' +
-        '<h6 class="col-3 label text-left"></h6>' +
-        '<h6 class="col-1 sem_ects">ECTS:</h6>' +
-        '<h6 class="col-1 sem_ects text-left" id="' + 'sem_ects_anz' + wert + '"></h6>' +
+        '<div id="semester_' + wert + '"class = "semester-gesamt mod_background">' +
+        '<button type = "button" class = "button_semester class_click_semester btn-block">' +
+        '<div class ="row">' +
+            '<h6 id="' + 'sem' + wert + '"class="col-1">' + wert + '</h6>' +
+            '<h6 class="col-3 label text-left"></h6>' +
+            '<h6 class="col-1 sem_ects">ECTS:</h6>' +
+            '<h6 class="col-1 sem_ects text-left" id="' + 'sem_ects_anz' + wert + '"></h6>' +
         '</div>' +
-        '</button>')
+        '</button>' +
+        '</div>')
     
     if (startSem == "winter" && wert % 2 == 1)
     {

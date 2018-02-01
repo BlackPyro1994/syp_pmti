@@ -6,7 +6,6 @@
 
 function right_click_on_semester(caller)
 {
-    
     var semester_id = $(caller.target).closest("button").attr("id").replace("semester_", "");
     
     if (!$(caller.target).closest("button").hasClass("not_available"))

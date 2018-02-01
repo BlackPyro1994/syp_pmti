@@ -30,4 +30,5 @@ function delete_module_from_semester(id,sem_id)
     
     update_semester_ects(sem_id);
     update_rules();
+
 };
