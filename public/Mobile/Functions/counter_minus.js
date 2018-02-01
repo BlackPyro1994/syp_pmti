@@ -30,8 +30,10 @@ function counter_minus()
             {
                 catalog_array.splice(index, 1);
             }
-            
-            update_master_ects(mod_id, 0);
+
+            if(!(mod_id.includes("ALM"))) {
+                update_master_ects(mod_id, 0);
+            }
             content_html.splice(length, 1);
         }
         $("#div_semester").children().last().remove();
