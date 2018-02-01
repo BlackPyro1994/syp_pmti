@@ -23,7 +23,7 @@ function delete_module_from_semester(id,sem_id)
 
     $("#" + (id).toString().replace("_WPP", "")).removeClass('blocked');
     $("#" + (id).toString().replace("_WPP", "")).removeClass('blocked_wpp');
-    
+
     remove_module_from_content(id);
     
     update_master_ects(id, 0);

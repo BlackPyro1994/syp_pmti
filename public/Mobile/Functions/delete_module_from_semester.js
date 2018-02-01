@@ -32,8 +32,7 @@ function delete_module_from_semester(mod_id) {
     content_html.splice(global_sem_id, 1);
     remove_module_from_content(mod_id);
 
-    if (global_mod_id ==("M07_WPP") || global_mod_id.includes("ALM")) {
-        //var mod_id = global_mod_id.replace("ALM", "");
+    if(global_mod_id.includes("ALM")) {
         update_semester_ects(global_sem_id);
     } else {
         update_master_ects(global_mod_id, 0);
