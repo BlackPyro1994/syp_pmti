@@ -287,17 +287,3 @@ ul .abstand li {
 .not_available {
     background: red;
 }
-
-.button_semester {
-    background: #ffd39b;
-    background-repeat: no-repeat;
-    border: none;
-    border-bottom: solid;
-    overflow: hidden;
-    cursor: pointer;
-    margin-bottom: 0.3%;
-}
-
-.mod_background {
-    background-color: #999999;
-}
