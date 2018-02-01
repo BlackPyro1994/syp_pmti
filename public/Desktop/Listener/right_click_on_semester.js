@@ -14,8 +14,8 @@ function right_click_on_semester(caller)
         {
             if (moving)
             {
-                $("#mod_" + ausgewaehlt_modul).siblings().remove();
-                $("#mod_" + ausgewaehlt_modul).remove();
+                // $("#mod_" + ausgewaehlt_modul).siblings().remove();
+                $("#mod_" + ausgewaehlt_modul).parent().remove();
                 
                 remove_module_from_content(ausgewaehlt_modul);
                 update_semester_ects(old_sem_id);

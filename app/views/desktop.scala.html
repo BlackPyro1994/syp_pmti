@@ -424,6 +424,8 @@
 	            var clicked_modul_id = $(event.target).parent().prev().attr("id").replace("mod_", "");
 	            var clicked_semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "")
 
+                $("#mod_"+clicked_modul_id).parent().remove();
+
 	            delete_module_from_semester(clicked_modul_id, clicked_semester_id);
 
               });
