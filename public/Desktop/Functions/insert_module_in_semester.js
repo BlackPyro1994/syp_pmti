@@ -8,6 +8,9 @@
  */
 function insert_module_in_semester(mod_id, sem_id, optional, load)
 {
+    console.log("------------------------------------");
+    console.log("Insert Modul : " + mod_id + " in Semester " + sem_id);
+    
     if (load == false)
     {
         get_element_by_index(content, sem_id).push(new Array());

@@ -13,9 +13,8 @@ function modal_freitext_ok(click)
     var ects;
     var istPflicht;
     var kat_id;
-
-    anz_alm++;
-    mod_id = global_mod_id+anz_alm;
+    
+    mod_id = global_mod_id;
     name = $("#input-name").val();
     v = $("#input-v").val();
     u = $("#input-u").val();

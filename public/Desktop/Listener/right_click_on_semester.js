@@ -66,6 +66,8 @@ function right_click_on_semester(caller)
             
             $(".mouse_over_border").removeClass("mouse_over_border");
             
+            moving = false;
+            
         }
         
         // EIN SEMESTER WURDE ANGETIPPT ... ES IST NOCH KEINE (MODUL) AUSWAHL VORHANDEN !!!

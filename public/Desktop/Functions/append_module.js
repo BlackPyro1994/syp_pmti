@@ -9,7 +9,6 @@
 function append_module(mod_id, sem_id, optional, load)
 {
     
-    
     if (optional == null)
     {
         update_module_string(mod_id);
@@ -20,7 +19,6 @@ function append_module(mod_id, sem_id, optional, load)
         // search_result = optional["mod_id"] +","+ optional["name"] +","+ optional["v"] +","+ optional["u"] +","+ optional["p"] +","+ optional["pr"] +","+ optional["dozent"] +","+ optional["ects"];
         search_result = optional[0] + "," + optional[1] + "," + optional[2] + "," + optional[3] + "," + optional[4] + "," + optional[5] + "," + optional[6] + "," + optional[7];
     }
-    
     
     if (moving == false)
     {
@@ -56,6 +54,6 @@ function append_module(mod_id, sem_id, optional, load)
         content[sem_id - 1].push(search_result);
     }
     
-    moving = 0;
+    // moving = 0;
     
 }
