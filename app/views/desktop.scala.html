@@ -437,7 +437,14 @@
                 }
                 else
                 {
+                  var stelle = $("#semester_"+clicked_semester_id).children().index($("button").eq(html_index).parent().parent());
+                  console.log(stelle);
+
+                  console.log(clicked_semester_id);
+
+                  content[clicked_semester_id-1].splice(stelle-1,1);
                   $("button").eq(html_index).parent().parent().remove();
+                  update_semester_ects(clicked_semester_id);
                 }
 
 
