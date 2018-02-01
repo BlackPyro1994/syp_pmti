@@ -6,14 +6,16 @@
  */
 function modal_freitext_ok(click)
 {
-    
+    var mod_id;
     var name;
     var v, u, p, pr, ws, sose;
     var dozent;
     var ects;
     var istPflicht;
     var kat_id;
-    
+
+    anz_alm++;
+    mod_id = global_mod_id+anz_alm;
     name = $("#input-name").val();
     v = $("#input-v").val();
     u = $("#input-u").val();
@@ -26,7 +28,7 @@ function modal_freitext_ok(click)
     istPflicht = "false";
     kat_id = "AM";
 
-    append_free_module(global_mod_id, global_sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id,false);
+    append_free_module(mod_id, global_sem_id, name, v, u, p, pr, ws, sose, dozent, ects, istPflicht, kat_id,false);
     
     $('#myModal-freitext').modal('hide');
     
