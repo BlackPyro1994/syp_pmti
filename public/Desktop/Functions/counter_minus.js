@@ -3,30 +3,32 @@
  */
 function counter_minus()
 {
+    modules_in_sem = $("#div_semester").children().last().children().length - 1;
+    
     if (count > 1)
     {
         
         count--;
         document.getElementById("count").textContent--;
         
-        modules_in_sem = $("#div_semester").children().last().children().length - 1;
-        
         for (i = 0; i < modules_in_sem; i++)
         {
             var mod_id = $("#div_semester").children().last().children().last().children().attr('id');
             
             var id = mod_id.replace("mod_", "");
+        
+            console.log("Freigeben : " + mod_id);
             
             $("#" + mod_id).parent().remove();
             
-            $("#" + id).parent().parent().children().children().removeClass('blocked');
-            $("#" + id).parent().parent().children().children().removeClass('blocked_wpp');
-            $("#" + id + "_WPP").parent().parent().children().children().removeClass('blocked');
-            $("#" + id + "_WPP").parent().parent().children().children().removeClass('blocked_wpp');
-            $("#" + (id).toString().replace("_WPP", "")).parent().parent().children().children().removeClass('blocked');
-            $("#" + (id).toString().replace("_WPP", "")).parent().parent().children().children().removeClass('blocked_wpp');
+            $("#" + id).removeClass('blocked');
+            $("#" + id).removeClass('blocked_wpp');
+            $("#" + id + "_WPP").removeClass('blocked');
+            $("#" + id + "_WPP").removeClass('blocked_wpp');
+            $("#" + (id).toString().replace("_WPP", "")).removeClass('blocked');
+            $("#" + (id).toString().replace("_WPP", "")).removeClass('blocked_wpp');
             
-            update_master_ects(id, 0);
+            // update_master_ects(id, 0);
         }
         content.pop();
         
@@ -41,8 +43,6 @@ function counter_minus()
     {
         if (count > 0)
         {
-            modules_in_sem = $("#div_semester").children().last().children().length - 1;
-    
             for (i = 0; i < modules_in_sem; i++)
             {
                 var mod_id = $("#div_semester").children().last().children().last().children().attr('id');
