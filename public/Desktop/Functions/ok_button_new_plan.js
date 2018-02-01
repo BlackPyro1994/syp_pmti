@@ -42,9 +42,7 @@ function ok_button_new_plan(options)
     
     document.getElementById("master_ects").textContent = 0;
     document.getElementById("count").textContent = 0;
-    
-    console.log(wert);
-    
+
     for (i = 0; i < wert; i++)
     {
         document.getElementById("count").textContent++;
@@ -76,6 +74,4 @@ function ok_button_new_plan(options)
     $('#button_planLaden').removeClass("mouse_over_border");
     
     load = 0;
-    
-    console.log("Count : " + count);
 }

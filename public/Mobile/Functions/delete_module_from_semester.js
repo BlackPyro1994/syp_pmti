@@ -32,26 +32,9 @@ function delete_module_from_semester(mod_id) {
     content_html.splice(global_sem_id, 1);
     remove_module_from_content(mod_id);
 
-    if (global_mod_id ==("M07_WPP")) {
+    if (global_mod_id ==("M07_WPP") || global_mod_id.includes("ALM")) {
         //var mod_id = global_mod_id.replace("ALM", "");
-
-        index = m07_array[0].indexOf("M07_WPP");
-        console.log(index);
-        if (index != -1) {
-            m07_array.splice(index, 12);
-        }
         update_semester_ects(global_sem_id);
-    }
-    if (global_mod_id.includes("ALM")) {
-        var mod_id = global_mod_id.replace("ALM","");
-
-        index = alm_array[mod_id-1].indexOf(global_mod_id);
-        console.log(index);
-        if (index != -1) {
-            alm_array.splice(index, 12);
-        }
-
-    update_semester_ects(global_sem_id);
     } else {
         update_master_ects(global_mod_id, 0);
         update_semester_ects(global_sem_id);

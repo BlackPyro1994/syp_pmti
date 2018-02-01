@@ -25,6 +25,7 @@ function overview()
 
     if (move)
     {
+        remove_module_from_content(global_mod_id);
         availability_mask_semesters(global_mod_id);
     }
     
