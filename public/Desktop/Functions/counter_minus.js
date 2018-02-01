@@ -13,6 +13,8 @@ function counter_minus()
         count--;
         document.getElementById("count").textContent--;
         
+        //////////////////////////////////////////////////////
+        
         for (i = 0; i < modules_in_sem; i++)
         {
             var mod_id = $("#div_semester").children().last().children().last().children().attr('id');
@@ -21,7 +23,9 @@ function counter_minus()
             
             console.log("Freigeben : " + mod_id);
             
-            $("#" + mod_id).parent().remove();
+            // $("#" + mod_id).parent().remove();
+    
+            $("#div_semester").children().last().children().last().remove();
             
             $("#" + id).removeClass('blocked');
             $("#" + id).removeClass('blocked_wpp');
@@ -32,6 +36,9 @@ function counter_minus()
             
             update_master_ects(id, 0);
         }
+        
+        ///////////////////////////////////////////////////////
+        
         content.pop();
         
         $("#div_semester").children().last().remove();

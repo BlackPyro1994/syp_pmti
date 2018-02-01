@@ -437,15 +437,7 @@
 
 	            event.stopPropagation();
 
-	            // var semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "");
-
-	            // console.clear();
-
-	            console.log("MOVE BUTTON");
-
 	            var html_index = $("button").index(this);
-
-	            // console.log(html_index);
 
 	            var semester_id = $("button").eq(html_index).parent().parent().parent().attr("id").replace("semester_", "")
 
@@ -453,10 +445,7 @@
 
 	            $.each($("button").eq(html_index).parent().parent().children().first().children().children().children(), function (index, value)
 	            {
-	              // console.log(index + ": " + $(value).text());
-
 	              MODUL_String[zaehler] = $(value).text();
-
 	              zaehler++;
 
 	            });
