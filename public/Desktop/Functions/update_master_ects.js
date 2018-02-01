@@ -17,9 +17,10 @@ function update_master_ects(mod_id, wert)
     
     update_module_string(mod_id);
     
-    if(!moving) {
+    // if (!moving)
+    // {
         search_result = search_result.split(",");
-    }
+    // }
     
     if (wert == 1)
     {
@@ -42,10 +43,10 @@ function update_master_ects(mod_id, wert)
         else
         {
             console.log(ects);
-            console.log(search_result.split(",")[9]);
-            console.log(Number.parseInt(search_result.split(",")[9]));
+            console.log(search_result);
+            console.log(Number.parseInt(search_result));
             
-            ects = Number.parseInt(ects) - Number.parseInt(search_result.split(",")[9]);
+            ects = Number.parseInt(ects) - Number.parseInt(search_result[9]);
             document.getElementById("master_ects").textContent = ects;
         }
     }
