@@ -20,8 +20,6 @@ function click_semester(click)
     
     if (!move)
     {
-        console.log("SEMESTER ANSICHT");
-        
         safe_semester = $("#div_semester").children();
         $("#div_semester").children().remove();
         show_semester_content(global_sem_id);

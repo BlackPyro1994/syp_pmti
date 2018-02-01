@@ -6,6 +6,7 @@
  */
 function update_master_ects(mod_id, wert)
 {
+
     store_module_data_by_id(mod_id);
     search_result = search_result.split(",");
     
