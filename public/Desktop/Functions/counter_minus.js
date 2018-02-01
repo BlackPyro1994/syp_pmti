@@ -28,7 +28,7 @@ function counter_minus()
             $("#" + (id).toString().replace("_WPP", "")).removeClass('blocked');
             $("#" + (id).toString().replace("_WPP", "")).removeClass('blocked_wpp');
             
-            // update_master_ects(id, 0);
+            update_master_ects(id, 0);
         }
         content.pop();
         
