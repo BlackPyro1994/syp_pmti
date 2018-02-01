@@ -5,6 +5,7 @@
  */
 function load_module_from_content(id)
 {
+    console.log("load_module_from_content("+id+")");
     
     var index = 0;
     var BreakException = {};
@@ -15,9 +16,10 @@ function load_module_from_content(id)
         {
             t.forEach(function (t2)
             {
-                if (t2[0] == global_mod_id)
+                if (t2[0] == id)
                 {
-                    search_result = t2;
+                    content_search_result = t2;
+                    console.log(content_search_result);
                     throw BreakException;
                 }
             });

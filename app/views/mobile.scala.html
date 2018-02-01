@@ -377,76 +377,77 @@
 		  var sem_ects_array = new Array();
 
 		  var search_result = "";
+		  var content_search_result = "";
 
 
 		  $(window).on('load', function ()
 		  {
-			@for(katal <- katalogListe){
+		    @for(katal <- katalogListe){
 
-			katalogListe.push("@{katal(0)},@{katal(1)},@{katal(2)}");
-			}
+		    katalogListe.push("@{katal(0)},@{katal(1)},@{katal(2)}");
+		    }
 
-			@for(mod <- modulListe){
+		    @for(mod <- modulListe){
 
-			if ("@{mod(11)}" == "WPP")
-			{
+		    if ("@{mod(11)}" == "WPP")
+		    {
 			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-			}
-			else
-			{
+		    }
+		    else
+		    {
 			  modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-			}
+		    }
 
-			if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
-			{
+		    if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
+		    {
 			  modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-			}
+		    }
 
-			}
+		    }
 
-			// loadJS('yourcode.js', yourCodeToBeCalled, document.body);
+		    // loadJS('yourcode.js', yourCodeToBeCalled, document.body);
 
 		  });
 
 		  $(document).ready(function ()
 		  {
-			//  ###################################################################################
+		    //  ###################################################################################
 
-			$('#myModal-start').modal('toggle');
+		    $('#myModal-start').modal('toggle');
 
-			$('#body_div').on('click', '#regeln', popup_rules);
+		    $('#body_div').on('click', '#regeln', popup_rules);
 
-			$('#button_planLaden').on('click', button_laden);
-			$('#myModal-start').on('click', '#popup-start-load', button_laden);
-			$('#button_pdf').on('click', create_pdf);
-			$('#div_semester').on('click', '.class_click_semester', click_semester);
-			$('#div_semester').on('click', '.class_click_modules_in_semester', click_modules_in_semester);
-			$('#catalog_list').on('click', '.class_click_catalog', click_catalog);
-			$('#myModal-catalogs').on('click', '#popup-catalogs-back', popup_catalog_back);
-			$('#myModal-modules').on('click', '#popup-module-move', popup_module_move);
-			$('#myModal-modules').on('click', '#popup-module-delete', popup_module_delete);
-			$('#catalog_list').on('click', '.class_click_modules', list_click_module);
-			$('#myModal-m07').on('click', '#popup-m07-ok', popup_m07_ok);
-			$('#myModal-freitext').on('click', '#popup-freitext-ok', popup_freitext_ok);
+		    $('#button_planLaden').on('click', button_laden);
+		    $('#myModal-start').on('click', '#popup-start-load', button_laden);
+		    $('#button_pdf').on('click', create_pdf);
+		    $('#div_semester').on('click', '.class_click_semester', click_semester);
+		    $('#div_semester').on('click', '.class_click_modules_in_semester', click_modules_in_semester);
+		    $('#catalog_list').on('click', '.class_click_catalog', click_catalog);
+		    $('#myModal-catalogs').on('click', '#popup-catalogs-back', popup_catalog_back);
+		    $('#myModal-modules').on('click', '#popup-module-move', popup_module_move);
+		    $('#myModal-modules').on('click', '#popup-module-delete', popup_module_delete);
+		    $('#catalog_list').on('click', '.class_click_modules', list_click_module);
+		    $('#myModal-m07').on('click', '#popup-m07-ok', popup_m07_ok);
+		    $('#myModal-freitext').on('click', '#popup-freitext-ok', popup_freitext_ok);
 
-			//  ###################################################################################
+		    //  ###################################################################################
 
-			$("#ects_text").text("Master ECTS: ");
-			$("#master_ects_punkte").text(master_ects);
+		    $("#ects_text").text("Master ECTS: ");
+		    $("#master_ects_punkte").text(master_ects);
 
-			// Set Focus on Inputfields
-			$('#myModal-freitext').on('shown.bs.modal', function ()
-			{
+		    // Set Focus on Inputfields
+		    $('#myModal-freitext').on('shown.bs.modal', function ()
+		    {
 			  $('#input-name').focus();
-			});
-			$('#myModal-m07').on('shown.bs.modal', function ()
-			{
+		    });
+		    $('#myModal-m07').on('shown.bs.modal', function ()
+		    {
 			  $('#input-name-m07').focus();
-			});
-			$('#myModal-new_plan').on('shown.bs.modal', function ()
-			{
+		    });
+		    $('#myModal-new_plan').on('shown.bs.modal', function ()
+		    {
 			  $('#input-semesteranzahl').focus();
-			});
+		    });
 		  });
   </script>
 </html>
