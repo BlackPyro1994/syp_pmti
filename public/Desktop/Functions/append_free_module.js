@@ -20,6 +20,8 @@ function append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent,
 {
     console.log("append_free_module(" + name + "," + v + "," + u + "," + p + "," + pr + "," + ws + "," + sose + "," + dozent + "," + ects + "," + istPflicht + "," + kat_id + ",)");
     
+    update_master_ects(mod_id, 1);
+    
     if (global_mod_id == "ALM" && name == "")
         name = "Name";
     
