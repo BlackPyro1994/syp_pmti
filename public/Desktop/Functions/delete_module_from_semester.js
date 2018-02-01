@@ -27,6 +27,7 @@ function delete_module_from_semester(id,sem_id)
     remove_module_from_content(id);
     
     update_master_ects(id, 0);
+    
     update_semester_ects(sem_id);
     update_rules();
 };

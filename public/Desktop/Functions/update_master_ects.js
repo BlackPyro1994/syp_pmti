@@ -6,7 +6,10 @@
  */
 function update_master_ects(mod_id, wert)
 {
-    
+    console.log("update_master_ects");
+    console.log(mod_id);
+    console.log(wert);
+    console.log("---------------------");
     var ects = Number(document.getElementById("master_ects").textContent);
     
     // wert = auswahl ob addieren oder subtrahieren
@@ -38,7 +41,11 @@ function update_master_ects(mod_id, wert)
         }
         else
         {
-            ects = Number.parseInt(ects) - Number.parseInt(search_result[9]);
+            console.log(ects);
+            console.log(search_result.split(",")[9]);
+            console.log(Number.parseInt(search_result.split(",")[9]));
+            
+            ects = Number.parseInt(ects) - Number.parseInt(search_result.split(",")[9]);
             document.getElementById("master_ects").textContent = ects;
         }
     }
