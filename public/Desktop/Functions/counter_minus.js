@@ -5,6 +5,8 @@ function counter_minus()
 {
     modules_in_sem = $("#div_semester").children().last().children().length - 1;
     
+    console.log(modules_in_sem);
+    
     if (count > 1)
     {
         
@@ -16,7 +18,7 @@ function counter_minus()
             var mod_id = $("#div_semester").children().last().children().last().children().attr('id');
             
             var id = mod_id.replace("mod_", "");
-        
+            
             console.log("Freigeben : " + mod_id);
             
             $("#" + mod_id).parent().remove();
@@ -36,8 +38,6 @@ function counter_minus()
         
         update_rules();
         
-        console.log("Count : " + count);
-        
     }
     else
     {
@@ -46,24 +46,24 @@ function counter_minus()
             for (i = 0; i < modules_in_sem; i++)
             {
                 var mod_id = $("#div_semester").children().last().children().last().children().attr('id');
-        
+                
                 var id = mod_id.replace("mod_", "");
-        
+                
                 $("#" + mod_id).parent().remove();
-        
+                
                 $("#" + id).parent().parent().children().children().removeClass('blocked');
                 $("#" + id).parent().parent().children().children().removeClass('blocked_wpp');
                 $("#" + id + "_WPP").parent().parent().children().children().removeClass('blocked');
                 $("#" + id + "_WPP").parent().parent().children().children().removeClass('blocked_wpp');
                 $("#" + (id).toString().replace("_WPP", "")).parent().parent().children().children().removeClass('blocked');
                 $("#" + (id).toString().replace("_WPP", "")).parent().parent().children().children().removeClass('blocked_wpp');
-        
+                
                 update_master_ects(id, 0);
             }
             content.pop();
-    
+            
             $("#div_semester").children().last().remove();
-    
+            
             update_rules();
             
             count--;
@@ -98,8 +98,6 @@ function counter_minus()
             $("#button_plus").addClass("mouse_over_border");
             
         }
-        
-        console.log("Count : " + count);
         
     }
 }
