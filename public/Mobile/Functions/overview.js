@@ -25,7 +25,7 @@ function overview()
 
     if (move)
     {
-        // availability_mask_semesters(global_mod_id);
+        availability_mask_semesters(global_mod_id);
     }
     
     $("#button_minus").show();

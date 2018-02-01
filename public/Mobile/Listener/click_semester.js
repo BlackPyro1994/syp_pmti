@@ -45,20 +45,24 @@ function click_semester(click)
         
         if (global_mod_id == "M07_WPP")
         {
-            //var mod_id = Number.parseInt(global_mod_id.replace("ALM",""));
-            append_free_module(m07_array[0][0],
-                global_sem_id,
-                m07_array[0][1],
-                m07_array[0][2],
-                m07_array[0][3],
-                m07_array[0][4],
-                m07_array[0][5],
-                m07_array[0][6],
-                m07_array[0][7],
-                m07_array[0][8],
-                m07_array[0][9],
-                m07_array[0][10],
-                m07_array[0][11]);
+            load_module_from_content(global_mod_id);
+    
+            copy = search_result;
+    
+            console.log(copy);
+    
+            copy[6] = Number.parseInt(copy[6]);
+            copy[7] = Number.parseInt(copy[7]);
+            copy[10] = JSON.parse(copy[10]);
+    
+            console.log(copy);
+    
+            remove_module_from_content(global_mod_id);
+    
+            append_free_module(copy[0], global_sem_id, copy[1], copy[2], copy[3], copy[4], copy[5], copy[6], copy[7], copy[8], copy[9], copy[10], copy[11]);
+    
+    
+    
         }
         if (global_mod_id.includes("ALM"))
         {
