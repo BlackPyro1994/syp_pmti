@@ -4,14 +4,16 @@
  */
 function ok_button_new_plan(options)
 {
-    
     if (options)
     {
         var wert = options['count'];
         startSem = options['semStart'];
-    } else
+    }
+    else
     {
         content = [];
+        content_html = [];
+        
         count = 0;
         var meldung = "Bitte eine Anzahl angeben";
         var myRadio = $('input[name="optradio"]');
@@ -35,6 +37,6 @@ function ok_button_new_plan(options)
         document.getElementById("fehlermeldung").textContent = "";
         $('#myModal-new_plan').modal('hide');
     }
-
+    
     $("#regeln").show();
 }
