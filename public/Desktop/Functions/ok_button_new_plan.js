@@ -5,6 +5,7 @@
  */
 function ok_button_new_plan(options)
 {
+    count = 0;
     
     $("#div_kataloge").empty();
     show_catalogs();
@@ -75,4 +76,6 @@ function ok_button_new_plan(options)
     $('#button_planLaden').removeClass("mouse_over_border");
     
     load = 0;
+    
+    console.log("Count : " + count);
 }

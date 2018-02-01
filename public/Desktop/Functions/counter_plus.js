@@ -29,5 +29,7 @@ function counter_plus()
     
     add_semester(startSem);
     
+    console.log("Count : " + count);
+    
     // update_rules();
 }
