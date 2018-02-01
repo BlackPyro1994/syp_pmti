@@ -1,3 +1,7 @@
+/**
+ *
+ * @param event
+ */
 function catalog_label_mouseover(event)
 {
     // console.log("catalog_label_mouseover("+event+")");

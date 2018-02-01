@@ -1,3 +1,6 @@
+/**
+ *
+ */
 function show_catalogs()
 {
     console.log("show_catalogs()");

@@ -1,3 +1,9 @@
+/**
+ * Belegt Eingabewerte fuer M07_WPP bzw. ALM vor
+ *
+ * @param mod_id Die Modul ID des Moduls mit den zu fuellenden Daten
+ * @param sem_id Die entsprechende Semester-ID
+ */
 function fill_data(mod_id, sem_id)
 {
     console.log("fill_data("+mod_id+", "+sem_id+")");

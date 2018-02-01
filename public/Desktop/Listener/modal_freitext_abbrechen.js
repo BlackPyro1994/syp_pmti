@@ -1,3 +1,8 @@
+/**
+ * Fuehrt die Aktion beim Klicken auf den (Abbrechen)-Button des Popups zum Freitextmodul (ALM) aus
+ *
+ * @param click
+ */
 function modal_freitext_abbrechen(click)
 {
     console.log("modal_freitext_abbrechen("+click+")");

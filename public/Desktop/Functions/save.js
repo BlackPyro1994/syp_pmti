@@ -1,3 +1,6 @@
+/**
+ * Speichert den Inhalt der Seite in einer Textdatei
+ */
 function save()
 {
     console.log("save()");

@@ -1,3 +1,6 @@
+/**
+ * Popup fuer die Eingabe der Angaben zum Erstellen eines neuen Plans
+ */
 function new_plan()
 {
     console.log("new_plan()");

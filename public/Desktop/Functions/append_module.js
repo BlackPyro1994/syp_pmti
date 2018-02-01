@@ -1,4 +1,12 @@
-﻿function append_module(mod_id, sem_id, optional, load)
+﻿/**
+ * Erstellt das zuvor ausgewählte Modul in der Semesteransicht
+ *
+ * @param mod_id Die Modul ID des zu erstellenden Moduls
+ * @param sem_id Die Semester ID in welchem sich das Modul befinden wird
+ * @param optional Enthaelt Freitext-Eingaben
+ * @param load Ob gerade eine gespeicherte Datei geladen wird
+ */
+function append_module(mod_id, sem_id, optional, load)
 {
     console.log("append_module(" + mod_id + ", " + sem_id + "," + load + "," + optional + ")");
     

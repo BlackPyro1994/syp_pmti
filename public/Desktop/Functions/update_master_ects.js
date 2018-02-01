@@ -1,3 +1,9 @@
+/**
+ * Aktualisiert die Master-ECTS Punkte mit den Werten des gewaehlten Moduls
+ *
+ * @param mod_id Die Modul ID des hinzugefuegten Moduls
+ * @param wert Differenzierungsfaktor um zu addieren oder zu subtrahieren
+ */
 function update_master_ects(mod_id, wert)
 {
     console.log("update_master_ects("+mod_id+","+wert+")");

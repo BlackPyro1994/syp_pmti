@@ -1,3 +1,9 @@
+/**
+ * Loescht das ausgewählte Modul aus dem Semester
+ *
+ * @param id Die Modul ID des zu löschenden Moduls
+ * @param sem_id Die ID des entsprechenden Semesters
+ */
 function delete_module_from_semester(id,sem_id)
 {
     console.log("delete_module_from_semester("+id+","+sem_id+")");

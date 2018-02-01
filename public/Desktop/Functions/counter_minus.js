@@ -1,3 +1,6 @@
+/**
+ * Senkt die Semesteranzahl (count) und löscht den entsprechenden Inhalt von content
+ */
 function counter_minus()
 {
     console.log("counter_minus()");

@@ -1,3 +1,9 @@
+/**
+ * Fuehrt die Aktion beim klicken auf den ok-Button des ALM Moduls aus.
+ * Uebernimmt die dort eingetragenen Werte und speichert diese.
+ *
+ * @param click
+ */
 function modal_freitext_ok(click)
 {
     console.log("modal_freitext_ok("+click+")");

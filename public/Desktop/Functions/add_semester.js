@@ -1,3 +1,8 @@
+/**
+ * Erstellt ein Semester anhand des Startsemesters
+ *
+ * @param startSem Zu Beginn ausgewähltes Startsemester
+ */
 function add_semester(startSem)
 {
     console.log("add_semester("+startSem+")");

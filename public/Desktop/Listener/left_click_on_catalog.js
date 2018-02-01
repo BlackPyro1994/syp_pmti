@@ -1,3 +1,8 @@
+/**
+ * Fuehrt die Aktion beim klicken auf einen Katalog aus
+ *
+ * @param click Das geklickte Element
+ */
 function left_click_on_catalog(click)
 {
     console.log("left_click_on_catalog(" + click + ")");

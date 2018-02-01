@@ -1,4 +1,12 @@
-﻿function insert_module_in_semester(mod_id, sem_id, optional, load)
+﻿/**
+ * Fuegt ein Modul einem Semester hinzu
+ *
+ * @param mod_id ID des Moduls, das dem Semester hinzugefuegt wird
+ * @param sem_id ID des Semesters, dem ein Modul hinzugefuegt wird
+ * @param optional Enthaelt Freitext-Eingaben
+ * @param load Ob gerade eine gespeicherte Datei geladen wird
+ */
+function insert_module_in_semester(mod_id, sem_id, optional, load)
 {
     console.log("insert_module_in_semewster("+mod_id+","+sem_id+","+optional+","+load+")");
     

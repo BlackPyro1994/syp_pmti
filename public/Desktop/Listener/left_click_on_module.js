@@ -1,4 +1,9 @@
-﻿function left_click_on_module(caller)
+﻿/**
+ * Fuehrt die Aktion beim klicken auf ein Modul aus
+ *
+ * @param caller Das geklickte Element
+ */
+function left_click_on_module(caller)
 {
     console.log("left_click_on_module(" + caller + ")");
     

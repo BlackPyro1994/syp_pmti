@@ -1,3 +1,8 @@
+/**
+ *
+ *
+ * @param mod_id ID des Moduls
+ */
 function update_module_string(mod_id)
 {
     console.log("update_module_string("+mod_id+")");

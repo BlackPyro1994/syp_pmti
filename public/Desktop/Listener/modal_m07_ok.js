@@ -1,3 +1,9 @@
+/**
+ * Fuehrt die Aktion beim klicken auf den ok-Button des Moduls M07 aus.
+ * Uebernimmt die dort eingetragenen Werte und speichert diese.
+ *
+ * @param click
+ */
 function modal_m07_ok(click)
 {
     console.log("modal_m07_ok("+click+")");

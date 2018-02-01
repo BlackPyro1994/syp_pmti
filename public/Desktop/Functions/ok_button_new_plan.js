@@ -1,3 +1,8 @@
+/**
+ * (OK)-Button des Popups zum Erstellen eines neuen Plans
+ *
+ * @param options Vom Benutzer eingegebene Werte zu Anzahl Semestern und Start im WS oder SoSe
+ */
 function ok_button_new_plan(options)
 {
     console.log("ok_button_new_plan("+options+")");

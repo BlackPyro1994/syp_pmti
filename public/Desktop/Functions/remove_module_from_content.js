@@ -1,3 +1,8 @@
+/**
+ * Zum Entfernen des Moduls, das nicht mehr ausgewaehlt ist, aus dem Array content
+ *
+ * @param module_id ID des Moduls, das vom Array content geloescht wird
+ */
 var position_x;
 var position_y;
 

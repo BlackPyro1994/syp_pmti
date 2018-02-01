@@ -1,3 +1,7 @@
+/**
+ * Prueft die Verfügbarkeit(fuer welches Semester welches Modul angeboten wird) der Semester fuer die Module
+ *
+ */
 function availability_mask_semesters(module_id)
 {
     console.log("availability_mask_semesters(" + module_id + ")");

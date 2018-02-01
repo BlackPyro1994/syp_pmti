@@ -1,3 +1,9 @@
+/**
+ * Erstellt die Kataloge
+ *
+ * @param catalog_id Die ID des Katalogs, welcher hinzugefügt wird
+ * @param catalog_name Der Name des Katalogs, welcher hinzugefügt wird
+ */
 function add_catalog(kat_id, title)
 {
     console.log("add_catalog(" + kat_id + "," + title + ")");

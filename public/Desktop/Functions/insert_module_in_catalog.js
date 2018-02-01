@@ -1,3 +1,10 @@
+/**
+ * Fuegt ein Modul einem Katalog hinzu
+ *
+ * @param katalog_id ID des Katalogs, in den das Modul eingefuegt wird
+ * @param module_id ID des Moduls, das in den Katalog eingefuegt wird
+ * @param module_title Name des Moduls, das in den Katalog eingefuegt wird
+ */
 function insert_module_in_catalog(katalog_id, module_id, module_title) {
     console.log("insert_module_in_catalog(" + katalog_id + "," + module_id + "," + module_title + ")");
     var tooltip;
