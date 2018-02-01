@@ -119,6 +119,8 @@ function click_semester(click)
         move = 0;
     }
     
+    update_semester_ects(global_sem_id);
+    
     $("#ects_text").last().text("Semester ECTS: ");
     $("#ects_punkte").last().text(semester_ects);
 }
