@@ -1,6 +1,5 @@
 function semester_mouseover(event)
 {
-    // console.log("semester_mouseover("+event+")");
     
     if (!$(event.target).closest("button").is(".button_delete,.button_move"))
     {

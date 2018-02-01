@@ -3,8 +3,6 @@
  */
 function save()
 {
-    console.log("save()");
-    
     var text = "";
     
     var currentdate = new Date();

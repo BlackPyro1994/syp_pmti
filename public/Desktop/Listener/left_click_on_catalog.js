@@ -5,8 +5,6 @@
  */
 function left_click_on_catalog(click)
 {
-    console.log("left_click_on_catalog(" + click + ")");
-    
     if (!$(click).hasClass("disabled-catalog"))
     {
         

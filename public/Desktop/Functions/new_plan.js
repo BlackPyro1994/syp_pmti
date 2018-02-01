@@ -3,7 +3,6 @@
  */
 function new_plan()
 {
-    console.log("new_plan()");
     
     content = [];
     

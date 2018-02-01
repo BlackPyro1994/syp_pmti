@@ -5,7 +5,6 @@
  */
 function update_module_string(mod_id)
 {
-    console.log("update_module_string("+mod_id+")");
     
     var BreakException = {};
     

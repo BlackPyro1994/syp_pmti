@@ -1,12 +1,11 @@
 function right_click_on_semester(caller)
 {
-    console.log("right_click_on_semester(" + caller + ")");
     
     var semester_id = $(caller.target).closest("button").attr("id").replace("semester_", "");
     
     if (!$(caller.target).closest("button").hasClass("not_available"))
     {
-        
+        1
         // HIER WURDE EIN SEMESTER ANGETIPPT NACHDEM :
         // ENTWEDER (1)     ein Modul im Katalog BEREITS gewhält ist  !!
         // ODER     (2)     ein MOVE stattfindet !!

@@ -5,8 +5,6 @@
  *
  */
 function update_semester_ects(sem_id) {
-
-    console.log("update_semester_ects("+sem_id+")");
     
     var countSemECTS = 0;
 

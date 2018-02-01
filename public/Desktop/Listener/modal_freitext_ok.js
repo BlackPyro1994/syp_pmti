@@ -6,7 +6,6 @@
  */
 function modal_freitext_ok(click)
 {
-    console.log("modal_freitext_ok("+click+")");
     
     var name;
     var v, u, p, pr, ws, sose;

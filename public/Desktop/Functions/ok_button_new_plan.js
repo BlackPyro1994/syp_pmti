@@ -5,11 +5,12 @@
  */
 function ok_button_new_plan(options)
 {
-    console.log("ok_button_new_plan("+options+")");
     
-    $("#div_kataloge").children().first().siblings().remove();
-    
+    $("#div_kataloge").empty();
     show_catalogs();
+    
+    // $("#div_kataloge").children().first().siblings().remove();
+    // show_catalogs();
     
     open_catalog ="";
     ausgewaehlt_semester = "";
@@ -40,6 +41,8 @@ function ok_button_new_plan(options)
     
     document.getElementById("master_ects").textContent = 0;
     document.getElementById("count").textContent = 0;
+    
+    console.log(wert);
     
     for (i = 0; i < wert; i++)
     {

@@ -3,43 +3,37 @@
  */
 function counter_minus()
 {
-    console.log("counter_minus()");
-    
-    modules_in_sem = $("#div_semester").children().last().children().length - 1;
-    
-    for (i = 0; i < modules_in_sem; i++)
-    {
-        var mod_id = $("#div_semester").children().last().children().last().children().attr('id');
-        
-        var id = mod_id.replace("mod_", "");
-        
-        $("#" + mod_id).parent().remove();
-        
-        $("#" + id).parent().parent().children().children().removeClass('blocked');
-        $("#" + id).parent().parent().children().children().removeClass('blocked_wpp');
-        $("#" + id + "_WPP").parent().parent().children().children().removeClass('blocked');
-        $("#" + id + "_WPP").parent().parent().children().children().removeClass('blocked_wpp');
-        $("#" + (id).toString().replace("_WPP", "")).parent().parent().children().children().removeClass('blocked');
-        $("#" + (id).toString().replace("_WPP", "")).parent().parent().children().children().removeClass('blocked_wpp');
-        
-        update_master_ects(id, 0);
-    }
-    content.pop();
-    $("#div_semester").children().last().remove();
-    update_rules();
-    
     if (count > 1)
     {
+        
         count--;
         document.getElementById("count").textContent--;
+        $("#div_semester").children().last().remove();
+        
     }
     else
     {
+    
+        ausgewaehlt_semester = "";
+        ausgewaehlt_modul = "";
+        global_mod_id="";
+        global_sem_id="";
+        old_sem_id="";
+        open_catalog = "";
+        all_catalogs_closed = 0;
+        moving = 0;
+        alm = false;
+        search_result = "";
+        load = 0;
         
         $("#regeln").children().remove();
         
-        count--;
-        document.getElementById("count").textContent--;
+        if (count > 0)
+        {
+            $("#div_semester").children().last().remove();
+            count--;
+            document.getElementById("count").textContent--;
+        }
         
         $("#div_kataloge").empty();
         show_catalogs();

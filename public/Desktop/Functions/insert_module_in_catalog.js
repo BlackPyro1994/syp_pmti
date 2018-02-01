@@ -6,7 +6,7 @@
  * @param module_title Name des Moduls, das in den Katalog eingefuegt wird
  */
 function insert_module_in_catalog(katalog_id, module_id, module_title) {
-    console.log("insert_module_in_catalog(" + katalog_id + "," + module_id + "," + module_title + ")");
+    
     var tooltip;
 
     $("#" + katalog_id).parent().append('<button data-toggle="tooltip" data-placement="right" title="" ' +

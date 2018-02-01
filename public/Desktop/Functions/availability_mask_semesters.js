@@ -4,8 +4,6 @@
  */
 function availability_mask_semesters(module_id)
 {
-    console.log("availability_mask_semesters(" + module_id + ")");
-    
     $("#div_semester").children().removeClass("not_available");
     
     update_module_string(module_id);

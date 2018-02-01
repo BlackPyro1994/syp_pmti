@@ -4,9 +4,7 @@
  */
 function counter_plus()
 {
-    console.log("counter_plus()");
-    
-    if(count==0)
+    if(count<1)
     {
         $("#div_kataloge").empty();
         show_catalogs();

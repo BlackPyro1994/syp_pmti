@@ -6,8 +6,7 @@
  */
 function fill_data(mod_id, sem_id)
 {
-    console.log("fill_data("+mod_id+", "+sem_id+")");
-
+   
     if (mod_id == "M07_WPP")
     {
         $('#myModal-m07').modal('toggle');

@@ -5,7 +5,6 @@
  */
 function left_click_on_module(caller)
 {
-    console.log("left_click_on_module(" + caller + ")");
     
     if ($(caller).hasClass("blocked") == false && $(caller).hasClass("blocked_wpp") == false && $(caller).hasClass("not_available") == false)
     {
