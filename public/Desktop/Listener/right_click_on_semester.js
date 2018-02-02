@@ -12,7 +12,6 @@ function right_click_on_semester(caller)
     
     if (browser.includes("Firefox") == false)
     {
-        console.log("NOT FIREFOX");
         
         var semester_id = $(caller.target).closest("button").attr("id").replace("semester_", "");
         
@@ -65,7 +64,6 @@ function right_click_on_semester(caller)
                 else
                 {
                     $("#div_semester").children().removeClass("not_available");
-                    $("#div_semester").children().addClass("sem_background");
                     
                     if (($("#" + ausgewaehlt_modul).parent().children().first().siblings().not('.blocked').length - 1) == 0)
                     {
@@ -132,8 +130,6 @@ function right_click_on_semester(caller)
     
     else if (browser.includes("Firefox") == true)
     {
-        console.log("FEUERFUCHSEL Browser");
-        
         var semester_id = $(caller.target).parent().attr("id").replace("semester_", "");
         
         console.info("Semester ID : " + semester_id);
