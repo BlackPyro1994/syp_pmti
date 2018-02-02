@@ -15,6 +15,8 @@ function left_click_on_module(caller)
             $("#div_kataloge").children().children().removeClass("not_available");
             if (!(browser.includes("Chrome"))) {
                 $("#div_semester").children().addClass("sem_background");
+                $("#div_semester").children().removeClass("semester-hover-ausgewaehlt");
+                $("#div_semester").children().addClass("semester-gesamt-firefox");
             }
             $(".mouse_over_border").removeClass("mouse_over_border");
 

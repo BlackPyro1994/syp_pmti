@@ -11,8 +11,8 @@ function left_click_on_catalog(click) {
                 $(click).siblings().toggle(200);
 
                 $(click).parent().toggleClass("cat-border");
-                $(click).toggleClass("catalog_button");
-                $(click).toggleClass("catalog_button_open");
+                $(click).removeClass("catalog_button");
+                $(click).addClass("catalog_button_open");
                 $(click).toggleClass("cat-background");
                 $(click).removeClass("mouseOver");
 
@@ -46,7 +46,7 @@ function left_click_on_catalog(click) {
 
                 $(click).parent().toggleClass("cat-border");
                 $(click).toggleClass("cat-background");
-                $(click).removeClass("catalog_button");
+                $(click).addClass("catalog_button");
                 $(click).removeClass("catalog_button_open");
                 $(click).addClass("mouseOver");
 
@@ -63,12 +63,12 @@ function left_click_on_catalog(click) {
                 $("#" + open_catalog).siblings().parent().removeClass("cat-border");
                 $("#" + open_catalog).siblings().parent().children().removeClass("cat-background");
 
-                $("#" + open_catalog).siblings().parent().children().first().removeClass("catalog_button");
+                $("#" + open_catalog).siblings().parent().children().first().addClass("catalog_button");
                 $("#" + open_catalog).siblings().parent().children().first().removeClass("catalog_button_open");
 
                 $(click).siblings().toggle(200);
                 $(click).parent().toggleClass("cat-border");
-                $(click).addClass("catalog_button");
+                $(click).removeClass("catalog_button");
                 $(click).addClass("catalog_button_open");
                 $(click).addClass("cat-background");
 

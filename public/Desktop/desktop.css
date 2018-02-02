@@ -70,7 +70,7 @@ button:focus {
 }
 
 .rounded-catalog-module {
-    /*margin-top:3%;*/
+    margin-top: 0.5%;
 }
 
 .rounded-border-kataloge {
@@ -157,23 +157,24 @@ html, body {
     overflow: hidden;
 }
 
-.semester-gesamt {
+.semester-gesamt-firefox {
     margin-top: 0.5%;
     border: 2px solid #000;
     border-radius: 5px;
     overflow: hidden;
 }
-.semester-gesamt:hover {
+
+.semester-gesamt-firefox:hover {
     border: 4px solid #ffc107;
 }
 
-.semester-hover-ausgewählt {
+.semester-hover-ausgewaehlt {
     margin-top: 0.5%;
     border: 2px solid #000;
     border-radius: 5px;
     overflow: hidden;
 }
-.semester-hover-ausgewählt:hover {
+.semester-hover-ausgewaehlt:hover {
     border: 4px solid #28a745;
 }
 

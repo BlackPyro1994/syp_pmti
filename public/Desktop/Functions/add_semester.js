@@ -27,7 +27,7 @@ function add_semester(startSem) {
     }
     else {
         $("#div_semester").append(
-            '<div id="semester_' + wert + '"class = "semester-gesamt sem_background">' +
+            '<div id="semester_' + wert + '"class = "semester-gesamt-firefox sem_background">' +
             '<button type = "button" class = "button_semester_firefox class_click_semester btn-block">' +
             '<div class ="row">' +
             '<h6 id="' + 'sem' + wert + '"class="col-2">' + wert + '</h6>' +
