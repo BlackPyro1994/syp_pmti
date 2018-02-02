@@ -5,7 +5,7 @@
  * @param wert Differenzierungsfaktor um zu addieren oder zu subtrahieren
  */
 
-
+/*
 function update_master_ects(mod_id, wert)
 {
     
@@ -48,40 +48,23 @@ function update_master_ects(mod_id, wert)
     }
     
 }
+*/
 
-/*
 function update_master_ects(mod_id, wert)
 {
-    // console.log("update_master_ects : " + mod_id + " --> " + wert);
+    console.log("MASTER ECTS");
     
-    var ects = Number(document.getElementById("master_ects").textContent);
-    
-    if (wert == 1)
+    for (i = 0; i < count; i++)
     {
-        if (mod_id == "ALM")
+        $.each($($("#div_semester").children()[i]).children().first().siblings(), function (index, value)
         {
-            document.getElementById("master_ects").textContent = ects;
-        }
-        else
-        {
-            ects = Number.parseInt(ects) + Number.parseInt(search_result[9]);
-            document.getElementById("master_ects").textContent = ects;
-        }
+            var id = $(value).children().attr("id").replace("mod_","");
+            var val = $(value).children().children().children().children()[4].innerHTML.replace("ECTS:","");
+            
+            if(id != "ALM")
+            {
+                document.getElementById("master_ects").textContent = Number.parseInt(val);
+            }
+        });
     }
-    else if (wert == 0)
-    {
-        if (mod_id == "ALM")
-        {
-            document.getElementById("master_ects").textContent = ects;
-        }
-        else
-        {
-            console.log(Number.parseInt(search_result[9]));
-            ects = Number.parseInt(ects) - Number.parseInt(search_result[9]);
-            document.getElementById("master_ects").textContent = ects;
-        }
-    }
-    
 }
-
-*/
