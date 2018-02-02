@@ -21,7 +21,9 @@ function insert_module_in_semester(mod_id, sem_id, optional, load)
             else
             {
                 append_module(mod_id, sem_id, null, false);
+                
                 update_semester_ects(sem_id);
+                update_master_ects();
                 
                 if (!(mod_id).toString().includes("_WPP"))
                 {
@@ -52,7 +54,9 @@ function insert_module_in_semester(mod_id, sem_id, optional, load)
         if (optional == null)
         {
             append_module(mod_id, sem_id, null, true);
+            
             update_semester_ects(sem_id);
+            update_master_ects();
             
             if (!(mod_id).toString().includes("_WPP"))
             {

@@ -55,6 +55,7 @@ function append_free_module(mod_id, sem_id, name, v, u, p, pr, ws, sose, dozent,
     }
     
     update_semester_ects(sem_id);
+    update_master_ects();
     
     var filter_string = ":nth-child(" + sem_id + ")";
     

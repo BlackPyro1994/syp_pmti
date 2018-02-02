@@ -33,8 +33,6 @@ function counter_minus()
             $("#" + id + "_WPP").removeClass('blocked_wpp');
             $("#" + (id).toString().replace("_WPP", "")).removeClass('blocked');
             $("#" + (id).toString().replace("_WPP", "")).removeClass('blocked_wpp');
-            
-            update_master_ects(id, 0);
         }
         
         ///////////////////////////////////////////////////////

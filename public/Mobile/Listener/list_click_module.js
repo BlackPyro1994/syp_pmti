@@ -15,7 +15,7 @@ function list_click_module(click) {
         popup_extra_module();
     } else {
         append_module_in_semester(global_mod_id, global_sem_id);
-        update_master_ects(global_mod_id, 1);
+        update_master_ects();
         update_semester_ects(global_sem_id);
     }
     if (!global_mod_id.includes("ALM")) {

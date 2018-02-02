@@ -47,9 +47,11 @@ function delete_module_from_semester(mod_id)
     if (global_mod_id.includes("ALM"))
     {
         update_semester_ects(global_sem_id);
-    } else
+        update_master_ects();
+    }
+    else
     {
-        update_master_ects(global_mod_id, 0);
+        update_master_ects();
         update_semester_ects(global_sem_id);
     }
 }

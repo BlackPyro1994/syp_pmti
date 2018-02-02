@@ -25,7 +25,10 @@ function click_semester(click)
         safe_semester = $("#div_semester").children();
         $("#div_semester").children().remove();
         show_semester_content(global_sem_id);
+        
         update_semester_ects(global_sem_id);
+        update_master_ects();
+        
         $("#button_minus").hide();
         $("#button_plus").text("Add Modul");
         $("#button_plus").attr("onclick", "show_catalogs()");

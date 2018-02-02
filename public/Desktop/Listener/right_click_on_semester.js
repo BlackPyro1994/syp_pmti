@@ -40,6 +40,7 @@ function right_click_on_semester(caller)
                         $("button").eq(löschen[2]).parent().parent().remove();
                     }
                     update_semester_ects(old_sem_id);
+                    update_master_ects();
                     
                     if (ausgewaehlt_modul == "ALM")
                     {
@@ -155,6 +156,7 @@ function right_click_on_semester(caller)
                         $("button").eq(löschen[2]).parent().parent().remove();
                     }
                     update_semester_ects(old_sem_id);
+                    update_master_ects();
                     
                     if (ausgewaehlt_modul == "ALM")
                     {

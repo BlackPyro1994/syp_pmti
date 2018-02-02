@@ -28,7 +28,6 @@ function generate_semester_content()
                 inner_content = inner_content + string;
                 if (mod_id == "M07_WPP")
                 {
-                    update_master_ects(mod_id, 1);
                     blocked.push(mod_id);
                     catalog_array.push(content[i][j][11]);
                 }
@@ -51,7 +50,6 @@ function generate_semester_content()
                 inner_content = inner_content + string;
                 blocked.push(mod_id);
                 catalog_array.push(content[i][j][11]);
-                update_master_ects(mod_id, 1);
             }
         }
         sem_content = inner_content;

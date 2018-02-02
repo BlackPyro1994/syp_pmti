@@ -22,8 +22,7 @@ function append_module(mod_id, sem_id, optional, load)
     
     if (moving == false)
     {
-        
-        update_master_ects(mod_id, 1);
+        // update_master_ects(mod_id, 1);
     }
     
     var filter_string = ":nth-child(" + sem_id + ")";

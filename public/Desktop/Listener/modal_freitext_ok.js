@@ -34,4 +34,5 @@ function modal_freitext_ok(click)
     $('.container-fluid.semester-gesamt').removeClass('ausgewaehlt');
     $("#" + global_mod_id).removeClass('ausgewaehlt');
     update_semester_ects(global_sem_id);
+    update_master_ects();
 }
