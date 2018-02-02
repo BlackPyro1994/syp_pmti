@@ -13,7 +13,7 @@ function left_click_on_module(caller)
         {
             $("#div_kataloge").children().children().removeClass("not_available");
             
-            if (!(browser.includes("Chrome")))
+            if (browser.includes("Firefox"))
             {
                 $("#div_semester").children().addClass("sem_background");
                 $("#div_semester").children().removeClass("semester-hover-ausgewaehlt");
@@ -35,7 +35,7 @@ function left_click_on_module(caller)
         {
             $("#div_semester").children().removeClass("not_available");
             
-            if (!(browser.includes("Chrome")))
+            if (browser.includes("Firefox"))
             {
                 $("#div_semester").children().addClass("sem_background");
             }
@@ -60,7 +60,8 @@ function left_click_on_module(caller)
         else if ($(caller).attr('id') == ausgewaehlt_modul)
         {
             $("#div_semester").children().removeClass("not_available");
-            if (!(browser.includes("Chrome")))
+            
+            if (browser.includes("Firefox"))
             {
                 $("#div_semester").children().addClass("sem_background");
             }
@@ -82,7 +83,7 @@ function left_click_on_module(caller)
             
             $("#div_semester").children().removeClass("not_available");
             
-            if (!(browser.includes("Chrome")))
+            if (browser.includes("Firefox"))
             {
                 $("#div_semester").children().addClass("sem_background");
             }

@@ -18,7 +18,7 @@ function add_catalog(kat_id, title)
         
         + '</div>');
 
-    if (!(browser.includes("Chrome"))) {
+    if (browser.includes("Firefox")) {
         $('#div_kataloge').children().last().children().addClass("rounded-catalog")
     }
 }

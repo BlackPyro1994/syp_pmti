@@ -10,7 +10,7 @@ function availability_mask_semesters(module_id) {
 
     if (search_result[6] == "1" && search_result[7] == "0") {
         if (startSem == "sommer") {
-            if (!(browser.includes("Chrome"))) {
+            if (browser.includes("Firefox")) {
                 $("#div_semester").children().filter(":even").removeClass("sem_background");
                 $("#div_semester").children().filter(":even").addClass("semester-hover-not-available");
                 $("#div_semester").children().filter(":even").removeClass("semester-gesamt-firefox");
@@ -19,7 +19,7 @@ function availability_mask_semesters(module_id) {
 
         }
         else if (startSem == "winter") {
-            if (!(browser.includes("Chrome"))) {
+            if (browser.includes("Firefox")) {
                 $("#div_semester").children().filter(":odd").removeClass("sem_background");
                 $("#div_semester").children().filter(":odd").addClass("semester-hover-not-available");
                 $("#div_semester").children().filter(":odd").removeClass("semester-gesamt-firefox");
@@ -30,7 +30,7 @@ function availability_mask_semesters(module_id) {
     // Winter und nicht Sommer
     else if (search_result[6] == "0" && search_result[7] == "1") {
         if (startSem == "sommer") {
-            if (!(browser.includes("Chrome"))) {
+            if (browser.includes("Firefox")) {
                 $("#div_semester").children().filter(":odd").removeClass("sem_background");
                 $("#div_semester").children().filter(":odd").addClass("semester-hover-not-available");
                 $("#div_semester").children().filter(":odd").removeClass("semester-gesamt-firefox");
@@ -39,7 +39,7 @@ function availability_mask_semesters(module_id) {
 
         }
         else if (startSem == "winter") {
-            if (!(browser.includes("Chrome"))) {
+            if (browser.includes("Firefox")) {
                 $("#div_semester").children().filter(":even").removeClass("sem_background");
                 $("#div_semester").children().filter(":even").addClass("semester-hover-not-available");
                 $("#div_semester").children().filter(":even").removeClass("semester-gesamt-firefox");

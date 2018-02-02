@@ -13,7 +13,7 @@ function add_semester(startSem) {
 
     var anzahl = content.length;
 
-    if (browser.includes("Chrome")) {
+    if (browser.includes("Firefox")==false) {
 
         $("#div_semester").append(
             '<button id="semester_' + wert + '"class = "button_semester container-fluid semester-gesamt class_click_semester">' +
