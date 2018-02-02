@@ -57,6 +57,8 @@ function catalog_label_mouseout(event)
     if (!blocked)
     {
         
+        $(event.target).attr("data-toggle", "");
+        
         // $(event.target).css("font-weight:normal");
         
         // $(event.target).removeClass("mouseOver");

@@ -21,6 +21,7 @@ function insert_module_in_catalog(katalog_id, module_id, module_title) {
     $('[data-toggle="tooltip"]').tooltip({
         title: tooltip,
         animation: true,
+        trigger: "hover",
         delay: {show: 800, hide: 0}
     });
 }
