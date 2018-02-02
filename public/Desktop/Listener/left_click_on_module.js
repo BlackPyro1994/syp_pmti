@@ -13,14 +13,18 @@ function left_click_on_module(caller)
         if (ausgewaehlt_semester != "")
         {
             $("#div_kataloge").children().children().removeClass("not_available");
-            if (!(browser.includes("Chrome"))) {
+            
+            if (!(browser.includes("Chrome")))
+            {
                 $("#div_semester").children().addClass("sem_background");
                 $("#div_semester").children().removeClass("semester-hover-ausgewaehlt");
+                $("#div_semester").children().removeClass("ausgewaehlt");
                 $("#div_semester").children().addClass("semester-gesamt-firefox");
             }
             $(".mouse_over_border").removeClass("mouse_over_border");
-
+            
             insert_module_in_semester($(caller).attr('id'), ausgewaehlt_semester, null, false);
+            
             return;
         }
         
@@ -31,8 +35,9 @@ function left_click_on_module(caller)
         if ((!$(caller).attr('class').includes("ausgewaehlt")) && ausgewaehlt_modul == "")
         {
             $("#div_semester").children().removeClass("not_available");
-
-            if (!(browser.includes("Chrome"))) {
+            
+            if (!(browser.includes("Chrome")))
+            {
                 $("#div_semester").children().addClass("sem_background");
             }
             
@@ -56,7 +61,8 @@ function left_click_on_module(caller)
         else if ($(caller).attr('id') == ausgewaehlt_modul)
         {
             $("#div_semester").children().removeClass("not_available");
-            if (!(browser.includes("Chrome"))) {
+            if (!(browser.includes("Chrome")))
+            {
                 $("#div_semester").children().addClass("sem_background");
             }
             
@@ -76,8 +82,9 @@ function left_click_on_module(caller)
             $(".mouse_over_border").removeClass("mouse_over_border");
             
             $("#div_semester").children().removeClass("not_available");
-
-            if (!(browser.includes("Chrome"))) {
+            
+            if (!(browser.includes("Chrome")))
+            {
                 $("#div_semester").children().addClass("sem_background");
             }
             
