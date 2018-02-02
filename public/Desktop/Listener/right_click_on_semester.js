@@ -141,7 +141,6 @@ function right_click_on_semester(caller)
             {
                 if (moving)
                 {
-                    console.info("Verschiebe Modul : " + ausgewaehlt_modul);
                     
                     // $("#mod_" + ausgewaehlt_modul).siblings().remove();
                     
@@ -232,35 +231,27 @@ function right_click_on_semester(caller)
                 }
                 else
                 {
-                    console.info("Semester : " + semester_id + " wird ausgewählt !");
                     
                     $('#div_semester').children().removeClass('ausgewaehlt');
-    
-                    console.info("Lösche ÜBERALL ausgewählt");
+
                     
                     $('#div_semester').children().removeClass('semester-hover-ausgewaehlt');
-    
-                    console.info("Lösche ÜBERALL semester-hover-ausgewählt");
+
                     
                     $('#div_semester').children().addClass('semester-gesamt-firefox');
-    
-                    console.info("Hinzufügen ÜBERALL Semester-Gesamt-Firefox");
+
                     
                     $('#div_semester').children().addClass('sem_background');
-    
-                    console.info("Hinzufügen ÜBERALL sem-background");
+
                     
                     $("#" + "semester_" + semester_id).toggleClass('ausgewaehlt sem_background');
-                    
-                    console.info("Semester : " + semester_id + " --> Tausche Ausgewaehlt mit Sem-Background");
+
                     
                     $("#" + "semester_" + semester_id).removeClass('semester-gesamt-firefox');
-    
-                    console.info("Semester : " + semester_id + " --> Remove Semester-Gesamt-Firefox");
+
                     
                     $("#" + "semester_" + semester_id).addClass('semester-hover-ausgewaehlt');
-    
-                    console.info("Semester : " + semester_id + " --> Add Semester-Hover-Ausgewaehlt");
+
                     
                     $(".mouse_over_border").toggleClass("mouse_over_border");
                     

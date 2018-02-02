@@ -435,10 +435,9 @@
 
                   $('#div_semester').on('click', '.button_delete', function (event)
                   {
-	                console.log("DELETE");
 	                event.stopPropagation();
 
-	                if (browser.includes("Chrome"))
+	                if (!(browser.includes("Firefox")))
 	                {
 
 	                  var html_index = $("button").index(this);
@@ -472,7 +471,7 @@
 	                  var clicked_semester_id = $("button").eq(html_index).parent().parent().parent().attr("id").replace("semester_", "");
 
 	                  $("#div_semester").children().removeClass("not_available");
-	                  $('#div_semester').children().removeClass('ausgewaehlt');
+					  $('#div_semester').children().removeClass('ausgewaehlt');
 
 	                  console.log($(event.target));
 
@@ -487,20 +486,33 @@
 	                  else
 	                  {
 		                var stelle = $("#semester_" + clicked_semester_id).children().index($("button").eq(html_index).parent().parent());
-		                console.log(stelle);
-		                console.log(clicked_semester_id);
 		                content[clicked_semester_id - 1].splice(stelle - 1, 1);
 		                $("button").eq(html_index).parent().parent().remove();
 		                update_semester_ects(clicked_semester_id);
 	                  }
+						$("#div_semester").children().addClass("sem_background");
+						$("#div_semester").children().removeClass("semester-hover-ausgewaehlt");
+						$("#div_semester").children().removeClass("semester-hover-not-available");
+						$("#div_semester").children().addClass("semester-gesamt-firefox");
 	                }
 
+	                $('.not_available').removeClass("not_available");
+					$('.ausgewaehlt').removeClass("ausgewaehlt");
+				 	ausgewaehlt_semester = "";
+				 	ausgewaehlt_modul = "";
                   });
 
                   //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
                   $('#div_semester').on('click', '.button_move', function (event)
                   {
+					  $('.not_available').removeClass("not_available");
+					  $('.ausgewaehlt').removeClass("ausgewaehlt");
+					  if(browser.includes("Firefox")) {
+						  $('#div_semester').children().removeClass("semester-hover-not-available");
+						  $('#div_semester').children().addClass("semester-gesamt-firefox");
+						  $('#div_semester').children().addClass("sem_background");
+					  }
 
 	                event.stopPropagation();
 
@@ -517,7 +529,6 @@
 
 	                });
 
-	                console.log(MODUL_String);
 
 	                MODUL_String[0] = MODUL_String[0].replace("ID: ", "");
 
@@ -532,8 +543,6 @@
 	                  ausgewaehlt_modul = "ALM" ;
 
 	                  ALM_String = MODUL_String.toString().split(",") ;
-
-	                  console.log(ALM_String);
 
 	                  moving = 1;
 
@@ -560,8 +569,6 @@
 
 	                  M07_WPP_String = MODUL_String.toString().split(",") ;
 
-	                  console.log(M07_WPP_String);
-
 	                  moving = 1;
 
 	                  // availability_mask_semesters("ALM");
@@ -586,7 +593,6 @@
 
 	                  old_sem_id = semester_id;
 	                }
-
                   });
 
                   //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
