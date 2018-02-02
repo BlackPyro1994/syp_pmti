@@ -174,6 +174,7 @@ function right_click_on_semester(caller)
                     $("#div_semester").children().removeClass("semester-hover-not-available");
                     $('#div_kataloge').children().removeClass('ausgewaehlt');
                     $("#div_semester").children().addClass("semester-gesamt-firefox");
+                    $("#div_semester").children().addClass("sem_background");
                 }
                 else
                 {
