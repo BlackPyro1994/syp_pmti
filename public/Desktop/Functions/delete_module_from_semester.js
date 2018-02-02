@@ -11,6 +11,12 @@ function delete_module_from_semester(id,sem_id)
     // var sem_id = $(caller).parent().parent().parent().children().children().first().text();
     
     var mod_id = "mod_" + id;
+
+    if (browser.includes("Firefox")) {
+        $('#div_semester').children().removeClass('semester-hover-not-available');
+        $('#div_semester').children().removeClass('semester-hover-ausgewaehlt');
+        $('#div_semester').children().addClass('semester-gesamt-firefox');
+    }
     
     $("#" + mod_id).siblings().remove();
     $("#" + mod_id).remove();

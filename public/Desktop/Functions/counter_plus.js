@@ -30,6 +30,9 @@ function counter_plus()
     add_semester(startSem);
     
     console.log("Count : " + count);
-    
+
+    if(ausgewaehlt_modul != "") {
+        availability_mask_semesters(ausgewaehlt_modul);
+    }
     // update_rules();
 }

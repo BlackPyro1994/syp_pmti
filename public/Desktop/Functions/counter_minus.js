@@ -4,7 +4,11 @@
 function counter_minus()
 {
     modules_in_sem = $("#div_semester").children().last().children().length - 1;
-    
+    $("#div_kataloge").children().children().removeClass("not_available");
+    $("#div_semester").children().removeClass("ausgewaehlt");
+
+    ausgewaehlt_semester = "";
+
     console.log(modules_in_sem);
     
     if (count > 1)
