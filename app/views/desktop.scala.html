@@ -3,603 +3,603 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+    <head>
 
-	<script src="@routes.Assets.versioned("Static_Files/js/jquery-3.2.1.min.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Static_Files/js/bootstrap.bundle.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Static_Files/js/CollapsibleLists.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Static_Files/js/jspdf.debug.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Static_Files/js/dom-to-image.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Static_Files/js/fontawesome-all.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Static_Files/js/click_selector.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Static_Files/js/jquery-3.2.1.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Static_Files/js/bootstrap.bundle.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Static_Files/js/CollapsibleLists.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Static_Files/js/jspdf.debug.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Static_Files/js/dom-to-image.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Static_Files/js/fontawesome-all.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Static_Files/js/click_selector.js")" type="text/javascript"></script>
 
-	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/css/bootstrap.min.css")">
-	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/css/font-awesome.css")">
-	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/fonts/fontawesome-webfont.ttf")">
-	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/fonts/fontawesome-webfont.woff")">
-	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/fonts/fontawesome-webfont.woff2")">
-	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/css/expandable_tree_list.css")">
-	<link rel="shortcut icon" type="image/x-icon" href="@routes.Assets.versioned("Static_Files/images/favicon.ico")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/css/bootstrap.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/css/font-awesome.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/fonts/fontawesome-webfont.ttf")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/fonts/fontawesome-webfont.woff")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/fonts/fontawesome-webfont.woff2")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("Static_Files/css/expandable_tree_list.css")">
+        <link rel="shortcut icon" type="image/x-icon" href="@routes.Assets.versioned("Static_Files/images/favicon.ico")">
 
-	<script src="@routes.Assets.versioned("Desktop/Functions/add_catalog.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/add_semester.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/append_free_module.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/append_module.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/availability_mask_modules.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/availability_mask_semesters.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/counter_minus.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/counter_plus.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/create_pdf.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/delete_module_from_semester.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/file_loader.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/fill_data.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/get_element_by_index.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/insert_module_in_catalog.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/insert_module_in_semester.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/new_plan.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/ok_button_new_plan.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/remove_module_from_content.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/save.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/show_catalogs.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/update_master_ects.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/update_semester_ects.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/update_module_string.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Functions/update_rules.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/add_catalog.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/add_semester.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/append_free_module.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/append_module.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/availability_mask_modules.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/availability_mask_semesters.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/counter_minus.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/counter_plus.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/create_pdf.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/delete_module_from_semester.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/file_loader.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/fill_data.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/get_element_by_index.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/insert_module_in_catalog.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/insert_module_in_semester.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/new_plan.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/ok_button_new_plan.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/remove_module_from_content.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/save.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/show_catalogs.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/update_master_ects.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/update_semester_ects.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/update_module_string.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Functions/update_rules.js")" type="text/javascript"></script>
 
-	<script src="@routes.Assets.versioned("Desktop/Listener/button_laden.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Listener/katalog_label_mouseout.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Listener/left_click_on_catalog.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Listener/left_click_on_module.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Listener/right_click_on_semester.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Listener/modal_freitext_abbrechen.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Listener/modal_freitext_ok.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Listener/modal_m07_abbrechen.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Listener/modal_m07_ok.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Listener/modal_popup_abbrechen.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Listener/module_p_mouseover.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Listener/right_click_on_semester.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.versioned("Desktop/Listener/semester_mouse.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Listener/button_laden.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Listener/katalog_label_mouseout.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Listener/left_click_on_catalog.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Listener/left_click_on_module.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Listener/right_click_on_semester.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Listener/modal_freitext_abbrechen.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Listener/modal_freitext_ok.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Listener/modal_m07_abbrechen.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Listener/modal_m07_ok.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Listener/modal_popup_abbrechen.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Listener/module_p_mouseover.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Listener/right_click_on_semester.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("Desktop/Listener/semester_mouse.js")" type="text/javascript"></script>
 
-	<link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("Desktop/desktop.css")">
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("Desktop/desktop.css")">
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  </head>
+    </head>
 
-  <body>
+    <body>
 
-	<div class = "container-fluid">
+        <div class = "container-fluid">
 
-	  <div class = "container-fluid">
+            <div class = "container-fluid">
 
-		<div class = "row">
-		  <span class = "col" align = "center">
-			<br>
-			<h1>
+                <div class = "row">
+                    <span class = "col" align = "center">
+                        <br>
+                        <h1>
                             Planungsunterstützungstool Master Technische Informatik
-			</h1>
-		  </span>
-		</div>
-		@*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
-		  <!-- PopUp Neuer Plan -->
-		<div id = "myModal-new_plan" class = "modal fade" role = "dialog">
-		  <div class = "modal-dialog">
-			  <!-- PopUp Inhalt-->
-			<div class = "modal-content">
-				<!-- PopUp Kopfzeile -->
-			  <div class = "modal-header">
-				<h4 class = "modal-title">Neuen Plan erstellen</h4>
-			  </div>
-				<!-- PopUp Körper -->
-			  <div class = "modal-body">
-				<div class = "container">
-				  <div class = "row">
-					<div class = "col">
-					  <h5>Semesteranzahl:</h5>
-					  <input type = "text" class = "form-control" id = "input-semesteranzahl"
-					  placeholder = "Semesteranzahl">
-					  <p id = "fehlermeldung"></p>
-					</div>
-					<div class = "col">
-					  <h5>Studienstart:</h5>
-					  <div class = "radio">
-						<label><input type = "radio" name = "optradio" checked = "checked" id = "radio-winter"
-						value = "winter">
-						  Winter
-						</label>
-					  </div>
-					  <div class = "radio">
-						<label><input type = "radio" name = "optradio" id = "radio-sommer"
-						value = "sommer">
-						  Sommer
-						</label>
-					  </div>
-					</div>
-				  </div>
-				</div>
-			  </div>
-				<!-- PopUp Fußzeile -->
-			  <div class = "modal-footer">
-				<button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-abbrechen">
+                        </h1>
+                    </span>
+                </div>
+                @*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
+                    <!-- PopUp Neuer Plan -->
+                <div id = "myModal-new_plan" class = "modal fade" role = "dialog">
+                    <div class = "modal-dialog">
+                            <!-- PopUp Inhalt-->
+                        <div class = "modal-content">
+                                <!-- PopUp Kopfzeile -->
+                            <div class = "modal-header">
+                                <h4 class = "modal-title">Neuen Plan erstellen</h4>
+                            </div>
+                                <!-- PopUp Körper -->
+                            <div class = "modal-body">
+                                <div class = "container">
+                                    <div class = "row">
+                                        <div class = "col">
+                                            <h5>Semesteranzahl:</h5>
+                                            <input type = "text" class = "form-control" id = "input-semesteranzahl"
+                                            placeholder = "Semesteranzahl">
+                                            <p id = "fehlermeldung"></p>
+                                        </div>
+                                        <div class = "col">
+                                            <h5>Studienstart:</h5>
+                                            <div class = "radio">
+                                                <label><input type = "radio" name = "optradio" checked = "checked" id = "radio-winter"
+                                                value = "winter">
+                                                    Winter
+                                                </label>
+                                            </div>
+                                            <div class = "radio">
+                                                <label><input type = "radio" name = "optradio" id = "radio-sommer"
+                                                value = "sommer">
+                                                    Sommer
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                <!-- PopUp Fußzeile -->
+                            <div class = "modal-footer">
+                                <button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-abbrechen">
                                     Abbrechen
-				</button>
-				<button type = "button" class = "btn btn-default" id = "popup-new-ok"
-				onclick = "ok_button_new_plan()">OK
-				</button>
-			  </div>
-			</div>
-		  </div>
-		</div>
-		@*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
-		  <!-- PopUp Freitextmodul -->
-		<div id = "myModal-freitext" class = "modal fade" role = "dialog">
-		  <div class = "modal-dialog">
-			  <!-- PopUp Inhalt-->
-			<div class = "modal-content">
-				<!-- PopUp Kopfzeile -->
-			  <div class = "modal-header">
-				<h4 class = "modal-title">Daten ergänzen</h4>
-			  </div>
-				<!-- PopUp Körper -->
-			  <div class = "modal-body">
-				<div class = "container">
-				  <div class = "row datenergaenzen">
-					<input type = "text" class = "form-control" id = "input-name" placeholder = "Name">
-				  </div>
-				  <div class = "row datenergaenzen">
-					<div class = "col">
-					  <input type = "text" class = "form-control" id = "input-v" placeholder = "V">
-					</div>
-					<div class = "col">
-					  <input type = "text" class = "form-control" id = "input-u" placeholder = "Ü">
-					</div>
-					<div class = "col">
-					  <input type = "text" class = "form-control" id = "input-p" placeholder = "P">
-					</div>
-					<div class = "col">
-					  <input type = "text" class = "form-control" id = "input-pr" placeholder = "Pr">
-					</div>
-				  </div>
-				  <div class = "row datenergaenzen">
-					<input type = "text" class = "form-control" id = "input-dozent" placeholder = "Dozent">
-				  </div>
-				  <div class = "row datenergaenzen">
-					<input type = "text" class = "form-control" id = "input-ects" placeholder = "ECTS">
-				  </div>
-				</div>
-			  </div>
-				<!-- PopUp Fußzeile -->
-			  <div class = "modal-footer">
-				<button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-freitext-abbrechen">
+                                </button>
+                                <button type = "button" class = "btn btn-default" id = "popup-new-ok"
+                                onclick = "ok_button_new_plan()">OK
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
+                    <!-- PopUp Freitextmodul -->
+                <div id = "myModal-freitext" class = "modal fade" role = "dialog">
+                    <div class = "modal-dialog">
+                            <!-- PopUp Inhalt-->
+                        <div class = "modal-content">
+                                <!-- PopUp Kopfzeile -->
+                            <div class = "modal-header">
+                                <h4 class = "modal-title">Daten ergänzen</h4>
+                            </div>
+                                <!-- PopUp Körper -->
+                            <div class = "modal-body">
+                                <div class = "container">
+                                    <div class = "row datenergaenzen">
+                                        <input type = "text" class = "form-control" id = "input-name" placeholder = "Name">
+                                    </div>
+                                    <div class = "row datenergaenzen">
+                                        <div class = "col">
+                                            <input type = "text" class = "form-control" id = "input-v" placeholder = "V">
+                                        </div>
+                                        <div class = "col">
+                                            <input type = "text" class = "form-control" id = "input-u" placeholder = "Ü">
+                                        </div>
+                                        <div class = "col">
+                                            <input type = "text" class = "form-control" id = "input-p" placeholder = "P">
+                                        </div>
+                                        <div class = "col">
+                                            <input type = "text" class = "form-control" id = "input-pr" placeholder = "Pr">
+                                        </div>
+                                    </div>
+                                    <div class = "row datenergaenzen">
+                                        <input type = "text" class = "form-control" id = "input-dozent" placeholder = "Dozent">
+                                    </div>
+                                    <div class = "row datenergaenzen">
+                                        <input type = "text" class = "form-control" id = "input-ects" placeholder = "ECTS">
+                                    </div>
+                                </div>
+                            </div>
+                                <!-- PopUp Fußzeile -->
+                            <div class = "modal-footer">
+                                <button type = "button" class = "btn btn-default" data-dismiss = "modal" id = "popup-freitext-abbrechen">
                                     Abbrechen
-				</button>
-				<button type = "button" class = "btn btn-default" id = "popup-freitext-ok">
+                                </button>
+                                <button type = "button" class = "btn btn-default" id = "popup-freitext-ok">
                                     OK
-				</button>
-			  </div>
-			</div>
-		  </div>
-		</div>
-		@*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
-		  <!-- PopUp M07 -->
-		<div id = "myModal-m07" class = "modal fade" role = "dialog">
-		  <div class = "modal-dialog">
-			  <!-- PopUp Inhalt-->
-			<div class = "modal-content">
-				<!-- PopUp Kopfzeile -->
-			  <div class = "modal-header">
-				<h4 class = "modal-title">Daten ergänzen</h4>
-			  </div>
-				<!-- PopUp Körper -->
-			  <div class = "modal-body">
-				<div class = "container">
-				  <div class = "row datenergaenzen">
-					<input type = "text" class = "form-control" id = "input-name-m07" placeholder = "Name">
-				  </div>
-				  <div class = "row datenergaenzen">
-					<input type = "text" class = "form-control" id = "input-dozent-m07" placeholder = "Dozent">
-				  </div>
-				</div>
-			  </div>
-				<!-- PopUp Fußzeile -->
-			  <div class = "modal-footer">
-				<button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-m07-abbrechen">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
+                    <!-- PopUp M07 -->
+                <div id = "myModal-m07" class = "modal fade" role = "dialog">
+                    <div class = "modal-dialog">
+                            <!-- PopUp Inhalt-->
+                        <div class = "modal-content">
+                                <!-- PopUp Kopfzeile -->
+                            <div class = "modal-header">
+                                <h4 class = "modal-title">Daten ergänzen</h4>
+                            </div>
+                                <!-- PopUp Körper -->
+                            <div class = "modal-body">
+                                <div class = "container">
+                                    <div class = "row datenergaenzen">
+                                        <input type = "text" class = "form-control" id = "input-name-m07" placeholder = "Name">
+                                    </div>
+                                    <div class = "row datenergaenzen">
+                                        <input type = "text" class = "form-control" id = "input-dozent-m07" placeholder = "Dozent">
+                                    </div>
+                                </div>
+                            </div>
+                                <!-- PopUp Fußzeile -->
+                            <div class = "modal-footer">
+                                <button type = "button" class = "btn btn-default" content-dismiss = "modal" id = "popup-m07-abbrechen">
                                     Abbrechen
-				</button>
-				<button type = "button" class = "btn btn-default" id = "popup-m07-ok">
+                                </button>
+                                <button type = "button" class = "btn btn-default" id = "popup-m07-ok">
                                     OK
-				</button>
-			  </div>
-			</div>
-		  </div>
-		</div>
-		@*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
-		  <!-- Container Menüleiste -->
-		<div class = "container-fluid" style="padding-bottom: 1%">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
+                    <!-- Container Menüleiste -->
+                <div class = "container-fluid" style="padding-bottom: 1%">
 
-		  <div class = "row rounded-menu" align = "center">
+                    <div class = "row rounded-menu" align = "center">
 
-			<div class = "col" align = "center">
-			  <button id ="button_new_plan" type = "button" class = "btn btn-primary" content-toggle = "modal" onclick="new_plan()">
+                        <div class = "col" align = "center">
+                            <button id ="button_new_plan" type = "button" class = "btn btn-primary" content-toggle = "modal" onclick="new_plan()">
                                 Neuer Plan
-			  </button>
-			</div>
+                            </button>
+                        </div>
 
-			<div class = "col mar" align = "center">
-			  <h5>Semesteranzahl</h5>
-			</div>
+                        <div class = "col mar" align = "center">
+                            <h5>Semesteranzahl</h5>
+                        </div>
 
-			<div class = "col" align = "center">
-			  <button type = "button" disabled id = "button_minus" onclick = "counter_minus()" class = "btn btn-primary">
+                        <div class = "col" align = "center">
+                            <button type = "button" disabled id = "button_minus" onclick = "counter_minus()" class = "btn btn-primary">
                                 -
-			  </button>
-			</div>
+                            </button>
+                        </div>
 
-			<div class = "col mar" align = "center">
-			  <h5 id = "count">0</h5>
-			</div>
+                        <div class = "col mar" align = "center">
+                            <h5 id = "count">0</h5>
+                        </div>
 
-			<div class = "col" align = "center">
-			  <button disabled type = "button" id = "button_plus" onclick = "counter_plus()" class = "btn btn-primary">
+                        <div class = "col" align = "center">
+                            <button disabled type = "button" id = "button_plus" onclick = "counter_plus()" class = "btn btn-primary">
                                 +
-			  </button>
-			</div>
+                            </button>
+                        </div>
 
-			<div class = "col" align = "center"> <button id = "button_planLaden" class = "btn btn-primary">
+                        <div class = "col" align = "center"> <button id = "button_planLaden" class = "btn btn-primary">
                             Plan laden</button>
 
-			  <input id = "file-input" type = "file" name = "name" style = "display: none; "/>
-			  @*<input id = "file-input" type = "file" accept='text/*' style = "display: none; " onchange='loading(event)'><br>*@
+                            <input id = "file-input" type = "file" name = "name" style = "display: none; "/>
+                            @*<input id = "file-input" type = "file" accept='text/*' style = "display: none; " onchange='loading(event)'><br>*@
 
-			</div>
+                        </div>
 
-			<div class = "col" align = "center">
-			  <button disabled type = "button" class = "btn btn-primary" id="button_speichern" onclick = "save()">
-				@*<button type = "button" class = "btn btn-primary" content-toggle = "modal" content-target = "#myModal-freitext">*@
-				Plan speichern
-			  </button>
-			</div>
+                        <div class = "col" align = "center">
+                            <button disabled type = "button" class = "btn btn-primary" id="button_speichern" onclick = "save()">
+                                @*<button type = "button" class = "btn btn-primary" content-toggle = "modal" content-target = "#myModal-freitext">*@
+                                    Plan speichern
+                            </button>
+                        </div>
 
-			<div class = "col" align = "center">
-			  <button disabled type = "button" id="button_pdf" class = "btn btn-primary" style = "width: auto">
+                        <div class = "col" align = "center">
+                            <button disabled type = "button" id="button_pdf" class = "btn btn-primary" style = "width: auto">
                                 PDF erstellen
-			  </button>
-			</div>
+                            </button>
+                        </div>
 
-			<div class = "col mar" align = "center">
-			  <h5>ECTS:</h5>
-			</div>
+                        <div class = "col mar" align = "center">
+                            <h5>ECTS:</h5>
+                        </div>
 
-			<div class = "col mar" align = "center">
-			  <h5 id="master_ects">0</h5>
-			</div>
-		  </div>
-		</div>
-		@*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
-		  <!-- Container um Katalogliste, Regeln, Semester -->
-		<div class = "container-fluid">
-		  <div class = "row rounded">
+                        <div class = "col mar" align = "center">
+                            <h5 id="master_ects">0</h5>
+                        </div>
+                    </div>
+                </div>
+                @*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
+                    <!-- Container um Katalogliste, Regeln, Semester -->
+                <div class = "container-fluid">
+                    <div class = "row rounded">
 
-			  <!-- container-fluid Katalogliste -->
-			<div class = "col-3 container-fluid">
-			  <h4>
+                            <!-- container-fluid Katalogliste -->
+                        <div class = "col-3 container-fluid">
+                            <h4>
                                 Modulkataloge
-			  </h4>
-			  <div id = "div_kataloge" class = "col rounded-border-kataloge">
-				<div class = "row">
+                            </h4>
+                            <div id = "div_kataloge" class = "col rounded-border-kataloge">
+                                <div class = "row">
 
                                 </div>
-			  </div>
-			</div>
-			@*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
-			  <!--  container-fluid um Regeln, Semester -->
-			<div class = "col container-fluid">
-				<!--  container-fluid Regeln -->
-			  <div class = "container-fluid" id = "regeln">
                             </div>
-			  @*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
-				<!--  container-fluid Semester -->
-			  <div id = "div_semester">
+                        </div>
+                        @*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
+                            <!--  container-fluid um Regeln, Semester -->
+                        <div class = "col container-fluid">
+                                <!--  container-fluid Regeln -->
+                            <div class = "container-fluid" id = "regeln">
                             </div>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	<script>
+                            @*░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*@
+                                <!--  container-fluid Semester -->
+                            <div id = "div_semester">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
 
-              var ausgewaehlt_semester = "";
-              var ausgewaehlt_modul = "";
-              var global_mod_id, global_sem_id;
-              var old_sem_id;
+                var ausgewaehlt_semester = "";
+                var ausgewaehlt_modul = "";
+                var global_mod_id, global_sem_id;
+                var old_sem_id;
 
-              var open_catalog = "";
+                var open_catalog = "";
 
-              var startSem = "winter";
-              var all_catalogs_closed = 0;
-              var moving = 0;
+                var startSem = "winter";
+                var all_catalogs_closed = 0;
+                var moving = 0;
 
-              var count = 0;
+                var count = 0;
 
-              var blocked = true;
+                var blocked = true;
 
-              var content = new Array();
+                var content = new Array();
 
-              var katalogListe = new Array();
-              var modulListe = new Array();
+                var katalogListe = new Array();
+                var modulListe = new Array();
 
-              var sem_ects_array = new Array();
+                var sem_ects_array = new Array();
 
-              var alm = false;
+                var alm = false;
 
-              var search_result = "";
+                var search_result = "";
 
-              var MODUL_String = [] ;
-              var ALM_String = [] ;
-              var M07_WPP_String = [];
+                var MODUL_String = [] ;
+                var ALM_String = [] ;
+                var M07_WPP_String = [];
 
-              var load = 0;
+                var load = 0;
 
-              var löschen = [];
+                var löschen = [];
 
-              var browser = "@{message}";
+                var browser = "@{message}";
 
-              function main()
-              {
-                @for(katal <- katalogListe){
-                katalogListe.push("@{katal(0)},@{katal(1)},@{katal(2)}");
+                function main() {
+                    @for(katal <- katalogListe){
+                    katalogListe.push("@{katal(0)},@{katal(1)},@{katal(2)}");
+                    }
+
+                    @for(mod <- modulListe){
+
+                    if ("@{mod(11)}" == "WPP") {
+                        modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+                    }
+                    else {
+                        modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+                    }
+
+                    if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP")) {
+                        modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
+                    }
+                    }
+                    show_catalogs();
                 }
 
-                @for(mod <- modulListe){
-
-                if ("@{mod(11)}" == "WPP")
-                {
-	              modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-                }
-                else
-                {
-	              modulListe.push("@{mod(0)},@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-                }
-
-                if (("@{mod(11)}" != "PM") && ("@{mod(11)}" != "AM") && ("@{mod(11)}" != "WPP"))
-                {
-	              modulListe.push("@{mod(0)}_WPP,@{mod(1)},@{mod(2)},@{mod(3)},@{mod(4)},@{mod(5)},@{mod(6)},@{mod(7)},@{mod(8)},@{mod(9)},@{mod(10)},@{mod(11)}");
-                }
-                }
-                show_catalogs();
-              }
-
-              window.onload = main;
-
-              $(document).ready(function ()
-              {
-
-                $('#button_planLaden').on('click', button_laden);
-                $('#button_pdf').on('click', create_pdf);
-
-                $('#myModal-new_plan').on('click', '#popup-abbrechen', modal_popup_abbrechen);
-
-                $('#myModal-freitext').on('click', '#popup-freitext-ok', modal_freitext_ok);
-                $('#myModal-freitext').on('click', '#popup-freitext-abbrechen', modal_freitext_abbrechen);
-
-                $('#myModal-m07').on('click', '#popup-m07-abbrechen', modal_m07_abbrechen);
-                $('#myModal-m07').on('click', '#popup-m07-ok', modal_m07_ok);
-
-                $('#div_kataloge').on('mouseover', '.class_click_catalog', catalog_label_mouseover);
-                $('#div_kataloge').on('mouseout', '.class_click_catalog', catalog_label_mouseout);
-
-                $('#div_semester').on('mouseover', '.class_click_semester', semester_mouseover);
-                $('#div_semester').on('mouseout', '.class_click_semester', semester_mouseout);
-
-                $('#myModal-freitext').keypress(function (e)
-                {
-	              if (e.which == 13)
-	              {
-	                // $('#popup-new-ok').trigger('click');
-	                modal_freitext_ok();
-	              }
-                });
-                $('#myModal-freitext').on('shown.bs.modal', function ()
-                {
-	              $('#input-name').focus();
-                });
-
-                $('#myModal-m07').keypress(function (e)
-                {
-	              if (e.which == 13)
-	              {
-	                // $('#popup-new-ok').trigger('click');
-	                modal_m07_ok();
-	              }
-                });
-                $('#myModal-m07').on('shown.bs.modal', function ()
-                {
-	              $('#input-name-m07').focus();
-                });
-
-                // $('#div_kataloge').on('mouseover', '.class_click_module_p', module_p_mouseover);
-
-                // $('#div_semester').on('click', '.class_click_semester', click_semester);
-
-                //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-
-                $('#div_semester').on('click', '.button_semester', function (event)
-                {
-	              console.log("SEMESTER");
-	              event.stopPropagation();
-	              right_click_on_semester(event);
-                });
-
-                //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-
-                $('#div_semester').on('click', '.button_delete', function (event)
-                {
-	              console.log("DELETE");
-	              event.stopPropagation();
-
-	              if (browser.includes("Chrome"))
-	              {
-
-	                var html_index = $("button").index(this);
-	                var semester_id = $("button").eq(html_index).parent().parent().parent().attr("id").replace("semester_", "");
+                window.onload = main;
+
+                $(document).ready(function () {
+
+                    $('#button_planLaden').on('click', button_laden);
+                    $('#button_pdf').on('click', create_pdf);
+
+                    $('#myModal-new_plan').on('click', '#popup-abbrechen', modal_popup_abbrechen);
+
+                    $('#myModal-freitext').on('click', '#popup-freitext-ok', modal_freitext_ok);
+                    $('#myModal-freitext').on('click', '#popup-freitext-abbrechen', modal_freitext_abbrechen);
+
+                    $('#myModal-m07').on('click', '#popup-m07-abbrechen', modal_m07_abbrechen);
+                    $('#myModal-m07').on('click', '#popup-m07-ok', modal_m07_ok);
+
+                    $('#div_kataloge').on('mouseover', '.class_click_catalog', catalog_label_mouseover);
+                    $('#div_kataloge').on('mouseout', '.class_click_catalog', catalog_label_mouseout);
+
+                    if (browser.includes("Chrome")) {
+                        $('#div_semester').on('mouseover', '.class_click_semester', semester_mouseover);
+                        $('#div_semester').on('mouseout', '.class_click_semester', semester_mouseout);
+                    } else {
+                        //siehe css
+
+                        //$('#div_semester').on('mouseover', '.semester-gesamt', semester_mouseover);
+                        /*$('#div_semester').on('mouseover',function(){
+                            //var hover_sem = $(this).children().find('semester-gesamt');
+                            //console.log(hover_sem);
+                         $(this).addClass('mouse_over_border');
+                        }).on('mouseout', function(){
+                            $(this).removeClass('mouse_over_border');
+                        });
+                        */
+                        //$('#div_semester').on('mouseout', '.semester-gesamt', semester_mouseout);
+                    }
+
+
+                    $('#myModal-freitext').keypress(function (e) {
+                        if (e.which == 13) {
+                            // $('#popup-new-ok').trigger('click');
+                            modal_freitext_ok();
+                        }
+                    });
+                    $('#myModal-freitext').on('shown.bs.modal', function () {
+                        $('#input-name').focus();
+                    });
+
+                    $('#myModal-m07').keypress(function (e) {
+                        if (e.which == 13) {
+                            // $('#popup-new-ok').trigger('click');
+                            modal_m07_ok();
+                        }
+                    });
+                    $('#myModal-m07').on('shown.bs.modal', function () {
+                        $('#input-name-m07').focus();
+                    });
+
+                    // $('#div_kataloge').on('mouseover', '.class_click_module_p', module_p_mouseover);
+
+                    // $('#div_semester').on('click', '.class_click_semester', click_semester);
+
+                    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+                    if (browser.includes("Chrome")) {
+                        $('#div_semester').on('click', '.button_semester', function (event) {
+                            console.log("SEMESTER");
+                            event.stopPropagation();
+                            right_click_on_semester(event);
+                        });
+                    } else {
+                        $('#div_semester').on('click', '.button_semester_firefox', function (event) {
+                            console.log("SEMESTER");
+                            event.stopPropagation();
+                            right_click_on_semester(event);
+                        });
+                    }
 
-	                $("#div_semester").children().removeClass("not_available");
-	                $('#div_semester').children().removeClass('ausgewaehlt');
+                    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
-	                var clicked_modul_id = $(event.target).parent().prev().attr("id").replace("mod_", "");
-	                var clicked_semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "");
+                    $('#div_semester').on('click', '.button_delete', function (event) {
+                        console.log("DELETE");
+                        event.stopPropagation();
 
-	                if (clicked_modul_id != "ALM")
-	                {
-		              $("#mod_" + clicked_modul_id).parent().remove();
-		              delete_module_from_semester(clicked_modul_id, clicked_semester_id);
-	                }
-	                else
-	                {
-		              var stelle = $("#semester_" + clicked_semester_id).children().index($("button").eq(html_index).parent().parent());
-		              console.log(stelle);
-		              console.log(clicked_semester_id);
-		              content[clicked_semester_id - 1].splice(stelle - 1, 1);
-		              $("button").eq(html_index).parent().parent().remove();
-		              update_semester_ects(clicked_semester_id);
-	                }
-	              }
-	              else
-	              {
-	                var html_index = $("button").index(this);
+                        if (browser.includes("Chrome")) {
 
-	                var clicked_semester_id = $("button").eq(html_index).parent().parent().parent().attr("id").replace("semester_", "");
+                            var html_index = $("button").index(this);
+                            var semester_id = $("button").eq(html_index).parent().parent().parent().attr("id").replace("semester_", "");
 
-	                $("#div_semester").children().removeClass("not_available");
-	                $('#div_semester').children().removeClass('ausgewaehlt');
+                            $("#div_semester").children().removeClass("not_available");
+                            $('#div_semester').children().removeClass('ausgewaehlt');
 
-	                console.log($(event.target));
+                            var clicked_modul_id = $(event.target).parent().prev().attr("id").replace("mod_", "");
+                            var clicked_semester_id = $(event.target).parent().closest("button").attr("id").replace("semester_", "");
 
-	                var clicked_modul_id = $("button").eq(html_index).parent().parent().children().children().children().first().children().first()[0].innerText;
-	                clicked_modul_id = clicked_modul_id.replace("ID: ","");
+                            if (clicked_modul_id != "ALM") {
+                                $("#mod_" + clicked_modul_id).parent().remove();
+                                delete_module_from_semester(clicked_modul_id, clicked_semester_id);
+                            }
+                            else {
+                                var stelle = $("#semester_" + clicked_semester_id).children().index($("button").eq(html_index).parent().parent());
+                                console.log(stelle);
+                                console.log(clicked_semester_id);
+                                content[clicked_semester_id - 1].splice(stelle - 1, 1);
+                                $("button").eq(html_index).parent().parent().remove();
+                                update_semester_ects(clicked_semester_id);
+                            }
+                        }
+                        else {
+                            var html_index = $("button").index(this);
 
-	                if (clicked_modul_id != "ALM")
-	                {
-		              $("#mod_" + clicked_modul_id).parent().remove();
-		              delete_module_from_semester(clicked_modul_id, clicked_semester_id);
-	                }
-	                else
-	                {
-		              var stelle = $("#semester_" + clicked_semester_id).children().index($("button").eq(html_index).parent().parent());
-		              console.log(stelle);
-		              console.log(clicked_semester_id);
-		              content[clicked_semester_id - 1].splice(stelle - 1, 1);
-		              $("button").eq(html_index).parent().parent().remove();
-		              update_semester_ects(clicked_semester_id);
-	                }
-	              }
+                            var clicked_semester_id = $("button").eq(html_index).parent().parent().parent().attr("id").replace("semester_", "");
 
-                });
+                            $("#div_semester").children().removeClass("not_available");
+                            $('#div_semester').children().removeClass('ausgewaehlt');
 
-                //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+                            console.log($(event.target));
 
-                $('#div_semester').on('click', '.button_move', function (event)
-                {
+                            var clicked_modul_id = $("button").eq(html_index).parent().parent().children().children().children().first().children().first()[0].innerText;
+                            clicked_modul_id = clicked_modul_id.replace("ID: ", "");
 
-	              event.stopPropagation();
+                            if (clicked_modul_id != "ALM") {
+                                $("#mod_" + clicked_modul_id).parent().remove();
+                                delete_module_from_semester(clicked_modul_id, clicked_semester_id);
+                            }
+                            else {
+                                var stelle = $("#semester_" + clicked_semester_id).children().index($("button").eq(html_index).parent().parent());
+                                console.log(stelle);
+                                console.log(clicked_semester_id);
+                                content[clicked_semester_id - 1].splice(stelle - 1, 1);
+                                $("button").eq(html_index).parent().parent().remove();
+                                update_semester_ects(clicked_semester_id);
+                            }
+                        }
 
-	              var html_index = $("button").index(this);
+                    });
 
-	              var semester_id = $("button").eq(html_index).parent().parent().parent().attr("id").replace("semester_", "")
+                    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 
-	              var zaehler = 0;
+                    $('#div_semester').on('click', '.button_move', function (event) {
 
-	              $.each($("button").eq(html_index).parent().parent().children().first().children().children().children(), function (index, value)
-	              {
-	                MODUL_String[zaehler] = $(value).text();
-	                zaehler++;
+                        event.stopPropagation();
 
-	              });
+                        var html_index = $("button").index(this);
 
-	              console.log(MODUL_String);
+                        var semester_id = $("button").eq(html_index).parent().parent().parent().attr("id").replace("semester_", "")
 
-	              MODUL_String[0] = MODUL_String[0].replace("ID: ", "");
+                        var zaehler = 0;
 
-	              if (MODUL_String[0] == "ALM")
-	              {
-	                MODUL_String[2] = MODUL_String[2].replace("V:", "").replace("Ü:", "").replace("P:", "").replace("Pr:", "");
-	                MODUL_String[4] = MODUL_String[4].replace("ECTS:", "");
+                        $.each($("button").eq(html_index).parent().parent().children().first().children().children().children(), function (index, value) {
+                            MODUL_String[zaehler] = $(value).text();
+                            zaehler++;
 
-	                $("#div_semester").children().removeClass("not_available");
-	                $('#div_semester').children().removeClass('ausgewaehlt');
+                        });
 
-	                ausgewaehlt_modul = "ALM" ;
+                        console.log(MODUL_String);
 
-	                ALM_String = MODUL_String.toString().split(",") ;
+                        MODUL_String[0] = MODUL_String[0].replace("ID: ", "");
 
-	                console.log(ALM_String);
+                        if (MODUL_String[0] == "ALM") {
+                            MODUL_String[2] = MODUL_String[2].replace("V:", "").replace("Ü:", "").replace("P:", "").replace("Pr:", "");
+                            MODUL_String[4] = MODUL_String[4].replace("ECTS:", "");
 
-	                moving = 1;
+                            $("#div_semester").children().removeClass("not_available");
+                            $('#div_semester').children().removeClass('ausgewaehlt');
 
-	                // availability_mask_semesters("ALM");
+                            ausgewaehlt_modul = "ALM" ;
 
-	                old_sem_id = semester_id;
+                            ALM_String = MODUL_String.toString().split(",") ;
 
-	                var stelle = $("#semester_" + semester_id).children().index($("button").eq(html_index).parent().parent());
+                            console.log(ALM_String);
 
-	                löschen[0] = semester_id;
-	                löschen[1] = stelle;
-	                löschen[2] = html_index;
+                            moving = 1;
 
-	              }
-	              else if (MODUL_String[0] == "M07_WPP")
-	              {
-	                MODUL_String[2] = MODUL_String[2].replace("V:", "").replace("Ü:", "").replace("P:", "").replace("Pr:", "");
-	                MODUL_String[4] = MODUL_String[4].replace("ECTS:", "");
+                            // availability_mask_semesters("ALM");
 
-	                $("#div_semester").children().removeClass("not_available");
-	                $('#div_semester').children().removeClass('ausgewaehlt');
+                            old_sem_id = semester_id;
 
-	                ausgewaehlt_modul = "M07_WPP" ;
+                            var stelle = $("#semester_" + semester_id).children().index($("button").eq(html_index).parent().parent());
 
-	                M07_WPP_String = MODUL_String.toString().split(",") ;
+                            löschen[0] = semester_id;
+                            löschen[1] = stelle;
+                            löschen[2] = html_index;
 
-	                console.log(M07_WPP_String);
+                        }
+                        else if (MODUL_String[0] == "M07_WPP") {
+                            MODUL_String[2] = MODUL_String[2].replace("V:", "").replace("Ü:", "").replace("P:", "").replace("Pr:", "");
+                            MODUL_String[4] = MODUL_String[4].replace("ECTS:", "");
 
-	                moving = 1;
+                            $("#div_semester").children().removeClass("not_available");
+                            $('#div_semester').children().removeClass('ausgewaehlt');
 
-	                // availability_mask_semesters("ALM");
+                            ausgewaehlt_modul = "M07_WPP" ;
 
-	                old_sem_id = semester_id;
+                            M07_WPP_String = MODUL_String.toString().split(",") ;
 
-	              }
-	              else
-	              {
-	                $("#div_semester").children().removeClass("not_available");
-	                $('#div_semester').children().removeClass('ausgewaehlt');
+                            console.log(M07_WPP_String);
 
-	                // = $(event.target).parent().prev().attr("id").replace("mod_", "");
+                            moving = 1;
 
-	                //var module_id = $(event.target).index();
+                            // availability_mask_semesters("ALM");
 
-	                ausgewaehlt_modul = MODUL_String[0].replace("ID: ", "") ;
+                            old_sem_id = semester_id;
 
-	                moving = 1;
+                        }
+                        else {
+                            $("#div_semester").children().removeClass("not_available");
+                            $('#div_semester').children().removeClass('ausgewaehlt');
 
-	                availability_mask_semesters(ausgewaehlt_modul);
+                            // = $(event.target).parent().prev().attr("id").replace("mod_", "");
 
-	                old_sem_id = semester_id;
-	              }
+                            //var module_id = $(event.target).index();
+
+                            ausgewaehlt_modul = MODUL_String[0].replace("ID: ", "") ;
+
+                            moving = 1;
+
+                            availability_mask_semesters(ausgewaehlt_modul);
+
+                            old_sem_id = semester_id;
+                        }
+
+                    });
+
+                    //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+
+                    $("#button_new_plan").addClass("mouse_over_border");
+                    $('#button_planLaden').addClass("mouse_over_border");
+
+                    // testing();
+
+                    // $("*").on("click", click_selector);
 
                 });
-
-                //mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-
-
-                $("#button_new_plan").addClass("mouse_over_border");
-                $('#button_planLaden').addClass("mouse_over_border");
-
-                // testing();
-
-                // $("*").on("click", click_selector);
-
-              });
-      </script>
-  </body>
+        </script>
+    </body>

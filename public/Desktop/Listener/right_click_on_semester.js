@@ -186,7 +186,7 @@ function right_click_on_semester(caller)
                 {
                     $("#div_semester").children().removeClass("mouse_over_border");
                 
-                    $("#" + "semester_" + semester_id).toggleClass('ausgewaehlt');
+                    $("#" + "semester_" + semester_id).toggleClass('ausgewaehlt sem_background');
                 
                     $("#div_kataloge").children().children().removeClass("not_available");
                 
@@ -199,8 +199,9 @@ function right_click_on_semester(caller)
                 else
                 {
                     $('#div_semester').children().removeClass('ausgewaehlt');
+                    $('#div_semester').children().addClass('sem_background');
                 
-                    $("#" + "semester_" + semester_id).toggleClass('ausgewaehlt');
+                    $("#" + "semester_" + semester_id).toggleClass('ausgewaehlt sem_background');
                 
                     $(".mouse_over_border").toggleClass("mouse_over_border");
                 
