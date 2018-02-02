@@ -392,6 +392,8 @@
                         //siehe css
 
                         //$('#div_semester').on('mouseover', '.semester-gesamt', semester_mouseover);
+                        //$('#div_semester').on('mouseout', '.semester-gesamt', semester_mouseout);
+
                         /*$('#div_semester').on('mouseover',function(){
                             //var hover_sem = $(this).children().find('semester-gesamt');
                             //console.log(hover_sem);
@@ -400,7 +402,6 @@
                             $(this).removeClass('mouse_over_border');
                         });
                         */
-                        //$('#div_semester').on('mouseout', '.semester-gesamt', semester_mouseout);
                     }
 
 
@@ -432,13 +433,11 @@
 
                     if (browser.includes("Chrome")) {
                         $('#div_semester').on('click', '.button_semester', function (event) {
-                            console.log("SEMESTER");
                             event.stopPropagation();
                             right_click_on_semester(event);
                         });
                     } else {
                         $('#div_semester').on('click', '.button_semester_firefox', function (event) {
-                            console.log("SEMESTER");
                             event.stopPropagation();
                             right_click_on_semester(event);
                         });

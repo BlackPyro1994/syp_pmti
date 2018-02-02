@@ -13,7 +13,11 @@ function left_click_on_module(caller)
         if (ausgewaehlt_semester != "")
         {
             $("#div_kataloge").children().children().removeClass("not_available");
+            if (!(browser.includes("Chrome"))) {
+                $("#div_semester").children().addClass("sem_background");
+            }
             $(".mouse_over_border").removeClass("mouse_over_border");
+
             insert_module_in_semester($(caller).attr('id'), ausgewaehlt_semester, null, false);
             return;
         }
@@ -25,6 +29,10 @@ function left_click_on_module(caller)
         if ((!$(caller).attr('class').includes("ausgewaehlt")) && ausgewaehlt_modul == "")
         {
             $("#div_semester").children().removeClass("not_available");
+
+            if (!(browser.includes("Chrome"))) {
+                $("#div_semester").children().addClass("sem_background");
+            }
             
             $(caller).removeClass("mouseOver");
             
@@ -46,6 +54,9 @@ function left_click_on_module(caller)
         else if ($(caller).attr('id') == ausgewaehlt_modul)
         {
             $("#div_semester").children().removeClass("not_available");
+            if (!(browser.includes("Chrome"))) {
+                $("#div_semester").children().addClass("sem_background");
+            }
             
             $(caller).toggleClass('ausgewaehlt');
             
@@ -63,6 +74,10 @@ function left_click_on_module(caller)
             $(".mouse_over_border").removeClass("mouse_over_border");
             
             $("#div_semester").children().removeClass("not_available");
+
+            if (!(browser.includes("Chrome"))) {
+                $("#div_semester").children().addClass("sem_background");
+            }
             
             ("Anderes Modul Ausgewählt");
             

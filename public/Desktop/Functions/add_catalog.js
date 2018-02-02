@@ -13,9 +13,12 @@ function add_catalog(kat_id, title)
         + '<Button ' +
 
         'id="' + kat_id + '"' +
-        'class = "btn-block rounded-catalog disabled-catalog" ' +
+        'class = "btn-block disabled-catalog catalog_button" ' +
         'onclick="left_click_on_catalog(this)">' + title + '</Button>'
         
         + '</div>');
-    
+
+    if (!(browser.includes("Chrome"))) {
+        $('#div_kataloge').children().last().children().addClass("rounded-catalog")
+    }
 }

@@ -4,7 +4,7 @@
  * @param caller Click auf das Semester
  */
 
-function right_click_on_semester(caller)
+function    right_click_on_semester(caller)
 {
     if (browser.includes("Chrome"))
     {
@@ -38,8 +38,7 @@ function right_click_on_semester(caller)
                     {
                         // options = get_module_from_content(ausgewaehlt_modul);
                         // console.log(options);
-                        
-                        console.log(ALM_String);
+
                         insert_module_in_semester("ALM", semester_id, ALM_String, false);
                     }
                     else if (ausgewaehlt_modul == "M07_WPP")
@@ -57,12 +56,16 @@ function right_click_on_semester(caller)
                 else
                 {
                     $("#div_semester").children().removeClass("not_available");
+                    $("#div_semester").children().addClass("sem_background");
                     
                     if (($("#" + ausgewaehlt_modul).parent().children().first().siblings().not('.blocked').length - 1) == 0)
                     {
                         $("#" + ausgewaehlt_modul).parent().toggleClass("cat-border");
                         $("#" + open_catalog).removeClass("cat-background");
                         $("#" + ausgewaehlt_modul).parent().children().first().siblings().toggle(200);
+
+                        $("#" + open_catalog).removeClass("catalog_button_open");
+                        $("#" + open_catalog).addClass("catalog_button");
                         
                         open_catalog = "";
                     }
@@ -141,8 +144,7 @@ function right_click_on_semester(caller)
                     {
                         // options = get_module_from_content(ausgewaehlt_modul);
                         // console.log(options);
-                    
-                        console.log(ALM_String);
+
                         insert_module_in_semester("ALM", semester_id, ALM_String, false);
                     }
                     else if (ausgewaehlt_modul == "M07_WPP")
@@ -160,12 +162,17 @@ function right_click_on_semester(caller)
                 else
                 {
                     $("#div_semester").children().removeClass("not_available");
+                    $("#div_semester").children().addClass("sem_background");
+
                 
                     if (($("#" + ausgewaehlt_modul).parent().children().first().siblings().not('.blocked').length - 1) == 0)
                     {
                         $("#" + ausgewaehlt_modul).parent().toggleClass("cat-border");
                         $("#" + open_catalog).removeClass("cat-background");
                         $("#" + ausgewaehlt_modul).parent().children().first().siblings().toggle(200);
+
+                        $("#" + open_catalog).removeClass("catalog_button_open");
+                        $("#" + open_catalog).addClass("catalog_button");
                     
                         open_catalog = "";
                     }
